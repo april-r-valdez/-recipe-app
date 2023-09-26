@@ -9,7 +9,14 @@ function TextInput() {
 
   return (
     <div>
-      <input type="text" value={text} onChange={handleChange} />
+      <label htmlFor="inputText">Enter an Ingredient</label>
+      <input
+        type="text"
+        id="inputText"
+        value={text}
+        onChange={handleChange}
+        placeholder="ex: eggs, milk..."
+      />
     </div>
   );
 }
