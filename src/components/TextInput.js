@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TextInput.css";
 
 function TextInput() {
   const [text, setText] = useState("");
@@ -11,6 +12,7 @@ function TextInput() {
     <div>
       <label htmlFor="inputText">Enter an Ingredient</label>
       <input
+        className="input"
         type="text"
         id="inputText"
         value={text}
