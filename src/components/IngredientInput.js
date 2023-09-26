@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./IngredientInput.css";
 import TextInput from "./TextInput";
 
 function IngredientInput() {
@@ -26,22 +27,24 @@ function IngredientInput() {
         value={ingredient.name}
         handleChange={handleInputChange}
       />
-      <TextInput
-        label="amount"
-        placeholder="ex: 10..."
-        type="number"
-        name="amount"
-        value={ingredient.amount}
-        handleChange={handleInputChange}
-      />
-      <TextInput
-        label="unit"
-        placeholder="ex: lb, oz..."
-        type="text"
-        name="unit"
-        value={ingredient.unit}
-        handleChange={handleInputChange}
-      />
+      <div className="ingredient-input-sub-container">
+        <TextInput
+          label="amount"
+          placeholder="ex: 10..."
+          type="number"
+          name="amount"
+          value={ingredient.amount}
+          handleChange={handleInputChange}
+        />
+        <TextInput
+          label="unit"
+          placeholder="ex: lb, oz..."
+          type="text"
+          name="unit"
+          value={ingredient.unit}
+          handleChange={handleInputChange}
+        />
+      </div>
     </>
   );
 }
