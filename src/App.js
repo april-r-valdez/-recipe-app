@@ -5,7 +5,11 @@ import TextInput from "./components/TextInput";
 function App() {
   return (
     <div>
-      <TextInput />
+      <TextInput
+        label="Enter an Ingredient"
+        placeholder="ex: eggs, milk..."
+        type="text"
+      />
     </div>
   );
 }

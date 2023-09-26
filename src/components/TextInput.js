@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TextInput.css";
 
-function TextInput() {
+function TextInput({ label, placeholder, type }) {
   const [text, setText] = useState("");
 
   const handleChange = (event) => {
@@ -10,14 +10,14 @@ function TextInput() {
 
   return (
     <div>
-      <label htmlFor="inputText">Enter an Ingredient</label>
+      <label htmlFor="inputText">{label}</label>
       <input
         className="input"
-        type="text"
+        type={type}
         id="inputText"
         value={text}
         onChange={handleChange}
-        placeholder="ex: eggs, milk..."
+        placeholder={placeholder}
       />
     </div>
   );
