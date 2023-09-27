@@ -54,6 +54,7 @@ const TextBox = () => {
             placeholder="Enter unit"
           ></input>
         </div>
+        <button type="submit">Search</button>
       </form>
     </div>
   );
