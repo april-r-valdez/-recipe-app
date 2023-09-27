@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const  Textbox = () => {
+    // useState hook updates the variables ingredient and listIngredients
     const [ingredient, setIngredient] = useState('');
-    
+    const [listIngredients, setIngredientsList] = useState([]);
+
+    // handleSubmit function called when typing in input field
     const handleSubmit = (e) => {
         e.preventDefault();
-        const input = {ingredient};
-        console.log(input);
+        const newIngredient = {item:ingredient}
+        setIngredientsList([...listIngredients, newIngredient])
     };
+
+    // useEffect hook runs function with every render of component
+    // [listIngredients] is a dependency added and will run function if it changes 
+    useEffect(() => {
+        console.log(listIngredients);
+    }, [listIngredients]); 
 
     return (  
         <div className="textbox">
@@ -18,11 +27,8 @@ const  Textbox = () => {
                     placeholder='Enter ingredients'
                     onChange={(e) => setIngredient(e.target.value)}
                 ></input>
-                <div>
-                    <button>Generate Recipes</button>
-                </div>
-                <p>{ingredient}</p>
             </form>
+            <button>Add Ingredients</button>
         </div>
     );
 }
