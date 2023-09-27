@@ -7,6 +7,8 @@ const TextBox = () => {
     unit: "",
   });
 
+  const [ingredients, setIngredients] = useState([]);
+
   const handleInputChange = (event) => {
     setUserInput({
       ...userInput,
@@ -14,8 +16,16 @@ const TextBox = () => {
     });
   };
 
-  const handleFormSubmit = () => {
-    // to be implemented
+  // this function call addIngredient() to add user ingredient to array ingredients
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    addIngredient();
+  };
+
+  const addIngredient = () => {
+    if (userInput.ingredient.trim() !== "") {
+      setIngredients([...ingredients, userInput]);
+    }
   };
 
   return (
@@ -54,7 +64,7 @@ const TextBox = () => {
             placeholder="Enter unit"
           ></input>
         </div>
-        <button type="submit">Search</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
