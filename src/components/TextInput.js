@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-function TextInput({ label, placeholder, type, name, value, handleChange }) {
+function TextInput({
+  label,
+  placeholder,
+  type,
+  value,
+  name,
+  handleChange,
+  onKeyDown,
+}) {
   return (
     <div>
       <label htmlFor="inputText">{label}</label>
@@ -11,6 +19,7 @@ function TextInput({ label, placeholder, type, name, value, handleChange }) {
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

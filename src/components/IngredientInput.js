@@ -33,6 +33,13 @@ function IngredientInput() {
     });
   };
 
+  const [showSubContainer, setShowSubContainer] = useState(false);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setShowSubContainer(true);
+    }
+  };
+
   return (
     <>
       <TextInput
@@ -42,25 +49,29 @@ function IngredientInput() {
         name="name"
         value={ingredient.name}
         handleChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
-      <div className="ingredient-input-sub-container">
-        <TextInput
-          label="amount"
-          placeholder="ex: 10..."
-          type="number"
-          name="amount"
-          value={ingredient.amount}
-          handleChange={handleInputChange}
-        />
-        <TextInput
-          label="unit"
-          placeholder="ex: lb, oz..."
-          type="text"
-          name="unit"
-          value={ingredient.unit}
-          handleChange={handleInputChange}
-        />
-      </div>
+
+      {showSubContainer && (
+        <div className="ingredient-input-sub-container">
+          <TextInput
+            label="amount"
+            placeholder="ex: 10..."
+            type="number"
+            name="amount"
+            value={ingredient.amount}
+            handleChange={handleInputChange}
+          />
+          <TextInput
+            label="unit"
+            placeholder="ex: lb, oz..."
+            type="text"
+            name="unit"
+            value={ingredient.unit}
+            handleChange={handleInputChange}
+          />
+        </div>
+      )}
     </>
   );
 }
