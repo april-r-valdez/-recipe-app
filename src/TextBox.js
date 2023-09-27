@@ -40,6 +40,7 @@ const TextBox = () => {
         <div>
           <label htmlFor="ingredient">Ingredient* </label>
           <input
+            required
             type="text"
             id="ingredient"
             name="ingredient"
@@ -76,7 +77,7 @@ const TextBox = () => {
         <ul>
           {ingredients.map((input, index) => (
             <li key={index}>
-              {input.ingredient}: {input.amount} {input.unit}
+              {input.ingredient} {input.amount} {input.unit}
             </li>
           ))}
         </ul>
