@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
-import InputIngredient from "./InputIngredient"
+import InputIngredient from "./InputIngredient";
+import FeaturedSection from "./FeaturedSection";
 
 function Home() {
     return (
@@ -8,17 +9,18 @@ function Home() {
                 <Navbar/>
             </div>
             <div class="row">
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-lg-1">
                     
                 </div>
                 <div class="col-sm-6 col-lg-8">
-                    <InputIngredient/>
+                    <FeaturedSection/>   
                 </div>
-                <div class="col-6 col-lg-2">
-                    
+                <div class="col-6 col-lg-3">
+                    <InputIngredient/>
                 </div>
 
             </div>
+            
         </div>
     )
 }
