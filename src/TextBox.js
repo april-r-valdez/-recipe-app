@@ -7,6 +7,8 @@ const TextBox = () => {
     unit: "",
   });
 
+  const [ingredients, setIngredients] = useState([]);
+
   const handleInputChange = (event) => {
     setUserInput({
       ...userInput,
@@ -14,15 +16,29 @@ const TextBox = () => {
     });
   };
 
-  const handleFormSubmit = () => {
-    // to be implemented
+  // this function call addIngredient() to add user ingredient to array ingredients
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    addIngredient();
+    // empty the fields in the form after inputs are saved
+    setUserInput({
+      ingredient: "",
+      amount: "",
+      unit: "",
+    });
+  };
+
+  const addIngredient = () => {
+    if (userInput.ingredient.trim() !== "") {
+      setIngredients([...ingredients, userInput]);
+    }
   };
 
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="ingredient">Ingredient: </label>
+          <label htmlFor="ingredient">Ingredient* </label>
           <input
             type="text"
             id="ingredient"
@@ -33,7 +49,7 @@ const TextBox = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="amount">Amount: </label>
+          <label htmlFor="amount">Amount </label>
           <input
             type="text"
             id="amount"
@@ -44,7 +60,7 @@ const TextBox = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="unit">Unit: </label>
+          <label htmlFor="unit">Unit </label>
           <input
             type="text"
             id="unit"
@@ -54,8 +70,17 @@ const TextBox = () => {
             placeholder="Enter unit"
           ></input>
         </div>
-        <button type="submit">Search</button>
+        <button type="submit">Add</button>
       </form>
+      <div>
+        <ul>
+          {ingredients.map((input, index) => (
+            <li key={index}>
+              {input.ingredient}: {input.amount} {input.unit}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
