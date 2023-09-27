@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 
 const TextBox = () => {
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState({
+    ingredient: "",
+    amount: "",
+    unit: "",
+  });
 
   const handleInputChange = (event) => {
-    setUserInput(event.target.value);
+    setUserInput({
+      ...userInput,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleFormSubmit = () => {
@@ -20,9 +27,31 @@ const TextBox = () => {
             type="text"
             id="ingredient"
             name="ingredient"
-            value={userInput}
+            value={userInput.ingredient}
             onChange={handleInputChange}
-            placeholder="Enter ingredients"
+            placeholder="Enter ingredient"
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="amount">Amount: </label>
+          <input
+            type="text"
+            id="amount"
+            name="amount"
+            value={userInput.amount}
+            onChange={handleInputChange}
+            placeholder="Enter amount"
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="unit">Unit: </label>
+          <input
+            type="text"
+            id="unit"
+            name="unit"
+            value={userInput.unit}
+            onChange={handleInputChange}
+            placeholder="Enter unit"
           ></input>
         </div>
       </form>
