@@ -1,11 +1,11 @@
 
 import './App.css';
-import InputIngredient from './components/InputIngredient';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <InputIngredient/>      
+        <Home/>   
     </div>
   );
 }
