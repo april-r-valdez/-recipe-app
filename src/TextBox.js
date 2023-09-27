@@ -7,15 +7,25 @@ const TextBox = () => {
     setUserInput(event.target.value);
   };
 
+  const handleFormSubmit = () => {
+    // to be implemented
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        name="userInput"
-        value={userInput}
-        onChange={handleInputChange}
-        placeholder="Enter ingredients"
-      ></input>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label htmlFor="ingredient">Ingredient: </label>
+          <input
+            type="text"
+            id="ingredient"
+            name="ingredient"
+            value={userInput}
+            onChange={handleInputChange}
+            placeholder="Enter ingredients"
+          ></input>
+        </div>
+      </form>
     </div>
   );
 };
