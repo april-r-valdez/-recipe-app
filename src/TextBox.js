@@ -20,6 +20,12 @@ const TextBox = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     addIngredient();
+    // empty the fields in the form after inputs are saved
+    setUserInput({
+      ingredient: "",
+      amount: "",
+      unit: "",
+    });
   };
 
   const addIngredient = () => {
