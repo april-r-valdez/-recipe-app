@@ -38,7 +38,7 @@ const TextBox = () => {
     <div>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="ingredient">Ingredient: </label>
+          <label htmlFor="ingredient">Ingredient* </label>
           <input
             type="text"
             id="ingredient"
@@ -49,7 +49,7 @@ const TextBox = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="amount">Amount: </label>
+          <label htmlFor="amount">Amount </label>
           <input
             type="text"
             id="amount"
@@ -60,7 +60,7 @@ const TextBox = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="unit">Unit: </label>
+          <label htmlFor="unit">Unit </label>
           <input
             type="text"
             id="unit"
@@ -72,6 +72,15 @@ const TextBox = () => {
         </div>
         <button type="submit">Add</button>
       </form>
+      <div>
+        <ul>
+          {ingredients.map((input, index) => (
+            <li key={index}>
+              {input.ingredient}: {input.amount} {input.unit}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
