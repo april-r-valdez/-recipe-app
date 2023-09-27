@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import "./TextInput.css";
 
-function TextInput({ label, placeholder, type }) {
-  const [text, setText] = useState("");
-
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-
+function TextInput({ label, placeholder, type, name, value, handleChange }) {
   return (
     <div>
       <label htmlFor="inputText">{label}</label>
@@ -15,7 +9,8 @@ function TextInput({ label, placeholder, type }) {
         className="input"
         type={type}
         id="inputText"
-        value={text}
+        name={name}
+        value={value}
         onChange={handleChange}
         placeholder={placeholder}
       />
