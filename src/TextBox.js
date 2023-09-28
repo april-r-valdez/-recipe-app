@@ -35,7 +35,7 @@ const TextBox = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <form onSubmit={handleFormSubmit}>
         <div className="input-group mt-2 mb-3">
           <label className="input-group-text" htmlFor="ingredient">
@@ -95,6 +95,18 @@ const TextBox = () => {
           ))}
         </ul>
       </div>
+      {ingredients.length !== 0 ? (
+        <>
+          <button
+            className="btn btn-primary"
+            onClick={() => setIngredients([])}
+          >
+            Reset
+          </button>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
