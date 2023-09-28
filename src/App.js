@@ -4,7 +4,7 @@ import TextBox from "./TextBox";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <h2>Recipe Generator App</h2>
       <TextBox />
     </div>
