@@ -1,24 +1,24 @@
 import React from "react";
 
-const IngredientList = ({ ingredients, setIngredients }) => {
+const IngredientList = ({ ingredients, deleteIngredient }) => {
   return (
     <div className="mt-4">
       <ul className="list-group list-group-flush">
         {ingredients.map((input, index) => (
-          <li key={index} className="list-group-item">
+          <li
+            key={index}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
             {input.ingredient} {input.amount} {input.unit}
+            <button
+              type="button"
+              className="btn btn-close"
+              aria-label="Close"
+              onClick={() => deleteIngredient(index)}
+            ></button>
           </li>
         ))}
       </ul>
-      {ingredients.length !== 0 ? (
-        <div className="mt-3">
-          <button className="btn btn-danger" onClick={() => setIngredients([])}>
-            Reset
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 };

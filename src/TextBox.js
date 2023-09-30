@@ -35,6 +35,12 @@ const TextBox = () => {
     }
   };
 
+  const deleteIngredient = (index) => {
+    const updatedIngredient = [...ingredients];
+    updatedIngredient.splice(index, 1);
+    setIngredients(updatedIngredient);
+  };
+
   return (
     <div className="container mt-4">
       <form onSubmit={handleFormSubmit}>
@@ -89,7 +95,7 @@ const TextBox = () => {
       </form>
       <IngredientList
         ingredients={ingredients}
-        setIngredients={setIngredients}
+        deleteIngredient={deleteIngredient}
       />
     </div>
   );
