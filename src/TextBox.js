@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import IngredientList from "./IngredientList";
 
 const TextBox = () => {
   const [userInput, setUserInput] = useState({
@@ -86,27 +87,10 @@ const TextBox = () => {
           </button>
         </div>
       </form>
-      <div className="mt-4">
-        <ul className="list-group list-group-flush">
-          {ingredients.map((input, index) => (
-            <li key={index} className="list-group-item">
-              {input.ingredient} {input.amount} {input.unit}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {ingredients.length !== 0 ? (
-        <>
-          <button
-            className="btn btn-primary"
-            onClick={() => setIngredients([])}
-          >
-            Reset
-          </button>
-        </>
-      ) : (
-        <></>
-      )}
+      <IngredientList
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+      />
     </div>
   );
 };
