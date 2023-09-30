@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import TextBox from "./TextBox";
+import TextBox from "./components/TextBox";
 
 function App() {
   return (
