@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import IngredientList from "./IngredientList";
 
 const TextBox = () => {
   const [userInput, setUserInput] = useState({
@@ -34,12 +35,22 @@ const TextBox = () => {
     }
   };
 
+  const deleteIngredient = (index) => {
+    const updatedIngredient = [...ingredients];
+    updatedIngredient.splice(index, 1);
+    setIngredients(updatedIngredient);
+  };
+
   return (
-    <div>
+    <div className="container mt-4">
       <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="ingredient">Ingredient* </label>
+        <div className="input-group mt-2 mb-3">
+          <label className="input-group-text" htmlFor="ingredient">
+            Ingredient
+          </label>
           <input
+            className="form-control col-sm-6"
+            required
             type="text"
             id="ingredient"
             name="ingredient"
@@ -48,9 +59,12 @@ const TextBox = () => {
             placeholder="Enter ingredient"
           ></input>
         </div>
-        <div>
-          <label htmlFor="amount">Amount </label>
+        <div className="input-group mt-2 mb-3">
+          <label className="input-group-text" htmlFor="amount">
+            Amount
+          </label>
           <input
+            className="form-control"
             type="text"
             id="amount"
             name="amount"
@@ -59,9 +73,12 @@ const TextBox = () => {
             placeholder="Enter amount"
           ></input>
         </div>
-        <div>
-          <label htmlFor="unit">Unit </label>
+        <div className="input-group mt-2 mb-3">
+          <label className="input-group-text" htmlFor="unit">
+            Unit
+          </label>
           <input
+            className="form-control"
             type="text"
             id="unit"
             name="unit"
@@ -70,17 +87,16 @@ const TextBox = () => {
             placeholder="Enter unit"
           ></input>
         </div>
-        <button type="submit">Add</button>
+        <div className="mt-3">
+          <button className="btn btn-primary" type="submit">
+            Add
+          </button>
+        </div>
       </form>
-      <div>
-        <ul>
-          {ingredients.map((input, index) => (
-            <li key={index}>
-              {input.ingredient}: {input.amount} {input.unit}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <IngredientList
+        ingredients={ingredients}
+        deleteIngredient={deleteIngredient}
+      />
     </div>
   );
 };
