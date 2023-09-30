@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const  Textbox = () => {
+const  UserInput = () => {
     // useState hook updates variables storing user inputs
     const [inputs, setInputs] = useState({
         // default values set
@@ -37,7 +37,7 @@ const  Textbox = () => {
     }, [ingredientsList]); 
 
     return (  
-        <div className="textbox">
+        <div className="userinput">
             <br></br><p>Enter your ingredients here</p><br></br>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -79,7 +79,7 @@ const  Textbox = () => {
                         <option value="gallons">gallons</option>
                     </select>   
                 </div><br></br>
-                <input name='form' type='submit' value='Generate Recipe'></input>
+                <input name='form' type='submit' value='Add ingredient'></input>
             </form>
             <br></br><br></br><h2>Your Pantry:</h2><br></br>
             {ingredientsList.map((input, index) => (
@@ -91,4 +91,4 @@ const  Textbox = () => {
     );
 }
  
-export default Textbox;
+export default UserInput;

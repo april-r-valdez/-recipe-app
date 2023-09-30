@@ -1,11 +1,11 @@
 import './App.css';
-import Textbox from './Input';
+import UserInput from './components/UserInput';
 
 function App() {
   return (
     <div className="App">
-      <h1>Recipes App</h1>
-      <Textbox />
+      <h1>Recipe App</h1>
+      <UserInput />
     </div>
   );
 }
