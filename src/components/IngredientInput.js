@@ -3,36 +3,42 @@
  * Allows user to input ingredients using textboxes.
  */
 
-import React, { useState } from "react"; // import React and also specifically useState from react
-import "./IngredientInput.css"; // import the styling
-import TextInput from "./TextInput"; // import the TextInput component
+import React, { useState } from "react";
+import "./IngredientInput.css";
+import TextInput from "./TextInput";
 
 function IngredientInput() {
-  // 'ingredient' is a React state variable using the 'useState' hook provided by React.
-  // 'ingredient' is initialized as this object: {name: "", amount: "", unit: ""}.
-  // 'setIngredient' is the function that is used to change/update the state of 'ingredient'.
+  // ingredient
   const [ingredient, setIngredient] = useState({
     name: "",
     amount: "",
     unit: "",
   });
 
-  // This function is passed into TextInput's <input> element.
-  // This function is called whenever the user types into the <input>'s textbox.
   const handleInputChange = (e) => {
-    // Whenever the user types into the <input>'s textbox,
-    // it will call this function with the parameter 'e' (stands for event).
-    //
-    // 'e' contains the name (e.g: name, amount, unit) and the value (whatever the user inputted).
     const { name, value } = e.target;
 
-    // Update the 'ingredient' state with the new values.
     setIngredient({
       ...ingredient,
       [name]: value,
     });
   };
 
+  // ingredients
+  const [ingredients, setIngredients] = useState([]);
+  const handleSaveIngredient = () => {
+    setIngredients([...ingredients, ingredient]);
+
+    setIngredient({
+      name: "",
+      amount: "",
+      unit: "",
+    });
+
+    setShowSubContainer(false);
+  };
+
+  // input dynamics
   const [showSubContainer, setShowSubContainer] = useState(false);
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -70,6 +76,7 @@ function IngredientInput() {
             value={ingredient.unit}
             handleChange={handleInputChange}
           />
+          <button onClick={handleSaveIngredient}>Add {ingredient.name}</button>
         </div>
       )}
     </>
