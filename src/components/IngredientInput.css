@@ -11,9 +11,24 @@ input {
     width: 100%;
 }
 
+button {
+    margin: 10px;
+    margin-top: 30px;
+    width: 20%;
+    height: 50%;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 69px;
+}
+button:hover {
+    background-color: #0088ff;
+  }
+
 
 .ingredient-input-sub-container {
     display: flex;
+    gap: 12px;
 }
 
 
