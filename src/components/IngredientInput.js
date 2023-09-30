@@ -6,6 +6,7 @@
 import React, { useState } from "react";
 import "./IngredientInput.css";
 import TextInput from "./TextInput";
+import IngredientList from "./IngredientList";
 
 function IngredientInput() {
   // ingredient
@@ -48,6 +49,8 @@ function IngredientInput() {
 
   return (
     <>
+      <IngredientList ingredients={ingredients} />
+
       <TextInput
         label="Enter an Ingredient"
         placeholder="ex: eggs, milk..."
