@@ -8,6 +8,7 @@ import "./IngredientInput.css";
 import TextInput from "./TextInput";
 
 function IngredientInput() {
+  // ingredient
   const [ingredient, setIngredient] = useState({
     name: "",
     amount: "",
@@ -23,6 +24,21 @@ function IngredientInput() {
     });
   };
 
+  // ingredients
+  const [ingredients, setIngredients] = useState([]);
+  const handleSaveIngredient = () => {
+    setIngredients([...ingredients, ingredient]);
+
+    setIngredient({
+      name: "",
+      amount: "",
+      unit: "",
+    });
+
+    setShowSubContainer(false);
+  };
+
+  // input dynamics
   const [showSubContainer, setShowSubContainer] = useState(false);
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -60,6 +76,7 @@ function IngredientInput() {
             value={ingredient.unit}
             handleChange={handleInputChange}
           />
+          <button onClick={handleSaveIngredient}>Add {ingredient.name}</button>
         </div>
       )}
     </>
