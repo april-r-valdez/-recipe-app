@@ -5,8 +5,8 @@
 
 import React, { useState } from "react";
 import "./IngredientInput.css";
-import TextInput from "./TextInput";
-import IngredientList from "./IngredientList";
+import TextInput from "../TextInput";
+import IngredientList from "../IngredientList";
 
 function IngredientInput() {
   // ingredient
@@ -70,6 +70,7 @@ function IngredientInput() {
             name="amount"
             value={ingredient.amount}
             handleChange={handleInputChange}
+            data-testid="amount"
           />
           <TextInput
             label="unit"

@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import IngredientInput from "./components/IngredientInput";
+import IngredientInput from "./components/IngredientInput/IngredientInput";
 
 function App() {
   return (
