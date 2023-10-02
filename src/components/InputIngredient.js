@@ -64,7 +64,9 @@ function InputIngredient () {
                                         <li key={index} 
                                         className="list-group-item d-flex justify-content-between align-items-center">
                                             {ingredient}
-                                            <button type="button" className="btn-close" aria-label="Close" onClick={() => removeItem(index)}></button>
+                                            <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
+                                            <span aria-hidden="true" className="text-dark">&times;</span>
+                                            </button>
                                         </li>
                                     ))}
                                 </div>
