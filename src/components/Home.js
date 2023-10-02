@@ -10,7 +10,7 @@ function Home() {
             </div>
             <div className="row">
                 <div className="col-6 col-lg-1">
-                    
+
                 </div>
                 <div className="col-sm-6 col-lg-8">
                     <FeaturedSection/>   

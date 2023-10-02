@@ -42,7 +42,7 @@ function InputIngredient () {
       };
 
     return (
-        <div className="card text-start border-light mb-3">
+        <div className="card text-start border-light mb-3" data-bs-theme="light">
             <div className="card-header text-bg-dark text-center fw-bolder">GENERATE RECIEPE</div>
             <div className="card-body">
                 <h6 className="card-title">CUSTOM INGREDIENTS</h6>
