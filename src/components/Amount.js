@@ -1,7 +1,7 @@
 
 const Amount = ({inputs, handleChange}) => {
     return (
-        <div>
+        <div className="amount">
             <label>Amount:</label>
             <input
                 required

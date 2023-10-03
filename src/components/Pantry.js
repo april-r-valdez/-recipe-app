@@ -1,7 +1,7 @@
 
 const Pantry = ({ingredientsList}) => {
     return (
-        <div className="Pantry">
+        <div className="pantry">
             <h2>Your Pantry:</h2><br></br>
             {ingredientsList.map((input, index) => (
             <ul key={index}>
