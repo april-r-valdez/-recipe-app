@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+test("should render Recipe Generator App", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Recipe Generator App/i);
-  expect(linkElement).toBeInTheDocument();
+  const headingElement = screen.getByRole("heading", {
+    name: "Recipe Generator App",
+  });
+  expect(headingElement).toBeInTheDocument();
 });
