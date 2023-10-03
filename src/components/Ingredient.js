@@ -2,7 +2,7 @@
 const Ingredient = ({inputs, handleChange}) => {
     return (
         <div className="ingredient">
-            <label>Ingredient:</label>
+            <label for="ingredient">Ingredient:</label>
             <input
                 required
                 type='text'

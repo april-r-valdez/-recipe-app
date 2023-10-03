@@ -2,7 +2,7 @@
 const Amount = ({inputs, handleChange}) => {
     return (
         <div className="amount">
-            <label>Amount:</label>
+            <label for="amount">Amount:</label>
             <input
                 required
                 type='number'

@@ -2,7 +2,7 @@
 const Units = ({inputs, handleChange}) => {
     return (
         <div className="units">
-            <label>Units:</label> 
+            <label for="units">Units:</label> 
             <select id='units' name='units' value={inputs.units} onChange={handleChange}>
                 <option value=''></option>
                 <option value='tsp'>tsp</option>

@@ -35,8 +35,15 @@ describe("UserInput", () => {
 describe("Ingredient", () => {
     test('should render ingredient element', () => {
         render(<Ingredient inputs={[]} handleChange={() => {}}/>);
-        const ingredientElement = screen.getByPlaceholderText("Ex: eggs, milk, butter...");
+        const ingredientElement = screen.getByLabelText('Ingredient:');
         expect(ingredientElement).toBeInTheDocument();
+        expect(ingredientElement).toHaveAttribute('type', 'text');
+        expect(ingredientElement).toHaveAttribute('name', 'ingredient');
+        expect(ingredientElement).toHaveAttribute('required');
+        expect(ingredientElement).toHaveValue('');
+
+        const placeholderText = screen.getByPlaceholderText("Ex: eggs, milk, butter...");
+        expect(placeholderText).toBeInTheDocument();
     });
 
     test('should be able to type ingredient', () => {
@@ -59,8 +66,14 @@ describe("Ingredient", () => {
 describe("Amount", () => {
     test('should render amount element', () => {
         render(<Amount inputs={[]} handleChange={() => {}}/>);
-        const amountElement = screen.getByPlaceholderText("Ex: 1 egg, 2 cups,...");
+        const amountElement = screen.getByLabelText('Amount:');
         expect(amountElement).toBeInTheDocument();
+        expect(amountElement).toHaveAttribute('type', 'number');
+        expect(amountElement).toHaveAttribute('name', 'amount');
+        expect(amountElement).toHaveAttribute('required');
+
+        const placeholderText = screen.getByPlaceholderText("Ex: 1 egg, 2 cups,...");
+        expect(placeholderText).toBeInTheDocument();
     });
 
     // test('should be able to type in input', () => {
@@ -74,7 +87,9 @@ describe("Amount", () => {
 describe("Units", () => {
     test('should render units element', () => {
         render(<Units inputs={[]} handleChange={() => {}}/>);
-        expect(true).toBe(true);
+        const unitsElement = screen.getByLabelText('Units:');
+        expect(unitsElement).toBeInTheDocument();
+        expect(unitsElement).toHaveAttribute('name', 'units');
     });
 })
 
