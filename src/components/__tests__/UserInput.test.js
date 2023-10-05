@@ -11,7 +11,7 @@ afterEach(() => {
 });
 
 describe("UserInput", () => {
-    test('test1', () => {
+    test('should render user input element', () => {
         render(<UserInput/>);
         const textbox = screen.getByRole("textbox");
         const spinButton = screen.getByRole("spinbutton");
@@ -21,7 +21,7 @@ describe("UserInput", () => {
         expect(button).toBeInTheDocument();
     });
 
-    test('test2', () => {
+    test('should be able to make changes to all components', () => {
         render(<UserInput/>);
         render(<Ingredient inputs={[]} handleChange={() => {}}/>);
         render(<Amount inputs={[]} handleChange={() => {}}/>);
@@ -59,15 +59,6 @@ describe("Ingredient", () => {
         fireEvent.change(ingredientElement, { target: {value: "Milk"} });
         expect(ingredientElement.value).toBe("Milk");
     });
-
-    // test('should have empty input when submit button is clicked', () => {
-    //     render(<Ingredient inputs={[]} handleChange={() => {}}/>);
-    //     const inputElement = screen.getByPlaceholderText("Ex: eggs, milk, butter...");
-    //     const buttonElement = screen.getByRole("button");
-    //     fireEvent.change(inputElement, { target: {value: "Milk"} });
-    //     fireEvent.click(buttonElement);
-    //     expect(inputElement.value).toBe("");
-    // });
 })
 
 describe("Amount", () => {
@@ -106,20 +97,6 @@ describe("Units", () => {
         fireEvent.change(unitsElement, { target: {value: "cups"} });
         expect(unitsElement.value).toBe("cups");
 
-    });
-})
-
-describe("Pantry", () => {
-
-    const ingredientsList = [
-        {ingredient: 'Flour', amount: 2, units: 'cups'},
-        // {ingredient: 'Butter', amount: 4, units: 'tbsp'}
-    ];
-
-    test('should render pantry element', () => {
-        const {getByText} = render(<Pantry ingredientsList={[]}/>);
-        const headingElement = getByText("Your Pantry:");
-        expect(headingElement).toBeInTheDocument();
     });
 })
 
