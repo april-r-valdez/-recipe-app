@@ -7,6 +7,7 @@ const IngredientList = ({ ingredients, deleteIngredient }) => {
         {ingredients.map((input, index) => (
           <li
             key={index}
+            data-testid="ingredients-list"
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             {input.ingredient} {input.amount} {input.unit}
