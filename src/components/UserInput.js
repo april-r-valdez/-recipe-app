@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react'
+import Ingredient from './Ingredient';
+import Amount from './Amount';
+import Units from './Units';
+import Pantry from './Pantry';
 
 const  UserInput = () => {
     // useState hook updates variables storing user inputs
@@ -40,53 +44,12 @@ const  UserInput = () => {
         <div className="userinput">
             <br></br><p>Enter your ingredients here</p><br></br>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Ingredient:</label>
-                    <input
-                        required
-                        type='text'
-                        id='ingredient'
-                        name='ingredient'
-                        value={inputs.ingredient}
-                        placeholder='Ex: eggs, milk, butter...'
-                        onChange={handleChange}
-                    ></input>
-                </div><br></br>
-                <div>
-                    <label>Amount:</label>
-                    <input
-                        required
-                        type='number'
-                        min='1'
-                        id='amount'
-                        name='amount'
-                        value={inputs.amount}
-                        placeholder='Ex: 1 egg, 2 cups,...'
-                        onChange={handleChange}
-                    ></input> 
-                </div><br></br>
-                <div>
-                    <label>Units:</label> 
-                    <select id='units' name='units' value={inputs.units} onChange={handleChange}>
-                        <option value=''></option>
-                        <option value='tsp'>tsp</option>
-                        <option value="tbsp">tbsp</option>
-                        <option value="lbs">lbs</option>
-                        <option value='fluid oz'>fluid oz</option>
-                        <option value="cups">cups</option>
-                        <option value="pints">pints</option>
-                        <option value="quarts">quarts</option>
-                        <option value="gallons">gallons</option>
-                    </select>   
-                </div><br></br>
+                <Ingredient inputs={inputs} handleChange={handleChange}/><br></br>
+                <Amount inputs={inputs} handleChange={handleChange}/><br></br>
+                <Units inputs={inputs} handleChange={handleChange}/><br></br>
                 <input name='form' type='submit' value='Add ingredient'></input>
-            </form>
-            <br></br><br></br><h2>Your Pantry:</h2><br></br>
-            {ingredientsList.map((input, index) => (
-            <ul key={index}>
-              {input.amount} {input.units} of {input.ingredient}
-            </ul>
-            ))}
+            </form><br></br>
+            <Pantry ingredientsList={ingredientsList}/>
         </div>
     );
 }
