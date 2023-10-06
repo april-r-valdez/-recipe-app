@@ -1,27 +1,18 @@
 import React from "react";
 
-const IngredientList = ({ ingredients, deleteIngredient }) => {
+function IngredientList({ ingredients }) {
   return (
-    <div className="mt-4">
-      <ul className="list-group list-group-flush">
-        {ingredients.map((input, index) => (
-          <li
-            key={index}
-            data-testid="ingredients-list"
-            className="list-group-item d-flex justify-content-between align-items-center"
-          >
-            {input.ingredient} {input.amount} {input.unit}
-            <button
-              type="button"
-              className="btn btn-close"
-              aria-label="Close"
-              onClick={() => deleteIngredient(index)}
-            ></button>
+    <div>
+      <h2>Pantry:</h2>
+      <ul>
+        {ingredients.map((ingredient, index) => (
+          <li key={index}>
+            {ingredient.amount} {ingredient.unit} {ingredient.name}
           </li>
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default IngredientList;
