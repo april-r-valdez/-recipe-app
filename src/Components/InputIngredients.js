@@ -7,15 +7,6 @@ const IngredientsInput = () => {
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
-    const renderIngredient = (ingredient, index) =>{
-      return(
-        <tr key = {index}>
-          <td>{ingredient.amount}</td>
-          <td>{ingredient.name}</td>
-        </tr>
-      )
-    }
-
     const handleAdd = () => {
       let newIngredient = {
         amount: newMeasurement,
@@ -80,19 +71,6 @@ const IngredientsInput = () => {
               </button>
             </div>
           </div>
-        </div>
-        <div className="container-sm text-center">
-          <p className="h3">In Stock</p>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Amout</th>
-                <th scope="col">Name</th>
-              </tr>
-            </thead>
-            <tbody>{AllIngredients.map(renderIngredient)}</tbody>
-          </table>
         </div>
       </>
     );
