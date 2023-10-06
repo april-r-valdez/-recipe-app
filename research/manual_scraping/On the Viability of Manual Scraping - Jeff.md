@@ -40,6 +40,12 @@ ___
 
 ---
 
+#### potential scraping tools
+- [Puppeteer] Puppeteer is particularly useful for scraping websites that rely on JavaScript for rendering content, as it can interact with and manipulate web pages just like a real user would.
+- [Scrapy] Scrapy is an open-source web crawling and web scraping framework written in Python. It's designed specifically for the purpose of extracting data from websites efficiently.
+- [Cheerios] Cheerio is a lightweight, fast, and flexible library for parsing and manipulating HTML and XML documents in a jQuery-like manner. It's often used in Node.js applications for web scraping and data extraction. 
+
+
 ### CONCLUSION
 In the context of our project, manual scraping is great for compiling a small collection of data for initial testing.
 
