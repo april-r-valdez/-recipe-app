@@ -1,13 +1,11 @@
-import "./App.css";
-import TextBox from "./components/TextBox";
-import IngredientInput from "./components/IngredientInput/IngredientInput";
+
+import './App.css';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="container">
-      <h2>Recipe Generator App</h2>
-      <TextBox />
-      <IngredientInput />
+    <div className="App" data-bs-theme="light">
+      <Home/>
     </div>
   );
 }
