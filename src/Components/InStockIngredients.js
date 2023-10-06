@@ -1,5 +1,5 @@
 import IngredientsInput from "./AddToStock"  
-const IngredientsPage = () => {
+const InStockIngredients = () => {
     return (
     <>
         <h1 className="display-5">My Ingredients</h1>
@@ -8,4 +8,4 @@ const IngredientsPage = () => {
     );
 }
  
-export default IngredientsPage;
+export default InStockIngredients;
