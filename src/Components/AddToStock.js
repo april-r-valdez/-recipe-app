@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Ingredient from './Ingredient';
 
 const IngredientsInput = () => {
 
