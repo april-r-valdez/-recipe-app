@@ -1,10 +1,10 @@
 
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import UserInput from '../UserInput';
-import Ingredient from '../Ingredient';
-import Amount from '../Amount';
-import Units from '../Units';
-import Pantry from '../Pantry';
+import UserInput from '../components/UserInput';
+import Ingredient from '../components/Ingredient';
+import Amount from '../components/Amount';
+import Units from '../components/Units';
+import Pantry from '../components/Pantry';
 
 afterEach(() => {
     cleanup();

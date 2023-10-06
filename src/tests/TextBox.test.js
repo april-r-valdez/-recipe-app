@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import TextBox from "../TextBox";
+import TextBox from "../components/TextBox";
 
 const addIngredient = (ingredients) => {
   const ingredientInput = screen.getByPlaceholderText(/Enter ingredient/i);
