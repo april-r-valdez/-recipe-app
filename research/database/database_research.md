@@ -1,6 +1,6 @@
 # Database Research
 
-## Reasons for doing database
+## Reasons for creating database
 -  We want our user's data entries and generated recipes to be stored in a secure system that provides both scalability and accessibility
 
 ## Learning opportunities
