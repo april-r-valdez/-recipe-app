@@ -6,6 +6,7 @@
 
 ## Learning opportunities
 - Gaining experience fetching data from REST APIs 
+- Learning how to parse, organize, and sort data after fetching from API
 
 ## Expectations
 - We expect to have an easy and efficient way to parse data from the web
