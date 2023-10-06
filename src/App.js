@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import IngredientsPage from './Components/InStockIngredients';
+import IngredientsPage from './components/InStockIngredients';
 
 function App() {
   return (
