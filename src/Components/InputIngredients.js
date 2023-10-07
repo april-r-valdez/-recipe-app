@@ -22,7 +22,7 @@ const IngredientsInput = () => {
     return (
       <>
         <div className="container-sm">
-          <p className="text-start h4">Add ingreidents to your pantry.</p>
+          <p className="text-start h4">Add ingredients to your pantry.</p>
           <div className="container-sm">
             <div className="input-group mb-3">
               <button
