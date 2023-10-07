@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from "react";
-import "./IngredientInput.css";
+//import "./IngredientInput.css";
 import TextInput from "../TextInput";
 import IngredientList from "../IngredientList";
 
