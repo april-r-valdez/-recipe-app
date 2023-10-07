@@ -1,6 +1,6 @@
-import Navbar from "./Navbar";
-import InputIngredient from "./InputIngredient";
-import FeaturedSection from "./FeaturedSection";
+import Navbar from "../../widgets/Navbar";
+import InputIngredient from "../../widgets/SearchByIngredient";
+import FeaturedSection from "../../widgets/FeaturedSection";
 import { Link } from "react-router-dom"
 
 function Home() {
