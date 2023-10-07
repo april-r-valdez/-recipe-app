@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import IngredientsList from './IngredientsList';
 
 const IngredientsInput = () => {
 
@@ -71,6 +72,7 @@ const IngredientsInput = () => {
               </button>
             </div>
           </div>
+          <IngredientsList ingredients = {AllIngredients}/>
         </div>
       </>
     );
