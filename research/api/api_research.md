@@ -10,6 +10,8 @@
 
 - The app's functionality relies on external services. For example, if the third-party API is down for maintainance, it can affect our app
 - While some APIs offer free tiers, others require some fees as the usage increases
+- The API does not cater to all the data we wish to retrieve.
+- Expensive to maintain for long term use.
 
 ## Learning opportunities
 
@@ -20,6 +22,8 @@
 
 - [Spoonacular API](https://spoonacular.com/food-api/docs): searching for recipes based on name, ingredients, etc.
 - [TheMealDB API](https://www.themealdb.com/api.php): searching for meal based on name
+- [BBC Good Food API](https://rapidapi.com/boxapi/api/bbc-good-food-api): search for recipe using name
+- [EDAMAM](https://developer.edamam.com/edamam-docs-recipe-api): search of recipe using HTTPS requests
 
 ## Expectations
 
