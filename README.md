@@ -57,6 +57,16 @@
         - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
 <br />
 
+#### Next Steps
+- **Brent**:
+    - Reorganize application layout and add components to the NavBar 
+    - Create feature that lets users construct their own recipes from scratch
+    - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
+    - Fetch recipes from websites using REST APIs
+    - Add images to recipes so our users can visualize what they're making
+    - Construct database for storing user ingredients and the recipes they generate
+
+
 ## Screenshots
 ![Gordon Ramsay](https://i2-prod.dailyrecord.co.uk/incoming/article23157887.ece/ALTERNATES/s1200c/1_FOXs-Hells-Kitchen-Season-Fourteen.jpg)
 <!-- If you have screenshots you'd like to share, include them here. -->
