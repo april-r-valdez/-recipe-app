@@ -35,6 +35,23 @@
 
 ## Features
 ### Sprint 1
+#### Contributions
+- **Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries"
+    - `Jira Task: Brent - textboxes to enter ingredients (incld. amount and other details)`
+		- [Scrum-25] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/UI%20scripts/HealthUI.gd
+	- `Jira Task: Brent - save ingredient entries somewhere`
+		- [Scrum-26] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/EnemyAI%20scripts/Enemy.gd 
+    - `Jira Task: Brent - show added ingredients`
+		- [Scrum-28] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/EnemyAI%20scripts/Enemy.gd
+    - `Jira Task: Brent - add unit tests to make sure textboxes work correctly`
+	    - [Scrum-33] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/EnemyAI%20scripts/Enemy.gd
+    - `Jira Task: Brent - research existing databases`
+	    - [Scrum-31] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/EnemyAI%20scripts/Enemy.gd
+    - `Jira Task: Brent - Brent - research scraping api`
+	    - [Scrum-30] https://bitbucket.org/cs3398-s22-io/blackjack_2d/src/master/src/EnemyAI%20scripts/Enemy.gd
+       
+
+
 #### Ingredient Input Mechanism 
 - Textbox that allows user to input ingredients
 - [Scrum-25](https://cs3398f23klingons.atlassian.net/browse/SCRUM-25)
