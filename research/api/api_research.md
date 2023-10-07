@@ -3,6 +3,7 @@
 ## Reason for using third-party APIs
 
 - We want our users to be able to conveniently browse various recipes based on the ingredients they have
+- We want to personalize the recipes based on user preferences and dietary restrictions
 - Using third-party APIs can potentially speed up the development process
 - Third-party APIs are designed to handle a large number of requests and users, which can help our app scale more easily.
 
@@ -28,7 +29,10 @@
 ## Expectations
 
 - We expect to call third-party APIs from the backend of our app, process the response data and send it to the frontend.
+- We expect to have an efficient way to parse, organize, and sort data from the web
+- We expect the information retrieved from APIs to be reliable and up-to-date
 
 ## Associated Jira tasks
 
 - As a user, I would like to have choices of existing recipes that I can cook from the list of ingredients
+- As a user, I would like a list of recommended recipes from the ingredients I already have, so that I could save time looking up recipes on the Internet
