@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const IngredientsInput = () => {
+const MyStock = () => {
 
     const [newName, setnewName] = useState("");
     const [newMeasurement, setnewMeasurement] = useState("");
@@ -30,6 +30,7 @@ const IngredientsInput = () => {
     return (
       <>
         <div className="container-sm">
+        <h1 className="display-5">My Ingredients</h1>
           <p className="text-start h4">Add ingreidents to your pantry.</p>
           <div className="container-sm">
             <div className="input-group mb-3">
@@ -98,4 +99,4 @@ const IngredientsInput = () => {
     );
 }
  
-export default IngredientsInput;
+export default MyStock;

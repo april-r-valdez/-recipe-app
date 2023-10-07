@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import Ingredient from './Ingredient';
-import Amount from './Amount';
-import Units from './Units';
-import Pantry from './Pantry';
+import Ingredient from '../components/Common/Ingredient';
+import Amount from '../components/Common/Amount';
+import Units from '../components/Common/Units';
+import Pantry from '../components/Pantry/Pantry';
 
 const  UserInput = () => {
     // useState hook updates variables storing user inputs

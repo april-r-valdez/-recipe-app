@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import IngredientList from "./IngredientList";
+import IngredientList from "../IngredientList";
 
 const TextBox = () => {
   const [userInput, setUserInput] = useState({

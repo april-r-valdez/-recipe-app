@@ -5,8 +5,8 @@
 
 import React, { useState } from "react";
 //import "./IngredientInput.css";
-import TextInput from "../TextInput";
-import IngredientList from "../IngredientList";
+import TextInput from "../../components/Common/TextInput"
+import IngredientList from "../../components/Common/IngredientList";
 
 function IngredientInput() {
   // ingredient

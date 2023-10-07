@@ -1,4 +1,4 @@
-import PlaceholderCard from "./PlaceholderCard";
+import PlaceholderCard from "../components/Common/PlaceholderCard";
 
 
 function FeaturedSection() {

@@ -1,4 +1,4 @@
-import DisplayToggle from "./DisplayMode";
+import DisplayToggle from "../components/Utils/DisplayMode";
 
 function Navbar() {
     return (
