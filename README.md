@@ -38,23 +38,23 @@
 #### Contributions
 - **Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries"
     - `Jira Task: Brent - textboxes to enter ingredients (incld. amount and other details)`
-		- [Scrum-25] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25)
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-25-bah4-create-textbox)
+		- [Scrum-25](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25)
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-25-bah4-create-textbox)
 	- `Jira Task: Brent - save ingredient entries somewhere`
-		- [Scrum-26] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-26)
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-26-brent---save-ingredient-entries)
+		- [Scrum-26](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-26)
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-26-brent---save-ingredient-entries)
     - `Jira Task: Brent - show added ingredients`
-		- [Scrum-28] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28) 
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-28-brent---show-added-ingredients) 
+		- [Scrum-28](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28) 
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-28-brent---show-added-ingredients) 
     - `Jira Task: Brent - add unit tests to make sure textboxes work correctly`
-	    - [Scrum-33] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-33) 
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-33-brent---add-unit-tests-for-textbox) 
+	    - [Scrum-33](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-33) 
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-33-brent---add-unit-tests-for-textbox) 
     - `Jira Task: Brent - research existing databases`
-	    - [Scrum-31] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-31) 
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-31-brent---research-databases) 
+	    - [Scrum-31](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-31) 
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-31-brent---research-databases) 
     - `Jira Task: Brent - Brent - research scraping api`
-	    - [Scrum-30] (https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-30) 
-        - [Bitbucket] (https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
+	    - [Scrum-30](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-30) 
+        - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
 
 
 ## Screenshots
