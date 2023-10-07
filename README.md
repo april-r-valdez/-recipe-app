@@ -55,7 +55,7 @@
     - `Jira Task: Brent - Brent - research scraping api`
 	    - [Scrum-30](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-30) 
         - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
-
+<br />
 
 ## Screenshots
 ![Gordon Ramsay](https://i2-prod.dailyrecord.co.uk/incoming/article23157887.ece/ALTERNATES/s1200c/1_FOXs-Hells-Kitchen-Season-Fourteen.jpg)
