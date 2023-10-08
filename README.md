@@ -1,3 +1,5 @@
+![Ingredients](images/ingredients-image.jpg)
+
 # Recipes App
 
 > Outline a brief description of your project.
@@ -116,6 +118,10 @@
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/01c42711ee386a4ca4688b141565d604841c8109)
 <br />
 
+#### Reports
+
+![Burnup Chart](images/sprint1-burnup-chart.png)
+
 #### Next Steps
 
 **Brent**:
@@ -138,13 +144,6 @@
 
   -
 
-## Reports
-
-![Burnup Chart](images/sprint1-burnup-chart.png)
-
-## Screenshots
-
-![Gordon Ramsay](https://i2-prod.dailyrecord.co.uk/incoming/article23157887.ece/ALTERNATES/s1200c/1_FOXs-Hells-Kitchen-Season-Fourteen.jpg)
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
