@@ -45,6 +45,7 @@
 #### Contributions
 
 **Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries" 
+
   - `Jira Task: Brent - textboxes to enter ingredients (incld. amount and other details)` 
     - [Scrum-25](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25) 
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-25-bah4-create-textbox) 
@@ -91,6 +92,7 @@
 <br />
 
 **Jeff**: "provided users with a way to input, store, and see the ingredients they have in stock"
+
   - `Jira Task: Jeff - textboxes to enter ingredients (incld. amount and other details)`
     - [SRUM-59](https://cs3398f23klingons.atlassian.net/browse/SCRUM-59)
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-59-jeff---textboxes-to-enter-ingre)
@@ -117,6 +119,7 @@
 #### Next Steps
 
 **Brent**:
+
   - Reorganize application layout and add components to the NavBar
   - Create feature that lets users construct their own recipes from scratch
   - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
@@ -126,6 +129,7 @@
 <br />
 
 **Viet**:
+
   - provide users with functionalities to create an account and log into the account
   - create the schema to store user data to the database
 <br />
