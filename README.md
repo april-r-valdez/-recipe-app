@@ -55,7 +55,7 @@
   - `Jira Task: Brent - show added ingredients` 
     - [Scrum-28](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28) 
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-28-brent---show-added-ingredients) 
-    - `Jira Task: Brent - add unit tests to make sure textboxes work correctly` 
+  - `Jira Task: Brent - add unit tests to make sure textboxes work correctly` 
     - [Scrum-33](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-33) 
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-33-brent---add-unit-tests-for-textbox) 
   - `Jira Task: Brent - research existing databases` 
@@ -140,7 +140,7 @@
 
 ## Reports
 
-![Burnup Chart](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1/reports/burnup)
+![Burnup Chart](images/sprint1-burnup-chart.png)
 
 ## Screenshots
 
