@@ -44,10 +44,28 @@
 
 #### Contributions
 
-- **Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries" - `Jira Task: Brent - textboxes to enter ingredients (incld. amount and other details)` - [Scrum-25](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-25-bah4-create-textbox) - `Jira Task: Brent - save ingredient entries somewhere` - [Scrum-26](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-26) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-26-brent---save-ingredient-entries) - `Jira Task: Brent - show added ingredients` - [Scrum-28](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-28-brent---show-added-ingredients) - `Jira Task: Brent - add unit tests to make sure textboxes work correctly` - [Scrum-33](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-33) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-33-brent---add-unit-tests-for-textbox) - `Jira Task: Brent - research existing databases` - [Scrum-31](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-31) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-31-brent---research-databases) - `Jira Task: Brent - Brent - research scraping api` - [Scrum-30](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-30) - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
-  <br />
+**Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries" 
+  - `Jira Task: Brent - textboxes to enter ingredients (incld. amount and other details)` 
+    - [Scrum-25](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-25-bah4-create-textbox) 
+  - `Jira Task: Brent - save ingredient entries somewhere` 
+    - [Scrum-26](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-26) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-26-brent---save-ingredient-entries) 
+  - `Jira Task: Brent - show added ingredients` 
+    - [Scrum-28](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-28-brent---show-added-ingredients) 
+    - `Jira Task: Brent - add unit tests to make sure textboxes work correctly` 
+    - [Scrum-33](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-33) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-33-brent---add-unit-tests-for-textbox) 
+  - `Jira Task: Brent - research existing databases` 
+    - [Scrum-31](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-31) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-31-brent---research-databases) 
+  - `Jira Task: Brent - Brent - research scraping api` 
+    - [Scrum-30](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-30) 
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-30-brent---research-scraping-api)
+<br />
 
-- **Viet**:"provided text boxes for user inputs and add tests to make sure input components function correctly, researched some potential APIs that could be used in the app"
+**Viet**:"provided text boxes for user inputs and add tests to make sure input components function correctly, researched some potential APIs that could be used in the app"
 
   - `Jira Task: Viet - textboxes to enter ingredients (incld. amount and other details)`
     - [Scrum-38](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-38)
@@ -70,8 +88,9 @@
   - `Jira Task: Viet - research existing databases`
     - [Scrum-44](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-44)
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-44-viet---research-existing-databa)
+<br />
 
-- **Jeff**: "provided users with a way to input, store, and see the ingredients they have in stock"
+**Jeff**: "provided users with a way to input, store, and see the ingredients they have in stock"
   - `Jira Task: Jeff - textboxes to enter ingredients (incld. amount and other details)`
     - [SRUM-59](https://cs3398f23klingons.atlassian.net/browse/SCRUM-59)
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-59-jeff---textboxes-to-enter-ingre)
@@ -93,24 +112,25 @@
   - `Jira Task: Jeff - existing databases`
     - [SCRUM-65](https://cs3398f23klingons.atlassian.net/browse/SCRUM-65)
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/01c42711ee386a4ca4688b141565d604841c8109)
+<br />
 
 #### Next Steps
 
-- **Brent**:
-
+**Brent**:
   - Reorganize application layout and add components to the NavBar
   - Create feature that lets users construct their own recipes from scratch
   - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
   - Fetch recipes from websites using REST APIs
   - Add images to recipes so our users can visualize what they're making
   - Construct database for storing user ingredients and the recipes they generate
+<br />
 
-- **Viet**:
-
+**Viet**:
   - provide users with functionalities to create an account and log into the account
   - create the schema to store user data to the database
+<br />
 
-- **Jeff**:
+**Jeff**:
 
   -
 
