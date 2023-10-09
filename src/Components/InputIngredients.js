@@ -8,14 +8,18 @@ const IngredientsInput = () => {
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
+    
     const handleAdd = () => {
       let newIngredient = {
         amount: newMeasurement,
         name: newName
       }
 
+      //create a new array that has All user ingredients
       let updateIngredientsArr =[...AllIngredients];
+      //push the new ingredient to end of array
       updateIngredientsArr.push(newIngredient);
+      //make the AllIngredients array be the new array with new element
       setAllIngredients(updateIngredientsArr);
 
     }
