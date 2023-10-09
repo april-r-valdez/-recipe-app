@@ -118,6 +118,17 @@
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/01c42711ee386a4ca4688b141565d604841c8109)
 <br />
 
+**April**: "provided users with a way to input, store, and see the ingredients they have in stock"
+
+  - `Jira Task: April - textboxes to enter ingredients (incld. amount and other details)`
+    - [SRUM-45](https://cs3398f23klingons.atlassian.net/browse/SCRUM-45)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/bugfix/SCRUM-45-april---textboxes-to-enter-ingr)
+  - `Jira Task: April - show added ingredients`
+    - [SCRUM-47](https://cs3398f23klingons.atlassian.net/browse/SCRUM-47)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-47-april---show-added-ingredients)
+
+<br />
+
 #### Reports
 
 ![Burnup Chart](images/sprint1-burnup-chart.png)
