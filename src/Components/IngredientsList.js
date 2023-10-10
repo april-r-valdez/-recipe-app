@@ -1,5 +1,3 @@
-import { AllIngredients } from './InputIngredients.js'
-import { useContext, useState } from 'react';
 
 const IngredientsList = ({ingredients}) => {
 
