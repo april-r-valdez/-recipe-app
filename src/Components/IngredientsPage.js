@@ -1,4 +1,4 @@
-import IngredientsInput from "./InputIngredients" 
+import IngredientsInput from "./IngredientsInput" 
 
 const IngredientsPage = () => {
     return (

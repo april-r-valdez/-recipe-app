@@ -22,6 +22,10 @@ const IngredientsInput = () => {
       //make the AllIngredients array be the new array with new element
       setAllIngredients(updateIngredientsArr);
 
+      //set input boxes back to empty
+      setnewName("")
+      setnewMeasurement("")
+
     }
     return (
       <>
@@ -62,7 +66,6 @@ const IngredientsInput = () => {
                 type="text"
                 value={newName}
                 placeholder="Add ingredient"
-                aria-label="Last name"
                 className="form-control w-50"
                 onChange={(e) => setnewName(e.target.value)}
               />
