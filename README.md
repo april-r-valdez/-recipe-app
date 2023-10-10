@@ -126,7 +126,28 @@
   - `Jira Task: April - show added ingredients`
     - [SCRUM-47](https://cs3398f23klingons.atlassian.net/browse/SCRUM-47)
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-47-april---show-added-ingredients)
+  - `Jira Task: April - save ingredient entries somewhere`
+    - [SCRUM-49](https://cs3398f23klingons.atlassian.net/browse/SCRUM-49)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-49-april---save-ingredient-entries)
+  - `Jira Task: April - add unit tests to make sure textboxes work correctly`
+    - [SCRUM-46](https://cs3398f23klingons.atlassian.net/browse/SCRUM-46)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-46-april---add-unit-tests-to-make-)
+<br />
 
+**Mandil**: "provided users with a way to input, store, and see the ingredients they have in stock"
+
+  - `Jira Task: Mandil - textboxes to enter ingredients (incld. amount and other details)`
+    - [SRUM-]()
+    - [Bitbucket]()
+  - `Jira Task: Mandil - show added ingredients`
+    - [SCRUM-]()
+    - [Bitbucket]()
+  - `Jira Task: Mandil - save ingredient entries somewhere`
+    - [SCRUM-]()
+    - [Bitbucket]()
+  - `Jira Task: 
+    - [SCRUM-]()
+    - [Bitbucket]()
 <br />
 
 #### Reports
@@ -137,24 +158,36 @@
 
 **Brent**:
 
-  - Reorganize application layout and add components to the NavBar
-  - Create feature that lets users construct their own recipes from scratch
+  - Develop consistent layout for application
   - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
-  - Fetch recipes from websites using REST APIs
   - Add images to recipes so our users can visualize what they're making
-  - Construct database for storing user ingredients and the recipes they generate
 <br />
 
 **Viet**:
 
+  - Develop consistent layout for application
   - provide users with functionalities to create an account and log into the account
   - create the schema to store user data to the database
 <br />
 
 **Jeff**:
 
-  -
+  - Develop consistent layout for application
+  - Construct database for storing user ingredients and the recipes they generate
+<br />
 
+**April**:
+
+  - Develop consistent layout for application
+  - Fetch recipes from websites using REST APIs
+<br />
+
+**Mandil**:
+
+  - Develop consistent layout for application
+  - Reorganize application layout and add components to the NavBar
+  - Create feature that lets users construct their own recipes from scratch
+<br />
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
