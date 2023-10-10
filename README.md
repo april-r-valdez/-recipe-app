@@ -134,20 +134,34 @@
     - [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-46-april---add-unit-tests-to-make-)
 <br />
 
-**Mandil**: "provided users with a way to input, store, and see the ingredients they have in stock"
+**Mandil**: "incorporated a framework for structuring the web page layout and integrated various widgets and components to enable user input processing and display functionality"
 
-  - `Jira Task: Mandil - textboxes to enter ingredients (incld. amount and other details)`
-    - [SRUM-]()
-    - [Bitbucket]()
-  - `Jira Task: Mandil - show added ingredients`
-    - [SCRUM-]()
-    - [Bitbucket]()
-  - `Jira Task: Mandil - save ingredient entries somewhere`
-    - [SCRUM-]()
-    - [Bitbucket]()
-  - `Jira Task: 
-    - [SCRUM-]()
-    - [Bitbucket]()
+  - `Jira Task: Mandil - Widgets to input and display user ingredients`
+    - [SRUM- 52](https://cs3398f23klingons.atlassian.net/browse/SCRUM-52)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-52-mandil---Input-ingredient-box)
+  - `Jira Task: Mandil -  Incorporated page routing`
+    - [SCRUM-55](https://cs3398f23klingons.atlassian.net/browse/SCRUM-55)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-55-mandil---all-features-combined-)
+  - `Jira Task: Mandil -Incorporated layout for homepage`
+    - [SCRUM-53](https://cs3398f23klingons.atlassian.net/browse/SCRUM-53)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-53-Explore-layout-for-display)
+  - `Jira Task: Mandil - unit test functionality of Input Ingredient widget`
+    - [SCRUM-54](https://cs3398f23klingons.atlassian.net/browse/SCRUM-54)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-54-mandil---add-unit-tests-to-make)
+  - `Jira Task: Mandil - Improved layout for display to include Featured section`
+    - [SCRUM-67](https://cs3398f23klingons.atlassian.net/browse/SCRUM-67)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-67-explore-layout-for-display)
+  - `Jira Task: Mandil - Research manual scraping options`
+    - [SCRUM-56](https://cs3398f23klingons.atlassian.net/browse/SCRUM-56)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/SCRUM-56-mandil---research-scraping-api)
+  - `Jira Task: Mandil - research database options`
+    - [SCRUM-58](https://cs3398f23klingons.atlassian.net/browse/SCRUM-58)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/SCRUM-58-mandil---research-existing-data)
+  - `Jira Task: Mandil - research database options`
+    - [SCRUM-57](https://cs3398f23klingons.atlassian.net/browse/SCRUM-57)
+    - [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/SCRUM-57-mandil---research-api-based-imp)
+
+
 <br />
 
 #### Reports
@@ -185,6 +199,7 @@
 **Mandil**:
 
   - Develop consistent layout for application
+  - Explore user authentication using firebase
   - Reorganize application layout and add components to the NavBar
   - Create feature that lets users construct their own recipes from scratch
 <br />
