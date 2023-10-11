@@ -3,6 +3,7 @@
 ## Reasons for creating database
 
 - We want our user's data entries and generated recipes to be stored in a secure system that provides both scalability and accessibility
+- We need to store recipes so we can recommend them to users
 
 ## Learning opportunities
 
@@ -18,10 +19,28 @@
 
 - [MySQL] MySQL is a relational database that organizes and stores data in well-defined tables with rows and columns
 - [CloudFireStore] Cloud Firestore is a non relational, flexible, scalable database from Firebase and Google Cloud
+- [AWS] Amazon offers various web-based databases. DynamoDB is a simple but effective NoSQL database that is well-suited for real-time applications
+- [HerokuPostgres] PaaS with a straightforward deployment
+
+## Database Types
+
+#### Relational Database
+
+- SQL databases store data in structured tables with predefined schemas to define the relationships between tables.
+- Transactions are reliable and data remains consistent even in events of system failures.
+- Excel at handling complex queries.
+- Preferred for applications with need for structured data, data integrity, and well-defined relationships.
+
+#### Non-relational Database
+
+- Store data in various formats, including JSON, XML, key-value pairs, document-orientated collections, etc. Typically schema-less or employ lax schemes.
+- Focuses on tradeoffs between consistency and availability.
+- Preferred for applications that handles unstructured (or semi-structured) data, real-time data processing, and high scalability.
 
 ## Associated Jira tasks related to database
 
-- As a user, I want to save my recipes so I can look at them later
+- [SCRUM-27]As a user, I want to save my recipes so I can look at them later
+- [SCRUM-5] As a user, I would like to have choices of existing recipes that I can cook from the list of ingredients.
 
 ## Options for Database to by used
 - [MongoDB] MongoDB can be integrated with a React application by creating a backend server (typically using Node.js) to handle database operations and then connecting your React frontend to this server
