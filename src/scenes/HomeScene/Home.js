@@ -25,9 +25,9 @@ function Home() {
                     </div>
                     <div className="row">
                         <ul class="list-group">
-                            <li class="list-group-item"><Link to="/createrecipe">Create Recipe</Link></li>
-                            <li class="list-group-item"><Link to="/instock">My Ingredients</Link></li>
-                            <li class="list-group-item"><Link to="/inputportal">Input Ingredients Portal</Link></li>
+                            <li class="list-group-item"><Link to="/create-recipe">Create Recipe</Link></li>
+                            <li class="list-group-item"><Link to="/in-stock">My Ingredients</Link></li>
+                            <li class="list-group-item"><Link to="/input-portal">Input Ingredients Portal</Link></li>
                         </ul>
                     </div>
                     
