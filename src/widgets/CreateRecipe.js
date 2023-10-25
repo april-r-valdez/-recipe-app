@@ -68,7 +68,7 @@ const  UserInput = () => {
                         </form><br></br>
                 </div>
                 <div className="col-lg-8">
-                <p className="h4">My Recipes</p><br></br>
+                <p className="h4">My Recipe</p><br></br>
                 <Pantry ingredientsList={ingredientsList}/>
                 </div>
             </div>
