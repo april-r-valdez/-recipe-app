@@ -3,7 +3,7 @@ import {Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import Home from './scenes/HomeScene/Home';
-import UserInput from './widgets/UserInput'
+import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 
@@ -13,7 +13,7 @@ function App() {
     <div className="App" data-bs-theme="light">
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path='/create-recipe' element={<UserInput/>}/>
+        <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>
       </Routes>

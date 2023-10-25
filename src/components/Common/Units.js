@@ -1,13 +1,17 @@
 
 const Units = ({inputs, handleChange}) => {
     return (
-        <div className="units">
-            <label for="units">Units:</label> 
-            <select id='units' name='units' value={inputs.units} onChange={handleChange}>
-                <option value=''></option>
-                <option value='tsp'>tsp</option>
-                <option value="tbsp">tbsp</option>
-                <option value="lbs">lbs</option>
+        <div className="input-group mb-3"> 
+            <select 
+                className="form-select" 
+                id="inputGroupSelect01"
+                name="units" 
+                value={inputs.units} 
+                onChange={handleChange}>
+                <option value="" disabled>Units</option>
+                <option value='teaspoons'>teaspoons</option>
+                <option value="tablespoons">tablespoons</option>
+                <option value="pounds">pounds</option>
                 <option value='fluid oz'>fluid oz</option>
                 <option value="cups">cups</option>
                 <option value="pints">pints</option>
