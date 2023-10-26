@@ -2,14 +2,14 @@
 const Ingredient = ({inputs, handleChange}) => {
     return (
         <div className="ingredient">
-            <label for="ingredient">Ingredient:</label>
             <input
+                className="form-control"
                 required
                 type='text'
                 id='ingredient'
                 name='ingredient'
                 value={inputs.ingredient}
-                placeholder='Ex: eggs, milk, butter...'
+                placeholder='Ingredient (ex: eggs, milk, butter...)'
                 onChange={handleChange}
             ></input>
         </div>
