@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function InputIngredient () {
@@ -10,6 +11,8 @@ function InputIngredient () {
     ]);
 
     const [newItem, setNewItem] = useState('');
+
+    const navigate = useNavigate();
 
     const removeItem = (idx) => {
         const updatedItems = [...ingredients];
@@ -40,6 +43,10 @@ function InputIngredient () {
           addItem();
         }
       };
+
+      const handleSubmit = () => {
+        navigate(`/searchByIngredients/${ingredients}`);
+      }
 
     return (
         <div className="card text-start border-light mb-3" data-bs-theme="light">
@@ -79,7 +86,7 @@ function InputIngredient () {
                 </div>
             </div>
             <div className="d-grid gap-2 col-6 mx-auto" role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-primary">SUBMIT</button>                                   
+                <button type="button" className="btn btn-primary" onClick={handleSubmit}>SUBMIT</button>                                   
             </div> 
         </div>
     )

@@ -6,6 +6,7 @@ import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
+import Searched from './widgets/Searched';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>
+        <Route path='/searchByIngredients/:ingredients' element={<Searched/>}/>
       </Routes>
       
     </div>
