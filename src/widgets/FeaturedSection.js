@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PlaceholderCard from "../components/Common/PlaceholderCard";
 
-const API_KEY = '8218ef888f3545f08036a30afc6577d7';
+const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
 
 function FeaturedSection() {
     const [recipes, setRecipes] = useState([]);
