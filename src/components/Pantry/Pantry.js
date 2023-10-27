@@ -4,7 +4,7 @@ const Pantry = ({ingredientsList}) => {
         <div className="pantry">
             {ingredientsList.map((input, index) => (
             <ul key={index}>
-              {input.amount} {input.units} of {input.ingredient}
+              {input.amount} {input.units} {input.ingredient}
             </ul>
             ))}
         </div>
