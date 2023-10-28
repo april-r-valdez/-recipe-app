@@ -7,55 +7,57 @@ import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 
 const  UserInput = () => {
-    // useState hook updates variables that store user inputs
-    const [inputs, setInputs] = useState({
+    // useState hook updates variables that store ingredient inputs
+    const [inputs, setIngredients] = useState({
         // default values set
         ingredient:'',
         amount:'',
         units:''
     });
 
+     // useState hook updates variable that stores direction  
+    const [directions, setDirections] = useState({
+        // default values set
+        direction:''
+    });
+
     // useState hook updates list of ingredients
     const [ingredientsList, setIngredientsList] = useState([]);
 
-    // adds object containing user inputs to ingredients list
+    const [directionsList, setDirectionsList] = useState([]);
+
+    // adds object containing ingredient inputs to ingredients list
     const addIngredientsToList = () => {
         setIngredientsList([...ingredientsList, inputs]);
     }
 
-    // handleChange receives event from input and updates textbox
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        if (name == "ingredient" || name == "amount" || name == "units")
-            setInputs(values => ({...values, [name]: value}))
-        else if (name == "direction")
-            setDirections(values => ({...values, [name]: value}))
-    }
-
-    // handleSubmit resets variables to default values
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        addIngredientsToList();
-        setInputs({ ingredient:'', amount:'', units:''}); 
-    }
-
-    
-    const [directions, setDirections] = useState({
-        direction:''
-    });
-
-    const [directionsList, setDirectionsList] = useState([]);
-
+    // adds object containing directions to directionsList
     const addDirectionsToList = () => {
         setDirectionsList([...directionsList, directions]);
     }
 
-    const handleNewDirection = (event) => {
+    // handleChange receives event from user and updates textbox
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        if (name == "ingredient" || name == "amount" || name == "units")
+            setIngredients(values => ({...values, [name]: value}))
+        else if (name == "direction")
+            setDirections(values => ({...values, [name]: value}))
+    }
+
+    // handleSubmit stores user inputs in their respective lists and resets variables to default values
+    const handleSubmit = (event, submitType) => {
         event.preventDefault();
-        addDirectionsToList();
-        setDirections({ direction: ''});
-    } 
+        if(submitType == "ingredient") {
+            addIngredientsToList();
+            setIngredients({ ingredient:'', amount:'', units:''}); 
+        }
+        else if(submitType == "direction") {
+            addDirectionsToList();
+            setDirections({ direction: ''});
+        }  
+    }
 
     return (  
         <div className="container-xl">
@@ -66,7 +68,7 @@ const  UserInput = () => {
             <div className="row">
                 <div className="col-lg-4">
                     <p className="h4">Add Ingredients</p><br></br>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={(e) => handleSubmit(e, "ingredient")}>
                             <Ingredient inputs={inputs} handleChange={handleChange}/><br></br>
                             <Amount inputs={inputs} handleChange={handleChange}/><br></br>
                             <Units inputs={inputs} handleChange={handleChange}/><br></br>
@@ -75,7 +77,7 @@ const  UserInput = () => {
                             </div>
                         </form><br></br>
                     <br></br><p className="h4">Add Directions</p><br></br>
-                        <form onSubmit={handleNewDirection}>
+                        <form onSubmit={(e) => handleSubmit(e, "direction")}>
                             <Direction directions={directions} handleChange={handleChange}/><br></br>
                             <div class="d-grid gap-2 col-8 mx-auto">
                                 <button type="submit" class="btn btn-primary">Add Direction</button>
@@ -84,16 +86,7 @@ const  UserInput = () => {
                 </div>
                 <div className="col-lg-8">
                     <p className="h4">New Recipe</p><br></br>
-                    <Pantry ingredientsList={ingredientsList}/>
-
-                    <div className="pantry">
-                        {directionsList.map((directions, index) => (
-                        <ul key={index}>
-                            Step {index + 1}: <br></br>
-                            {directions.direction}
-                        </ul>
-                        ))}
-                    </div>
+                    <Pantry ingredientsList={ingredientsList} directionsList={directionsList}/>
                 </div>
 
                 
