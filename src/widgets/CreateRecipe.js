@@ -49,13 +49,19 @@ const  UserInput = () => {
     // handleChange receives event from user and updates textbox
     const handleChange = (event) => {
         const name = event.target.name;
-        const value = event.target.value;
-        if (name === "ingredient" || name === "amount" || name === "units")
+        let value = event.target.value;
+        if (name === "ingredient" || name === "amount" || name === "units") {
+            value = value.replace(/[^A-Za-z0-9" "]/g, '');
+            value = value.slice(0).toLowerCase();
             setIngredients(values => ({...values, [name]: value}))
-        else if (name === "direction")
+        }
+        else if (name === "direction") {
             setDirections(values => ({...values, [name]: value}))
-        else if(name === "name" || name === "servingSize" || name === "prepTime" || name === "cookTime")
+        }
+        else if(name === "name" || name === "servingSize" || name === "prepTime" || name === "cookTime") {
+            value = value.replace(/[^A-Za-z0-9" "]/g, '');
             setMetaData(values => ({...values, [name]: value}))
+        }
     }
 
     // handleSubmit stores user inputs in their respective lists and resets variables to default values
@@ -80,7 +86,7 @@ const  UserInput = () => {
             <div className="row">
                 <Navbar/>
             </div>
-            <br></br><h1 className="display-5">Create Recipe</h1><br></br>
+            <br></br><h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
                     <p className="h4">Information</p><br></br>
@@ -96,16 +102,9 @@ const  UserInput = () => {
                         <Direction directions={directions} handleChange={handleChange}/>
                     </form><br></br><br></br>
                 </div>
-                <div className="col-lg-8">
-                    {recipeInfo && (
-                        <div>
-                            <p className="h4">{recipeInfo.name}</p><br></br>
-                            <p>Yields: {recipeInfo.servingSize} servings</p>
-                            <p>Prep Time: {recipeInfo.prepTime} minutes</p>
-                            <p>Cook Time: {recipeInfo.prepTime} minutes</p>
-                        </div>
-                    )}
-                    <Pantry ingredientsList={ingredientsList} directionsList={directionsList}/>
+                <div className="col-lg-1"></div>
+                <div className="col-lg-7">
+                    <Pantry recipeInfo={recipeInfo} ingredientsList={ingredientsList} directionsList={directionsList}/>
                 </div>
 
                 
