@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Navbar from "./Navbar";
 import Ingredient from '../components/Common/Ingredient';
-import Amount from '../components/Common/Amount';
-import Units from '../components/Common/Units';
 import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
@@ -88,20 +86,15 @@ const  UserInput = () => {
                     <p className="h4">Information</p><br></br>
                     <form onSubmit={(e) => handleSubmit(e, "metadata")}>
                         <Metadata metadata={metadata} handleChange={handleChange}/>
-                    </form><br></br>
+                    </form><br></br><br></br>
                     <p className="h4">Ingredients</p><br></br>
                     <form onSubmit={(e) => handleSubmit(e, "ingredient")}>
-                        <Ingredient inputs={inputs} handleChange={handleChange}/><br></br>
-                        <Amount inputs={inputs} handleChange={handleChange}/><br></br>
-                        <Units inputs={inputs} handleChange={handleChange}/><br></br>
-                        <div class="d-grid gap-2 col-8 mx-auto">
-                            <button type="submit" class="btn btn-primary">Add Ingredient</button>
-                        </div>
+                        <Ingredient inputs={inputs} handleChange={handleChange}/>
                     </form><br></br><br></br>
                     <p className="h4">Directions</p><br></br>
                     <form onSubmit={(e) => handleSubmit(e, "direction")}>
-                        <Direction directions={directions} handleChange={handleChange}/><br></br>
-                    </form><br></br>
+                        <Direction directions={directions} handleChange={handleChange}/>
+                    </form><br></br><br></br>
                 </div>
                 <div className="col-lg-8">
                     {recipeInfo && (
