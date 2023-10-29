@@ -1,3 +1,5 @@
+// This is a sample feature section cards. Do not modify this rather create a copy
+
 function PlaceholderCard() {
     return (
         <div className="card" aria-hidden="true">
