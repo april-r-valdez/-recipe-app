@@ -1,4 +1,4 @@
-// This is a sample feature section cards. Do not modify this rather create a copy
+// This is a sample feature section card. Do not modify this rather create a copy
 
 function PlaceholderCard() {
     return (
