@@ -19,6 +19,6 @@ const firebaseConfig = {
   export const storage = getStorage(app);
 
   export function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
