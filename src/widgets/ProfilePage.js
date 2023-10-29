@@ -1,22 +1,25 @@
 import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
+
 const ProfilePage = () => {
     return (
       <div>
         <div class="container-sm">
-        <Image src={defaultProfile} width = "150" roundedCircle={true}></Image>
+          <Image src={defaultProfile} width="200" roundedCircle={true}></Image>
+        </div>
+        <div>
+          <h4>Welcome, [Username if logged in]!</h4>
         </div>
 
-        
         <div>
-        <ul className="list-group">
-          <li className="list-group-item">An item</li>
-          <li className="list-group-item">A second item</li>
-          <li className="list-group-item">A third item</li>
-          <li className="list-group-item">A fourth item</li>
-          <li className="list-group-item">And a fifth one</li>
-        </ul>
+          <ul className="list-group">
+            <li className="list-group-item">Name: </li>
+            <li className="list-group-item">Email: </li>
+            <li className="list-group-item">Phone: </li>
+            <li className="list-group-item">User since: </li>
+          </ul>
         </div>
+        <div>
         <button type="button" className="btn btn-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +33,7 @@ const ProfilePage = () => {
           </svg>{" "}
           Edit Profile
         </button>
+        </div>
       </div>
     );
 }
