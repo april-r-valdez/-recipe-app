@@ -23,6 +23,7 @@ function FeaturedSection() {
         };
         getRecipeList();
     }, []);
+    
     return (
         <div className="container-fluid">
             <h5>Featured Recipe</h5>
@@ -33,16 +34,6 @@ function FeaturedSection() {
                     <div className="col"><RecipeCard recipeRef={recipe}/></div>
                 );
             })}
-            
-            
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
             </div>
         </div>
     )
