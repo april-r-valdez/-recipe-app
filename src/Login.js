@@ -1,4 +1,10 @@
+
 const Login = () => {
+
+    function handleSignup() {
+        
+    }
+
     return ( 
         <div className="container-sm">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -20,7 +26,7 @@ const Login = () => {
                     <input type="text" name="" className="form-control" placeholder="Username"/>
                     <input type="text" name="" className="form-control" placeholder="Phone"/>
                     <input type="text" name="" className="form-control" placeholder="Password"/>
-                    <button className="btn btn-primary">Signup</button>
+                    <button onClick={handleSignup} className="btn btn-primary">Signup</button>
                   </div>
                 </div>
                </div>
