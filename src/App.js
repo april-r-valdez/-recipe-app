@@ -7,6 +7,7 @@ import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 import ProfilePage from './widgets/ProfilePage';
+import Login from './Login';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>
         <Route path='/profile-page' element={<ProfilePage/>}/>
+        <Route path='/login-page' element={<Login/>}/>
       </Routes>
       
     </div>
