@@ -1,9 +1,13 @@
 import { useRef } from 'react';
-import { signup, login } from "./firebase";
+import { signup, login, useAuth } from "./firebase";
+
 const Login = () => {
 
   const emailRef = useRef();
   const passRef = useRef();
+  const emailLog = useRef();
+  const passLog = useRef();
+  const curUser = useAuth();
 
     //async bc api call
      async function handleSignup() {
@@ -17,7 +21,7 @@ const Login = () => {
     //async bc api call
     async function handleLogin() {
       try{
-        await login(emailRef.current.value,passRef.current.value);
+        await login(emailLog.current.value,passLog.current.value);
       }
         catch{
           alert("Error!")
@@ -33,13 +37,19 @@ const Login = () => {
             <div className="tab-content" id="pills-tabContent">
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
-                    <input ref={emailRef} type="text" name="" className="form-control" placeholder="Email or Phone"/>
-                    <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
-                    <button className="btn btn-primary">Login</button>
+                    <div>
+                      Successfully logged in as: {curUser?.email}!
+                    </div>
+                    <input ref={emailLog} type="text" name="" className="form-control" placeholder="Email or Phone"/>
+                    <input ref={passLog} type="password" name="" className="form-control" placeholder="Password"/>
+                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
+                  <div>
+                      Successfully created account! Welcome, {curUser?.email}!
+                    </div>
                     <input ref={emailRef}type="text" name="" className="form-control" placeholder="Email"/>
                     <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
                     <button onClick={handleSignup} className="btn btn-primary">Signup</button>
