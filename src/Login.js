@@ -1,8 +1,18 @@
-
+import { useRef } from 'react';
+import { signup } from "./firebase";
 const Login = () => {
 
-    function handleSignup() {
-        
+  const emailRef = useRef();
+  const passRef = useRef();
+
+    //async bc api call
+     async function handleSignup() {
+      try{
+        await signup(emailRef.current.value,passRef.current.value);
+      }
+        catch{
+          alert("Error!")
+        }
     }
 
     return ( 
@@ -15,17 +25,14 @@ const Login = () => {
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
                     <input type="text" name="" className="form-control" placeholder="Email or Phone"/>
-                    <input type="text" name="" className="form-control" placeholder="Password"/>
+                    <input type="password" name="" className="form-control" placeholder="Password"/>
                     <button className="btn btn-primary">Login</button>
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
-                    <input type="text" name="" className="form-control" placeholder="Name"/>
-                    <input type="text" name="" className="form-control" placeholder="Email"/>
-                    <input type="text" name="" className="form-control" placeholder="Username"/>
-                    <input type="text" name="" className="form-control" placeholder="Phone"/>
-                    <input type="text" name="" className="form-control" placeholder="Password"/>
+                    <input ref={emailRef}type="text" name="" className="form-control" placeholder="Email"/>
+                    <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
                     <button onClick={handleSignup} className="btn btn-primary">Signup</button>
                   </div>
                 </div>
