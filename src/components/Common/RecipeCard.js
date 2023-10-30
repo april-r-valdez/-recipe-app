@@ -2,12 +2,7 @@ import { getDoc} from "firebase/firestore";
 import { storage } from "../../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa"
-
-const ratingColors = {
-    orange: "#FFBA5A",
-    grey: "#a9a9a9"
-};
+import RatingStars from "../Utils/RatingStars";
 
 function RecipeCard(props) {
     const [myRecipe, setMyRecipe] = useState();
@@ -60,7 +55,6 @@ function RecipeCard(props) {
         };
 
     // Call the function once using hook to get the recipe. Do not forget the [] bracket. *Will cause unlimited loop*
-    
         getRecipeData();
 
     }, []);
@@ -79,12 +73,7 @@ function RecipeCard(props) {
 
                 {loading ? (<p>Loading...</p>) :
                     (<p className="card-text">
-                        {[...Array(recipeRating)].map((_, index) => (
-                            <FaStar key={index} color={ratingColors.orange}/>
-                        ))}
-                        {[...Array(5 - recipeRating)].map((_, index) => (
-                            <FaStar key={index} color={ratingColors.gery}/>
-                        ))}
+                        <RatingStars rating={recipeRating} />
                     </p>)
                 }
             </div>
