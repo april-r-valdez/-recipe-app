@@ -28,7 +28,7 @@ function FeaturedSection() {
         <div className="container-fluid">
             <h5>Featured Recipe</h5>
             <div className="row row-cols-1 row-cols-md-3 g-4">
-            {recipeList.map((recipe) => {
+            {recipeList.slice(0, 9).map((recipe) => {
 
                 return (
                     <div className="col"><RecipeCard recipeRef={recipe}/></div>
