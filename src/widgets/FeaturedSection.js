@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import PlaceholderCard from "../components/Common/PlaceholderCard";
-
 
 function FeaturedSection() {
     return (
