@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import PlaceholderCard from "../components/Common/PlaceholderCard";
 
-const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
-
 function FeaturedSection() {
     return (
         <div className="container-fluid">

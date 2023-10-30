@@ -11,7 +11,7 @@ const Searched = () => {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const getRecipesByIngredients = async (ingredients) => {
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=3`);
+            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=6`);
             if (!response.ok) {
                 throw new Error("Error fetching the data");
             }
