@@ -31,9 +31,6 @@ const RecipePage = ( {name, image, ingredients, directions} ) => {
           ))}
           </ul>
       </div>
-      <div>
-        <button className='btn btn-primary'>Save Recipe</button>
-      </div>
     </div>
   );
 }
