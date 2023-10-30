@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { signup, login, useAuth } from "./firebase";
+import { signup, login, useAuth, logout} from "./firebase";
 
 const Login = () => {
 
@@ -27,6 +27,9 @@ const Login = () => {
           alert("Error!")
         }
     }
+    async function handleLogout(){
+      logout();
+    }
 
     return ( 
         <div className="container-sm">
@@ -38,21 +41,22 @@ const Login = () => {
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
                     <div>
-                      Successfully logged in as: {curUser?.email}!
+                      Successfully logged in as: {curUser?.email}
                     </div>
                     <input ref={emailLog} type="text" name="" className="form-control" placeholder="Email or Phone"/>
                     <input ref={passLog} type="password" name="" className="form-control" placeholder="Password"/>
-                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
+                    <button disabled={curUser} onClick={handleLogin} className="btn btn-primary">Login</button>
+                    <button disabled={!curUser} onClick={handleLogout} className="btn btn-primary">Logout</button>
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
                   <div>
-                      Successfully created account! Welcome, {curUser?.email}!
+                      Successfully created account! Welcome, {curUser?.email}
                     </div>
                     <input ref={emailRef}type="text" name="" className="form-control" placeholder="Email"/>
                     <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
-                    <button onClick={handleSignup} className="btn btn-primary">Signup</button>
+                    <button disabled={curUser} onClick={handleSignup} className="btn btn-primary">Signup</button>
                   </div>
                 </div>
                </div>
