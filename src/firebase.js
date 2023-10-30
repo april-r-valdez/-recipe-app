@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
-import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 
 
@@ -28,6 +28,9 @@ const firebaseConfig = {
   }
   export function login(email, password){
     return signInWithEmailAndPassword(auth, email, password);
+  }
+  export function logout(){
+    return signOut(auth);
   }
   //creating a custom hook for current user
   export function useAuth(){
