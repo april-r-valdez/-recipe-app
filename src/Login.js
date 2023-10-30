@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { signup } from "./firebase";
+import { signup, login } from "./firebase";
 const Login = () => {
 
   const emailRef = useRef();
@@ -9,6 +9,15 @@ const Login = () => {
      async function handleSignup() {
       try{
         await signup(emailRef.current.value,passRef.current.value);
+      }
+        catch{
+          alert("Error!")
+        }
+    }
+    //async bc api call
+    async function handleLogin() {
+      try{
+        await login(emailRef.current.value,passRef.current.value);
       }
         catch{
           alert("Error!")
@@ -24,8 +33,8 @@ const Login = () => {
             <div className="tab-content" id="pills-tabContent">
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
-                    <input type="text" name="" className="form-control" placeholder="Email or Phone"/>
-                    <input type="password" name="" className="form-control" placeholder="Password"/>
+                    <input ref={emailRef} type="text" name="" className="form-control" placeholder="Email or Phone"/>
+                    <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
                     <button className="btn btn-primary">Login</button>
                   </div>
                 </div>
