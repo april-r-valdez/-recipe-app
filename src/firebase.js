@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
-import{ getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -23,4 +23,7 @@ const firebaseConfig = {
 
   export function signup(email, password){
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+  export function login(email, password){
+    return signInWithEmailAndPassword(auth, email, password);
   }
