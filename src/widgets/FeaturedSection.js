@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import PlaceholderCard from "../components/Common/PlaceholderCard";
 import RecipeCard from "../components/Common/RecipeCard";
-import { useState, useEffect } from "react";
 import { db } from "../firebase"
 import { collection, getDoc, doc} from "firebase/firestore";
 
@@ -33,16 +31,7 @@ function FeaturedSection() {
                     <div className="col"><RecipeCard recipeRef={recipe}/></div>
                 );
             })}
-            
-            
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
+
             </div>
         </div>
     )
