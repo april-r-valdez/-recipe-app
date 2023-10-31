@@ -1,5 +1,5 @@
 
-const Pantry = ({recipeInfo, ingredientsList, directionsList}) => {
+const Pantry = ({recipeInfo, ingredientsList, directionsList, handleDelete}) => {
     return (
         <div className="pantry">
             {recipeInfo && (
@@ -35,15 +35,14 @@ const Pantry = ({recipeInfo, ingredientsList, directionsList}) => {
                             <div className="row g-1">
                                 <div className="col-md">
                                     <div className="card">
-                                        {/* <div className="card-header text-center">Ingredient List</div> */}
                                         <div className="card-body">
                                             <div className="list-group list-group-flush">
                                                 {ingredientsList.map((input, index) => (
                                                     <li key={index} className="list-group-item d-flex justify-content-between align-items-start">
                                                         {input.amount} {input.units} {input.ingredient}
-                                                        {/* <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
+                                                        <button type="button" className="close btn btn-sm" aria-label="Close" onClick={(e) => handleDelete(e, index, "ingredient")}>
                                                         <span aria-hidden="true" className="text-dark">&times;</span>
-                                                        </button> */}
+                                                        </button>
                                                     </li>
                                                 ))}
                                             </div>
@@ -62,7 +61,6 @@ const Pantry = ({recipeInfo, ingredientsList, directionsList}) => {
                             <div className="row g-1">
                                 <div className="col-md">
                                     <div className="card">
-                                        {/* <div className="card-header text-center">Ingredient List</div> */}
                                         <div className="card-body">
                                             <div className="list-group list-group-flush">
                                                 {directionsList.map((directions, index) => (
@@ -71,9 +69,9 @@ const Pantry = ({recipeInfo, ingredientsList, directionsList}) => {
                                                         <strong>Step {index + 1}</strong><br />
                                                         {directions.direction}
                                                         </div>
-                                                        {/* <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
+                                                        <button type="button" className="close btn btn-sm" aria-label="Close" onClick={(e) => handleDelete(e, index, "direction")}>
                                                         <span aria-hidden="true" className="text-dark">&times;</span>
-                                                        </button> */}
+                                                        </button>
                                                     </li>
                                                 ))}
                                             </div>
