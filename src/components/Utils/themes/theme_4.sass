@@ -1,0 +1,143 @@
+// Colors
+$primary: #404142
+$secondary: #c0b283
+$success: #eddbcd
+$info: #f4f4f4
+$warning: #d54751
+$danger: #d54751
+
+$light: #fefbfb
+$dark: #001525
+
+$white: $light
+$gray-100: #f8f9fa
+$gray-200: #e9ecef
+$gray-300: #dee2e6
+$gray-400: #ced4da
+$gray-500: #adb5bd
+$gray-600: #868e96
+$gray-700: #495057
+$gray-800: #343a40
+$gray-900: #212529
+$black: $dark
+
+// Spacing
+$spacer: 0.8rem
+
+// Options
+$enable-rounded: true
+$enable-shadows: false
+$enable-gradients: false
+$enable-transitions: true
+$enable-hover-media-query: false
+$enable-grid-classes: true
+$enable-print-styles: true
+
+// Body
+$body-bg: $primary
+$body-color: $gray-900
+
+// Grid
+$grid-columns: 12
+$grid-gutter-width: 10px
+
+// Link
+$link-color: $white
+$link-hover-color: darken($link-color, 15%)
+
+// List (ingredients)
+$list-group-color: $light // text color
+$list-group-bg: $secondary // box color
+$list-group-border-radius: 2px
+
+// Components
+$border-width: 0px
+$border-radius: 0.2rem
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Poiret+One')
+@import url('https://fonts.googleapis.com/css?family=Tapestry')
+$font-family-sans-serif: 'Poiret One', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
+$font-size-base: 1.2rem
+
+$headings-font-family: Tapestry
+$headings-color: inherit
+
+// Buttons
+$input-btn-padding-y: 0.8rem
+$input-btn-padding-x: 1.50rem
+$input-btn-line-height: 1.00
+
+$btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075)
+$btn-block-spacing-y: 0.5rem
+$btn-border-radius: $border-radius
+$btn-transition: all 0.15s ease-in-out
+
+// Forms
+$input-bg: $light
+$input-disabled-bg: $gray-200
+$input-color: $gray-700
+$input-border-color: rgba($black, 0.15)
+$input-btn-border-width: $border-width
+$input-box-shadow: inset 0 1px 1px rgba($black, 0.075)
+$input-border-radius: $border-radius
+
+$input-focus-color: $input-color
+$input-placeholder-color: $gray-600
+
+// Navs
+$nav-link-padding-y: 0.5rem
+$nav-link-padding-x: 1rem
+
+// Navbar
+$navbar-dark-color: $white
+$navbar-dark-hover-color: $white
+$navbar-dark-active-color: $secondary
+$navbar-dark-disabled-color: $white
+$navbar-dark-toggler-border-color: $white
+
+$navbar-light-color: $dark
+$navbar-light-hover-color: $dark
+$navbar-light-active-color: $dark
+$navbar-light-disabled-color: $dark
+$navbar-light-toggler-border-color: $dark
+
+// Cards
+$card-spacer-y: 1.8rem
+$card-spacer-x: 0rem
+$card-border-width: 0px
+$card-border-radius: $border-radius
+$card-border-color: rgba($black, 0.125)
+$card-inner-border-radius: 1rem
+$card-cap-bg: rgba($black, 0.03)
+$card-bg: $success
+$card-img-overlay-padding: 1.25rem
+$card-deck-margin: ($grid-gutter-width / 2)
+$card-columns-count: 3
+$card-columns-gap: 1.25rem
+$card-columns-margin: $card-spacer-y
+
+@import '~bootstrap/scss/bootstrap.scss'
+
+// CSS
+// .list-group-item
+//     border-top-left-radius: 2px
+//     border-top-right-radius: 2px
+//     border-bottom-left-radius: 2px
+//     border-bottom-right-radius: 2px
+
+.navbar-brand
+    color: $dark !important
+
+.offcanvas
+    background-color: $success
+
+.bg-body-tertiary
+    background-color: $secondary !important
+
+h5
+    color: $primary
+
+@import '../../../App.css'
