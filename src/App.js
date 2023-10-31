@@ -6,6 +6,8 @@ import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
+
+
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
 
