@@ -6,9 +6,13 @@ import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
-import Searched from './widgets/Searched';
-import Recipe from './widgets/Recipe';
+import RecipeFromAPI from './components/Utils/RecipeFromAPI';
+import APISearch from './widgets/APISearch';
 import Landing from './scenes/LandingScene/Landing';
+
+
+import ProfilePage from './widgets/ProfilePage';
+import Login from './Login';
 
 function App() {
   return (
@@ -19,9 +23,10 @@ function App() {
         <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>
-        <Route path='/searchByIngredients/:ingredients' element={<Searched/>}/>
-        <Route path='/recipe/:id' element={<Recipe/>}/>
-        <Route path='/landing' element={<Landing/>}/>
+        <Route path='/profile-page' element={<ProfilePage/>}/>
+        <Route path='/login-page' element={<Login/>}/>
+        <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
+        <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
       </Routes>
       
     </div>

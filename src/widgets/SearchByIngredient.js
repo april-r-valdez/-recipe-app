@@ -45,7 +45,7 @@ function InputIngredient () {
       };
 
       const handleExternalSearch = () => {
-        navigate(`/searchByIngredients/${ingredients}`);
+        navigate(`/externalSearch/${ingredients}`);
       }
 
     return (

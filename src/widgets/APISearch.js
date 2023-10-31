@@ -6,12 +6,12 @@ import Navbar from './Navbar';
 
 const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
 
-const Searched = () => {
+const APISearch = () => {
     let param = useParams();
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const getRecipesByIngredients = async (ingredients) => {
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=6`);
+            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=9`);
             if (!response.ok) {
                 throw new Error("Error fetching the data");
             }
@@ -30,8 +30,8 @@ const Searched = () => {
             <Navbar/>
             <div className="row row-cols-1 row-cols-md-3 mt-3 mb-4 g-4">
                 {searchedRecipes.map((recipe) => (
-                    <Link to={'/recipe/' + recipe.id}>
-                        <div className='card' key={recipe.id}>
+                    <Link to={'/externalRecipe/' + recipe.id}>
+                        <div className='card h-100' key={recipe.id}>
                             <img className='card-img-top' alt='...' src={recipe.image}/>
                             <div className='card-body'>
                                 <h5 className='card-title'>{recipe.title}</h5>
@@ -44,4 +44,4 @@ const Searched = () => {
     )
 }
 
-export default Searched
+export default APISearch;
