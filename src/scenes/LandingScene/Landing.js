@@ -4,9 +4,9 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function Landing() {
   return (
-    <div>
+    <div class="landing">
       <Navbar />
-      <Parallax pages={2}>
+      <Parallax pages={2} class="landing">
         {/* Navbar */}
 
         {/* Hero Section */}
@@ -41,7 +41,7 @@ function Landing() {
         </ParallaxLayer>
 
         {/* Features Section */}
-        <ParallaxLayer offset={0.8} class="landing-features">
+        <ParallaxLayer offset={0.8} class="landing-content">
           <div className="container py-5">
             <h1 class="display-6 landing-headers">FEATURES</h1>
             <div class="row card-group py-3">
@@ -71,6 +71,20 @@ function Landing() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Pricing Section */}
+          <hr class="my-4"></hr>
+          <div class="container ">
+            <h1 class="display-6 landing-headers">PRICING</h1>
+            <p class="landing-headers">IT'S FREE</p>
+            <p class="text-start">
+              Quisque vulputate et nisi eu bibendum. Fusce auctor molestie nulla
+              sit amet dictum. Nunc est orci, euismod eget gravida nec, lobortis
+              nec ex. Donec non sollicitudin velit. Interdum et malesuada fames
+              ac ante ipsum primis in faucibus. Maecenas elementum erat
+              efficitur lacus imperdiet interdum. Sed sed molestie felis.
+            </p>
           </div>
 
           {/* Contact Section */}
