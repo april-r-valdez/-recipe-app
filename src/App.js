@@ -8,6 +8,7 @@ import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 import Searched from './widgets/Searched';
 import Recipe from './widgets/Recipe';
+import Landing from './scenes/LandingScene/Landing';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/input-portal' element={<IngredientsInput/>}/>
         <Route path='/searchByIngredients/:ingredients' element={<Searched/>}/>
         <Route path='/recipe/:id' element={<Recipe/>}/>
+        <Route path='/landing' element={<Landing/>}/>
       </Routes>
       
     </div>
