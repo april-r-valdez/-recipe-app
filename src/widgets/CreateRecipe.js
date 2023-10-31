@@ -106,8 +106,6 @@ const  UserInput = () => {
                 <div className="col-lg-7">
                     <Pantry recipeInfo={recipeInfo} ingredientsList={ingredientsList} directionsList={directionsList}/>
                 </div>
-
-                
             </div>
         </div>
     );
