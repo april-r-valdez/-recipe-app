@@ -14,7 +14,7 @@ function DisplayToggle() {
         if (isDarkMode) {
             document.documentElement.setAttribute("data-bs-theme", "dark");
             document.querySelector('.navbar').setAttribute("data-bs-theme", "dark");
-            const cards = document.querySelectorAll('.card');
+            const cards = document.querySelectorAll(".card, .list-group, .container-xl");
             cards.forEach((card, index)  => {
                 card.setAttribute("data-bs-theme", "dark");
             });
@@ -22,7 +22,7 @@ function DisplayToggle() {
         else {
             document.documentElement.setAttribute("data-bs-theme", "light");
             document.querySelector('.navbar').setAttribute("data-bs-theme", "light");
-            const cards = document.querySelectorAll('.card');
+            const cards = document.querySelectorAll(".card, .list-group, .container-xl");
             cards.forEach((card, index)  => {
                 card.setAttribute("data-bs-theme", "light");
             });
