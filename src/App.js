@@ -27,6 +27,7 @@ function App() {
         <Route path='/login-page' element={<Login/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
+        <Route path='/landing' element={<Landing/>}/>
       </Routes>
       
     </div>

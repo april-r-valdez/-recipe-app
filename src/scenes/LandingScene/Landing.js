@@ -8,7 +8,7 @@ function Landing() {
       <Navbar />
 
       <Parallax
-        pages={3}
+        pages={3.1}
         class="landing"
         style={{
           width: "100%",
