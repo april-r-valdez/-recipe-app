@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from "./Navbar.js";
 
-const RecipePage = ( {name, image, ingredients, directions} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
       <NavBar />
