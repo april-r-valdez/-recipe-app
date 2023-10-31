@@ -1,9 +1,7 @@
-import PlaceholderCard from "../components/Common/PlaceholderCard";
+import { useEffect, useState } from "react";
 import RecipeCard from "../components/Common/RecipeCard";
-import { useState, useEffect } from "react";
 import { db } from "../firebase"
 import { collection, getDoc, doc} from "firebase/firestore";
-
 
 function FeaturedSection() {
 
@@ -23,26 +21,17 @@ function FeaturedSection() {
         };
         getRecipeList();
     }, []);
+    
     return (
         <div className="container-fluid">
             <h5>Featured Recipe</h5>
             <div className="row row-cols-1 row-cols-md-3 g-4">
-            {recipeList.map((recipe) => {
+            {recipeList.slice(0, 9).map((recipe) => {
 
                 return (
                     <div className="col"><RecipeCard recipeRef={recipe}/></div>
                 );
             })}
-            
-            
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
-            <div className="col"><PlaceholderCard/></div>
             </div>
         </div>
     )

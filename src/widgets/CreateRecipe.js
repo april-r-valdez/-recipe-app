@@ -81,6 +81,17 @@ const  UserInput = () => {
         }
     }
 
+    const handleDelete = (_, id, deleteType) => {
+        if(deleteType == "ingredient") {
+            const updatedIngredients = ingredientsList.filter((_, index) => index !== id);
+            setIngredientsList(updatedIngredients);
+        }
+        else if(deleteType == "direction") {
+            const updatedDirections = directionsList.filter((_, index) => index !== id);
+            setDirectionsList(updatedDirections);
+        }
+    }
+
     return (  
         <div className="container-xl">
             <div className="row">
@@ -104,10 +115,9 @@ const  UserInput = () => {
                 </div>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-7">
-                    <Pantry recipeInfo={recipeInfo} ingredientsList={ingredientsList} directionsList={directionsList}/>
+                    <Pantry recipeInfo={recipeInfo} ingredientsList={ingredientsList} 
+                        directionsList={directionsList} handleDelete={handleDelete}/>
                 </div>
-
-                
             </div>
         </div>
     );
