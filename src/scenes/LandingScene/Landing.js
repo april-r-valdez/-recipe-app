@@ -4,11 +4,22 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function Landing() {
   return (
-    <div class="landing">
+    <div>
       <Navbar />
-      <Parallax pages={2} class="landing">
-        {/* Navbar */}
 
+      <Parallax
+        pages={3}
+        class="landing"
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${"/res/images/generic_banner_2.jpeg"})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        <div class="landing-overlay"></div>
         {/* Hero Section */}
         <ParallaxLayer
           factor={1}
@@ -41,10 +52,10 @@ function Landing() {
         </ParallaxLayer>
 
         {/* Features Section */}
-        <ParallaxLayer offset={0.8} class="landing-content">
-          <div className="container py-5">
+        <ParallaxLayer offset={0.8}>
+          <div class="container-fluid py-5 m-0 landing-content">
             <h1 class="display-6 landing-headers">FEATURES</h1>
-            <div class="row card-group py-3">
+            <div class="row card-group py-3 m-5">
               <div class="col-4">
                 <div class="card px-4 py-4">
                   {/* FEATURE UNO */}
@@ -74,29 +85,50 @@ function Landing() {
           </div>
 
           {/* Pricing Section */}
-          <hr class="my-4"></hr>
-          <div class="container ">
-            <h1 class="display-6 landing-headers">PRICING</h1>
-            <p class="landing-headers">IT'S FREE</p>
-            <p class="text-start">
-              Quisque vulputate et nisi eu bibendum. Fusce auctor molestie nulla
-              sit amet dictum. Nunc est orci, euismod eget gravida nec, lobortis
-              nec ex. Donec non sollicitudin velit. Interdum et malesuada fames
-              ac ante ipsum primis in faucibus. Maecenas elementum erat
-              efficitur lacus imperdiet interdum. Sed sed molestie felis.
-            </p>
+          <div class="container-fluid py-5 m-0 landing-content">
+            <hr class="my-4"></hr>
+            <div class="m-5">
+              <h1 class="display-6 landing-headers">PRICING</h1>
+              <p class="landing-headers">IT'S FREE</p>
+              <p>
+                Quisque vulputate et nisi eu bibendum. Fusce auctor molestie
+                nulla sit amet dictum. Nunc est orci, euismod eget gravida nec,
+                lobortis nec ex. Donec non sollicitudin velit. Interdum et
+                malesuada fames ac ante ipsum primis in faucibus. Maecenas
+                elementum erat efficitur lacus imperdiet interdum. Sed sed
+                molestie felis.
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div class="container-fluid py-5 m-0 landing-content-alt">
+            <hr class="my-4"></hr>
+            <div class="m-5">
+              <h1 class="display-6 landing-headers">LET US COOK</h1>
+              <p>
+                Experience culinary creativity at your fingertips – generate,
+                savor, and delight with each recipe.
+              </p>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4 my-5"
+              >
+                LET'S GO
+              </button>
+            </div>
           </div>
 
           {/* Contact Section */}
-          <hr class="my-4"></hr>
-          <div class="container ">
+          <div class="container-fluid py-5 m-0 landing-content">
+            <hr class="my-4"></hr>
             <h1 class="display-6 landing-headers">CONTACT US</h1>
             <p>If you have any questions, feel free to get in touch with us.</p>
           </div>
 
           {/* Information Footer */}
           <footer class="information-footer">
-            <div class="container">
+            <div class="container-fluid py-5 m-0 landing-content">
               <p>&copy; 2023 KLINGONS. All rights reserved.</p>
             </div>
           </footer>
