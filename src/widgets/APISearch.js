@@ -11,7 +11,7 @@ const APISearch = () => {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const getRecipesByIngredients = async (ingredients) => {
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=3`);
+            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=9`);
             if (!response.ok) {
                 throw new Error("Error fetching the data");
             }
@@ -31,7 +31,7 @@ const APISearch = () => {
             <div className="row row-cols-1 row-cols-md-3 mt-3 mb-4 g-4">
                 {searchedRecipes.map((recipe) => (
                     <Link to={'/externalRecipe/' + recipe.id}>
-                        <div className='card' key={recipe.id}>
+                        <div className='card h-100' key={recipe.id}>
                             <img className='card-img-top' alt='...' src={recipe.image}/>
                             <div className='card-body'>
                                 <h5 className='card-title'>{recipe.title}</h5>
