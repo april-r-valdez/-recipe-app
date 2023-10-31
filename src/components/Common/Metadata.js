@@ -32,7 +32,7 @@ const Metadata = ({metadata, handleChange}) => {
                 id='prepTime'
                 name='prepTime'
                 value={metadata.prepTime}
-                placeholder='Prep time (minutes)'
+                placeholder='Prep time (ex: 15 minutes)'
                 onChange={handleChange}
             ></input><br></br>
             <input
@@ -44,7 +44,7 @@ const Metadata = ({metadata, handleChange}) => {
                 id='cookTime'
                 name='cookTime'
                 value={metadata.cookTime}
-                placeholder='Cook time (minutes)'
+                placeholder='Cook time (ex: 30 minutes)'
                 onChange={handleChange}
             ></input><br></br>
             <div class="d-grid gap-2 col-8 mx-auto">
