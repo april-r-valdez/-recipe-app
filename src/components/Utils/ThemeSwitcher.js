@@ -5,7 +5,7 @@ function ThemeSwitcher() {
   const [isImporting, setIsImporting] = useState(false);
 
   const path = "./themes/";
-  const themes = ["theme_1.sass", "theme_2.sass", "theme_3.sass"];
+  const themes = ["theme_1.sass"];
 
   const handleNextTheme = async () => {
     if (!isImporting) {
@@ -21,7 +21,11 @@ function ThemeSwitcher() {
     handleNextTheme();
   }, []);
 
-  return <button onClick={handleNextTheme}>[DEV] NEXT THEME</button>;
+  return (
+    <button class="btn btn-primary" onClick={handleNextTheme}>
+      [DEV] NEXT THEME
+    </button>
+  );
 }
 
 export default ThemeSwitcher;
