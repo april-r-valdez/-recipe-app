@@ -1,4 +1,5 @@
 import DisplayToggle from "../components/Utils/DisplayMode";
+import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 import Sidebar from "../widgets/Sidebar";
 
 function Navbar() {
@@ -13,6 +14,7 @@ function Navbar() {
                 </div>
                 <div> 
                     <Sidebar/>
+                    <ThemeSwitcher />
                 </div>
                 <div classname="d-flex">
                     <div className="row justify-content-end align-items-center">
