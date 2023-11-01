@@ -67,7 +67,7 @@ function RecipeCard(props) {
 
     return (
         <Link to={'/recipe/' + recipeId}>
-            <div className="card" aria-hidden="true">
+            <div className="card h-100" aria-hidden="true">
                 {recipeImage && ( 
                     <img src={recipeImage} className="card-img-top" alt="..." style={{ maxHeight: '100px', objectFit: 'cover' }}/>
                 )}

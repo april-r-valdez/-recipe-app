@@ -15,6 +15,9 @@ const RecipeFromAPI = () => {
   const [directions, setDirections] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [nutrition, setNutrition] = useState({});
+
+  // Signal save successfully or not
+  const[saveStatus, setSaveStatus] = useState(null);
   
   // useParam hook to get the recipe id passed as a parameter in the url
   let param = useParams();
@@ -83,6 +86,10 @@ const RecipeFromAPI = () => {
         nutrition: nutrition,
         rating: 5, // rating is set to 5 stars initially
       });
+
+      // set saved successfully
+      setSaveStatus(true);
+
     } catch(error) {
       console.log("Error saving recipe: ", error);
     }
@@ -95,9 +102,13 @@ const RecipeFromAPI = () => {
               ingredients={ingredientDetails} 
               directions={directions} 
               nutrition={nutrition} />
-      <div>
-        <button className='btn btn-primary mb-3' onClick={handleSave}>Save Recipe</button>
-      </div>
+
+      <button className='btn btn-success mb-1' onClick={handleSave}>Save Recipe</button>
+      {saveStatus && (
+        <p style={{color: saveStatus ? 'green' : 'red' }}>
+          {saveStatus ? 'Saved!' : 'Error saving the recipe'}
+        </p>
+      )} 
     </div>
   )
 }

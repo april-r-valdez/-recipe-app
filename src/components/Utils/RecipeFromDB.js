@@ -11,7 +11,7 @@ const RecipeFromDB = () => {
   const [imageUrl, setImageUr] = useState("");
   const [ingredientDetails, setIngredientDetails] = useState([]);
   const [directions, setDirections] = useState([]);
-  const [nutrition, setNutrition] = useState();
+  const [nutrition, setNutrition] = useState({});
 
   let param = useParams();
   
