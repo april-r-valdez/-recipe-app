@@ -1,6 +1,8 @@
 import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
 
+//going to incorporate using Firebase store to populate the profile
+
 const ProfilePage = () => {
     return (
       <div>
