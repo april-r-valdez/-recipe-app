@@ -8,6 +8,7 @@ import MyStock from "./widgets/MyStock"
 import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 import RecipeFromAPI from './components/Utils/RecipeFromAPI';
 import APISearch from './widgets/APISearch';
+import Landing from './scenes/LandingScene/Landing';
 
 
 import ProfilePage from './widgets/ProfilePage';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
+        <Route path='/landing' element={<Landing/>}/>
       </Routes>
       
     </div>
