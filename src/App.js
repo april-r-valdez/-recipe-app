@@ -18,7 +18,8 @@ function App() {
 
     <div className="App" data-bs-theme="light">
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>

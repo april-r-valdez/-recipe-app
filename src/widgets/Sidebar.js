@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 function Sidebar() {
     return (
@@ -17,15 +18,15 @@ function Sidebar() {
                 </li>
                 <li><hr className="dropdown-divider/"/></li>
                 <li className="nav-item">
-                    <a className="nav-link active" href="/create-recipe">Create New Recipe</a>
+                    <Link to="/create-recipe" style={{ textDecoration: 'none' }}>Create New Recipe</Link>
                 </li>
                 <li><hr className="dropdown-divider/"/></li>
                 <li className="nav-item">
-                    <a className="nav-link active" href="/in-stock">My Ingredients</a>
+                    <Link to="/in-stock" style={{ textDecoration: 'none' }}>My Ingredients</Link>
                 </li>
                 <li><hr className="dropdown-divider/"/></li>
                 <li className="nav-item">
-                    <a className="nav-link active" href="/input-portal">Input Ingredients Portal</a>
+                    <Link to="/input-portal" style={{ textDecoration: 'none' }}>Input Ingredients Portal</Link>
                 </li>
                 <li><hr className="dropdown-divider/"/></li>
                 <li className="nav-item dropdown">
@@ -33,9 +34,13 @@ function Sidebar() {
                     User Menu
                     </a>
                     <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="/">Log In</a></li>
-                    <li><hr className="dropdown-divider/"/></li>
-                    <li><a className="dropdown-item" href="/">Create Profile</a></li>
+                        <li className="dropdown-item">
+                            <Link to="/login-page" style={{ textDecoration: 'none' }}>Log In</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                        <li className="dropdown-item">
+                            <Link to="/profile-page" style={{ textDecoration: 'none' }}>Create Profile</Link>
+                        </li>
                     </ul>
                 </li>
                 </ul>
