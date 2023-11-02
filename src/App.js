@@ -19,7 +19,8 @@ function App() {
 
     <div className="App" data-bs-theme="light">
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path='/' element={<Landing/>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/input-portal' element={<IngredientsInput/>}/>
@@ -27,7 +28,7 @@ function App() {
         <Route path='/login-page' element={<Login/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
-        <Route path='/landing' element={<Landing/>}/>
+        
       </Routes>
       
     </div>
