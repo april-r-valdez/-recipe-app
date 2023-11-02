@@ -9,7 +9,7 @@ import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 import RecipeFromAPI from './components/Utils/RecipeFromAPI';
 import APISearch from './widgets/APISearch';
 import Landing from './scenes/LandingScene/Landing';
-
+import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
@@ -30,6 +30,7 @@ function App() {
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
         <Route path='/landing' element={<Landing/>}/>
+        <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
       </Routes>
       
     </div>
