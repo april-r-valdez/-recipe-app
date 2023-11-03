@@ -207,23 +207,23 @@
 
 #### Contributions
 
-**Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries" 
+**Brent**: "provided users with a tool to help them create their own recipes and updated the navigation bar so they can navigate through the website more easily" 
 
   - `Jira Task: Create sidebar component and update sidebar` 
     - [Scrum-71](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-71), 
-    [Bitbucket]() 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-71-create-sidebar-component) 
   - `Jira Task: Customize and design Create Recipes page` 
     - [Scrum-74](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-74), 
-    [Bitbucket]() 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-74-customize-and-design-create-recipes) 
   - `Jira Task: Add directions and customize display to Create Recipe` 
     - [Scrum-72](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-72), 
-    [Bitbucket]() 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-72-add-directions-and-customize-display) 
   - `Jira Task: Add function that removes entries in Create Recipe` 
     - [Scrum-75](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-75), 
-    [Bitbucket]() 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-75-add-function-that-removes-entries) 
   - `Jira Task: Update navbar and sidebar with new components` 
     - [Scrum-70](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-70),
-    [Bitbucket]() 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-70-include-new-routes-for-sidebar) 
 <br />
 
 #### Reports
@@ -234,9 +234,9 @@
 
 **Brent**:
 
-  - Develop consistent layout for application
-  - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
-  - Add images to recipes so our users can visualize what they're making
+  - Add a submit button to the Create Recipe page so users can save their recipes to our database
+  - Create a tool for user's to add images to their newly created recipe
+  - Add an API tool to the Create Recipe page so user's can get help with creating their own recipes
 <br />
 
 <!-- If you have screenshots you'd like to share, include them here. -->
