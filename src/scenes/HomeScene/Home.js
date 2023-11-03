@@ -1,4 +1,3 @@
-import Navbar from "../../widgets/Navbar";
 import InputIngredient from "../../widgets/SearchByIngredient";
 import FeaturedSection from "../../widgets/FeaturedSection";
 import { Link } from "react-router-dom";

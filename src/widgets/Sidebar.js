@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 
 function Sidebar() {
@@ -14,19 +16,19 @@ function Sidebar() {
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li><hr className="dropdown-divider/"/></li>
                     <li className="nav-item">
-                        <a className="nav-link active" href="/home">Home</a>
+                        <Link className="nav-link active" to="/home">Home</Link>
                     </li>
                     <li><hr className="dropdown-divider/"/></li>
                     <li className="nav-item">
-                        <a className="nav-link active" href="/create-recipe">Create Recipe</a>
+                        <Link className="nav-link active" to="/create-recipe">Create Recipe</Link>
                     </li>
                     <li><hr className="dropdown-divider/"/></li>
                     <li className="nav-item">
-                        <a className="nav-link active" href="/in-stock">In Stock</a>
+                        <Link className="nav-link active" to="/in-stock">In Stock</Link>
                     </li>
                     <li><hr className="dropdown-divider/"/></li>
                     <li className="nav-item">
-                        <a className="nav-link active" href="/input-portal">Input Ingredients Portal</a>
+                        <Link className="nav-link active" to="/input-portal">Input Ingredients Portal</Link>
                     </li>
                     <li><hr className="dropdown-divider/"/></li>
                     <li className="nav-item dropdown">
@@ -34,9 +36,9 @@ function Sidebar() {
                         User Menu
                         </a>
                         <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="/login-page">Log In</a></li>
+                        <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
                         <li><hr className="dropdown-divider/"/></li>
-                        <li><a className="dropdown-item" href="/profile-page">Profile</a></li>
+                        <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
                         </ul>
                     </li>
                 </ul>
