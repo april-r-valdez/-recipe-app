@@ -202,6 +202,43 @@
   - Create feature that lets users construct their own recipes from scratch
 <br />
 
+
+### Sprint 2
+
+#### Contributions
+
+**Brent**: "provided users with a simple form for saving, storing, and displaying their ingredient entries" 
+
+  - `Jira Task: Create sidebar component and update sidebar` 
+    - [Scrum-71](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-71), 
+    [Bitbucket]() 
+  - `Jira Task: Customize and design Create Recipes page` 
+    - [Scrum-74](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-74), 
+    [Bitbucket]() 
+  - `Jira Task: Add directions and customize display to Create Recipe` 
+    - [Scrum-72](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-72), 
+    [Bitbucket]() 
+  - `Jira Task: Add function that removes entries in Create Recipe` 
+    - [Scrum-75](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-75), 
+    [Bitbucket]() 
+  - `Jira Task: Update navbar and sidebar with new components` 
+    - [Scrum-70](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-70),
+    [Bitbucket]() 
+<br />
+
+#### Reports
+
+![Burnup Chart]
+
+#### Next Steps
+
+**Brent**:
+
+  - Develop consistent layout for application
+  - Add links to YouTube videos that offer tip and tutorials on how to cook difficult recipes
+  - Add images to recipes so our users can visualize what they're making
+<br />
+
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Setup
