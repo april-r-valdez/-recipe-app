@@ -1,13 +1,13 @@
 // Colors
-$primary: #e3d5ca
-$secondary: #86ada0
-$success: #94E8B4
-$info: #5E9C61
-$warning: #BD9371
-$danger: #BD7171
+$primary: #003049
+$secondary: #fcbf49
+$success: #f77f00
+$info: #eae2b7
+$warning: #d62828
+$danger: #d62828
 
 $light: #f1faee
-$dark: #003049
+$dark: #001525
 
 $white: $light
 $gray-100: #f8f9fa
@@ -22,7 +22,7 @@ $gray-900: #212529
 $black: $dark
 
 // Spacing
-$spacer: 1rem
+$spacer: 0.2rem
 
 // Options
 $enable-rounded: true
@@ -39,7 +39,7 @@ $body-color: $gray-900
 
 // Grid
 $grid-columns: 12
-$grid-gutter-width: 30px
+$grid-gutter-width: 20px
 
 // Link
 $link-color: $white
@@ -48,21 +48,26 @@ $link-hover-color: darken($link-color, 15%)
 // List (ingredients)
 $list-group-color: $white // text color
 $list-group-bg: $secondary // box color
-$list-group-border-radius: 10px
+$list-group-border-radius: 0px
 
 // Components
 $border-width: 1px
-$border-radius: 0.25rem
+$border-radius: 0.1rem
 
 // Fonts
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+
+@import url('https://fonts.googleapis.com/css?family=Bungee')
+@import url('https://fonts.googleapis.com/css?family=Kenia')
+$font-family-sans-serif: Bungee, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
 $font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
-$font-family-base: $font-family-sans-serif
 $font-size-base: 1rem
 
+$headings-font-family: Kenia
+$headings-color: inherit
+
 // Buttons
-$input-btn-padding-y: 0.5rem
-$input-btn-padding-x: 0.75rem
+$input-btn-padding-y: 1rem
+$input-btn-padding-x: 1.25rem
 $input-btn-line-height: 1.25
 
 $btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075)
@@ -104,11 +109,11 @@ $navbar-light-toggler-border-color: $white
 
 // Cards
 $card-spacer-y: 0.75rem
-$card-spacer-x: 1.25rem
-$card-border-width: 1px
+$card-spacer-x: 0rem
+$card-border-width: 0px
 $card-border-radius: $border-radius
 $card-border-color: rgba($black, 0.125)
-$card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width})
+$card-inner-border-radius: 10rem
 $card-cap-bg: rgba($black, 0.03)
 $card-bg: $light
 $card-img-overlay-padding: 1.25rem
@@ -122,31 +127,11 @@ $card-columns-margin: $card-spacer-y
 // CSS
 .list-group-item
     border-top-left-radius: 0
-    border-top-right-radius: 10px
+    border-top-right-radius: 0px
     border-bottom-left-radius: 0
-    border-bottom-right-radius: 10px
+    border-bottom-right-radius: 0px
 
 .offcanvas
     background-color: $secondary
-
-// Landing Page
-$landing-color: $secondary
-
-.landing
-    background-color: $landing-color
-
-.landing-overlay
-    background-color: darken(rgba($primary, 0.8), 80%)
-    width: 100%
-    height: 100%
-    position: absolute
-
-.landing-content
-    background-color: $landing-color
-.landing-content-alt
-    color: $light
-
-.landing-headers
-    color: $light
 
 @import '../../../App.css'
