@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route } from 'react-router-dom';
 
 import './App.css';
+import Navbar from './widgets/Navbar';
 import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
@@ -9,8 +10,6 @@ import IngredientsInput from './widgets/IngredientInput/IngredientInput';
 import RecipeFromAPI from './components/Utils/RecipeFromAPI';
 import APISearch from './widgets/APISearch';
 import Landing from './scenes/LandingScene/Landing';
-
-
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
 
@@ -18,6 +17,10 @@ function App() {
   return (
 
     <div className="App" data-bs-theme="light">
+      <div className="container-xl">
+        <Navbar />
+        <br></br>
+      </div>
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
@@ -28,7 +31,6 @@ function App() {
         <Route path='/login-page' element={<Login/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
-        
       </Routes>
       
     </div>

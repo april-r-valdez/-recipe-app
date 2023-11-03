@@ -94,10 +94,7 @@ const  UserInput = () => {
 
     return (  
         <div className="container-xl">
-            <div className="row">
-                <Navbar/>
-            </div>
-            <br></br><h1 className="display-5">Create Recipe</h1><br></br><br></br>
+            <h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
                     <p className="h4">Information</p><br></br>
