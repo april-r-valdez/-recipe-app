@@ -13,6 +13,7 @@ import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
+import RecipeFromDB from './components/Utils/RecipeFromDB';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/login-page' element={<Login/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
+        <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
       </Routes>
