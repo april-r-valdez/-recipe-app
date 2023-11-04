@@ -4,7 +4,7 @@ import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 
 function Sidebar() {
     return (
-        <div className="offcanvas offcanvas-start" data-bs-dismiss="offcanvas" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div className="offcanvas-header">
                 <form class="d-flex mt-3 col-10 mx-auto my-auto search-box" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search for recipe" aria-label="Search"/>
@@ -18,31 +18,35 @@ function Sidebar() {
             </div>
             <div className="offcanvas-body">
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li><hr className="dropdown-divider/"/></li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/home">Home</Link>
-                    </li>
-                    <li><hr className="dropdown-divider/"/></li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/create-recipe">Create Recipe</Link>
-                    </li>
-                    <li><hr className="dropdown-divider/"/></li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/in-stock">In Stock</Link>
-                    </li>
-                    <li><hr className="dropdown-divider/"/></li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/input-portal">Input Ingredients Portal</Link>
-                    </li>
-                    <li><hr className="dropdown-divider/"/></li>
+                    <div data-bs-dismiss="offcanvas">
+                        <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/home">Home</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/create-recipe">Create Recipe</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/in-stock">In Stock</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/input-portal">Input Ingredients Portal</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                    </div>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         User Menu
                         </a>
                         <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
-                        <li><hr className="dropdown-divider/"/></li>
-                        <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
+                        <div data-bs-dismiss="offcanvas">
+                            <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
+                            <li><hr className="dropdown-divider/"/></li>
+                            <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
+                        </div>
                         </ul>
                     </li>
                 </ul>
