@@ -5,36 +5,10 @@ import { Link } from "react-router-dom"
 
 function Home() {
     return (
-        <div className="container-xl">
-            <div className="row">
-                <Navbar/>
-            </div>
-            <div className="row">
-               
-            </div>
-            <div className="row">
-                <div className="col-6 col-lg-1">
-                    {/* This is an empty row to be used */}
-                </div>
-                <div className="col-sm-6 col-lg-8">
-                    <FeaturedSection/>   
-                </div>
-                <div className="col-6 col-lg-3">
-                    <div className="row">
-                        <InputIngredient/> 
-                    </div>
-                    <div className="row">
-                        <ul class="list-group">
-                            <li class="list-group-item"><Link to="/create-recipe">Create Recipe</Link></li>
-                            <li class="list-group-item"><Link to="/in-stock">My Ingredients</Link></li>
-                            <li class="list-group-item"><Link to="/input-portal">Input Ingredients Portal</Link></li>
-                        </ul>
-                    </div>
-                    
-                </div>
-
-            </div>
-            
+        <div className="container-lg ">
+            <Navbar/>
+            <InputIngredient/>
+            <FeaturedSection/>            
         </div>
     )
 }
