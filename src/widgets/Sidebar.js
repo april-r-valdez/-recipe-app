@@ -42,11 +42,11 @@ function Sidebar() {
                         User Menu
                         </a>
                         <ul className="dropdown-menu">
-                        <div data-bs-dismiss="offcanvas">
-                            <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
-                            <li><hr className="dropdown-divider/"/></li>
-                            <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
-                        </div>
+                            <div data-bs-dismiss="offcanvas">
+                                <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
+                                <li><hr className="dropdown-divider/"/></li>
+                                <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
+                            </div>
                         </ul>
                     </li>
                 </ul>
