@@ -228,7 +228,7 @@
 
 #### Reports
 
-![Burnup Chart]
+![Burnup Chart](images/sprint2-burnup-chart.png)
 
 #### Next Steps
 
