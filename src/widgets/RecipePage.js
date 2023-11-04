@@ -1,12 +1,9 @@
 import React from 'react'
-import NavBar from "./Navbar.js";
 import RatingStars from '../components/Utils/RatingStars.js';
 
 const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
-      <NavBar />
-
       {/* Recipe Title */}
       <div className='row mt-3'>
         <h2><strong>{name}</strong></h2>
