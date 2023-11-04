@@ -6,9 +6,17 @@ import { Link } from "react-router-dom"
 function Home() {
     return (
         <div className="container-lg ">
-            <Navbar/>
-            <InputIngredient/>
-            <FeaturedSection/>            
+            <div className="row mb-3">
+                <Navbar/>
+            </div>
+            <div className="row">
+            <   InputIngredient/>
+
+            </div>
+            <div className="row">
+                <FeaturedSection/>        
+            </div>
+                      
         </div>
     )
 }

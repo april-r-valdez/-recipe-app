@@ -65,10 +65,10 @@ function InputIngredient () {
             onClick={handleHoverEnter}
             onMouseLeave={handleHoverLeave}
             >
-            <div className="mb-3">
-                <label className="form-label">SEARCH RECIPE</label>
+            <div className="row">
+                <label className="fw-medium text-start">SEARCH RECIPE</label>
                 <div className="input-group mb-3" >
-                    <span class="input-group-text" id="basic-addon3">USING</span>
+                    <span className="input-group-text" id="basic-addon3">USING</span>
                     <input 
                         type="text" className="form-control" 
                         placeholder="ingredients" 
@@ -84,33 +84,72 @@ function InputIngredient () {
             <div className={`collapse ${isHovered ? 'show' : ''}`} id="ingredientSearchCollapse">
                 <div className="row">
                     <div className="col">
-                        <label className="form-label">Options</label>
-                    </div>
-                    <div className="col">
                         <div className="container">
                             <div className="row">
-                                <label className="form-label">Ingredient list <span className="badge text-bg-secondary ">{ingredients.length}</span></label>
-                                <div className="list-group list-group-flush" style={{ maxHeight: '300px', overflowY: 'scroll' }}>
+                                <label className="form-label">Options</label>
+                            </div>
+                            <div className="row">
+                                <div className="col">                                    
+                                    <div class="rounded-pill bg-warning-subtle p-2 ">
+                                        <div class="form-check">                                
+                                        <input className="form-check-input" type="radio" name="glutenFreeRadio" id="glutenFreeRadio"/>
+                                        <label class="form-check-label" for="glutenFreeRadio">Gluten free</label>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                <div className="col">
+                                    <div class="rounded-pill bg-warning-subtle p-2"> 
+                                        <div class="form-check">
+                                        <input className="form-check-input" type="radio" name="dairyFreeRadio" id="dairyFreeRadio"/>
+                                        <label className="form-check-label" for="dairyFreeRadio">Dairy free</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div class="rounded-pill bg-warning-subtle p-2">
+                                        <div class="form-check">
+                                        <input className="form-check-input" type="radio" name="veganRadio" id="veganRadio"/>
+                                        <label className="form-check-label" for="veganRadio"> Vegan</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="col-md-5">
+                        <div className="container">
+                        <label className="form-label">Ingredient list <span className="badge text-bg-warning ">{ingredients.length}</span></label>
+                            <div className="row  mb-3">
+                                
+                                <div className="list-group list-group-flush" style={{ maxHeight: '200px', overflowY: 'scroll' }}>
                                     {ingredients.map((ingredient, index) => (
-                                        <li key={index} 
-                                        className="list-group-item d-flex justify-content-between align-items-center">
-                                            {ingredient}
-                                            <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
-                                            <span aria-hidden="true" className="text-dark">&times;</span>
-                                            </button>
-                                        </li>
+                                        <ul className="list-group list-group-flush">
+                                             <li key={index} 
+                                                className="list-group-item d-flex justify-content-between align-items-center">
+                                                {ingredient}
+                                                <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
+                                                <span aria-hidden="true" className="text-dark">&times;</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                       
                                     ))}
                                     
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="hstack gap-2">
-                                    <button type="button" className="btn btn-outline-secondary">SUBMIT</button>
-                                    <div class="vr"></div>
-                                    <button type="button" className="btn btn-outline-secondary" onClick={handleExternalSearch}>External Search</button>
-                                    <div class="vr"></div>
-                                    <button type="button" className="btn btn-outline-danger" onClick={resetIngredientList}>RESET</button>                                
+                            <div className="row  mb-3">
+                                <div className="col">
+                                    <div className="align-items-center">
+                                        <button type="button" className="btn btn-outline-secondary">SUBMIT</button>
+                                        
+                                        <button type="button" className="btn btn-outline-secondary gap-2" onClick={handleExternalSearch}>External Search</button>
+                                       
+                                        <button type="button" className="btn btn-outline-danger" onClick={resetIngredientList}>RESET</button>                                
+                                    </div>
                                 </div>
+                                
                             </div>
                             
                             
@@ -122,49 +161,6 @@ function InputIngredient () {
 
         </div>
     )
-        {/* <div className="card text-start border-light mb-3" data-bs-theme="light">
-            <div className="card-header text-bg-dark text-center fw-bolder">SEARCH USING INGREDIENTS</div>
-            <div className="card-body">
-                <h6 className="card-title">CUSTOM INGREDIENTS</h6>
-                <div className="row g-1">
-                    <div className="col-md">
-                        <div className="input-group mb-3">
-                            <input type="text" className="form-control" placeholder="Add ingredient" aria-label="New Ingredient" aria-describedby="button-addon2" onChange={handleInputChange} value={newItem} onKeyUp={handleKeyUp}/>
-                            <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={addItem}>ADD</button>
-                        </div>
-                    </div> 
-                </div>
-                <div className="row g-1">
-                    <div className="col-md">
-                        <div className="card">
-                            <div className="card-header text-center"> Ingredient List <span className="badge text-bg-secondary ">{ingredients.length}</span></div>
-                            <div className="card-body">
-                                <div className="list-group list-group-flush" style={{ maxHeight: '300px', overflowY: 'scroll' }}>
-                                    {ingredients.map((ingredient, index) => (
-                                        <li key={index} 
-                                        className="list-group-item d-flex justify-content-between align-items-center">
-                                            {ingredient}
-                                            <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
-                                            <span aria-hidden="true" className="text-dark">&times;</span>
-                                            </button>
-                                        </li>
-                                    ))}
-                                </div>
-                                <div className="d-grid gap-2 col-2 mx-auto" role="group" aria-label="Basic example">
-                                    <button type="button" className="btn btn-secondary" onClick={resetIngredientList}>RESET</button>                                   
-                                </div>                            
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <div className="d-grid gap-2 col-6 mx-auto" role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-primary">SUBMIT</button>                                   
-            </div> 
-            <div className="d-grid gap-2 col-6 mx-auto mt-2" role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-primary" onClick={handleExternalSearch}>External Search</button>                                   
-            </div>
-        </div> */}
 }
 
 export default InputIngredient;
