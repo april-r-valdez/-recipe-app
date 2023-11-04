@@ -26,7 +26,8 @@ function Navbar() {
                             </form>
                             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <img class="avatar avatar-24 bg-light rounded-circle text-white p-1"
-                                src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"></img>
+                                src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
+                                alt="avatar"></img>
                             </button>
                             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
