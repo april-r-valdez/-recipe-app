@@ -9,7 +9,7 @@ const Ingredient = ({inputs, handleChange}) => {
                 id='ingredient'
                 name='ingredient'
                 value={inputs.ingredient}
-                placeholder='Ingredient (ex: eggs, milk, butter...)'
+                placeholder='Ingredient (ex: eggs, milk, butter,...)'
                 onChange={handleChange}
             ></input><br></br>
             <input
