@@ -32,9 +32,11 @@ function ThemeSwitcher() {
 
   return (
     <div>
-      <button class="btn btn-tertiary" onClick={handleNextTheme}>
-        [DEV] NEXT THEME
-      </button>
+      <div class="d-grid gap-2 col-10 mx-auto">
+        <button class="btn btn-primary" onClick={handleNextTheme}>
+          Switch Theme
+        </button>
+      </div>
 
       <div
         className="modal show"

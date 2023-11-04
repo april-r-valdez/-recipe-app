@@ -66,9 +66,9 @@ function InputIngredient () {
             onMouseLeave={handleHoverLeave}
             >
             <div className="row">
-                <label className="fw-medium text-start">SEARCH RECIPE</label>
+                <label className="fw-medium text-warning text-start">SEARCH RECIPE</label>
                 <div className="input-group mb-3" >
-                    <span className="input-group-text" id="basic-addon3">USING</span>
+                    <span className="input-group-text fw-medium text-warning" id="basic-addon3">USING</span>
                     <input 
                         type="text" className="form-control" 
                         placeholder="ingredients" 

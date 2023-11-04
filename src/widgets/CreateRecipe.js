@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Navbar from "./Navbar";
 import Ingredient from '../components/Common/Ingredient';
 import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
@@ -82,11 +81,11 @@ const  UserInput = () => {
     }
 
     const handleDelete = (_, id, deleteType) => {
-        if(deleteType == "ingredient") {
+        if(deleteType === "ingredient") {
             const updatedIngredients = ingredientsList.filter((_, index) => index !== id);
             setIngredientsList(updatedIngredients);
         }
-        else if(deleteType == "direction") {
+        else if(deleteType === "direction") {
             const updatedDirections = directionsList.filter((_, index) => index !== id);
             setDirectionsList(updatedDirections);
         }
@@ -94,10 +93,7 @@ const  UserInput = () => {
 
     return (  
         <div className="container-xl">
-            <div className="row">
-                <Navbar/>
-            </div>
-            <br></br><h1 className="display-5">Create Recipe</h1><br></br><br></br>
+            <h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
                     <p className="h4">Information</p><br></br>

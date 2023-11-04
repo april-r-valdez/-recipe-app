@@ -3,6 +3,7 @@ import { storage } from "../../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useState, useEffect } from "react";
 import RatingStars from "../Utils/RatingStars";
+import { Link } from "react-router-dom";
 
 function RecipeCard(props) {
     const [myRecipe, setMyRecipe] = useState();
@@ -10,6 +11,7 @@ function RecipeCard(props) {
     const [recipeTitle, setTitle] = useState();
     const [recipeRating, setRating] = useState();
     const [loading, setLoading] = useState(true);
+    const [recipeId, setRecipeId] = useState("")
 
 
     useEffect(() => {
@@ -23,6 +25,9 @@ function RecipeCard(props) {
                 if (recipeDoc.exists()) {
                     const recipe = recipeDoc.data();
                     setMyRecipe(recipe);
+                    
+                    // get recipe id to pass in the url parameter
+                    setRecipeId(recipeDoc.id);
                     
                     // get Title
                     const title = recipe.name;
@@ -61,23 +66,25 @@ function RecipeCard(props) {
 
 
     return (
-        <div className="card" aria-hidden="true">
-            {recipeImage && ( 
-                <img src={recipeImage} className="card-img-top" alt="..." style={{ maxHeight: '100px', objectFit: 'cover' }}/>
-            )}
-            
-            <div className="card-body">
-                <h5 className="font-family-sans-serif">
-                    {recipeTitle}
-                </h5>
+        <Link to={'/recipe/' + recipeId}>
+            <div className="card h-100" aria-hidden="true">
+                {recipeImage && ( 
+                    <img src={recipeImage} className="card-img-top" alt="..." style={{ maxHeight: '100px', objectFit: 'cover' }}/>
+                )}
+                
+                <div className="card-body">
+                    <h5 className="font-family-sans-serif">
+                        {recipeTitle}
+                    </h5>
 
-                {loading ? (<p>Loading...</p>) :
-                    (<p className="card-text">
-                        <RatingStars rating={recipeRating} />
-                    </p>)
-                }
+                    {loading ? (<p>Loading...</p>) :
+                        (<p className="card-text">
+                            <RatingStars rating={recipeRating} />
+                        </p>)
+                    }
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
