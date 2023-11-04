@@ -4,7 +4,7 @@ import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 
 function Sidebar() {
     return (
-        <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div className="offcanvas offcanvas-start" data-bs-dismiss="offcanvas" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div className="offcanvas-header">
                 <form class="d-flex mt-3 col-10 mx-auto my-auto search-box" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search for recipe" aria-label="Search"/>
