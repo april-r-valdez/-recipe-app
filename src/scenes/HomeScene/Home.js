@@ -1,4 +1,3 @@
-import Navbar from "../../widgets/Navbar";
 import InputIngredient from "../../widgets/SearchByIngredient";
 import FeaturedSection from "../../widgets/FeaturedSection";
 import { Link } from "react-router-dom";
@@ -6,9 +5,6 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="container-xl">
-      <div className="row">
-        <Navbar />
-      </div>
       <div className="row"></div>
       <div className="row">
         <div className="col-6 col-lg-1">
@@ -18,6 +14,7 @@ function Home() {
           <FeaturedSection />
         </div>
         <div className="col-6 col-lg-3">
+          <br></br>
           <div className="row">
             <InputIngredient />
           </div>
@@ -27,7 +24,7 @@ function Home() {
                 <Link to="/createrecipe">Create Recipe</Link>
               </li>
               <li class="list-group-item">
-                <Link to="/instock">My Ingredients</Link>
+                <Link to="/instock">In Stock</Link>
               </li>
               <li class="list-group-item">
                 <Link to="/inputportal">Input Ingredients Portal</Link>
