@@ -29,9 +29,9 @@ const APISearch = () => {
         <div className="container" style={{maxWidth: "1000px"}}>
             <Navbar/>
             <div className="row row-cols-1 row-cols-md-3 mt-3 mb-4 g-4">
-                {searchedRecipes.map((recipe) => (
-                    <Link to={'/externalRecipe/' + recipe.id}>
-                        <div className='card h-100' key={recipe.id}>
+                {searchedRecipes.map((recipe, index) => (
+                    <Link to={'/externalRecipe/' + recipe.id} key={index}>
+                        <div className='card h-100'>
                             <img className='card-img-top' alt='...' src={recipe.image}/>
                             <div className='card-body'>
                                 <h5 className='card-title'>{recipe.title}</h5>
