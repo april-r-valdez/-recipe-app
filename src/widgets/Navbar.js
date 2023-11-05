@@ -1,6 +1,8 @@
 import DisplayToggle from "../components/Utils/DisplayMode";
 import Sidebar from "../widgets/Sidebar";
 import Login from "../Login"
+import { Link } from "react-router-dom";
+
 
 function Navbar() {
     return (
@@ -11,7 +13,7 @@ function Navbar() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <Sidebar/>
-                    <a className="navbar-brand fw-bolder px-2" href="/home"> RECIPE GENERATOR</a>
+                    <Link className="navbar-brand fw-bolder px-2" to="/home" >  RECIPE GENERATOR </Link>
                 </div>
                 <div classname="d-flex align-items-center">
                         <div className="col-12 d-flex justify-content-end align-items-center">
