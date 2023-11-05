@@ -258,6 +258,13 @@
   - Add an API tool to the Create Recipe page so user's can get help with creating their own recipes
 <br />
 
+**Viet**:
+
+  - Implement functionalities to search recipes by ingredients or by recipe name from database
+  - Add more recipe's information to recipe page
+  - Set up more restricted Firebase security rules
+<br />
+
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Setup
