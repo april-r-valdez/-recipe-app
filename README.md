@@ -226,6 +226,25 @@
     [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-70-include-new-routes-for-sidebar) 
 <br />
 
+**Viet**: "implemented functionalities to fetch and save recipes from REST API calls to Firestore database, set up basic Firebase security rules"
+
+  - `Jira Task: Implement REST API call to fetch recipes based on user's ingredients`
+    - [Scrum-95](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-95),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-95-implement-rest-api-call-to-fetch)
+  - `Jira Task: Add functionalities to save recipes returned from API calls to the database`
+    - [Scrum-94](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-94),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-94-add-functionalities-to-save-rec)
+  - `Jira Task: Add link to recipe card to redirect user to recipe page`
+    - [Scrum-99](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-99),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-99-add-link-to-recipe-card-to-redi)
+  - `Jira Task: Research Firestore authentication and security rules`
+    - [Scrum-90](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-90),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-90-research-firestore-authenticati)
+  - `Jira Task: Set up Firestore security rules to manage access to the database`
+    - [Scrum-91](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-91),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-91-set-up-firestore-security-rules)
+<br />
+
 #### Reports
 
 ![Burnup Chart](images/sprint2-burnup-chart.png)
