@@ -1,12 +1,9 @@
 import React from "react";
-import Navbar from "../../widgets/Navbar";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function Landing() {
   return (
     <div>
-      <Navbar />
-
       <Parallax
         pages={3.1}
         class="landing"
