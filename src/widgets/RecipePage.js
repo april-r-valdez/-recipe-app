@@ -24,8 +24,8 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
         <div className='col'>
           <h4><strong>Ingredients</strong></h4>
           <ul className="list-group list-group-flush">
-            {ingredients.map((ingredient) => (
-              <li className='list-group-item' key={ingredient.id}>{ingredient}</li>
+            {ingredients.map((ingredient, index) => (
+              <li className='list-group-item' key={index}>{ingredient}</li>
             ))}
           </ul>
         </div>
@@ -36,7 +36,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
         <h4><strong>Directions</strong></h4>
         <ul className="list-group list-group-flush">
           {directions.map((direction, index) => (
-            <li className="list-group-item d-flex justify-content-between align-items-start" key={direction.id}>
+            <li className="list-group-item d-flex justify-content-between align-items-start" key={index}>
               <div>
                 <strong>Step {index+1}</strong><br/> {direction}
               </div>

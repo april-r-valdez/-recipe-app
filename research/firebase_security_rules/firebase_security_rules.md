@@ -55,3 +55,10 @@ service cloud.firestore {
 ## Conclusion
 For development, we could consider pattern 1, which allows anyone to read and write to the database, since we might want relatively open access to our data. However, once our application is ready for production, we will switch to pattern 4, which allows anyone to read the data, but only allows authenticated owners to modify the data.
 
+
+## Firebase Security Rules for Sprint 2
+Since our application is still in the development stage, and to make it easy for testing purposes, the security rules have been set such that anyone could read from and write to our Firestore database and Firebase Storage:
+```
+allow read, write: if true;
+```
+The rules will be changed in the next sprint (after we enable authentication for users) in that anyone could read data from our database, but only authenticated users can create or modify the data in it.
