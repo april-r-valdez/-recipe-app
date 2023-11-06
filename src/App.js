@@ -13,6 +13,7 @@ import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
+import ProfileEdit from './widgets/ProfileEdit';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
+        <Route path='/edit-profile' element={<ProfileEdit/>}/>
       </Routes>
       
     </div>
