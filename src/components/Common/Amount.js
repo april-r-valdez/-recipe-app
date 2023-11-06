@@ -2,15 +2,15 @@
 const Amount = ({inputs, handleChange}) => {
     return (
         <div className="amount">
+            <label for="amount">Amount:</label>
             <input
-                className="form-control"
                 required
                 type='number'
                 min='1'
                 id='amount'
                 name='amount'
                 value={inputs.amount}
-                placeholder='Amount (ex: 1 egg, 2 cups,...)'
+                placeholder='Ex: 1 egg, 2 cups,...'
                 onChange={handleChange}
             ></input> 
         </div>

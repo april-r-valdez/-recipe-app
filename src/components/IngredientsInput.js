@@ -1,40 +1,37 @@
 import React, { useState } from 'react';
+import IngredientsList from './IngredientsList';
 
-const MyStock = () => {
+const IngredientsInput = () => {
 
     const [newName, setnewName] = useState("");
     const [newMeasurement, setnewMeasurement] = useState("");
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
-    const renderIngredient = (ingredient, index) =>{
-      return(
-        <tr key = {index}>
-          <td>{ingredient.amount}</td>
-          <td>{ingredient.name}</td>
-        </tr>
-      )
-    }
-
+    
     const handleAdd = () => {
       let newIngredient = {
         amount: newMeasurement,
         name: newName
       }
 
+      //create a new array that has All user ingredients
       let updateIngredientsArr =[...AllIngredients];
+      //push the new ingredient to end of array
       updateIngredientsArr.push(newIngredient);
+      //make the AllIngredients array be the new array with new element
       setAllIngredients(updateIngredientsArr);
+
+      //set input boxes back to empty
+      setnewName("")
+      setnewMeasurement("")
 
     }
     return (
       <>
         <div className="container-sm">
-          <div className="rounded-pill bg-primary-subtle mb-2">
-            <label className=" fw-bold display-6 ">MY PANTRY</label>     
-          </div>
+          <p className="text-start h4">Add ingredients to your pantry.</p>
           <div className="container-sm">
-          <p className="text-start h5">Add ingredients to your pantry.</p>
             <div className="input-group mb-3">
               <button
                 className="btn btn-outline-secondary dropdown-toggle"
@@ -69,7 +66,6 @@ const MyStock = () => {
                 type="text"
                 value={newName}
                 placeholder="Add ingredient"
-                aria-label="Last name"
                 className="form-control w-50"
                 onChange={(e) => setnewName(e.target.value)}
               />
@@ -83,22 +79,10 @@ const MyStock = () => {
               </button>
             </div>
           </div>
-        </div>
-        <div className="container-sm text-center">
-          <p className="h3">In Stock</p>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Amount</th>
-                <th scope="col">Name</th>
-              </tr>
-            </thead>
-            <tbody>{AllIngredients.map(renderIngredient)}</tbody>
-          </table>
+          <IngredientsList ingredients = {AllIngredients}/>
         </div>
       </>
     );
 }
  
-export default MyStock;
+export default IngredientsInput;
