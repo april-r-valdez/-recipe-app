@@ -5,6 +5,8 @@ import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
 import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
+import ProfilePage from './widgets/ProfilePage';
+
 
 
 const firebaseConfig = {

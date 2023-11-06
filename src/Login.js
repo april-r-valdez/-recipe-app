@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { signup, login, useAuth, logout} from "./firebase";
+import ProfilePage from './widgets/ProfilePage';
 
 const Login = () => {
 
@@ -45,8 +46,16 @@ const Login = () => {
                     </div>
                     <input ref={emailLog} type="text" name="" className="form-control" placeholder="Email or Phone"/>
                     <input ref={passLog} type="password" name="" className="form-control" placeholder="Password"/>
+                    {!curUser &&
+                    <>
                     <button disabled={curUser} onClick={handleLogin} className="btn btn-primary">Login</button>
+                    </>}
+                    
+                    {curUser &&
+                    <>
                     <button disabled={!curUser} onClick={handleLogout} className="btn btn-primary">Logout</button>
+                    </>}
+                    
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
@@ -56,10 +65,16 @@ const Login = () => {
                     </div>
                     <input ref={emailRef}type="text" name="" className="form-control" placeholder="Email"/>
                     <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
+                    {!curUser &&
+                    <>
                     <button disabled={curUser} onClick={handleSignup} className="btn btn-primary">Signup</button>
+                    </>}
+                    
                   </div>
                 </div>
                </div>
+
+               {curUser && <ProfilePage/>}
       </div>
      );
 }

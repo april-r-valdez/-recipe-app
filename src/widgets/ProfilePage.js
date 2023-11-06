@@ -6,6 +6,7 @@ import defaultProfile from '../assets/images/defaultProfile.svg';
 const ProfilePage = () => {
     return (
       <div>
+
         <div class="container-sm">
           <Image src={defaultProfile} width="200" roundedCircle={true}></Image>
         </div>
