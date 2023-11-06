@@ -11,7 +11,6 @@ import APISearch from './widgets/APISearch';
 import Landing from './scenes/LandingScene/Landing';
 import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 import ProfilePage from './widgets/ProfilePage';
-import Login from './Login';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
 import ProfileEdit from './widgets/ProfileEdit';
 import Login from './widgets/Login';
