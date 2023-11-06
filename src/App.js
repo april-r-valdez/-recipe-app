@@ -13,6 +13,7 @@ import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 
 import ProfilePage from './widgets/ProfilePage';
 import Login from './Login';
+import ProfileEdit from './widgets/ProfileEdit';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
+        <Route path='/edit-profile' element={<ProfileEdit/>}/>
       </Routes>
       
     </div>

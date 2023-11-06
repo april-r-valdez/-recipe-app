@@ -36,7 +36,7 @@ const Login = () => {
         <div className="container-sm">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                 <button className="nav-link active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
-                <button class="nav-link " id="nav-signup-tab" data-bs-toggle="tab" data-bs-target="#nav-signup" type="button" role="tab" aria-controls="nav-signup" aria-selected="true">Signup</button>
+                <button className="nav-link " id="nav-signup-tab" data-bs-toggle="tab" data-bs-target="#nav-signup" type="button" role="tab" aria-controls="nav-signup" aria-selected="true">Signup</button>
             </div>
             <div className="tab-content" id="pills-tabContent">
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
@@ -48,12 +48,12 @@ const Login = () => {
                     <input ref={passLog} type="password" name="" className="form-control" placeholder="Password"/>
                     {!curUser &&
                     <>
-                    <button disabled={curUser} onClick={handleLogin} className="btn btn-primary">Login</button>
+                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
                     </>}
                     
                     {curUser &&
                     <>
-                    <button disabled={!curUser} onClick={handleLogout} className="btn btn-primary">Logout</button>
+                    <button onClick={handleLogout} className="btn btn-primary">Logout</button>
                     </>}
                     
                   </div>
@@ -67,14 +67,14 @@ const Login = () => {
                     <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
                     {!curUser &&
                     <>
-                    <button disabled={curUser} onClick={handleSignup} className="btn btn-primary">Signup</button>
+                    <button onClick={handleSignup} className="btn btn-primary">Signup</button>
                     </>}
                     
                   </div>
                 </div>
                </div>
 
-               {curUser && <ProfilePage/>}
+               {<ProfilePage/>}
       </div>
      );
 }
