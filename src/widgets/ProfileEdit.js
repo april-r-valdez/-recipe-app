@@ -2,10 +2,19 @@ import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
 import { Auth } from "firebase/auth";
 import { useAuth } from '../firebase';
+import React, { useState, useEffect } from 'react';
+
 
 const ProfileEdit = (props) => {
 
   const curUser = useAuth(); 
+  const [photoURL, setphotoURL] = useState(defaultProfile);
+
+  useEffect(() => {
+    if(curUser?.photoURL){
+      setphotoURL(curUser.photoURL);
+    }
+  }, [curUser]);
 
   const handleSave = () => {
     return ("hi"  );
@@ -17,18 +26,18 @@ const ProfileEdit = (props) => {
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="staticBackdropLabel"> Modal title </h1>
+                <h1 className="modal-title fs-5" id="staticBackdropLabel"> Edit Account Information </h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
               </div>
               <div className="modal-body">
               <div className="container">
               <Image
-                src={curUser?.photoURL}
-                width="200"
+                src={photoURL}
+                width="100"
                 roundedCircle={true}
               ></Image>
-              <button>Upload Profile Picture</button>
             </div>
+            <button type="button" className="btn btn-primary btn-sm">Upload Profile Picture</button>
             <div className="container">
               <div className="input-group">
                     <label className="input-group-text">Username: </label>
@@ -54,7 +63,7 @@ const ProfileEdit = (props) => {
                   <label className="input-group-text">Last name: </label>
                   <input  type="text" aria-label="Last name" className="form-control" />
                 </div>
-                <button type="button" className="btn btn-primary"> Reset Password? </button>
+                <button type="button" className="btn btn-primary btn-sm"> Reset Password? </button>
                 </div>
               </div>
               <div className="modal-footer">
