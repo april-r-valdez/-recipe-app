@@ -1,23 +1,40 @@
 import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
 import { Auth } from "firebase/auth";
-import { useAuth } from '../firebase';
+import { useAuth, uploadProfile } from '../firebase';
 import React, { useState, useEffect } from 'react';
 
+const inititalState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  userName: "",
+  phone: "",
+}
 
 const ProfileEdit = (props) => {
 
   const curUser = useAuth(); 
   const [photoURL, setphotoURL] = useState(defaultProfile);
-
+  const [photo, setPhoto] = useState(null);
+  const [loading, setLoading] = useState(false);
+  //const [data, setData] = useState();
+  //const {firstName, lastName, email, userName, phone} = data
+  
   useEffect(() => {
     if(curUser?.photoURL){
       setphotoURL(curUser.photoURL);
     }
   }, [curUser]);
 
+  const handleUpload = (e) => {
+    if(e.target.files[0]){
+        setPhoto(e.target.files[0]);
+      }
+  }
+
   const handleSave = () => {
-    return ("hi"  );
+    uploadProfile(photo, curUser, setLoading);
   }
     return (
       <div>
@@ -33,27 +50,31 @@ const ProfileEdit = (props) => {
               <div className="container">
               <Image
                 src={photoURL}
-                width="100"
+                width="150"
                 roundedCircle={true}
               ></Image>
             </div>
-            <button type="button" className="btn btn-primary btn-sm">Upload Profile Picture</button>
+            <div className="mb-3">
+                <label for="formFileSm" className="form-label">Upload</label>
+                <input disabled={loading} onChange={handleUpload} className="form-control-sm" id="formFileSm" type="file"/>
+              </div>
+
             <div className="container">
               <div className="input-group">
                     <label className="input-group-text">Username: </label>
-                    <input  type="text" aria-label="Username" className="form-control" />
+                    <input  type="text" aria-label="Username" className="form-control" userName="userName"/>
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Email</label>
-                  <input type="text" aria-label="Email" className="form-control" />
+                  <input type="text" aria-label="Email" className="form-control" email='email' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">First name: </label>
-                  <input  type="text" aria-label="First name" className="form-control" />
+                  <input  type="text" aria-label="First name" className="form-control" firstName='firstName' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Last name: </label>
-                  <input  type="text" aria-label="Last name" className="form-control" />
+                  <input  type="text" aria-label="Last name" className="form-control" lastName='lastName' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Phone number: </label>
@@ -67,8 +88,8 @@ const ProfileEdit = (props) => {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                <button type="button" className="btn btn-primary"> Understood </button>
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"> Cancel </button>
+                <button type="button" className="btn btn-primary" onClick={handleSave}> Save </button>
               </div>
             </div>
           </div>
