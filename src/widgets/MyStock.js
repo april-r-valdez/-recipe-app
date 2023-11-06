@@ -30,9 +30,11 @@ const MyStock = () => {
     return (
       <>
         <div className="container-sm">
-        <h1 className="display-5">My Ingredients</h1>
-          <p className="text-start h4">Add ingreidents to your pantry.</p>
+          <div className="rounded-pill bg-primary-subtle mb-2">
+            <label className=" fw-bold display-6 ">MY PANTRY</label>     
+          </div>
           <div className="container-sm">
+          <p className="text-start h5">Add ingredients to your pantry.</p>
             <div className="input-group mb-3">
               <button
                 className="btn btn-outline-secondary dropdown-toggle"
@@ -88,7 +90,7 @@ const MyStock = () => {
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Amout</th>
+                <th scope="col">Amount</th>
                 <th scope="col">Name</th>
               </tr>
             </thead>
