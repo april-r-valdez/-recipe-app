@@ -11,7 +11,7 @@ const inititalState = {
   userName: "",
   phone: "",
 }
-
+//need to add user's info to firestore
 const ProfileEdit = (props) => {
 
   const curUser = useAuth(); 
