@@ -263,7 +263,7 @@
 
 **Mandil**: "Implemened react components to render data utilizing databse and restructure components to render reponse based content"
 
-   - `Jira Task: Set up webpage to use firestore and storage for respective images` 
+   - `Jira Task: Set up webpage to use firestore and storage for respective images`
     - [Scrum-69](https://cs3398f23klingons.atlassian.net/browse/SCRUM-69), 
     [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/SCRUM-69-Mandil-Setup-firesbase) 
   - `Jira Task: Integrate react to utilize the entries instead of placeholder card` 
@@ -277,6 +277,26 @@
     [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-84-design-databse-model-schema) 
 
 <br />
+
+**Jeff**: "designed initial set of aesthetic passes and related functionalities; prototyped manually scraped database and recipe scoring"
+
+  - `Jira Task: Create Landing Page` 
+    - [Scrum-87](https://cs3398f23klingons.atlassian.net/browse/SCRUM-87),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-87-landing-page)
+  - `Jira Task: Create themes and designs for the overall app` 
+    - [Scrum-92](https://cs3398f23klingons.atlassian.net/browse/SCRUM-92),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-92-create-themes-and-designs-for-t)
+  - `Jira Task: Add functionalities for themes for ease of finalizing designs` 
+    - [Scrum-89](https://cs3398f23klingons.atlassian.net/browse/SCRUM-89),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/feature/SCRUM-89-add-functionalities-for-themes-)
+  - `Jira Task: Scrape online recipes for temporary offline database` 
+    - [Scrum-86](https://cs3398f23klingons.atlassian.net/browse/SCRUM-86),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/SCRUM-86-scrape-online-recipes-for-tempo)
+  - `Jira Task: Prototype matching and scoring recipes given ingredients`
+    - [Scrum-93](https://cs3398f23klingons.atlassian.net/browse/SCRUM-93),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/%7B973a6ba3-a025-481e-a3dd-3e0bd88f694d%7D/branch/SCRUM-93-prototype-matching-and-scoring-)
+<br />
+
 
 #### Reports
 
@@ -311,8 +331,15 @@
   - Add functionality to the fiter options in search box
   - Implement Firebase Hosting
   <br />
-<!-- If you have screenshots you'd like to share, include them here. -->
 
+**Jeff**:
+
+  - Explore and work on deployment options
+  - Setup support pipeline
+  - Create end-to-end tests for entire app
+<br />
+
+<!-- If you have screenshots you'd like to share, include them here. -->
 ## Setup
 
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
