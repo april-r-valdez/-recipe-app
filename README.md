@@ -261,6 +261,23 @@
     [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-80-design-and-create-profile-page)
 <br />
 
+**Mandil**: "Implemened react components to render data utilizing databse and restructure components to render reponse based content"
+
+   - `Jira Task: Set up webpage to use firestore and storage for respective images` 
+    - [Scrum-69](https://cs3398f23klingons.atlassian.net/browse/SCRUM-69), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/SCRUM-69-Mandil-Setup-firesbase) 
+  - `Jira Task: Integrate react to utilize the entries instead of placeholder card` 
+    - [Scrum-83](https://cs3398f23klingons.atlassian.net/browse/SCRUM-83), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-83-integrate-react-to-utilize-fire) 
+  - `Jira Task: Update database with sample entries and parser required to extract data from external API` 
+    - [Scrum-85](https://cs3398f23klingons.atlassian.net/browse/SCRUM-85), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-85-update-database-with-sample-ent) 
+  - `Jira Task: Design databse model schema` 
+    - [Scrum-84](https://cs3398f23klingons.atlassian.net/browse/SCRUM-84), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-84-design-databse-model-schema) 
+
+<br />
+
 #### Reports
 
 ![Burnup Chart](images/sprint2-burnup-chart.png)
@@ -286,6 +303,14 @@
   - Incorporate more personalization to improve user experience
   - Give user more customization options
 <br />
+
+**Mandil**:
+
+  - Implement database query to search recipe using Ingredients list
+  - Render search result page linking to the recipe page
+  - Add functionality to the fiter options in search box
+  - Implement Firebase Hosting
+  <br />
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Setup
