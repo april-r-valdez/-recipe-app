@@ -11,8 +11,9 @@ import APISearch from './widgets/APISearch';
 import Landing from './scenes/LandingScene/Landing';
 import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 import ProfilePage from './widgets/ProfilePage';
-import Login from './Login';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
+import ProfileEdit from './widgets/ProfileEdit';
+import Login from './widgets/Login';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
+        <Route path='/edit-profile' element={<ProfileEdit/>}/>
       </Routes>
       
     </div>
