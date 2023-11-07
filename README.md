@@ -118,20 +118,20 @@
     [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/01c42711ee386a4ca4688b141565d604841c8109)
 <br />
 
-**April**: "provided users with a way to input, store, and see the ingredients they have in stock"
+**April**: "Provied user with a means of logging/signin up for our website. Extracted user info from Firebase for better user eperience."
 
-  - `Jira Task: April - textboxes to enter ingredients (incld. amount and other details)`
-    - [SRUM-45](https://cs3398f23klingons.atlassian.net/browse/SCRUM-45),
-    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/bugfix/SCRUM-45-april---textboxes-to-enter-ingr)
-  - `Jira Task: April - show added ingredients`
-    - [SCRUM-47](https://cs3398f23klingons.atlassian.net/browse/SCRUM-47),
-    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-47-april---show-added-ingredients)
-  - `Jira Task: April - save ingredient entries somewhere`
-    - [SCRUM-49](https://cs3398f23klingons.atlassian.net/browse/SCRUM-49),
-    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-49-april---save-ingredient-entries)
-  - `Jira Task: April - add unit tests to make sure textboxes work correctly`
-    - [SCRUM-46](https://cs3398f23klingons.atlassian.net/browse/SCRUM-46),
-    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-46-april---add-unit-tests-to-make-)
+  - `Jira Task: April - Design and create login page`
+    - [SRUM-79](https://cs3398f23klingons.atlassian.net/browse/SCRUM-79),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-79-design-and-create-login-page)
+  - `Jira Task: April - Implement basic signup functionality`
+    - [SCRUM-96](https://cs3398f23klingons.atlassian.net/browse/SCRUM-96),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-96-implement-basic-signup-function)
+  - `Jira Task: April - Implement basic login functionality`
+    - [SCRUM-97](https://cs3398f23klingons.atlassian.net/browse/SCRUM-97),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-97-implement-basic-login-functiona)
+  - `Jira Task: April - Design and create profile page`
+    - [SCRUM-80](https://cs3398f23klingons.atlassian.net/browse/SCRUM-80),
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/branch/feature/SCRUM-80-design-and-create-profile-page)
 <br />
 
 **Mandil**: "incorporated a framework for structuring the web page layout and integrated various widgets and components to enable user input processing and display functionality"
@@ -190,8 +190,8 @@
 
 **April**:
 
-  - Develop consistent layout for application
-  - Fetch recipes from websites using REST APIs
+  - Incorporate more personalization to improve user experience
+  - Give user more customization options 
 <br />
 
 **Mandil**:
