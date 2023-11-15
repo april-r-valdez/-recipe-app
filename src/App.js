@@ -14,6 +14,7 @@ import ProfilePage from './widgets/ProfilePage';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
 import ProfileEdit from './widgets/ProfileEdit';
 import Login from './widgets/Login';
+import Support from './scenes/SupportScene/Support';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/landing' element={<Landing/>}/>
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
+        <Route path='/support' element={<Support/>}/>
       </Routes>
       
     </div>
