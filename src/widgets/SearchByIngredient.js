@@ -10,6 +10,10 @@ function InputIngredient () {
        'Oil',
     ]);
 
+    const [isGlutenFree, setIsGlutenFree] = useState(false);
+    const [isDairyFree, setIsDairyFree] = useState(false);
+    const [isVegan, setIsVegan] = useState(false);
+
     const [newItem, setNewItem] = useState('');
     const [isHovered, setIsHovered] = useState(false);
 
@@ -46,12 +50,7 @@ function InputIngredient () {
     };
 
     const handleSearch = () => {
-        // mock variables, will be replaced by state variables after implementing radio buttons
-        const glutenFree = false;
-        const dairyFree = false;
-        const vegan = false;
-
-        navigate(`/searchByIngredients?ingredients=${ingredients}&glutenFree=${glutenFree}&dairyFree=${dairyFree}&vegan=${vegan}`)
+        navigate(`/searchByIngredients?ingredients=${ingredients}&glutenFree=${isGlutenFree}&dairyFree=${isDairyFree}&vegan=${isVegan}`)
     };
     
     const handleExternalSearch = () => {
@@ -65,6 +64,18 @@ function InputIngredient () {
     
     const handleHoverLeave = () => {
         setIsHovered(false);
+    };
+
+    const handleGlutenFreeChange = (event) => {
+        setIsGlutenFree(event.target.checked);
+    };
+    
+    const handleDairyChange = (event) => {
+        setIsDairyFree(event.target.checked);
+    };
+    
+    const handleVeganChange = (event) => {
+        setIsVegan(event.target.checked);
     };
 
     return (
@@ -101,8 +112,14 @@ function InputIngredient () {
                                 <div className="col">                                    
                                     <div class="rounded-pill bg-warning-subtle p-2 ">
                                         <div class="form-check">                                
-                                        <input className="form-check-input" type="radio" name="glutenFreeRadio" id="glutenFreeRadio"/>
-                                        <label class="form-check-label" for="glutenFreeRadio">Gluten free</label>
+                                        <input 
+                                            className="form-check-input" 
+                                            type="checkbox" 
+                                            name="glutenFreeCheckbox" 
+                                            id="glutenFreeCheckbox" 
+                                            checked={isGlutenFree} 
+                                            onChange={handleGlutenFreeChange}/>
+                                        <label class="form-check-label" for="glutenFreeCheckbox">Gluten free</label>
                                         </div>
                                     </div>
                                 
@@ -110,16 +127,28 @@ function InputIngredient () {
                                 <div className="col">
                                     <div class="rounded-pill bg-warning-subtle p-2"> 
                                         <div class="form-check">
-                                        <input className="form-check-input" type="radio" name="dairyFreeRadio" id="dairyFreeRadio"/>
-                                        <label className="form-check-label" for="dairyFreeRadio">Dairy free</label>
+                                        <input 
+                                            className="form-check-input" 
+                                            type="checkbox" 
+                                            name="dairyFreeCheckbox" 
+                                            id="dairyFreeCheckbox"
+                                            checked={isDairyFree}
+                                            onChange={handleDairyChange}/>
+                                        <label className="form-check-label" for="dairyFreeCheckbox">Dairy free</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div class="rounded-pill bg-warning-subtle p-2">
                                         <div class="form-check">
-                                        <input className="form-check-input" type="radio" name="veganRadio" id="veganRadio"/>
-                                        <label className="form-check-label" for="veganRadio"> Vegan</label>
+                                        <input 
+                                            className="form-check-input" 
+                                            type="checkbox" 
+                                            name="veganCheckbox" 
+                                            id="veganCheckbox" 
+                                            checked={isVegan} 
+                                            onChange={handleVeganChange}/>
+                                        <label className="form-check-label" for="veganCheckbox"> Vegan</label>
                                         </div>
                                     </div>
                                 </div>
