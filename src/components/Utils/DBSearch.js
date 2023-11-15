@@ -7,47 +7,57 @@ import RecipeCard from '../Common/RecipeCard';
 const DBSearch = () => {
 
   const [matchingRecipes, setMatchingRecipes] = useState([]);
-
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
   
-  // extracting value from query parameters
-  const ingredientList = searchParams.get('ingredients');
-  const glutenVal = searchParams.get('glutenFree');
-  const dairyVal = searchParams.get('dairyFree');
-  const veganVal = searchParams.get('vegan');
+  // function to dynamically construct the query base on URL parameters
+  const recipeQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {
+    let q = collection(db, 'Recipes');
+    
+    // match any recipes with the ingredients field (array type) contains one or more ingredients from the provided ingredient list
+    if (ingredientLists != null && ingredientLists.length > 0) {
+      q = query(q, where('ingredients', 'array-contains-any', ingredientLists));
+    }
 
-  // convert string to array if it's not null, else set the array to be empty
-  const ingredients = ingredientList ? ingredientList.toLowerCase().split(",") : [];
-  
-  // convert string values to booleans if it's not null, otherwise, set the values to be false
-  const glutenFree = (glutenVal ? (glutenVal === 'true') : false);
-  const dairyFree = (dairyVal ? (dairyVal === 'true') : false);
-  const vegan = (veganVal ? (veganVal === 'true') : false);
+    // match any recipe with the glutenFree field (boolean type) is equal to true
+    if (glutenFree) {
+      q = query(q, where('glutenFree', '==', true));
+    }
 
-  // get recipe collection reference
-  const recipeCollectionRef = collection(db, 'Recipes');
-  // query database based on ingredients and boolean
-  let q = null;
-  if (ingredients.length > 0) {
-    q = query(recipeCollectionRef, 
-                  where('ingredients', 'array-contains-any', ingredients),
-                  // where('glutenFree', '==', glutenFree),
-                  // where('dairyFree', '==', dairyFree),
-                  // where('vegan', '==', vegan),
-                  limit(9));
-  } else {  // default query
-    q = query(recipeCollectionRef, limit(9));
-  }
+    if (dairyFree) {
+      q = query(q, where('dairyFree', '==', true));
+    }
+
+    if (vegan) {
+      q = query(q, where('vegan', '==', true));
+    }
+
+    // limit the number of recipes retrieved to 9
+    q = query(q, limit(9));
+
+    return q;
+  };
 
   useEffect(() => {
+
+    // extracting value from query parameters
+    const searchParams = new URLSearchParams(location.search);
+
+    const ingredients = searchParams.get('ingredients')?.toLowerCase().split(',');
+    const glutenFree = searchParams.get('glutenFree') === 'true';
+    const dairyFree = searchParams.get('dairyFree') === 'true';
+    const vegan = searchParams.get('vegan') === 'true';
+
+    // build the query base on URL query parameters
+    const recipeQuery = recipeQueryBuilder(ingredients, glutenFree, dairyFree, vegan);
+
+    // perform search
     const searchRecipesByIngredients = async () => {
       try {
-        const snapshot = await getDocs(q);
+        const snapshot = await getDocs(recipeQuery);
         if (!snapshot.empty) {
           const recipes = snapshot.docs.map((doc) => (doc.ref));
           setMatchingRecipes(recipes);
-        } else {  // will set to call the API instead
+        } else {  // will set to fetch from the API instead later
           setMatchingRecipes([]);
         }
       } catch (error) {
@@ -57,20 +67,26 @@ const DBSearch = () => {
 
     searchRecipesByIngredients();
 
-  }, []);
+  }, [location.search]);
 
   return (
     <div className='container-fluid' style={{maxWidth: '1200px'}}>
       <h4>Search Results</h4>
-      <div className="row row-cols-1 row-cols-md-3 mt-3 g-4">
-        {
-          matchingRecipes.map((recipe) => (
-            <div className="col">
-              <RecipeCard recipeRef={recipe}/>
-            </div>
-        ))
-        }
-      </div>
+      {
+        matchingRecipes.length > 0 ? (
+          <div className="row row-cols-1 row-cols-md-3 mt-3 g-4">
+          {
+            matchingRecipes.map((recipe) => (
+              <div className="col">
+                <RecipeCard recipeRef={recipe}/>
+              </div>
+            ))
+          }
+          </div>
+        ) : (
+          <p>Searching...</p>
+        )
+      }
     </div>
   )
 }

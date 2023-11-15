@@ -46,7 +46,7 @@ function InputIngredient () {
     };
 
     const handleSearch = () => {
-        // mock variables, will be replace after implementing radio button functionalities
+        // mock variables, will be replaced by state variables after implementing radio buttons
         const glutenFree = false;
         const dairyFree = false;
         const vegan = false;
