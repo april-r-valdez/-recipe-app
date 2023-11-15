@@ -45,9 +45,18 @@ function InputIngredient () {
         }
     };
 
+    const handleSearch = () => {
+        // mock variables, will be replace after implementing radio button functionalities
+        const glutenFree = false;
+        const dairyFree = false;
+        const vegan = false;
+
+        navigate(`/searchByIngredients?ingredients=${ingredients}&glutenFree=${glutenFree}&dairyFree=${dairyFree}&vegan=${vegan}`)
+    };
+    
     const handleExternalSearch = () => {
         navigate(`/externalSearch/${ingredients}`);
-    }
+    };
     
     
     const handleHoverEnter = () => {
@@ -142,7 +151,7 @@ function InputIngredient () {
                             <div className="row  mb-3">
                                 <div className="col">
                                     <div className="align-items-center">
-                                        <button type="button" className="btn btn-outline-secondary">SUBMIT</button>
+                                        <button type="button" className="btn btn-outline-secondary" onClick={handleSearch}>SUBMIT</button>
                                         
                                         <button type="button" className="btn btn-outline-secondary gap-2" onClick={handleExternalSearch}>External Search</button>
                                        
