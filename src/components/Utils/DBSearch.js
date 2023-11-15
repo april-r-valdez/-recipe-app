@@ -84,7 +84,7 @@ const DBSearch = () => {
           }
           </div>
         ) : (
-          <p>Searching...</p>
+          <p>Sorry, no recipes found :(</p>
         )
       }
     </div>
