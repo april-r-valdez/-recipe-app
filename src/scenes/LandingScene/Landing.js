@@ -1,6 +1,8 @@
 import React from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
+import { Link } from "react-router-dom";
+
 function Landing() {
   return (
     <div>
@@ -119,7 +121,11 @@ function Landing() {
           {/* Contact Section */}
           <div class="container-fluid py-5 m-0 landing-content">
             <hr class="my-4"></hr>
-            <h1 class="display-6 landing-headers">CONTACT US</h1>
+            <h1 class="display-6 landing-headers">
+              <Link className="nav-link active" to="/support">
+                CONTACT US
+              </Link>
+            </h1>
             <p>If you have any questions, feel free to get in touch with us.</p>
           </div>
 
