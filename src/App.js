@@ -17,6 +17,7 @@ import ProfileEdit from './widgets/ProfileEdit';
 import Login from './widgets/Login';
 import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
+import OurTeam from './OurTeam';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
         <Route path='/support' element={<Support/>}/>
+        <Route path='/our-team' element={<OurTeam/>}/>
       </Routes>
       <br></br><br></br><br></br>
       <Footer />
