@@ -14,16 +14,17 @@ const inititalState = {
 //need to add user's info to firestore
 const ProfileEdit = (props) => {
   const editState = props.state;
+  const setEditState = props.setState;
   const action = props.action;
   
   const curUser = useAuth(); 
-  const [photoURL, setphotoURL] = useState(defaultProfile);
+  const [photoURL, setphotoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   //const [data, setData] = useState();
   //const {firstName, lastName, email, userName, phone} = data
   
-  const handleClose= () => {editState = !editState};
+  const handleClose= () => {setEditState(false); };
   
   useEffect(() => {
     if(curUser?.photoURL){
@@ -49,13 +50,13 @@ const ProfileEdit = (props) => {
           keyboard={false}>
             <Modal.Header>
               <Modal.Title>Edit Account Information</Modal.Title>
-              <button type="button" className="btn-close" onClick={action} aria-label="Close" ></button>
+              <button type="button" className="btn-close" onClick={handleClose} aria-label="Close" ></button>
             </Modal.Header>
 
             <Modal.Body>
             <div className="d-flex justify-content-center">
               <Image
-                src={curUser ? curUser.phone : defaultProfile}
+                src={photoURL}
                 width="150"
                 roundedCircle={true}
               ></Image>
@@ -90,7 +91,7 @@ const ProfileEdit = (props) => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <button type="button" className="btn btn-secondary" onClick={action}> Cancel </button>
+              <button type="button" className="btn btn-secondary" onClick={handleClose}> Cancel </button>
               <button type="button" className="btn btn-primary" onClick={handleSave}> Save </button>
             </Modal.Footer>
         </Modal>

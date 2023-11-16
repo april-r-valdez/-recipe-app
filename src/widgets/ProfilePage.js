@@ -11,9 +11,7 @@ const ProfilePage = () => {
 
   const curUser = useAuth();
   const [editState, setEditState] = useState(false);
-  const toggleModal = () => {
-    setEditState(!editState)
-  };
+  const [photoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
 
     return (
       <div>
@@ -21,7 +19,7 @@ const ProfilePage = () => {
           <>
             <div class="container-sm">
               <Image
-                src={curUser?.photoURL}
+                src={curUser.photoURL || photoURL}
                 width="200"
                 roundedCircle={true}
               ></Image>
@@ -43,9 +41,7 @@ const ProfilePage = () => {
                 type="button"
                 disabled ={!curUser}
                 className="btn btn-primary"
-                onClick={toggleModal}
-                data-bs-toggle="modal" 
-                data-bs-target="#staticBackdrop"
+                onClick={() => setEditState(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +55,7 @@ const ProfilePage = () => {
                 </svg>{" "}
                 Edit Profile
               </button>
-              {curUser && <ProfileEdit state={editState} action={toggleModal} />}
+              {curUser && <ProfileEdit state={editState} setState={setEditState}/>}
             </div>
           </>
         )}
