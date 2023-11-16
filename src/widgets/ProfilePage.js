@@ -5,7 +5,7 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 
 
-//going to incorporate using Firebase store to populate the profile
+//bug has been resolved
 
 const ProfilePage = () => {
 
