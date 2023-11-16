@@ -5,7 +5,7 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 
 
-//bug has been resolved
+//Now can proceed to add functionality 
 
 const ProfilePage = () => {
 
