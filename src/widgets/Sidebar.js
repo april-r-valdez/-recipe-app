@@ -47,7 +47,14 @@ function Sidebar() {
                     </li>
                 </ul>
             </div>
-            <row>
+            <row> 
+                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3" data-bs-dismiss="offcanvas">
+                    <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/support">Got any Questions? Contact Us!</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
+                </ul>
                 <ThemeSwitcher/>
             </row><br></br>
         </div>
