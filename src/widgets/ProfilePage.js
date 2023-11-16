@@ -34,13 +34,14 @@ const ProfilePage = () => {
               <ul className="list-group">
                 <li className="list-group-item">Name: {curUser?.displayName} </li>
                 <li className="list-group-item">Email: {curUser?.email} </li>
-                <li className="list-group-item">Phone:  </li>
-                <li className="list-group-item">User since: {curUser.creationtime}</li>
+                <li className="list-group-item">Phone: {curUser?.phone} </li>
+                <li className="list-group-item">User since: {curUser?.creationtime}</li>
               </ul>
             </div>
             <div>
               <button
                 type="button"
+                disabled ={!curUser}
                 className="btn btn-primary"
                 onClick={toggleModal}
                 data-bs-toggle="modal" 

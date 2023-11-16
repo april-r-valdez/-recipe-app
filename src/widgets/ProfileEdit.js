@@ -55,7 +55,7 @@ const ProfileEdit = (props) => {
             <Modal.Body>
             <div className="d-flex justify-content-center">
               <Image
-                src={photoURL}
+                src={curUser ? curUser.phone : defaultProfile}
                 width="150"
                 roundedCircle={true}
               ></Image>
@@ -67,23 +67,23 @@ const ProfileEdit = (props) => {
               <div className="container">
               <div className="input-group">
                     <label className="input-group-text">Username: </label>
-                    <input type="text" placeholder={curUser.userName || 'Add username' }  aria-label="Username" className="form-control" userName="userName"/>
+                    <input type="text" placeholder={curUser ? curUser.userName : 'Add username' }  aria-label="Username" className="form-control" userName="userName"/>
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Email</label>
-                  <input type="text" placeholder={curUser.email}  aria-label="Email" className="form-control" email='email' />
+                  <input type="text" placeholder={curUser?.email}  aria-label="Email" className="form-control" email='email' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">First name: </label>
-                  <input type="text" placeholder={curUser.firstName || 'Add first name' }  aria-label="First name" className="form-control" firstName='firstName' />
+                  <input type="text" placeholder={curUser ? curUser.firstName : 'Add first name' }  aria-label="First name" className="form-control" firstName='firstName' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Last name: </label>
-                  <input type="text" placeholder={curUser.lastName || 'Add last name' } aria-label="Last name" className="form-control" lastName='lastName' />
+                  <input type="text" placeholder={curUser ? curUser.lastName : 'Add last name' } aria-label="Last name" className="form-control" lastName='lastName' />
                 </div>
                 <div className="input-group">
                   <label className="input-group-text">Phone number: </label>
-                  <input type="text" placeholder={curUser.phone || 'Add phone number' }  aria-label="First name" className="form-control" />
+                  <input type="text" placeholder={curUser ? curUser.phone : 'Add phone number' }  aria-label="First name" className="form-control" />
                 </div>
                 <button type="button" className="btn btn-primary btn-sm"> Reset Password? </button>
               
