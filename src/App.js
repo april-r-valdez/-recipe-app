@@ -3,6 +3,7 @@ import {Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import Navbar from './widgets/Navbar';
+import Footer from './widgets/Footer';
 import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
@@ -37,7 +38,8 @@ function App() {
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
       </Routes>
-      
+      <br></br><br></br><br></br>
+      <Footer />
     </div>
     
   );
