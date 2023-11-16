@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = "service_recipegen";
+const EMAILJS_SUPPORT_TEMPLATE_ID = "template_ypht4zc";
+const EMAILJS_PUBLIC_KEY = "1GFHTA5hlv6zGie4L";
 
 function Support() {
+  const [showFormSentSuccessfully, setShowFormSentSuccessfully] =
+    useState(false);
+
+  const form = useRef();
   const handleContactFormSubmit = (event) => {
     event.preventDefault();
+
+    // send support form using Emailjs
+    emailjs
+      .sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_SUPPORT_TEMPLATE_ID,
+        form.current,
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (res) => {
+          console.log("RES: ", res.text);
+          setShowFormSentSuccessfully(true);
+        },
+        (error) => {
+          console.log("ERR: ", error.text);
+        }
+      );
   };
 
   const handleSearch = () => {};
 
   return (
     <div className="container mt-5" style={{ textAlign: "left" }}>
+      {/* -----------NOTIF: Successfully Sent Support Form----------- */}
+      {showFormSentSuccessfully && (
+        <div className="alert alert-success" role="alert">
+          Message sent successfully!
+        </div>
+      )}
+
       {/* -----------SEARCH----------- */}
       <div>
         <h2 style={{ textAlign: "center" }}>How Can We Help?</h2>
@@ -97,11 +131,12 @@ function Support() {
       {/* -----------FORM----------- */}
       <div className="col-6 mt-5">
         <h2>Contact Us</h2>
-        <form onSubmit={handleContactFormSubmit}>
+        <form ref={form} onSubmit={handleContactFormSubmit}>
           <div className="form-group">
             {/* <label htmlFor="formEmail">Your Email:</label> */}
             <input
               type="email"
+              name="email"
               className="form-control"
               id="formEmail"
               placeholder="Enter your email"
@@ -115,6 +150,7 @@ function Support() {
             {/* </label> */}
             <textarea
               className="form-control"
+              name="message"
               id="formMessage"
               rows={4}
               placeholder="Enter your message"
