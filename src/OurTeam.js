@@ -57,8 +57,8 @@ function OurTeam() {
                 </div>
             </div>
             <br></br><br></br>
-            <div className="row">
-                <div className="col-4 mx-auto">
+            <div className="row d-flex justify-content-center">
+                <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4 text-center">
                         <br></br>
                         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
@@ -74,7 +74,7 @@ function OurTeam() {
                         <br></br>
                     </div>
                 </div>
-                <div className="col-4 mx-auto">
+                <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4">
                         <br></br>
                         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
