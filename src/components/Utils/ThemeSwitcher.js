@@ -32,8 +32,8 @@ function ThemeSwitcher() {
 
   return (
     <div>
-      <div class="d-grid gap-2 col-10 mx-auto">
-        <button class="btn btn-primary" onClick={handleNextTheme}>
+      <div className="d-grid gap-2 col-10 mx-auto">
+        <button className="btn btn-primary" onClick={handleNextTheme}>
           Switch Theme
         </button>
       </div>
