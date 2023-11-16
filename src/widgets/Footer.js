@@ -23,7 +23,7 @@ function Footer() {
                     <span className="text-muted">|</span>
                     <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/home">Contact Us</Link>
                     <span className="text-muted">|</span>
-                    <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/home">Our Team</Link>
+                    <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/our-team">Our Team</Link>
                     <span className="text-muted">|</span>
                     <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/home">Tips & Tutorials</Link>
                 </div>
