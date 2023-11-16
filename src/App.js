@@ -15,6 +15,7 @@ import ProfilePage from './widgets/ProfilePage';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
 import ProfileEdit from './widgets/ProfileEdit';
 import Login from './widgets/Login';
+import DBSearch from './components/Utils/DBSearch';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/profile-page' element={<ProfilePage/>}/>
         <Route path='/login-page' element={<Login/>}/>
+        <Route path='/searchByIngredients' element={<DBSearch/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
