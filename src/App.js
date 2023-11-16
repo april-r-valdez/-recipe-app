@@ -3,6 +3,7 @@ import {Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import Navbar from './widgets/Navbar';
+import Footer from './widgets/Footer';
 import Home from './scenes/HomeScene/Home';
 import CreateRecipe from './widgets/CreateRecipe'
 import MyStock from "./widgets/MyStock"
@@ -15,6 +16,7 @@ import RecipeFromDB from './components/Utils/RecipeFromDB';
 import ProfileEdit from './widgets/ProfileEdit';
 import Login from './widgets/Login';
 import Support from './scenes/SupportScene/Support';
+import DBSearch from './components/Utils/DBSearch';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/profile-page' element={<ProfilePage/>}/>
         <Route path='/login-page' element={<Login/>}/>
+        <Route path='/searchByIngredients' element={<DBSearch/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
         <Route path='/recipe/:id' element={<RecipeFromDB />}/> 
@@ -39,7 +42,8 @@ function App() {
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
         <Route path='/support' element={<Support/>}/>
       </Routes>
-      
+      <br></br><br></br><br></br>
+      <Footer />
     </div>
     
   );
