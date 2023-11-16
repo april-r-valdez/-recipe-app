@@ -57,3 +57,4 @@ const firebaseConfig = {
     setLoading(false);
     alert('Image Uploaded!');
   }
+//begin development of letting user's add
