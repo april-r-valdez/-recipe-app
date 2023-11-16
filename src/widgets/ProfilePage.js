@@ -10,8 +10,10 @@ import React, { useState } from 'react';
 const ProfilePage = () => {
 
   const curUser = useAuth();
-  const [openEdit, setopenEdit] = useState(false);
-
+  const [editState, setEditState] = useState(false);
+  const toggleModal = () => {
+    setEditState(!editState)
+  };
 
     return (
       <div>
@@ -40,7 +42,7 @@ const ProfilePage = () => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => setopenEdit(true)}
+                onClick={toggleModal}
                 data-bs-toggle="modal" 
                 data-bs-target="#staticBackdrop"
               >
@@ -56,8 +58,7 @@ const ProfilePage = () => {
                 </svg>{" "}
                 Edit Profile
               </button>
-              {openEdit && <ProfileEdit handleClose={() => setopenEdit(false)}/>}
-              {console.log(openEdit)}
+              {curUser && <ProfileEdit state={editState} action={toggleModal} />}
             </div>
           </>
         )}
