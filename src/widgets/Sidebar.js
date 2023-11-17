@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CameraComponent from "./CameraModule";
 
 import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 
@@ -56,6 +57,9 @@ function Sidebar() {
                         <li><hr className="dropdown-divider/"/></li>
                 </ul>
                 <ThemeSwitcher/>
+            </row>
+            <row>
+                <CameraComponent/>
             </row><br></br>
         </div>
         
