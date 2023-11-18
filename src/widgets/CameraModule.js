@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { IoCamera } from "react-icons/io5";
 
 const CameraComponent = () => {
   const videoRef = useRef(null);
@@ -17,7 +18,7 @@ const CameraComponent = () => {
 
   return (
     <div>
-      <button onClick={startCamera}>Start Camera</button>
+      <button onClick={startCamera}><IoCamera/></button>
       <video ref={videoRef} width="400" height="300" autoPlay playsInline muted></video>
     </div>
   );

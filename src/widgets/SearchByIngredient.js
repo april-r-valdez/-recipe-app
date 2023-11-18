@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiAddthis } from "react-icons/si";
+import { IoCamera } from "react-icons/io5";
 
 function InputIngredient () {
 
@@ -158,7 +159,16 @@ function InputIngredient () {
                     </div>
                     <div className="col-md-5">
                         <div className="container">
-                        <label className="form-label">Ingredient list <span className="badge text-bg-warning ">{ingredients.length}</span></label>
+                            <label className="form-label d-flex justify-content-between align-items-center">
+                                Ingredient list 
+                                <span className="badge text-bg-warning ">{ingredients.length}</span>
+                                <span ClassName="badge text-bg-warning ">
+                                    <div className="flex-shrink-0">
+                                        <IoCamera style={{ fontSize: '20px'}}/>
+                                    </div>
+                                </span>
+
+                            </label>
                             <div className="row  mb-3">
                                 
                                 <div className="list-group list-group-flush" style={{ maxHeight: '200px', overflowY: 'scroll' }}>
