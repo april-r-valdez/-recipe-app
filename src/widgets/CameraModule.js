@@ -1,27 +1,56 @@
-import React, { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { IoCamera } from "react-icons/io5";
 
-const CameraComponent = () => {
+const CameraModule = ({isOpen, onClose}) => {
   const videoRef = useRef(null);
 
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  useEffect(() => {
+    let stream;
+
+    const openCamera = async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ 
+          video: {facingMode: 'environment'},
+        });
+  
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+      }
+    };
+
+    const closeCamera = () => {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+      }
 
       if (videoRef.current) {
-        videoRef.current.srcObject = stream;
+        videoRef.current.srcObject = null;
       }
-    } catch (error) {
-      console.error('Error accessing camera:', error);
-    }
-  };
 
-  return (
-    <div>
-      <button onClick={startCamera}><IoCamera/></button>
-      <video ref={videoRef} width="400" height="300" autoPlay playsInline muted></video>
-    </div>
-  );
+      if (onClose) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      openCamera();
+    }
+
+    if (onClose) {
+      closeCamera();
+    }
+
+    return () => {
+      closeCamera();
+    };
+
+  }, [isOpen, onClose]);  
+
+  return (<video ref={videoRef} autoPlay playsInline muted></video>);
 };
 
-export default CameraComponent;
+export default CameraModule;

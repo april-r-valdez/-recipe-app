@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiAddthis } from "react-icons/si";
 import { IoCamera } from "react-icons/io5";
+import { FcCameraIdentification } from "react-icons/fc";
+
+import ModalComponent from "../components/Utils/ModalComponent";
+import CameraModule from "./CameraModule";
 
 function InputIngredient () {
 
@@ -17,6 +21,8 @@ function InputIngredient () {
 
     const [newItem, setNewItem] = useState('');
     const [isHovered, setIsHovered] = useState(false);
+
+    const [showCameraModal, setShowCameraModal] = useState(false);
 
     const navigate = useNavigate();
 
@@ -78,6 +84,31 @@ function InputIngredient () {
     const handleVeganChange = (event) => {
         setIsVegan(event.target.checked);
     };
+
+    const handleModalOpen = () => {
+        setShowCameraModal(true);
+    };
+
+    const handleModalClose = () => {
+        setShowCameraModal(false);
+    };
+
+    const modalTitle = (
+        <>
+        <FcCameraIdentification />
+        </>
+    );
+    const modalBody = (
+        <>
+            <CameraModule isOpen={showCameraModal}/>
+        </>
+    );
+    const modalFooter = (
+        <>
+        <button type="button" className="btn btn-secondary" onClick={handleModalClose}>Close</button>
+        </>
+    );
+
 
     return (
         <div 
@@ -164,7 +195,7 @@ function InputIngredient () {
                                 <span className="badge text-bg-warning ">{ingredients.length}</span>
                                 <span ClassName="badge text-bg-warning ">
                                     <div className="flex-shrink-0">
-                                        <IoCamera style={{ fontSize: '20px'}}/>
+                                        <IoCamera style={{ fontSize: '20px'}} onClick={handleModalOpen}/>
                                     </div>
                                 </span>
 
@@ -206,7 +237,13 @@ function InputIngredient () {
                     
                 </div>
             </div>
-
+            <ModalComponent
+                showModal={showCameraModal}
+                handleClose={handleModalClose}
+                modalTitle={modalTitle}
+                modalBody={modalBody}
+                modalFooter={modalFooter}
+            />
         </div>
     )
 }
