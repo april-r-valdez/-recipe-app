@@ -94,9 +94,7 @@ function InputIngredient () {
     };
 
     const modalTitle = (
-        <>
-        <FcCameraIdentification />
-        </>
+        <FcCameraIdentification />    
     );
     const modalBody = (
         <CameraModule isOpen={showCameraModal} onClose={handleModalClose} />      
@@ -204,7 +202,7 @@ function InputIngredient () {
                                     {ingredients.map((ingredient, index) => (
                                         <ul className="list-group list-group-flush">
                                              <li key={index} 
-                                                className="list-group-item d-flex justify-content-between align-items-center">
+                                                className="list-group-item border-bottom d-flex justify-content-between align-items-center">
                                                 {ingredient}
                                                 <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
                                                 <span aria-hidden="true" className="text-dark">&times;</span>
