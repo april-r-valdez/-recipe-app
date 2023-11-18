@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { IoCamera } from "react-icons/io5";
 
-const CameraModule = ({isOpen, onClose}) => {
+const CameraModule = ({ isOpen }) => {
   const videoRef = useRef(null);
+  const streamRef = useRef(null);
 
   useEffect(() => {
     let stream;
@@ -15,42 +15,41 @@ const CameraModule = ({isOpen, onClose}) => {
   
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          streamRef.current = stream;
         }
       } catch (error) {
         console.error('Error accessing camera:', error);
       }
     };
 
-    const closeCamera = () => {
-      if (stream) {
-        const tracks = stream.getTracks();
-        tracks.forEach(track => track.stop());
+    const closeCamera = async () => {
+      if (streamRef.current) {
+        const tracks = streamRef.current.getTracks();
+        for (const track of tracks) {
+          await track.stop();
+        }
+        console.log('Camera stream stopped');
       }
 
       if (videoRef.current) {
         videoRef.current.srcObject = null;
       }
 
-      if (onClose) {
-        onClose();
-      }
+      console.log('Camera closed');
+      
     };
 
     if (isOpen) {
       openCamera();
     }
 
-    if (onClose) {
-      closeCamera();
-    }
-
     return () => {
       closeCamera();
     };
 
-  }, [isOpen, onClose]);  
+  }, [isOpen]);  
 
-  return (<video ref={videoRef} autoPlay playsInline muted></video>);
+  return <video ref={videoRef} autoPlay playsInline muted className='camera-video img-fluid'></video>;
 };
 
 export default CameraModule;

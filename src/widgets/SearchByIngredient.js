@@ -99,9 +99,7 @@ function InputIngredient () {
         </>
     );
     const modalBody = (
-        <>
-            <CameraModule isOpen={showCameraModal}/>
-        </>
+        <CameraModule isOpen={showCameraModal} onClose={handleModalClose} />      
     );
     const modalFooter = (
         <>
