@@ -5,13 +5,13 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 
 
-//going to incorporate using Firebase store to populate the profile
+//bug has been resolved
 
 const ProfilePage = () => {
 
   const curUser = useAuth();
-  const [openEdit, setopenEdit] = useState(false);
-
+  const [editState, setEditState] = useState(false);
+  const [photoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
 
     return (
       <div>
@@ -19,7 +19,7 @@ const ProfilePage = () => {
           <>
             <div class="container-sm">
               <Image
-                src={curUser?.photoURL}
+                src={curUser.photoURL || photoURL}
                 width="200"
                 roundedCircle={true}
               ></Image>
@@ -32,17 +32,16 @@ const ProfilePage = () => {
               <ul className="list-group">
                 <li className="list-group-item">Name: {curUser?.displayName} </li>
                 <li className="list-group-item">Email: {curUser?.email} </li>
-                <li className="list-group-item">Phone:  </li>
-                <li className="list-group-item">User since: {curUser.creationtime}</li>
+                <li className="list-group-item">Phone: {curUser?.phone} </li>
+                <li className="list-group-item">User since: {curUser?.creationtime}</li>
               </ul>
             </div>
             <div>
               <button
                 type="button"
+                disabled ={!curUser}
                 className="btn btn-primary"
-                onClick={() => setopenEdit(true)}
-                data-bs-toggle="modal" 
-                data-bs-target="#staticBackdrop"
+                onClick={() => setEditState(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,8 +55,7 @@ const ProfilePage = () => {
                 </svg>{" "}
                 Edit Profile
               </button>
-              {openEdit && <ProfileEdit handleClose={() => setopenEdit(false)}/>}
-              {console.log(openEdit)}
+              {curUser && <ProfileEdit state={editState} setState={setEditState}/>}
             </div>
           </>
         )}
