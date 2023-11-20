@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
 import { Modal } from 'react-bootstrap'
 import DynamicRating from './DynamicRating.js';
+import { doc, increment, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase.js';
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} ) => {
+
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, recipeId} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
+
+  console.log("Rating:", rating);
 
   const handleRatingChange = (newRating) => {
     setCurrentRating(newRating);
@@ -20,6 +25,21 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} )
     setShowRatingModal(true);
   }
 
+  const handleSubmitRating = async () => {
+    // perform update rating on database
+    try {
+      const recipeRef = doc(db, 'Recipes', recipeId);
+      await updateDoc(recipeRef, {
+        sumRating: increment(currentRating),
+        ratingCount: increment(1),
+      })
+    } catch(error) {
+      console.log("Error updating document:", error);
+    } finally {
+      setShowRatingModal(false);
+    }
+  }
+
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
       {/* Recipe Title */}
@@ -28,13 +48,16 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} )
       </div>
 
       {/* Rating */}
-      <div className='row mb-3'>
-        <div className='col-2'>
+      <div className='row'>
+        <div className='col-auto'>
           <RatingStars rating={rating} />
         </div>
-        <div className='col-2'>
-          <button type='button' className='btn btn-link' onClick={handleRateButtonClick}>Rate this recipe</button>
+        <div className='col-auto'>
+          <span>({ratingCount})</span>
         </div>
+      </div>
+      <div className='row'>
+        <button type='button' className='btn btn-link' style={{textAlign:"left"}} onClick={handleRateButtonClick}>Rate this recipe</button>
       </div>
 
       {/* Recipe Image & Ingredients */}
@@ -79,7 +102,10 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} )
             <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
         </Modal.Body>
         <Modal.Footer>
-            <button type='button' className='btn btn-primary'>Submit</button>
+            <button 
+              type='button' 
+              className='btn btn-primary' 
+              onClick={handleSubmitRating}>Submit</button>
         </Modal.Footer>
       </Modal>
       

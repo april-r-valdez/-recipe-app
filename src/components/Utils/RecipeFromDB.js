@@ -13,6 +13,7 @@ const RecipeFromDB = () => {
   const [directions, setDirections] = useState([]);
   const [nutrition, setNutrition] = useState({});
   const [rating, setRating] = useState(0);
+  const [ratingCount, setRatingCount] = useState(0);
 
   let param = useParams();
   
@@ -46,8 +47,11 @@ const RecipeFromDB = () => {
             // get nutrition fact
             setNutrition(recipe.nutrition);
 
+            // get rating count
+            setRatingCount(recipe.ratingCount);
+            
             // get rating points
-            setRating(recipe.rating);
+            setRating(Math.floor(recipe.sumRating / recipe.ratingCount));
 
         } else {
             console.log("No recipe with id ", recipeId, " exists!");
@@ -68,7 +72,10 @@ const RecipeFromDB = () => {
                   ingredients={ingredientDetails}
                   directions={directions}
                   nutrition={nutrition}
-                  rating={rating} />
+                  rating={rating} 
+                  recipeId={param.id}
+                  ratingCount={ratingCount}
+                  />
     </div>
   )
 }
