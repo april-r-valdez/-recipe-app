@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { db, storage } from '../../firebase';
 import { ref, getDownloadURL } from 'firebase/storage';
 import RecipePage from '../../widgets/RecipePage';
-
+import parseIngredients from './IngredientParser';
 const RecipeFromDB = () => {
 
   const [recipeName, setRecipeName] = useState();
@@ -12,6 +12,12 @@ const RecipeFromDB = () => {
   const [ingredientDetails, setIngredientDetails] = useState([]);
   const [directions, setDirections] = useState([]);
   const [nutrition, setNutrition] = useState({});
+
+  const [ingredientsParsed, setIngredientsParsed] = useState([]);
+  useEffect(()=>{
+    if (ingredientDetails && ingredientsParsed.length === 0) setIngredientsParsed(parseIngredients(ingredientDetails));
+  }, [ingredientDetails, ingredientsParsed.length]);
+  useEffect(()=>{console.log("parsed ingredients: ", ingredientsParsed);}, [ingredientDetails, ingredientsParsed]);
 
   let param = useParams();
   
