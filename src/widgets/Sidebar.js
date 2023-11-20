@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import ThemeSwitcher from "../components/Utils/ThemeSwitcher";
 
 function Sidebar() {
