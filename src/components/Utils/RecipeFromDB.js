@@ -12,6 +12,7 @@ const RecipeFromDB = () => {
   const [ingredientDetails, setIngredientDetails] = useState([]);
   const [directions, setDirections] = useState([]);
   const [nutrition, setNutrition] = useState({});
+  const [rating, setRating] = useState(0);
 
   let param = useParams();
   
@@ -45,6 +46,9 @@ const RecipeFromDB = () => {
             // get nutrition fact
             setNutrition(recipe.nutrition);
 
+            // get rating points
+            setRating(recipe.rating);
+
         } else {
             console.log("No recipe with id ", recipeId, " exists!");
         }
@@ -63,7 +67,8 @@ const RecipeFromDB = () => {
                   image={imageUrl}
                   ingredients={ingredientDetails}
                   directions={directions}
-                  nutrition={nutrition} />
+                  nutrition={nutrition}
+                  rating={rating} />
     </div>
   )
 }

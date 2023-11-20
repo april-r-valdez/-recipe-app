@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
+import { Modal } from 'react-bootstrap'
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} ) => {
+
+  const [showRatingModal, setShowRatingModal] = useState(false);
+  
+  const handleModalClose = () => {
+    setShowRatingModal(false);
+  }
+
+  const handleRateButtonClick = () => {
+    setShowRatingModal(true);
+  }
+
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
       {/* Recipe Title */}
@@ -11,7 +23,12 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
 
       {/* Rating */}
       <div className='row mb-3'>
-        <RatingStars rating={5} />
+        <div className='col-2'>
+          <RatingStars rating={rating} />
+        </div>
+        <div className='col-2'>
+          <button type='button' className='btn btn-link' onClick={handleRateButtonClick}>Rate this recipe</button>
+        </div>
       </div>
 
       {/* Recipe Image & Ingredients */}
@@ -46,6 +63,20 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
       </div>
 
       {/* Nutrition? */}
+
+      {/* Rating Modal */}  
+      <Modal show={showRatingModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Rate this recipe</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            {/* To be added */}
+            <p>Add rating functionality here</p>
+        </Modal.Body>
+        <Modal.Footer>
+            <button type='button' className='btn btn-primary'>Submit</button>
+        </Modal.Footer>
+      </Modal>
       
     </div>
   );
