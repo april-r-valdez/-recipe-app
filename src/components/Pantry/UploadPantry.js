@@ -1,25 +1,43 @@
 import React, { useState } from "react";
-import { db } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { db, useAuth } from "../../firebase";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
-const UploadPantry = (ingredients) => {
-  //   const [itemName, setItemName] = useState("");
-  //   const [quantity, setQuantity] = useState("");
-
+const UploadPantry = ({ ingredients, userID }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    try {
-      const pantryRef = collection(db, "Pantry");
-      //   await addDoc(pantryRef, {
-      //     itemName: itemName,
-      //     quantity: quantity,
-      //   });
-      await addDoc(pantryRef, ingredients);
+    if (!userID) {
+      alert("You're not signed in!");
+      console.log("ERR: Not signed in.");
+      return;
+    }
 
-      // clear form fields after successful upload
-      //   setItemName("");
-      //   setQuantity("");
+    try {
+      const pantriesRef = collection(db, "Pantry");
+
+      // look for existing user pantry first
+      const q = query(pantriesRef, where("userID", "==", userID));
+      const snapshot = await getDocs(q);
+
+      await addDoc(pantriesRef, ingredients);
+
+      if (!snapshot.empty) {
+        // update existing pantry
+        const pantry = snapshot.docs[0];
+        await updateDoc(pantry.ref, { userID: ingredients });
+        console.log("Existing pantry updated.");
+      } else {
+        // create new pantry
+        await addDoc(pantriesRef, { userID: ingredients });
+        console.log("New pantry created.");
+      }
 
       alert("Pantry item uploaded successfully!");
     } catch (error) {
@@ -28,33 +46,9 @@ const UploadPantry = (ingredients) => {
   };
 
   return (
-    <div>
-      {/* <h2>Upload Pantry Item</h2>
-      <form onSubmit={handleUpload}>
-        <label>
-          Item Name:
-          <input
-            type="text"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Quantity:
-          <input
-            type="text"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </label>
-        <br /> */}
-
-      <button className="btn btn-secondary" onClick={handleUpload}>
-        Update Pantry
-      </button>
-      {/* </form> */}
-    </div>
+    <button className="btn btn-secondary" onClick={handleUpload}>
+      Update Pantry
+    </button>
   );
 };
 

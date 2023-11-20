@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../firebase';
 import UploadPantry from '../components/Pantry/UploadPantry';
 
 const MyStock = () => {
@@ -7,6 +8,10 @@ const MyStock = () => {
     const [newMeasurement, setnewMeasurement] = useState("");
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
+
+    const user = useAuth();
+    const [userID, setUserID] = useState(null);
+    useState(()=>{ if(user) {setUserID(user.id)}; console.log("user: ", user); }, [user]);
 
     const renderIngredient = (ingredient, index) =>{
       return(
@@ -98,7 +103,7 @@ const MyStock = () => {
             <tbody>{AllIngredients.map(renderIngredient)}</tbody>
           </table>
         </div>
-        {AllIngredients.length !== 0 && <UploadPantry ingredients={AllIngredients}/>}
+        {AllIngredients.length !== 0 && <UploadPantry ingredients={AllIngredients} userID={userID}/>}
       </>
     );
 }
