@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db, useAuth } from "../../firebase";
 import {
   collection,
@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 
-const UploadPantry = ({ ingredients, userID }) => {
+const UploadPantry = ({ ingredients, setIngredients, userID }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
 
@@ -43,14 +43,38 @@ const UploadPantry = ({ ingredients, userID }) => {
 
       alert("Pantry item uploaded successfully!");
     } catch (error) {
-      console.error("ERR: Error uploading pantry item:", error.message);
+      console.error("ERR: Error uploading pantry:", error.message);
     }
   };
 
+  useEffect(() => {
+    const handleDownload = async (e) => {
+      try {
+        const pantriesRef = collection(db, "Pantry");
+
+        const q = query(pantriesRef, where("userID", "==", userID));
+        const snapshot = await getDocs(q);
+
+        if (!snapshot.empty) {
+          const pantry = snapshot.docs[0];
+          setIngredients(pantry.data().ingredients);
+        }
+      } catch (error) {
+        console.error("ERR: Error retrieving pantry: ", error.message);
+      }
+    };
+
+    handleDownload();
+  }, [userID, setIngredients]);
+
   return (
-    <button className="btn btn-secondary" onClick={handleUpload}>
-      Update Pantry
-    </button>
+    <div>
+      {ingredients.length !== 0 && (
+        <button className="btn btn-secondary" onClick={handleUpload}>
+          Update Pantry
+        </button>
+      )}
+    </div>
   );
 };
 

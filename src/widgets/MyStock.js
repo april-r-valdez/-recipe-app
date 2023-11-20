@@ -9,7 +9,6 @@ const MyStock = () => {
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
-    const user = auth.currentUser;
     const [userID, setUserID] = useState(null);
     useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
 
@@ -103,7 +102,7 @@ const MyStock = () => {
             <tbody>{AllIngredients.map(renderIngredient)}</tbody>
           </table>
         </div>
-        {AllIngredients.length !== 0 && <UploadPantry ingredients={AllIngredients} userID={userID}/>}
+        <UploadPantry ingredients={AllIngredients} setIngredients={setAllIngredients} userID={userID}/>
       </>
     );
 }
