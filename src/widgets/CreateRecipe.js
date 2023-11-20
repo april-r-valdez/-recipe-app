@@ -119,7 +119,10 @@ const  UserInput = () => {
                     </form><br></br><br></br>
                     <div className="mb-3">
                         <p className="h4">Upload Image</p><br></br>
-                        <input class="form-control" type="file" id="formFile" onChange={handleImageChange}/>
+                        <label htmlFor="formFile" style={{ cursor: "pointer" }}>
+                            <img src="upload-img.png" alt="" style={{ width: "25%", height: "25%", objectFit: "cover", cursor: "pointer" }}/>
+                            <input class="form-control" type="file" id="formFile" style={{ display: "none" }} onChange={handleImageChange}/>
+                        </label>
                     </div>
                 </div>
                 <div className="col-lg-1"></div>
