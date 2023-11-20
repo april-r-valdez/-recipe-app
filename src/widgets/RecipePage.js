@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
 import { Modal } from 'react-bootstrap'
+import DynamicRating from './DynamicRating.js';
 
 const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
+  const [currentRating, setCurrentRating] = useState(0);
+
+  const handleRatingChange = (newRating) => {
+    setCurrentRating(newRating);
+  }
   
   const handleModalClose = () => {
     setShowRatingModal(false);
@@ -70,8 +76,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating} )
             <Modal.Title>Rate this recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            {/* To be added */}
-            <p>Add rating functionality here</p>
+            <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
         </Modal.Body>
         <Modal.Footer>
             <button type='button' className='btn btn-primary'>Submit</button>
