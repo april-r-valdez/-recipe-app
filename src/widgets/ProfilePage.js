@@ -1,36 +1,65 @@
 import Image from 'react-bootstrap/Image'
-import defaultProfile from '../assets/images/defaultProfile.svg';
-import { auth } from '../firebase';
+import { auth, db, useAuth } from '../firebase';
 import ProfileEdit from './ProfileEdit';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {doc, getDoc} from "firebase/firestore";
 
 const ProfilePage = () => {
 
-  const curUser = auth.currentUser;
+  const curUser = useAuth();
+  // console.log(curUser)
   const [editState, setEditState] = useState(false);
   const [photoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
+  const [userInfo, setUserInfo] = useState({});
+  
+  // const userRef = doc(db, "Users", curUser.uid);
+  // const getUserInfo = async () => {
+  //   try{
+  //     const docSnap = await getDoc(userRef);
+  //     if (docSnap.exists()) {
+  //       setUserInfo(docSnap.data(), doc.id);
+  //       console.log(userInfo);
+  //       console.log(userInfo?.firstName);
+  //     } else {
+  //       // docSnap.data() will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  // }catch{
+  //   alert("Error!") }
+  // };
+
+  // useEffect(() => {
+  //   getUserInfo();
+  // }, []);
 
     return (
       <div>
+        {!curUser && (
+          <>
+          <div className="container">
+            <h4>Create an account to view your profile.</h4>
+          </div>
+          </>
+        )}
         {curUser && (
           <>
             <div class="container-sm">
               <Image
-                src={curUser.photoURL || photoURL}
+                src={curUser?.photoURL || photoURL}
                 width="200"
                 roundedCircle={true}
               ></Image>
             </div>
             <div>
-              <h4>Welcome, {curUser?.displayName}!</h4>
+              <h4>Welcome, {userInfo?.firstName}!</h4>
             </div>
 
             <div>
               <ul className="list-group">
-                <li className="list-group-item">Name: {curUser?.displayName} </li>
+                {/* <li className="list-group-item">Name: {userInfo?.firstName + " " + userInfo?.lastName} </li>
                 <li className="list-group-item">Email: {curUser?.email} </li>
-                <li className="list-group-item">Phone: {curUser?.phone} </li>
-                <li className="list-group-item">User since: {curUser?.creationtime}</li>
+                <li className="list-group-item">Phone: {userInfo?.phone} </li>
+                <li className="list-group-item">User since: {userInfo?.userSince.toDate().toDateString()}</li> */}
               </ul>
             </div>
             <div>
@@ -52,7 +81,7 @@ const ProfilePage = () => {
                 </svg>{" "}
                 Edit Profile
               </button>
-              {curUser && <ProfileEdit state={editState} setState={setEditState}/>}
+              {/* {curUser && <ProfileEdit disabled={!curUser} state={editState} setState={setEditState}/>} */}
             </div>
           </>
         )}

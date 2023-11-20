@@ -1,9 +1,9 @@
 import Image from 'react-bootstrap/Image'
-import defaultProfile from '../assets/images/defaultProfile.svg';
-import { auth, uploadProfile, db } from '../firebase';
+import { auth, db, useAuth } from '../firebase';
 import React, { useState, useEffect } from 'react';
 import Modal from "react-bootstrap/Modal";
-import {setDoc, doc, collection, updateDoc} from "firebase/firestore";
+import {doc, updateDoc, getDoc} from "firebase/firestore";
+
 
 //need to add user's info to firestore
 const ProfileEdit = (props) => {
@@ -11,21 +11,35 @@ const ProfileEdit = (props) => {
   const editState = props.state;
   const setEditState = props.setState;
   
-  const curUser = auth.currentUser;
+  const curUser = useAuth();
   const [photoURL, setphotoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [userName, setUserName] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
-  console.log(curUser.uid)
-  console.log(firstName)
-  console.log(lastName)
-  console.log(userName)
-  console.log(phone)
-  
+  const [newFirstName, setNewFirstName] = useState();
+  const [newLastName, setNewLastName] = useState();
+  const [newUsername, setNewUsername] = useState();
+  const [newPhone, setNewPhone] = useState(0);
+  const [newEmail, setNewEmail] = useState();
+  const [userInfo, setUserInfo] = useState({});
+
+  const userRef = doc(db, "Users", curUser.uid);
+  const getUserInfo = async () => {
+    try{
+      const docSnap = await getDoc(userRef);
+      if (docSnap.exists()) {
+        setUserInfo(docSnap.data(), doc.id);
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+  }catch{
+    alert("Error!")}
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
   const handleClose= () => {setEditState(false); };
   
   useEffect(() => {
@@ -43,20 +57,19 @@ const ProfileEdit = (props) => {
   async function handleSave() {
     try{
       // Add a new document in collection "Users"
-    await updateDoc(doc(db, "Users", curUser.uid), {
-      userName: {userName},
-      firstName: {firstName},
-      lastName: {lastName},
-      //email: {email},
-      phone: {phone},
+    await updateDoc(userRef, {
+      userName: newUsername,
+      firstName: newFirstName,
+      lastName: newLastName,
+      //email: newEmail,
+      phone: newPhone,
     });
     //uploadProfile(photo, curUser.uid, setLoading);
+    getUserInfo();
     }
     catch{
       alert("Error!")
     }
-    
-
   }
     return (
       <>
@@ -97,10 +110,9 @@ const ProfileEdit = (props) => {
                 <label className="input-group-text">Username: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? curUser.userName : "Add username"}
-                  value={userName}
+                  placeholder={curUser ? userInfo?.userName : "Add username"}
                   onChange={(e) => {
-                    setUserName(e.target.value);
+                    setNewUsername(e.target.value);
                   }}
                   aria-label="Username"
                   className="form-control"
@@ -120,10 +132,9 @@ const ProfileEdit = (props) => {
                 <label className="input-group-text">First name: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? curUser.firstName : "Add first name"}
-                  value={firstName}
+                  placeholder={curUser ? userInfo?.firstName : "Add first name"}
                   onChange={(e) => {
-                    setFirstName(e.target.value);
+                    setNewFirstName(e.target.value);
                   }}
                   aria-label="First name"
                   className="form-control"
@@ -134,10 +145,9 @@ const ProfileEdit = (props) => {
                 <label className="input-group-text">Last name: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? curUser.lastName : "Add last name"}
-                  value={lastName}
+                  placeholder={curUser ? userInfo?.lastName : "Add last name"}
                   onChange={(e) => {
-                    setLastName(e.target.value);
+                    setNewLastName(e.target.value);
                   }}
                   aria-label="Last name"
                   className="form-control"
@@ -148,10 +158,9 @@ const ProfileEdit = (props) => {
                 <label className="input-group-text">Phone number: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? curUser.phone : "Add phone number"}
-                  value={phone}
+                  placeholder={curUser ? userInfo?.phone : "Add phone number"}
                   onChange={(e) => {
-                    setPhone(e.target.value);
+                    setNewPhone(Number(e.target.value));
                   }}
                   aria-label="First name"
                   className="form-control"
