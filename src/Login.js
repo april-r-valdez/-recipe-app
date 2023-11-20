@@ -1,43 +1,49 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { signup, login, useAuth, logout, db} from "./firebase";
 import { getFirestore, serverTimestamp, setDoc, doc, collection, addDoc} from "firebase/firestore";
 import ProfilePage from './widgets/ProfilePage';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
-  const emailRef = useRef();
-  const passRef = useRef();
-  const emailLog = useRef();
-  const passLog = useRef();
-  const curUser = useAuth();
+  const navigate = useNavigate();
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [error, setError] = useState();
 
     //async bc api call
-     async function handleSignup() {
+    const handleSignup = async (e) => {
+      e.preventDefault();
+      setError("")
       try{
-        const res = await signup(emailRef.current.value, passRef.current.value);
+        const res = await signup(signupEmail, signupPassword);        
         // Add a new document in collection "Users"
         await setDoc(doc(db, "Users", res.user.uid), {
           firstName: "",
           lastName: "",
           userName: "", 
-          email: emailRef.current.value,
+          email: signupEmail,
           phone: "",
           userSince: serverTimestamp(),
         });
+        navigate("/home");
       }
         catch{
           alert("Error!")
         }
+
     }
     //async bc api call
     async function handleLogin() {
       try{
-        await login(emailLog.current.value,passLog.current.value);
-      }
-        catch{
-          alert("Error!")
-        }
+        await login(loginEmail,loginPassword);
+        navigate("/home");
+      }catch (error) {
+        console.error("Login error:", error);
+        alert("Login failed. Please check your email and password.");
     }
+  }
     async function handleLogout(){
       logout();
     }
@@ -52,33 +58,33 @@ const Login = () => {
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
                     <div>
-                      Successfully logged in as: {curUser?.email}
+                      {/* Successfully logged in as: {curUser?.email} */}
                     </div>
-                    <input ref={emailLog} type="text" name="" className="form-control" placeholder="Email or Phone"/>
-                    <input ref={passLog} type="password" name="" className="form-control" placeholder="Password"/>
-                    {!curUser &&
+                    <input type="email" className="form-control" placeholder="Email or Phone" onChange={(e) => {setLoginEmail(e.target.value)}}/>
+                    <input type="password" className="form-control" placeholder="Password" onChange={(e) => {setLoginPassword(e.target.value)}}/>
+                    {/* {!curUser && */}
                     <>
                     <button onClick={handleLogin} className="btn btn-primary">Login</button>
-                    </>}
+                    </>
                     
-                    {curUser &&
+                    {/* {curUser && */}
                     <>
                     <button onClick={handleLogout} className="btn btn-primary">Logout</button>
-                    </>}
+                    </>
                     
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
                   <div>
-                      Successfully created account! Welcome, {curUser?.email}
+                      {/* Successfully created account! Welcome, {curUser?.email} */}
                     </div>
-                    <input ref={emailRef}type="text" name="" className="form-control" placeholder="Email"/>
-                    <input ref={passRef} type="password" name="" className="form-control" placeholder="Password"/>
-                    {!curUser &&
+                    <input type="email"className="form-control" placeholder="Email" onChange={(e) => {setSignupEmail(e.target.value)}}/>
+                    <input type="password" className="form-control" placeholder="Password" onChange={(e) => {setSignupPassword(e.target.value)}} />
+                    {/* {!curUser && */}
                     <>
                     <button onClick={handleSignup} className="btn btn-primary">Signup</button>
-                    </>}
+                    </>
                     
                   </div>
                 </div>

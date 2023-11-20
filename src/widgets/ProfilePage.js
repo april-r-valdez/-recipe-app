@@ -3,6 +3,7 @@ import { auth, db, useAuth } from '../firebase';
 import ProfileEdit from './ProfileEdit';
 import React, { useState, useEffect } from 'react';
 import {doc, getDoc} from "firebase/firestore";
+import { redirect } from 'react-router-dom';
 
 const ProfilePage = () => {
 
