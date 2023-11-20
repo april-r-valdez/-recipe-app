@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
 import { Modal } from 'react-bootstrap'
 import DynamicRating from './DynamicRating.js';
-import { doc, increment, updateDoc } from 'firebase/firestore';
-import { db } from '../firebase.js';
+import { useAuth } from '../firebase.js';
 
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, recipeId} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, onSubmitRating} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
 
-  console.log("Rating:", rating);
+  const curUser = useAuth();
 
   const handleRatingChange = (newRating) => {
     setCurrentRating(newRating);
@@ -26,18 +25,8 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
   }
 
   const handleSubmitRating = async () => {
-    // perform update rating on database
-    try {
-      const recipeRef = doc(db, 'Recipes', recipeId);
-      await updateDoc(recipeRef, {
-        sumRating: increment(currentRating),
-        ratingCount: increment(1),
-      })
-    } catch(error) {
-      console.log("Error updating document:", error);
-    } finally {
-      setShowRatingModal(false);
-    }
+    onSubmitRating(currentRating);
+    setShowRatingModal(false);
   }
 
   return (
@@ -56,9 +45,13 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
           <span>({ratingCount})</span>
         </div>
       </div>
-      <div className='row'>
-        <button type='button' className='btn btn-link' style={{textAlign:"left"}} onClick={handleRateButtonClick}>Rate this recipe</button>
-      </div>
+      {
+        curUser ? (
+          <div className='row'>
+            <button type='button' className='btn btn-link' style={{textAlign:"left", color:"black"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+          </div>
+        ) : (null)
+      }
 
       {/* Recipe Image & Ingredients */}
       <div className='row mt-1 mb-5 gx-5'>
@@ -96,7 +89,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
       {/* Rating Modal */}  
       <Modal show={showRatingModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Rate this recipe</Modal.Title>
+            <Modal.Title>Your Rating</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
@@ -104,7 +97,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
         <Modal.Footer>
             <button 
               type='button' 
-              className='btn btn-primary' 
+              className='btn btn-success' 
               onClick={handleSubmitRating}>Submit</button>
         </Modal.Footer>
       </Modal>

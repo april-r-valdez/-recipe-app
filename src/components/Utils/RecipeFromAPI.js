@@ -15,6 +15,7 @@ const RecipeFromAPI = () => {
   const [directions, setDirections] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [nutrition, setNutrition] = useState({});
+  const [currentRating, setCurrentRating] = useState(5);
 
   // Signal save recipe successfully or not
   const[saveStatus, setSaveStatus] = useState(false);
@@ -84,7 +85,8 @@ const RecipeFromAPI = () => {
         glutenFree: recipe.glutenFree,
         dairyFree: recipe.dairyFree,
         nutrition: nutrition,
-        rating: 5, // rating is set to 5 stars initially
+        sumRating: currentRating, // rating is set to 5 stars initially
+        ratingCount: 1
       });
 
       // log recipe id
@@ -98,13 +100,20 @@ const RecipeFromAPI = () => {
     }
   }
 
+  const handleSubmitRating = (newRating) => {
+    setCurrentRating(newRating);
+  }
+
   return (
     <div>
       <RecipePage name={recipe.title} 
               image={recipe.image} 
               ingredients={ingredientDetails} 
               directions={directions} 
-              nutrition={nutrition} />
+              nutrition={nutrition}
+              rating={currentRating}
+              ratingCount={1}
+              onSubmitRating={handleSubmitRating} />
       
       {/* User can only click save recipe once, then the button will be disabled */}
       <button className='btn btn-success mb-3' onClick={handleSave} disabled={saveStatus}>

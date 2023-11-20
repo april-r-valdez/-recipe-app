@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { db, storage } from '../../firebase';
@@ -16,11 +16,12 @@ const RecipeFromDB = () => {
   const [ratingCount, setRatingCount] = useState(0);
 
   let param = useParams();
+
+  // get the recipe with recipeId from the Recipes collection
+  const recipeRef = doc(db, 'Recipes', param.id)
   
-  const getRecipeById = async (recipeId) => {
-    try {
-        // get the recipe with recipeId from the Recipes collection
-        const recipeRef = doc(db, "Recipes", recipeId);
+  const getRecipeById = async () => {
+    try {        
         const recipeDoc = await getDoc(recipeRef);
 
         if (recipeDoc.exists()) {
@@ -54,15 +55,26 @@ const RecipeFromDB = () => {
             setRating(Math.floor(recipe.sumRating / recipe.ratingCount));
 
         } else {
-            console.log("No recipe with id ", recipeId, " exists!");
+            console.log("No recipe with id ", param.id, " exists!");
         }
     } catch(error) {
         console.log("Error fetching recipe: ", error);
     }
   };
 
+  const handleRatingChange = async (currentRating) => {
+    try {
+      await updateDoc(recipeRef, {
+        sumRating: increment(currentRating),
+        ratingCount: increment(1),
+      })
+    } catch(error) {
+      console.log("Error updating document:", error);
+    }
+  }
+
   useEffect(() => {
-    getRecipeById(param.id);
+    getRecipeById();
   }, [param.id])
 
   return (
@@ -73,8 +85,8 @@ const RecipeFromDB = () => {
                   directions={directions}
                   nutrition={nutrition}
                   rating={rating} 
-                  recipeId={param.id}
                   ratingCount={ratingCount}
+                  onSubmitRating={handleRatingChange}
                   />
     </div>
   )
