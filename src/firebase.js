@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { getFirestore, serverTimestamp, setDoc, doc} from "@firebase/firestore";
 import { getStorage, ref, uploadBytes , getDownloadURL } from "@firebase/storage";
 import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 
@@ -26,6 +26,7 @@ const firebaseConfig = {
 
   export function signup(email, password){
     return createUserWithEmailAndPassword(auth, email, password);
+
   }
   export function login(email, password){
     return signInWithEmailAndPassword(auth, email, password);

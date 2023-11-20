@@ -4,9 +4,6 @@ import { useAuth } from '../firebase';
 import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 
-
-//Now can proceed to add functionality 
-
 const ProfilePage = () => {
 
   const curUser = useAuth();

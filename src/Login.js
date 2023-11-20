@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { signup, login, useAuth, logout} from "./firebase";
+import { signup, login, useAuth, logout, db} from "./firebase";
+import { getFirestore, serverTimestamp, setDoc, doc, collection, addDoc} from "firebase/firestore";
 import ProfilePage from './widgets/ProfilePage';
 
 const Login = () => {
@@ -13,7 +14,15 @@ const Login = () => {
     //async bc api call
      async function handleSignup() {
       try{
-        await signup(emailRef.current.value,passRef.current.value);
+        const res = await signup(emailRef.current.value,passRef.current.value);
+        // Add a new document in collection "Users"
+        await setDoc(doc(db, "Users", res.user.uid), {
+          firstName: "",
+          lastName: "",
+          email: emailRef.current.value,
+          phone: "",
+          userSince: serverTimestamp(),
+        });
       }
         catch{
           alert("Error!")
