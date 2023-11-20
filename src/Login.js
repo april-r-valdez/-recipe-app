@@ -14,11 +14,12 @@ const Login = () => {
     //async bc api call
      async function handleSignup() {
       try{
-        const res = await signup(emailRef.current.value,passRef.current.value);
+        const res = await signup(emailRef.current.value, passRef.current.value);
         // Add a new document in collection "Users"
         await setDoc(doc(db, "Users", res.user.uid), {
           firstName: "",
           lastName: "",
+          userName: "", 
           email: emailRef.current.value,
           phone: "",
           userSince: serverTimestamp(),

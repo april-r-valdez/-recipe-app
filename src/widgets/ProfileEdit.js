@@ -1,24 +1,30 @@
 import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
-import { useAuth, uploadProfile, db } from '../firebase';
+import { auth, uploadProfile, db } from '../firebase';
 import React, { useState, useEffect } from 'react';
 import Modal from "react-bootstrap/Modal";
+import {setDoc, doc, collection, updateDoc} from "firebase/firestore";
 
 //need to add user's info to firestore
 const ProfileEdit = (props) => {
+
   const editState = props.state;
   const setEditState = props.setState;
   
-  const curUser = useAuth(); 
+  const curUser = auth.currentUser;
   const [photoURL, setphotoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [username, setUsername] = useState();
+  const [userName, setUserName] = useState();
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
-
+  console.log(curUser.uid)
+  console.log(firstName)
+  console.log(lastName)
+  console.log(userName)
+  console.log(phone)
   
   const handleClose= () => {setEditState(false); };
   
@@ -34,8 +40,22 @@ const ProfileEdit = (props) => {
       }
   }
 
-  const handleSave = () => {
-    uploadProfile(photo, curUser, setLoading);
+  async function handleSave() {
+    try{
+      // Add a new document in collection "Users"
+    await updateDoc(doc(db, "Users", curUser.uid), {
+      userName: {userName},
+      firstName: {firstName},
+      lastName: {lastName},
+      //email: {email},
+      phone: {phone},
+    });
+    //uploadProfile(photo, curUser.uid, setLoading);
+    }
+    catch{
+      alert("Error!")
+    }
+    
 
   }
     return (
@@ -78,9 +98,9 @@ const ProfileEdit = (props) => {
                 <input
                   type="text"
                   placeholder={curUser ? curUser.userName : "Add username"}
-                  value={username}
+                  value={userName}
                   onChange={(e) => {
-                    setUsername(e.target.value);
+                    setUserName(e.target.value);
                   }}
                   aria-label="Username"
                   className="form-control"

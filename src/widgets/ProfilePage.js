@@ -1,12 +1,12 @@
 import Image from 'react-bootstrap/Image'
 import defaultProfile from '../assets/images/defaultProfile.svg';
-import { useAuth } from '../firebase';
+import { auth } from '../firebase';
 import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 
 const ProfilePage = () => {
 
-  const curUser = useAuth();
+  const curUser = auth.currentUser;
   const [editState, setEditState] = useState(false);
   const [photoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
 
