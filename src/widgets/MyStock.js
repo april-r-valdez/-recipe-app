@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UploadPantry from '../components/Pantry/UploadPantry';
 
 const MyStock = () => {
 
@@ -87,7 +88,7 @@ const MyStock = () => {
         <div className="container-sm text-center">
           <p className="h3">In Stock</p>
 
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Amount</th>
@@ -97,6 +98,7 @@ const MyStock = () => {
             <tbody>{AllIngredients.map(renderIngredient)}</tbody>
           </table>
         </div>
+        {AllIngredients.length !== 0 && <UploadPantry ingredients={AllIngredients}/>}
       </>
     );
 }

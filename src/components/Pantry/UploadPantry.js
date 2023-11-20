@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
-const UploadPantry = () => {
-  const [itemName, setItemName] = useState("");
-  const [quantity, setQuantity] = useState("");
+const UploadPantry = (ingredients) => {
+  //   const [itemName, setItemName] = useState("");
+  //   const [quantity, setQuantity] = useState("");
 
   const handleUpload = async (e) => {
     e.preventDefault();
 
     try {
-      console.log("db: ", db);
       const pantryRef = collection(db, "Pantry");
-      await addDoc(pantryRef, {
-        itemName: itemName,
-        quantity: quantity,
-      });
+      //   await addDoc(pantryRef, {
+      //     itemName: itemName,
+      //     quantity: quantity,
+      //   });
+      await addDoc(pantryRef, ingredients);
 
       // clear form fields after successful upload
-      setItemName("");
-      setQuantity("");
+      //   setItemName("");
+      //   setQuantity("");
 
       alert("Pantry item uploaded successfully!");
     } catch (error) {
@@ -29,7 +29,7 @@ const UploadPantry = () => {
 
   return (
     <div>
-      <h2>Upload Pantry Item</h2>
+      {/* <h2>Upload Pantry Item</h2>
       <form onSubmit={handleUpload}>
         <label>
           Item Name:
@@ -48,10 +48,12 @@ const UploadPantry = () => {
             onChange={(e) => setQuantity(e.target.value)}
           />
         </label>
-        <br />
+        <br /> */}
 
-        <button type="submit">Upload Pantry Item</button>
-      </form>
+      <button className="btn btn-secondary" onClick={handleUpload}>
+        Update Pantry
+      </button>
+      {/* </form> */}
     </div>
   );
 };
