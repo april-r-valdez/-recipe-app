@@ -1,25 +1,32 @@
 
-const Pantry = ({recipeInfo, ingredientsList, directionsList, handleDelete}) => {
+const Pantry = ({recipeImg, recipeInfo, ingredientsList, directionsList, handleDelete}) => {
     return (
         <div className="pantry">
+            { recipeImg && (
+                <div className="container">
+                    <div>
+                        <img src={URL.createObjectURL(recipeImg)} alt="" style={{ width: "75%", height: "100%", objectFit: "cover" }}/>
+                    </div><br></br>
+                </div>
+            )}
             {recipeInfo && (
                 <div className="container text-center">
                     <p className="h4">{recipeInfo.name}</p><br></br>
                     <div className="row">
                         <div class="col card border border-3">
-                            <h5 class="card-header">Yields</h5>
+                            <h5 class="card-header bg-secondary">Yields</h5>
                             <div class="card-body">
                                 <p class="card-text">{recipeInfo.servingSize} servings</p>
                             </div>
                         </div>
                         <div class="col card border border-3">
-                            <h5 class="card-header">Prep Time</h5>
+                            <h5 class="card-header bg-secondary">Prep Time</h5>
                             <div class="card-body">
                                 <p class="card-text">{recipeInfo.prepTime} minutes</p>
                             </div>
                         </div>
                         <div class="col card border border-3">
-                            <h5 class="card-header">Cook Time</h5>
+                            <h5 class="card-header bg-secondary">Cook Time</h5>
                             <div class="card-body">
                                 <p class="card-text">{recipeInfo.cookTime} minutes</p>
                             </div>

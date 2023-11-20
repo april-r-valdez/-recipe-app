@@ -31,6 +31,9 @@ const  UserInput = () => {
     // useState hook updates object containing recipe information
     const [recipeInfo, setRecipeInfo] = useState(null);
 
+    // useState hook updates variable containing input image
+    const [recipeImg, setRecipeImg] = useState(null);
+
     // useState hook updates list of ingredients and directions
     const [ingredientsList, setIngredientsList] = useState([]);
     const [directionsList, setDirectionsList] = useState([]);
@@ -80,6 +83,7 @@ const  UserInput = () => {
         }
     }
 
+    // handleDelete deletes input from their respective lists and modifies array indices accordingly
     const handleDelete = (_, id, deleteType) => {
         if(deleteType === "ingredient") {
             const updatedIngredients = ingredientsList.filter((_, index) => index !== id);
@@ -89,6 +93,11 @@ const  UserInput = () => {
             const updatedDirections = directionsList.filter((_, index) => index !== id);
             setDirectionsList(updatedDirections);
         }
+    }
+
+    // handleImageChange stores input image to a variable
+    const handleImageChange = (e) => {
+        setRecipeImg(e.target.files[0]);
     }
 
     return (  
@@ -108,10 +117,14 @@ const  UserInput = () => {
                     <form onSubmit={(e) => handleSubmit(e, "direction")}>
                         <Direction directions={directions} handleChange={handleChange}/>
                     </form><br></br><br></br>
+                    <div className="mb-3">
+                        <p className="h4">Upload Image</p><br></br>
+                        <input class="form-control" type="file" id="formFile" onChange={handleImageChange}/>
+                    </div>
                 </div>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-7">
-                    <Pantry recipeInfo={recipeInfo} ingredientsList={ingredientsList} 
+                    <Pantry recipeImg={recipeImg} recipeInfo={recipeInfo} ingredientsList={ingredientsList} 
                         directionsList={directionsList} handleDelete={handleDelete}/>
                 </div>
             </div>
