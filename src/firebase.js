@@ -59,23 +59,23 @@ const firebaseConfig = {
     alert('Image Uploaded!');
   }
 //return current user info
-const [userInfo, setUserInfo] = useState({});
-const userRef = doc(db, "Users", curUser?.uid);
-useEffect(() => {
-  const getUserInfo = async () => {
-    try{
-      const docSnap = await getDoc(userRef);
-      if (docSnap.exists()) {
-        setUserInfo(docSnap.data(), doc.id);
-        console.log(userInfo);
-        console.log(userInfo?.firstName);
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  }catch{
-    alert("Error!") }
-  };
+// const [userInfo, setUserInfo] = useState({});
+// const userRef = doc(db, "Users", curUser?.uid);
+// useEffect(() => {
+//   const getUserInfo = async () => {
+//     try{
+//       const docSnap = await getDoc(userRef);
+//       if (docSnap.exists()) {
+//         setUserInfo(docSnap.data(), doc.id);
+//         console.log(userInfo);
+//         console.log(userInfo?.firstName);
+//       } else {
+//         // docSnap.data() will be undefined in this case
+//         console.log("No such document!");
+//       }
+//   }catch{
+//     alert("Error!") }
+//   };
 
-  getUserInfo();
-}, []);
+//   getUserInfo();
+// }, []);
