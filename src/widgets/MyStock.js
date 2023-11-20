@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth } from '../firebase';
+import UploadPantry from '../components/Pantry/UploadPantry';
 
 const MyStock = () => {
 
@@ -6,6 +8,9 @@ const MyStock = () => {
     const [newMeasurement, setnewMeasurement] = useState("");
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
+
+    const [userID, setUserID] = useState(null);
+    useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
 
     const renderIngredient = (ingredient, index) =>{
       return(
@@ -87,7 +92,7 @@ const MyStock = () => {
         <div className="container-sm text-center">
           <p className="h3">In Stock</p>
 
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Amount</th>
@@ -97,6 +102,7 @@ const MyStock = () => {
             <tbody>{AllIngredients.map(renderIngredient)}</tbody>
           </table>
         </div>
+        <UploadPantry ingredients={AllIngredients} setIngredients={setAllIngredients} userID={userID}/>
       </>
     );
 }
