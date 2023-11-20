@@ -8,7 +8,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 function Navbar() {
     return (
-        <nav className="navbar bg-body-tertiary" data-bs-theme="light">
+        <nav className="navbar fixed-top bg-body-tertiary" data-bs-theme="light">
             <div className="container-fluid">
                 <div className="d-flex align-items-center">
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
