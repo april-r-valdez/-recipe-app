@@ -26,16 +26,18 @@ const UploadPantry = ({ ingredients, userID }) => {
       const q = query(pantriesRef, where("userID", "==", userID));
       const snapshot = await getDocs(q);
 
-      await addDoc(pantriesRef, ingredients);
-
       if (!snapshot.empty) {
         // update existing pantry
         const pantry = snapshot.docs[0];
-        await updateDoc(pantry.ref, { userID: ingredients });
+        await updateDoc(pantry.ref, {
+          userID: userID,
+          ingredients: ingredients,
+        });
         console.log("Existing pantry updated.");
       } else {
         // create new pantry
-        await addDoc(pantriesRef, { userID: ingredients });
+        console.log(`INFO: Attempting to add ${ingredients} under ${userID}`);
+        await addDoc(pantriesRef, { userID: userID, ingredients: ingredients });
         console.log("New pantry created.");
       }
 

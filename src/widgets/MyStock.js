@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../firebase';
+import { auth } from '../firebase';
 import UploadPantry from '../components/Pantry/UploadPantry';
 
 const MyStock = () => {
@@ -9,9 +9,9 @@ const MyStock = () => {
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
-    const user = useAuth();
+    const user = auth.currentUser;
     const [userID, setUserID] = useState(null);
-    useState(()=>{ if(user) {setUserID(user.id)}; console.log("user: ", user); }, [user]);
+    useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
 
     const renderIngredient = (ingredient, index) =>{
       return(
