@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
+import parseIngredients from '../components/Utils/IngredientParser.js';
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
+const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, nutrition} ) => {
+
+  const [ingredientsParsed, setIngredientsParsed] = useState([]);
+  useEffect(()=>{
+    if (ingredientDetails && ingredientsParsed.length === 0) setIngredientsParsed(parseIngredients(ingredientDetails));
+  }, [ingredientDetails, ingredientsParsed.length]);
+  useEffect(()=>{console.log("parsed ingredients: ", ingredientsParsed);}, [ingredientDetails, ingredientsParsed]);
+
+  useEffect(()=>{console.log("raw ingredients: ", ingredients)}, [ingredients]);
+
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
       {/* Recipe Title */}
@@ -24,7 +34,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
         <div className='col'>
           <h4><strong>Ingredients</strong></h4>
           <ul className="list-group list-group-flush">
-            {ingredients.map((ingredient, index) => (
+            {ingredientDetails.map((ingredient, index) => (
               <li className='list-group-item' key={index}>{ingredient}</li>
             ))}
           </ul>
