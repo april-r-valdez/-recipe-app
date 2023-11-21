@@ -9,13 +9,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 const ProfilePage = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user); // This will log the currentUser
-    });
-  
-    return () => unsubscribe();
-  }, []);
 
   const [loading, setLoading] = useState(true);
   const [editState, setEditState] = useState(false);
