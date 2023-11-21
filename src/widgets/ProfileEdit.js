@@ -11,7 +11,7 @@ const ProfileEdit = (props) => {
   const editState = props.state;
   const setEditState = props.setState;
   
-  const curUser = useAuth();
+  const currentUser = useAuth();
   const [photoURL, setphotoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -20,9 +20,9 @@ const ProfileEdit = (props) => {
   const [newUsername, setNewUsername] = useState();
   const [newPhone, setNewPhone] = useState(0);
   const [newEmail, setNewEmail] = useState();
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(null);
 
-  const userRef = doc(db, "Users", curUser.uid);
+  const userRef = doc(db, "Users", currentUser.uid);
   const getUserInfo = async () => {
     try{
       const docSnap = await getDoc(userRef);
@@ -43,10 +43,10 @@ const ProfileEdit = (props) => {
   const handleClose= () => {setEditState(false); };
   
   useEffect(() => {
-    if(curUser?.photoURL){
-      setphotoURL(curUser.photoURL);
+    if(currentUser?.photoURL){
+      setphotoURL(currentUser.photoURL);
     }
-  }, [curUser]);
+  }, [currentUser]);
 
   const handleUpload = (e) => {
     if(e.target.files[0]){
@@ -64,7 +64,7 @@ const ProfileEdit = (props) => {
       //email: newEmail,
       phone: newPhone,
     });
-    //uploadProfile(photo, curUser.uid, setLoading);
+    //uploadProfile(photo, currentUser.uid, setLoading);
     getUserInfo();
     }
     catch{
@@ -110,7 +110,7 @@ const ProfileEdit = (props) => {
                 <label className="input-group-text">Username: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? userInfo?.userName : "Add username"}
+                  placeholder={currentUser ? userInfo?.userName : "Add username"}
                   onChange={(e) => {
                     setNewUsername(e.target.value);
                   }}
@@ -121,44 +121,41 @@ const ProfileEdit = (props) => {
               <div className="input-group">
                 <label className="input-group-text">Email</label>
                 <input
-                  type="text"
-                  placeholder={curUser?.email}
+                  type="email"
+                  placeholder={currentUser?.email}
                   aria-label="Email"
                   className="form-control"
-                  email="email"
                 />
               </div>
               <div className="input-group">
                 <label className="input-group-text">First name: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? userInfo?.firstName : "Add first name"}
+                  placeholder={currentUser ? userInfo?.firstName : "Add first name"}
                   onChange={(e) => {
                     setNewFirstName(e.target.value);
                   }}
                   aria-label="First name"
                   className="form-control"
-                  firstName="firstName"
                 />
               </div>
               <div className="input-group">
                 <label className="input-group-text">Last name: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? userInfo?.lastName : "Add last name"}
+                  placeholder={currentUser ? userInfo?.lastName : "Add last name"}
                   onChange={(e) => {
                     setNewLastName(e.target.value);
                   }}
                   aria-label="Last name"
                   className="form-control"
-                  lastName="lastName"
                 />
               </div>
               <div className="input-group">
                 <label className="input-group-text">Phone number: </label>
                 <input
                   type="text"
-                  placeholder={curUser ? userInfo?.phone : "Add phone number"}
+                  placeholder={currentUser ? userInfo?.phone : "Add phone number"}
                   onChange={(e) => {
                     setNewPhone(Number(e.target.value));
                   }}

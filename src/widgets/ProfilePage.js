@@ -4,10 +4,19 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const curUser = useAuth();
+  const currentUser = useAuth();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(user); // This will log the currentUser
+    });
+  
+    return () => unsubscribe();
+  }, []);
+
   const [loading, setLoading] = useState(true);
   const [editState, setEditState] = useState(false);
   const [photoURL] = useState(
@@ -15,7 +24,7 @@ const ProfilePage = () => {
   );
   const [userInfo, setUserInfo] = useState({});
 
-  const userRef = curUser ? doc(db, 'Users', curUser.uid) : null;
+  const userRef = currentUser ? doc(db, 'Users', currentUser.uid) : null;
 
   const getUserInfo = async () => {
     try {
@@ -35,13 +44,15 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    console.log('curUser in useEffect:', curUser);
-    if (!curUser) {
+    console.log('curUser in useEffect:', currentUser?.firstName);
+    if (!currentUser) {
       console.log('Redirecting to login page');
       navigate('/login-page');
     } else {
+
       setLoading(true);
       getUserInfo();
+      setLoading(false);
     }
   }, []);
 
@@ -54,22 +65,22 @@ const ProfilePage = () => {
     <div>
       <div className="container-sm">
         <Image
-          src={curUser?.photoURL || photoURL}
+          src={currentUser?.photoURL || photoURL}
           width="200"
           roundedCircle={true}
         />
       </div>
       <div>
-        <h4>Welcome, {userInfo?.firstName}!</h4>
+        <h4>Welcome, {userInfo.firstName}!</h4>
       </div>
 
       <div>
         <ul className="list-group">
           <li className="list-group-item">
-            Name: {userInfo?.firstName + ' ' + userInfo?.lastName}
+            Name: {userInfo.firstName + ' ' + userInfo.lastName}
           </li>
-          <li className="list-group-item">Email: {curUser?.email} </li>
-          <li className="list-group-item">Phone: {userInfo?.phone} </li>
+          <li className="list-group-item">Email: {userInfo.email} </li>
+          <li className="list-group-item">Phone: {userInfo.phone} </li>
           <li className="list-group-item">
             User since: {userInfo?.userSince?.toDate()?.toDateString()}
           </li>
@@ -78,7 +89,7 @@ const ProfilePage = () => {
       <div>
         <button
           type="button"
-          disabled={!curUser}
+          disabled={!currentUser}
           className="btn btn-primary"
           onClick={() => setEditState(true)}
         >
@@ -94,7 +105,7 @@ const ProfilePage = () => {
           </svg>{' '}
           Edit Profile
         </button>
-        {curUser && <ProfileEdit disabled={!curUser} state={editState} setState={setEditState} />}
+        {currentUser && <ProfileEdit disabled={!currentUser} state={editState} setState={setEditState} />}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import ProfilePage from './widgets/ProfilePage';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const curUser = useAuth();
   const navigate = useNavigate();
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
   const [error, setError] = useState();
 
     //async bc api call
-    const handleSignup = async (e) => {
+     async function handleSignup(e) {
       e.preventDefault();
       setError("")
       try{
@@ -42,10 +43,11 @@ const Login = () => {
       }catch (error) {
         console.error("Login error:", error);
         alert("Login failed. Please check your email and password.");
+      }
     }
-  }
     async function handleLogout(){
       logout();
+      navigate("/home");
     }
 
     return ( 
@@ -58,33 +60,33 @@ const Login = () => {
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
                     <div>
-                      {/* Successfully logged in as: {curUser?.email} */}
+                      Successfully logged in as: {curUser?.email}
                     </div>
-                    <input type="email" className="form-control" placeholder="Email or Phone" onChange={(e) => {setLoginEmail(e.target.value)}}/>
-                    <input type="password" className="form-control" placeholder="Password" onChange={(e) => {setLoginPassword(e.target.value)}}/>
-                    {/* {!curUser && */}
+                    <input type="email" className="form-control" placeholder="Email or Phone" value={loginEmail} onChange={(e) => {setLoginEmail(e.target.value)}}/>
+                    <input type="password" className="form-control" placeholder="Password" value={loginPassword} onChange={(e) => {setLoginPassword(e.target.value)}}/>
+                    {!curUser &&
                     <>
                     <button onClick={handleLogin} className="btn btn-primary">Login</button>
-                    </>
+                    </>}
                     
-                    {/* {curUser && */}
+                    {curUser &&
                     <>
                     <button onClick={handleLogout} className="btn btn-primary">Logout</button>
-                    </>
+                    </>}
                     
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
                   <div>
-                      {/* Successfully created account! Welcome, {curUser?.email} */}
+                      Successfully created account! Welcome, {curUser?.email}
                     </div>
-                    <input type="email"className="form-control" placeholder="Email" onChange={(e) => {setSignupEmail(e.target.value)}}/>
-                    <input type="password" className="form-control" placeholder="Password" onChange={(e) => {setSignupPassword(e.target.value)}} />
-                    {/* {!curUser && */}
+                    <input type="email"className="form-control" placeholder="Email" value={signupEmail} onChange={(e) => {setSignupEmail(e.target.value)}}/>
+                    <input type="password" className="form-control" placeholder="Password"value={signupPassword} onChange={(e) => {setSignupPassword(e.target.value)}} />
+                    {!curUser &&
                     <>
                     <button onClick={handleSignup} className="btn btn-primary">Signup</button>
-                    </>
+                    </>}
                     
                   </div>
                 </div>
