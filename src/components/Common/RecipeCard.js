@@ -36,8 +36,8 @@ function RecipeCard(props) {
                     setTitle(capitalizedTitle);
                     
                     // Get rating as integer value
-                    setRating(parseInt(recipe.rating, 10));
-
+                    setRating(parseInt(Math.floor(recipe.sumRating / recipe.ratingCount), 10));
+                    
                     // Get image
                     const imageRef = ref(storage, recipe.imageLoc)
                     getDownloadURL(imageRef).then((url) => {
