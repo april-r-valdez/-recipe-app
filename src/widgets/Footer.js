@@ -8,7 +8,7 @@ function Footer() {
                 <div className="col-3">
                     <div className="row">
                         <div className="col-1">
-                            <img className="icon-img ms-md-3" src="restaurant.png" alt="" style={{ maxWidth: '30px', maxHeight: '30px' }}></img>
+                            <img className="icon-img ms-md-3" src="./images/restaurant.png" alt="" style={{ maxWidth: '30px', maxHeight: '30px' }}></img>
                         </div>
                         <div className="col-2">
                             <Link className="navbar-brand text-md-start fw-bolder ms-md-4 nav-link active" to="/home">RECIPE GENERATOR</Link>
