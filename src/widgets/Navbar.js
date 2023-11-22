@@ -38,7 +38,7 @@ function Navbar() {
                     <DisplayToggle className="p-1 me-3"/>                            
                     
                     {/*Search by name modal */}
-                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}}
+                    <IoIosSearch className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}}
                         onClick={() => openModal({
                             title : <p class="fw-semibold">SEARCH RECIPE</p>,
                             body: <SearchByName handleClose={closeModal}/>,
@@ -46,7 +46,7 @@ function Navbar() {
                         )}/>                
                     
                     {/*Login and Signup page modal*/}
-                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} 
+                    <FaCircleUser className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}} 
                         onClick={() => openModal({
                             title : <p class="fw-semibold">Welcome</p>,
                             body: <Login />,
