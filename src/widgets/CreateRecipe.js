@@ -117,12 +117,19 @@ const  UserInput = () => {
                     <form onSubmit={(e) => handleSubmit(e, "direction")}>
                         <Direction directions={directions} handleChange={handleChange}/>
                     </form><br></br><br></br>
-                    <div className="mb-3">
-                        <p className="h4">Upload Image</p><br></br>
-                        <label htmlFor="formFile" style={{ cursor: "pointer" }}>
-                            <img src="upload-img.png" alt="" style={{ width: "25%", height: "25%", objectFit: "cover", cursor: "pointer" }}/>
-                            <input class="form-control" type="file" id="formFile" style={{ display: "none" }} onChange={handleImageChange}/>
-                        </label>
+                    <div className='row'>
+                        <div className="col-4 mb-3">
+                            <p className="h4">Upload Image</p><br></br>
+                            <label htmlFor="formFile" style={{ cursor: "pointer" }}>
+                                <img src="upload-img.png" alt="" style={{ width: "75%", height: "75%", objectFit: "cover", cursor: "pointer" }}/>
+                                <input class="form-control" type="file" id="formFile" style={{ display: "none" }} onChange={handleImageChange}/>
+                            </label>
+                        </div>
+                        <div className="col-4 mb-3 ms-auto">
+                            <p className="h4">Save Recipe</p><br></br>
+                            <img src="bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
+                            <button class="btn btn-primary" style={{ display: "none" }}></button>
+                        </div>
                     </div>
                 </div>
                 <div className="col-lg-1"></div>
