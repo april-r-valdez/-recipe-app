@@ -40,7 +40,7 @@ const Ingredient = ({inputs, handleChange}) => {
                 <option value="gallons">gallons</option>
             </select><br></br>
             <div class="d-grid gap-2 col-8 mx-auto">
-                <button type="submit" class="btn btn-primary">Add Ingredient</button>
+                <button type="submit" class="btn btn-secondary">Add Ingredient</button>
             </div>
         </div>
         
