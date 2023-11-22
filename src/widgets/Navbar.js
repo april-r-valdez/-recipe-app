@@ -1,41 +1,28 @@
 import DisplayToggle from "../components/Utils/DisplayMode";
 import Sidebar from "../widgets/Sidebar";
-import Login from "../Login"
+import Login from "./Login";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { FaCircleUser } from "react-icons/fa6";
 import ModalComponent from "../components/Utils/ModalComponent";
+import SearchByName from "../components/SearchByName";
 
 
 function Navbar() {
-    const [showSearchModal, setShowSearchModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState({});
 
-    const handleModalOpen = () => {
-        setShowSearchModal(true);
+    const openModal = ({title, body, footer}) => {
+        setModalContent({title, body, footer});
+        setShowModal(true);
     };
 
-    const handleModalClose = () => {
-        setShowSearchModal(false);
+    const closeModal = () => {
+        setShowModal(false);
+        setModalContent({});
     };
 
-
-    const modalTitle = (
-        <p class="fw-semibold">SEARCH RECIPE</p>
-    );
-    const modalBody = (
-        <div className="d-flex justify-content-center">
-        <form className="d-flex me-3 col-10" role="search">
-        <input className="form-control me-2" type="search" placeholder="By name (ex: lasagna, pasta,...)" aria-label="Search"/>        
-        </form> 
-        </div>    
-    );
-    const modalFooter = (
-        <>
-        <button type="button" className="btn btn-secondary" onClick={handleModalClose}>Search</button>
-        <button type="button" className="btn btn-secondary" onClick={handleModalClose}>Close</button>
-        </>
-    );
 
     return (
         <div className="navbar fixed-top bg-body-tertiary flex-nowrap " data-bs-theme="light">
@@ -49,15 +36,30 @@ function Navbar() {
                 </div>                                      
                 <div class="d-inline-flex">
                     <DisplayToggle className="p-1 me-3"/>                            
-                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}} onClick={handleModalOpen}/>                
-                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" />
+                    
+                    {/*Search by name modal */}
+                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}}
+                        onClick={() => openModal({
+                            title : <p class="fw-semibold">SEARCH RECIPE</p>,
+                            body: <SearchByName handleClose={closeModal}/>,
+                            footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
+                        )}/>                
+                    
+                    {/*Login and Signup page modal*/}
+                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} 
+                        onClick={() => openModal({
+                            title : <p class="fw-semibold">Welcome</p>,
+                            body: <Login />,
+                            footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
+                        )}
+                    />
                     
                     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                         <div className="offcanvas-header">
                             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div className="offcanvas-body">
-                            <Login />
+                            
                         </div>
                     </div>
                 </div>
@@ -65,11 +67,11 @@ function Navbar() {
                
             </div>
             <ModalComponent
-                showModal={showSearchModal}
-                handleClose={handleModalClose}
-                modalTitle={modalTitle}
-                modalBody={modalBody}
-                modalFooter={modalFooter}
+                showModal={showModal}
+                handleClose={closeModal}
+                modalTitle={modalContent.title}
+                modalBody={modalContent.body}
+                modalFooter={modalContent.footer}
             />
         </div>
     )
