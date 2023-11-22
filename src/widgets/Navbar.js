@@ -48,9 +48,9 @@ function Navbar() {
                     <Link className="navbar-brand fw-bolder px-2" to="/home" >  RECIPE GENERATOR </Link>
                 </div>                                      
                 <div class="d-inline-flex">
-                    <DisplayToggle className="p-1 me-3"/>                            
-                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}} onClick={handleModalOpen}/>                
-                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" />
+                    <DisplayToggle className="p-1 me-3 "/>                            
+                    <IoIosSearch className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}} onClick={handleModalOpen}/>                
+                    <FaCircleUser className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" />
                     
                     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                         <div className="offcanvas-header">
