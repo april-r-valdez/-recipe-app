@@ -3,6 +3,7 @@ import Ingredient from '../components/Common/Ingredient';
 import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
+import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
 
 const  UserInput = () => {
     // useState hook updates variables that store ingredient inputs
@@ -100,6 +101,13 @@ const  UserInput = () => {
         setRecipeImg(e.target.files[0]);
     }
 
+    // handle save recipe
+    const handleSaveRecipe = () => {
+        // save recipe
+        saveRecipeToFirebase("testname", 0, 15, "test", "test", "test", "test");
+        // redirect to newly recipe page
+    }
+
     return (  
         <div className="container-xl">
             <h1 className="display-5">Create Recipe</h1><br></br><br></br>
@@ -127,8 +135,10 @@ const  UserInput = () => {
                         </div>
                         <div className="col-4 mb-3 ms-auto">
                             <p className="h4">Save Recipe</p><br></br>
-                            <img src="bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
-                            <button class="btn btn-primary" style={{ display: "none" }}></button>
+                            <label htmlFor='formButton' style={{ cursor: "pointer" }}>
+                                <img src="bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
+                                <input type='button' id='formButton' style={{ display: "none" }} onClick={handleSaveRecipe}/>
+                            </label>
                         </div>
                     </div>
                 </div>
