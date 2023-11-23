@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { getFirestore, serverTimestamp, setDoc, doc, getDoc, updateDoc} from "@firebase/firestore";
 import { getStorage, ref, uploadBytes , getDownloadURL } from "@firebase/storage";
 import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 
@@ -26,6 +26,7 @@ const firebaseConfig = {
 
   export function signup(email, password){
     return createUserWithEmailAndPassword(auth, email, password);
+
   }
   export function login(email, password){
     return signInWithEmailAndPassword(auth, email, password);
@@ -37,8 +38,10 @@ const firebaseConfig = {
   export function useAuth(){
     const [currentUser, setCurrentUser] = useState();
     useEffect(() => {
-      const unsub = onAuthStateChanged(auth, user =>{setCurrentUser(user)});
-      return unsub;
+      const unsubscribe = onAuthStateChanged(auth, user =>{setCurrentUser(user)});
+      return () =>{
+        unsubscribe();
+      };
     }, []);
 
     return currentUser;
@@ -57,4 +60,51 @@ const firebaseConfig = {
     setLoading(false);
     alert('Image Uploaded!');
   }
-//begin development of letting user's add
+
+// Custom hook for getting current user info
+export function useUserInfo(currentUser) {
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    if (currentUser) {
+      const userRef = doc(db, 'Users', currentUser.uid);
+
+      const getUserInfo = async () => {
+        try {
+          const docSnap = await getDoc(userRef);
+          if (docSnap.exists()) {
+            setUserInfo(docSnap.data());
+          } else {
+            console.log('No such document!');
+          }
+        } catch (error) {
+          console.error('Error fetching user info:', error);
+        }
+      };
+      getUserInfo();
+    } else {
+      // Handle the case where currentUser is undefined
+      setUserInfo(null);
+    }
+  }, [currentUser]);
+
+  // Function to update user information
+  const updateUserInfo = async (updatedInfo) => {
+    try {
+      if (currentUser) {
+        const userRef = doc(db, 'Users', currentUser.uid);
+        await updateDoc(userRef, updatedInfo);
+        // Update local state with the new information
+        setUserInfo((prevInfo) => ({ ...prevInfo, ...updatedInfo }));
+      } else {
+        console.error('User is undefined. Cannot update user info.');
+      }
+    } catch (error) {
+      console.error('Error updating user info:', error);
+    }
+  };
+
+  return { userInfo, updateUserInfo };
+  }
+
+

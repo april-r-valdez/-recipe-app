@@ -14,7 +14,7 @@ import RecipeScorerTester from './components/Utils/RecipeScorerTester';
 import ProfilePage from './widgets/ProfilePage';
 import RecipeFromDB from './components/Utils/RecipeFromDB';
 import ProfileEdit from './widgets/ProfileEdit';
-import Login from './widgets/Login';
+import LoginPage from './widgets/LoginPage';
 import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
 import OurTeam from './OurTeam';
@@ -33,7 +33,7 @@ function App() {
         <Route path='/create-recipe' element={<CreateRecipe/>}/>
         <Route path='/in-stock' element={<MyStock/>}/>
         <Route path='/profile-page' element={<ProfilePage/>}/>
-        <Route path='/login-page' element={<Login/>}/>
+        <Route path='/login-page' element={<LoginPage/>}/>
         <Route path='/searchByIngredients' element={<DBSearch/>}/>
         <Route path='/externalSearch/:ingredients' element={<APISearch/>}/>
         <Route path='/externalRecipe/:id' element={<RecipeFromAPI/>}/>
