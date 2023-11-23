@@ -4,8 +4,14 @@ import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
 import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
+import { useAuth } from '../firebase';
+import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
 
 const  UserInput = () => {
+
+    // get the current login user
+    const curUser = useAuth();
+    
     // useState hook updates variables that store ingredient inputs
     const [inputs, setIngredients] = useState({
         // default values set
@@ -111,12 +117,19 @@ const  UserInput = () => {
         const ingredients = ingredientsList.map((input) => input.ingredient);
         const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
         const directions = directionsList.map(data => data.direction);
-        const imageLocation = 'RecipeImages/' + recipeImg.name;
-    
-        // save recipe to firebase
-        saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation);
+        const imageLocation = 'RecipeImages/' + recipeImg?.name;
         
-        // redirect to newly recipe page
+        let authorName = "admin";  // set author name to admin by default
+        if(curUser) {
+            authorName = curUser.displayName ? curUser.displayName : curUser.email;
+        }
+        
+        // save recipe to firestore
+        saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName);
+        
+        // upload image to firebase storage
+        uploadImageFileToFirebase(recipeImg, imageLocation);
+        
     }
 
     return (  

@@ -4,7 +4,7 @@ import RecipePage from '../../widgets/RecipePage';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../firebase';
 import extractNutritionData from './NutritionFactsParser';
-import uploadImageToFirebase from './UploadImage';
+import { uploadImageToFirebase } from './UploadImage';
 
 const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
 
@@ -86,7 +86,8 @@ const RecipeFromAPI = () => {
         dairyFree: recipe.dairyFree,
         nutrition: nutrition,
         sumRating: currentRating, // rating is set to 5 stars initially
-        ratingCount: 1
+        ratingCount: 1,
+        createdBy: "admin"
       });
 
       // log recipe id
