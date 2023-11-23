@@ -5,7 +5,7 @@ import DynamicRating from './DynamicRating.js';
 import { useAuth } from '../firebase.js';
 
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, onSubmitRating} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
@@ -49,6 +49,15 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
         curUser ? (
           <div className='row'>
             <button type='button' className='btn btn-link' style={{textAlign:"left", color:"black"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+          </div>
+        ) : (null)
+      }
+
+      {/* Created by */}
+      {
+        author !== "" ? (
+          <div className='row mt-2 mb-2'>
+            <i>Recipe by {author}</i>
           </div>
         ) : (null)
       }

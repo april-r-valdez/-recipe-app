@@ -14,6 +14,7 @@ const RecipeFromDB = () => {
   const [nutrition, setNutrition] = useState({});
   const [rating, setRating] = useState(0);
   const [ratingCount, setRatingCount] = useState(0);
+  const [createdBy, setCreatedBy] = useState("")
 
   let param = useParams();
 
@@ -54,6 +55,9 @@ const RecipeFromDB = () => {
             // get rating points
             setRating(Math.floor(recipe.sumRating / recipe.ratingCount));
 
+            // get author
+            setCreatedBy(recipe.createdBy);
+
         } else {
             console.log("No recipe with id ", param.id, " exists!");
         }
@@ -86,6 +90,7 @@ const RecipeFromDB = () => {
                   nutrition={nutrition}
                   rating={rating} 
                   ratingCount={ratingCount}
+                  author={createdBy}
                   onSubmitRating={handleRatingChange}
                   />
     </div>

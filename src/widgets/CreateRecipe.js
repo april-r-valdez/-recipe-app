@@ -6,6 +6,7 @@ import Metadata from '../components/Common/Metadata';
 import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
 import { useAuth } from '../firebase';
 import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
+import { Modal } from 'react-bootstrap';
 
 const  UserInput = () => {
 
@@ -44,6 +45,17 @@ const  UserInput = () => {
     // useState hook updates list of ingredients and directions
     const [ingredientsList, setIngredientsList] = useState([]);
     const [directionsList, setDirectionsList] = useState([]);
+
+    // Modal component
+    const [showModal, setShowModal] = useState(false);
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    }
+
+    const reloadPage = () => {
+        window.location.reload();
+    }
 
     // adds object containing ingredient inputs to ingredients list
     const addIngredientsToList = () => {
@@ -117,9 +129,9 @@ const  UserInput = () => {
         const ingredients = ingredientsList.map((input) => input.ingredient);
         const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
         const directions = directionsList.map(data => data.direction);
-        const imageLocation = 'RecipeImages/' + recipeImg?.name;
+        const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : "";
         
-        let authorName = "admin";  // set author name to admin by default
+        let authorName = "";
         if(curUser) {
             authorName = curUser.displayName ? curUser.displayName : curUser.email;
         }
@@ -128,8 +140,13 @@ const  UserInput = () => {
         saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName);
         
         // upload image to firebase storage
-        uploadImageFileToFirebase(recipeImg, imageLocation);
-        
+        if (recipeImg) {
+            uploadImageFileToFirebase(recipeImg, imageLocation);
+        }
+
+        // open pop up modal
+        setShowModal(true);
+
     }
 
     return (  
@@ -172,6 +189,19 @@ const  UserInput = () => {
                         directionsList={directionsList} handleDelete={handleDelete}/>
                 </div>
             </div>
+
+            {/* Successfully save modal */}
+            <Modal show={showModal} onHide={handleModalClose}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <p>Your recipe has been added!</p>
+                </Modal.Body>
+                <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <button 
+                    type='button' 
+                    className='btn btn-success' onClick={reloadPage}>Add another recipe</button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
