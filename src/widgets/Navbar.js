@@ -34,21 +34,21 @@ function Navbar() {
                     <Sidebar/>
                     <Link className="navbar-brand fw-bolder px-2" to="/home" >  RECIPE GENERATOR </Link>
                 </div>                                      
-                <div class="d-inline-flex">
+                <div className="d-inline-flex">
                     <DisplayToggle className="p-1 me-3"/>                            
                     
                     {/*Search by name modal */}
-                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}}
+                    <IoIosSearch className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}}
                         onClick={() => openModal({
-                            title : <p class="fw-semibold">SEARCH RECIPE</p>,
+                            title : <p className="fw-semibold">SEARCH RECIPE</p>,
                             body: <SearchByName handleClose={closeModal}/>,
                             footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
                         )}/>                
                     
                     {/*Login and Signup page modal*/}
-                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} 
+                    <FaCircleUser className="p-1 me-3 icon-bg-light rounded-circle" style={{ fontSize: '30px'}} 
                         onClick={() => openModal({
-                            title : <p class="fw-semibold">Welcome</p>,
+                            title : <p className="fw-semibold">Welcome</p>,
                             body: <Login />,
                             footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
                         )}
