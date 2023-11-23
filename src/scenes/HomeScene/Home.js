@@ -5,7 +5,7 @@ function Home() {
     return (
         <div className="container-lg ">
             <div className="row">
-            <   InputIngredient/>
+            <InputIngredient/>
 
             </div>
             <div className="row">
