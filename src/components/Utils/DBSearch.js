@@ -11,16 +11,20 @@ const DBSearch = () => {
   const [matchingRecipes, setMatchingRecipes] = useState([]);
   const location = useLocation();
 
+  // Query to search by name
   const recipeNameQueryBuilder = (recipeName) => { 
-    let q = collection(db, 'Recipes');   
-    q = query(q, where('name', "==", recipeName))
+    let q = collection(db, 'Recipes');
+
+    const recipeWords = recipeName.split(" ");
+    const capRecipeName = (recipeWords.map(word => word.charAt(0).toUpperCase() + word.slice(1))).join(" ");
+    q = query(q, where('name', "==", capRecipeName))
 
     // limit the number of recipes retrieved to 9
     q = query(q, limit(9));
     return q;
   }
 
-    // function to dynamically construct the query base on URL parameters
+  // function to dynamically construct the query base on URL parameters
   const recipeIngredientQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {    
     let q = collection(db, 'Recipes'); 
     // match any recipes with the ingredients field (array type) contains one or more ingredients from the provided ingredient list

@@ -10,21 +10,30 @@ function FeaturedSection() {
 
     // Get the document named Feaured
     const featured = collection(db, "Featured")
+
+    const getRecipeList = async () => {
+                try{
+                    const docRef = doc(featured, "default");
+                    const currentDoc = await getDoc(docRef);
+                    const currentList = (currentDoc.data()).recipeList;
+                    setRecipeList(currentList);
+                } catch (error) {
+                    console.error("Error fetching Featured recipe list:", error);
+                }
+                
+            };
     
     useEffect(() => {
-        const getRecipeList = async () => {
-            const docRef = doc(featured, "default");
-            const currentDoc = await getDoc(docRef);
-            const currentList = (currentDoc.data()).recipeList;
-            setRecipeList(currentList);
-            
-        };
-        getRecipeList();
-    }, []);
+
+        if (recipeList.length === 0) {
+            console.log("Fetching data from the database...");
+            getRecipeList();
+        }
+    }, [recipeList, featured]);
     
     return (
         <div className="container-fluid">
-            <h4>Featured Recipes</h4>
+            <h4>Featured</h4>
             <DisplayRecipeCardList recipeList={recipeList} displayCount={9}/>
         </div>
     )

@@ -14,21 +14,21 @@ const SearchByName = ({handleClose}) => {
     };
 
     return (
-        <div className="d-flex justify-content-center">
-            <div className="row">
-                <form className="d-flex me-3 col-12" role="search" >
-                    <input 
-                        className="form-control me-2"
-                        type="search"
-                        value={recipeName}
-                        onChange={(e) => setRecipeName(e.target.value)}
-                        placeholder="By name (ex: lasagna, pasta,...)" 
-                        aria-label="Search"
-                        required
-                    /> 
-                </form> 
-                <button type="button" className="btn btn-secondary" onClick={handleSearch}><IoIosSearch/></button>
-            </div>
+        <div className="d-flex me-3 col-12">            
+            <form className="flex-grow-1" role="search" >
+                <input 
+                    className="form-control me-2"
+                    type="search"
+                    value={recipeName}
+                    onChange={(e) => setRecipeName(e.target.value)}
+                    placeholder="By name (ex: lasagna, pasta,...)" 
+                    aria-label="Search"
+                    required
+                /> 
+            </form>
+            <button type="button" className="btn btn-secondary" onClick={handleSearch}><IoIosSearch/></button>
+                
+            
         </div> 
     )
 
