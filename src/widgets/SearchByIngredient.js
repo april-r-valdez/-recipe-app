@@ -9,9 +9,9 @@ import CameraModule from "./CameraModule";
 function InputIngredient () {
 
     const [ingredients, setIngredientList] = useState([
-       'Sugar',
-       'Salt',
-       'Oil',
+        { id: 1, name: 'Sugar' },
+        { id: 2, name: 'Salt' },
+        { id: 3, name: 'Oil' },
     ]);
 
     const [isGlutenFree, setIsGlutenFree] = useState(false);
@@ -25,24 +25,37 @@ function InputIngredient () {
 
     const navigate = useNavigate();
 
-    const removeItem = (idx) => {
-        const updatedItems = [...ingredients];
-        updatedItems.splice(idx, 1);
+    const removeItem = (id) => {
+        const updatedItems = ingredients.filter((ingredient) => ingredient.id !== id);
         setIngredientList(updatedItems);
     };
 
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
-        const restrictInput = inputValue.replace(/[^A-Za-z]/g, '');
-        const capitalInputValue = restrictInput.charAt(0).toUpperCase() + restrictInput.slice(1).toLowerCase();
+        // Include space in the character class, and alphaets
+        const restrictInput = inputValue.replace(/[^A-Za-z ]/g, ''); 
+        const capitalInputValue = restrictInput
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+      
         setNewItem(capitalInputValue);
     };
     
     const addItem = () => {
-        if (newItem.trim() !== '') {
-            setIngredientList([...ingredients, newItem]);
-            setNewItem('');
+        // Prevent adding empty items
+        if (newItem.trim() === '') {
+          return; 
         }
+        
+         // Increase id
+        const newIngredient = {
+          id: ingredients.length + 1,
+          name: newItem,
+        };
+      
+        setIngredientList([...ingredients, newIngredient]);
+        setNewItem('');
     };
 
     const resetIngredientList = () => {
@@ -56,7 +69,8 @@ function InputIngredient () {
     };
 
     const handleSearch = () => {
-        navigate(`/searchByIngredients?ingredients=${ingredients}&glutenFree=${isGlutenFree}&dairyFree=${isDairyFree}&vegan=${isVegan}`)
+        const ingredientNames = ingredients.map((ingredient) => ingredient.name).join(',');
+        navigate(`/searchByIngredients?searchType=${'byIngredient'}&ingredients=${ingredientNames}&glutenFree=${isGlutenFree}&dairyFree=${isDairyFree}&vegan=${isVegan}`)
     };
     
     const handleExternalSearch = () => {
@@ -137,8 +151,8 @@ function InputIngredient () {
                             </div>
                             <div className="row">
                                 <div className="col">                                    
-                                    <div class="rounded-pill bg-warning-subtle p-2 ">
-                                        <div class="form-check">                                
+                                    <div className="rounded-pill bg-warning-subtle p-2 ">
+                                        <div className="form-check">                                
                                         <input 
                                             className="form-check-input" 
                                             type="checkbox" 
@@ -146,14 +160,14 @@ function InputIngredient () {
                                             id="glutenFreeCheckbox" 
                                             checked={isGlutenFree} 
                                             onChange={handleGlutenFreeChange}/>
-                                        <label class="form-check-label" for="glutenFreeCheckbox">Gluten free</label>
+                                        <label className="form-check-label" htmlFor="glutenFreeCheckbox">Gluten free</label>
                                         </div>
                                     </div>
                                 
                                 </div>
                                 <div className="col">
-                                    <div class="rounded-pill bg-warning-subtle p-2"> 
-                                        <div class="form-check">
+                                    <div className="rounded-pill bg-warning-subtle p-2"> 
+                                        <div className="form-check">
                                         <input 
                                             className="form-check-input" 
                                             type="checkbox" 
@@ -161,13 +175,13 @@ function InputIngredient () {
                                             id="dairyFreeCheckbox"
                                             checked={isDairyFree}
                                             onChange={handleDairyChange}/>
-                                        <label className="form-check-label" for="dairyFreeCheckbox">Dairy free</label>
+                                        <label className="form-check-label" htmlFor="dairyFreeCheckbox">Dairy free</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div class="rounded-pill bg-warning-subtle p-2">
-                                        <div class="form-check">
+                                    <div className="rounded-pill bg-warning-subtle p-2">
+                                        <div className="form-check">
                                         <input 
                                             className="form-check-input" 
                                             type="checkbox" 
@@ -175,7 +189,7 @@ function InputIngredient () {
                                             id="veganCheckbox" 
                                             checked={isVegan} 
                                             onChange={handleVeganChange}/>
-                                        <label className="form-check-label" for="veganCheckbox"> Vegan</label>
+                                        <label className="form-check-label" htmlFor="veganCheckbox"> Vegan</label>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +202,7 @@ function InputIngredient () {
                             <label className="form-label d-flex justify-content-between align-items-center">
                                 Ingredient list 
                                 <span className="badge text-bg-warning ">{ingredients.length}</span>
-                                <span ClassName="badge text-bg-warning ">
+                                <span className="badge text-bg-warning ">
                                     <div className="flex-shrink-0">
                                         <IoCamera style={{ fontSize: '20px'}} onClick={handleModalOpen}/>
                                     </div>
@@ -196,22 +210,21 @@ function InputIngredient () {
 
                             </label>
                             <div className="row  mb-3">
-                                
+                               
                                 <div className="list-group list-group-flush" style={{ maxHeight: '200px', overflowY: 'scroll' }}>
-                                    {ingredients.map((ingredient, index) => (
-                                        <ul className="list-group list-group-flush">
-                                             <li key={index} 
-                                                className="list-group-item border-bottom d-flex justify-content-between align-items-center">
-                                                {ingredient}
-                                                <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(index)}>
+                                    {ingredients.map((ingredient) => (
+                                        <ul className="list-group list-group-flush" key={ingredient.id}>
+                                             <li className="list-group-item border-bottom d-flex justify-content-between align-items-center">
+                                                {ingredient.name}
+                                                <button type="button" className="close btn btn-sm" aria-label="Close" onClick={() => removeItem(ingredient.id)}>
                                                 <span aria-hidden="true" className="text-dark">&times;</span>
                                                 </button>
                                             </li>
                                         </ul>
                                        
-                                    ))}
-                                    
+                                    ))}                                    
                                 </div>
+                                
                             </div>
                             <div className="row  mb-3">
                                 <div className="col">

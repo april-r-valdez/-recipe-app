@@ -1,19 +1,38 @@
+import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const SearchByName = ({handleClose}) => {
+    const navigate = useNavigate();
+    const [ recipeName, setRecipeName] = useState('');
+
+    const handleSearch = () => {
+       
+        handleClose();
+        navigate(`/searchByIngredients?searchType=${'byName'}&name=${recipeName}`
+        );
+    };
+
     return (
         <div className="d-flex justify-content-center">
             <div className="row">
-                <form className="d-flex me-3 col-12" role="search">
-                <input className="form-control me-2" type="search" placeholder="By name (ex: lasagna, pasta,...)" aria-label="Search"/>        
+                <form className="d-flex me-3 col-12" role="search" >
+                    <input 
+                        className="form-control me-2"
+                        type="search"
+                        value={recipeName}
+                        onChange={(e) => setRecipeName(e.target.value)}
+                        placeholder="By name (ex: lasagna, pasta,...)" 
+                        aria-label="Search"
+                        required
+                    /> 
                 </form> 
-            </div>
-            <div className="row">
-                <button type="button" className="btn btn-secondary" onClick={handleClose}><IoIosSearch/></button>
+                <button type="button" className="btn btn-secondary" onClick={handleSearch}><IoIosSearch/></button>
             </div>
         </div> 
     )
 
 };
+
 
 export default SearchByName;

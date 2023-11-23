@@ -6,15 +6,23 @@ import DisplayRecipeCardList from './DisplayRecipeCardList'
 
 // Implement DBsearch to search by: Recipe name, Ingredient list
 // searchType: value depending on search by name or seach by ingredient lists
-const DBSearch = ({searchType}) => {
+const DBSearch = () => {
   
   const [matchingRecipes, setMatchingRecipes] = useState([]);
   const location = useLocation();
-  let q = collection(db, 'Recipes');
-  
-  // function to dynamically construct the query base on URL parameters
-  const recipeQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {    
-    
+
+  const recipeNameQueryBuilder = (recipeName) => { 
+    let q = collection(db, 'Recipes');   
+    q = query(q, where('name', "==", recipeName))
+
+    // limit the number of recipes retrieved to 9
+    q = query(q, limit(9));
+    return q;
+  }
+
+    // function to dynamically construct the query base on URL parameters
+  const recipeIngredientQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {    
+    let q = collection(db, 'Recipes'); 
     // match any recipes with the ingredients field (array type) contains one or more ingredients from the provided ingredient list
     if (ingredientLists != null && ingredientLists.length > 0) {
       q = query(q, where('ingredients', 'array-contains-any', ingredientLists));
@@ -44,13 +52,30 @@ const DBSearch = ({searchType}) => {
     // extracting value from query parameters
     const searchParams = new URLSearchParams(location.search);
 
+    const searchType = searchParams.get('searchType');
+    const recipeName = searchParams.get('name')?.toLowerCase();
     const ingredients = searchParams.get('ingredients')?.toLowerCase().split(',');
-    const glutenFree = searchParams.get('glutenFree') === 'true';
-    const dairyFree = searchParams.get('dairyFree') === 'true';
-    const vegan = searchParams.get('vegan') === 'true';
+    const glutenFree = (searchParams.get('glutenFree') ?? 'false') === 'true';
+    const dairyFree = (searchParams.get('dairyFree') ?? 'false') === 'true';
+    const vegan = (searchParams.get('vegan') ?? 'false') === 'true';
+    
+    // Recipe query to be updated according the search type
+    let recipeQuery;
+    console.log({recipeName, ingredients, glutenFree, dairyFree, vegan})
 
     // build the query base on URL query parameters
-    const recipeQuery = recipeQueryBuilder(ingredients, glutenFree, dairyFree, vegan);
+    if (searchType === 'byName'){      
+      console.log("Search by name query built")
+      recipeQuery = recipeNameQueryBuilder(recipeName);
+
+    } else if (searchType === 'byIngredient') {
+      console.log("Search by ingredient query built")
+      recipeQuery = recipeIngredientQueryBuilder(ingredients, glutenFree, dairyFree, vegan);
+
+    } else {
+      // Invalid search type provided
+      console.log("Error: Invalid search type cannot build query")
+    }
 
     // perform search
     const searchRecipesByIngredients = async () => {
