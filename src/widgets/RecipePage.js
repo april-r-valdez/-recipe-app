@@ -8,9 +8,21 @@ const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, n
   useEffect(()=>{
     if (ingredientDetails && ingredientsParsed.length === 0) setIngredientsParsed(parseIngredients(ingredientDetails));
   }, [ingredientDetails, ingredientsParsed.length]);
-  useEffect(()=>{console.log("parsed ingredients: ", ingredientsParsed);}, [ingredientDetails, ingredientsParsed]);
+  // useEffect(()=>{console.log("parsed ingredients: ", ingredientsParsed);}, [ingredientDetails, ingredientsParsed]);
 
-  useEffect(()=>{console.log("raw ingredients: ", ingredients)}, [ingredients]);
+  // useEffect(()=>{console.log("raw ingredients: ", ingredients)}, [ingredients]);
+
+  // Add this function to your component to show the button on hover
+  const showButton = (index) => {
+    const button = document.querySelectorAll('.list-group-item button')[index];
+    button.style.display = 'inline-block';
+  };
+
+  // Add this function to your component to hide the button when not hovered
+  const hideButton = (index) => {
+    const button = document.querySelectorAll('.list-group-item button')[index];
+    button.style.display = 'none';
+  };
 
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
@@ -35,7 +47,12 @@ const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, n
           <h4><strong>Ingredients</strong></h4>
           <ul className="list-group list-group-flush">
             {ingredientDetails.map((ingredient, index) => (
-              <li className='list-group-item' key={index}>{ingredient}</li>
+              <li className='list-group-item position-relative' key={index} onMouseOver={() => showButton(index)} onMouseOut={() => hideButton(index)}>
+                {ingredient}
+                <button type="button" className="btn btn-secondary" style={{ display: "none" }}>
+                  Add to Shopping List
+                </button>
+              </li>
             ))}
           </ul>
         </div>
