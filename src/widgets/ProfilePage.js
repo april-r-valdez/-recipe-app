@@ -39,13 +39,14 @@ const ProfilePage = () => {
        
         <div>
          <ul className="list-group">
-           <li className="list-group-item">
+          <li className="list-group-item">Username: {userInfo.userName} </li>
+          <li className="list-group-item">
              Name: {userInfo.firstName + ' ' + userInfo.lastName}
            </li>
-           <li className="list-group-item">Email: {userInfo.email} </li>
-           <li className="list-group-item">Phone: {userInfo.phone} </li>
-           <li className="list-group-item">User since: {userInfo.userSince?.toDate().toDateString()}</li>
-         </ul>
+          <li className="list-group-item">Email: {userInfo.email} </li>
+          <li className="list-group-item">Phone: {userInfo.phone} </li>
+          <li className="list-group-item">User since: {userInfo.userSince?.toDate().toDateString()}</li>
+          </ul>
        </div>
 
        <div>

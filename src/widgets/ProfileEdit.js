@@ -1,5 +1,5 @@
 import Image from 'react-bootstrap/Image'
-import { auth, db, useAuth, useUserInfo, uploadProfile } from '../firebase';
+import { auth, db, useAuth, useUserInfo, uploadProfile, reauthUser } from '../firebase';
 import React, { useState, useEffect } from 'react';
 import Modal from "react-bootstrap/Modal";
 import {doc, updateDoc, getDoc} from "firebase/firestore";
@@ -32,6 +32,14 @@ const ProfileEdit = (props) => {
         setPhoto(e.target.files[0]);
       }
   }
+
+  const handleReauth = async () => {
+    if (currentUser) {
+      reauthUser(currentUser);
+    } else {
+      console.error('User is not logged in.');
+    }
+  }; 
  
   const handleSave = async () => {
     // Check if at least one field has been entered
@@ -44,6 +52,16 @@ const ProfileEdit = (props) => {
   ) {
     alert('No changes made!');
     return;
+  }
+
+  // If any field has been entered, prompt the user for re-authentication
+  if (newUsername !== undefined || newFirstName !== undefined || newLastName !== undefined || newPhone !== undefined || photo !== null) {
+    try {
+      await handleReauth();
+    } catch {
+      alert('Re-authentication failed. Please try again.');
+      return;
+    }
   }
 
   // Update user information only for the fields that have been entered
@@ -70,6 +88,7 @@ const ProfileEdit = (props) => {
         await uploadProfile(photo, currentUser, setLoading);
       }
       alert('Changes saved successfully!');
+      handleClose();
     }
     catch{
       alert("Error!")
