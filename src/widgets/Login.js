@@ -65,18 +65,18 @@ const Login = () => {
                     <input type="password" className="form-control" placeholder="Password" value={loginPassword} onChange={(e) => {setLoginPassword(e.target.value)}}/>
                     {!currentUser &&
                     <>
-                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
+                    <button onClick={handleLogin} className="btn btn-secondary">Login</button>
                     </>}
                     
                     {currentUser &&
                     <>
-                    <button onClick={handleLogout} className="btn btn-primary">Logout</button>
+                    <button onClick={handleLogout} className="btn btn-secondary">Logout</button>
                     </>}
                     
                   </div>
                 </div>
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
-                  <div className="form px-4">
+                  <div className="form px-4 pt-5">
                   <div>
                       Successfully created account! Welcome, {currentUser?.email}
                     </div>
@@ -84,7 +84,7 @@ const Login = () => {
                     <input type="password" className="form-control" placeholder="Password"value={signupPassword} onChange={(e) => {setSignupPassword(e.target.value)}} />
                     {!currentUser &&
                     <>
-                    <button onClick={handleSignup} className="btn btn-primary">Signup</button>
+                    <button onClick={handleSignup} className="btn btn-secondary">Signup</button>
                     </>}
                     
                   </div>
