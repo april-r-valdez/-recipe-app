@@ -9,9 +9,9 @@ const  UserInput = () => {
     // useState hook updates variables that store ingredient inputs
     const [inputs, setIngredients] = useState({
         // default values set
-        ingredient:'',
         amount:'',
-        units:''
+        units:'',
+        ingredient:'',
     });
 
     // useState hook updates variable that stores direction  
@@ -103,8 +103,19 @@ const  UserInput = () => {
 
     // handle save recipe
     const handleSaveRecipe = () => {
-        // save recipe
-        saveRecipeToFirebase("testname", 0, 15, "test", "test", "test", "test");
+       
+        // extract recipe information
+        const recipeName = recipeInfo?.name;
+        const servings = parseInt(recipeInfo?.servingSize, 10);
+        const cookTime = parseInt(recipeInfo?.prepTime, 10) + parseInt(recipeInfo?.cookTime, 10);
+        const ingredients = ingredientsList.map((input) => input.ingredient);
+        const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
+        const directions = directionsList.map(data => data.direction);
+        const imageLocation = 'RecipeImages/' + recipeImg.name;
+    
+        // save recipe to firebase
+        saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation);
+        
         // redirect to newly recipe page
     }
 

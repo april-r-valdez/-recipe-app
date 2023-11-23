@@ -1,20 +1,17 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients, ingredientDetails, directions, image) => {
+const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation) => {
 
     // reference to recipe collection
     const recipeCollectionRef = collection(db, "Recipes");
 
     try {
-        // upload image to Firebase storge
-        const imageLocation = ""
-
         // save the data
         const recipeRef = await addDoc(recipeCollectionRef, {
             name: recipeName,
             cookTime: cookTime,
-            imageLoc: image,
+            imageLoc: imageLocation,
             ingredients: ingredients,
             ingredientDetails: ingredientDetails,
             directions: directions,
@@ -23,8 +20,8 @@ const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients,
             glutenFree: false,
             dairyFree: false,
             sumRating: 5,
-            ratingCount: 1
-
+            ratingCount: 1,
+            //createBy: author
         });
 
         console.log("Recipe ID: ", recipeRef.id);
