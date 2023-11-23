@@ -4,7 +4,6 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import Login from '../Login';
 
 const ProfilePage = () => {
   const navigate = useNavigate();

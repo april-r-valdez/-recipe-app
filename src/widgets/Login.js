@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
-import { signup, login, useAuth, logout, db} from "./firebase";
+import { signup, login, useAuth, logout, db} from "../firebase";
 import { getFirestore, serverTimestamp, setDoc, doc, collection, addDoc} from "firebase/firestore";
-import ProfilePage from './widgets/ProfilePage';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
