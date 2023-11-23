@@ -6,7 +6,7 @@ import {doc, updateDoc, getDoc} from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
 
-//need to add user's info to firestore
+//need user to validate changes
 const ProfileEdit = (props) => {
 
   const editState = props.state;
