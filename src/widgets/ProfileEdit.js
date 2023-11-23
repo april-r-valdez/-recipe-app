@@ -190,7 +190,11 @@ const ProfileEdit = (props) => {
             </button>
             <button
               type="button"
-              disabled={!changesMade}
+              disabled={!changesMade || (newUsername === undefined && 
+                newFirstName === undefined &&
+                 newLastName === undefined &&
+                  newPhone === undefined &&
+                   photo === null)}
               className="btn btn-primary"
               onClick={handleSave}
             >
