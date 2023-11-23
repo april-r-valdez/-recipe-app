@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { SiAddthis } from "react-icons/si";
 import { IoCamera } from "react-icons/io5";
 import { FcCameraIdentification } from "react-icons/fc";
-
 import ModalComponent from "../components/Utils/ModalComponent";
 import CameraModule from "./CameraModule";
 

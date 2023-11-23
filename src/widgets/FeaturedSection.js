@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import RecipeCard from "../components/Common/RecipeCard";
-import shuffleArray from "../components/Utils/shuffleArray";
+import DisplayRecipeCardList from "../components/Utils/DisplayRecipeCardList";
 import { db } from "../firebase"
 import { collection, getDoc, doc} from "firebase/firestore";
 
@@ -26,14 +25,7 @@ function FeaturedSection() {
     return (
         <div className="container-fluid">
             <h4>Featured Recipes</h4>
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-            {shuffleArray(recipeList).slice(0, 9).map((recipe) => {
-
-                return (
-                    <div className="col"><RecipeCard recipeRef={recipe}/></div>
-                );
-            })}
-            </div>
+            <DisplayRecipeCardList recipeList={recipeList} displayCount={9}/>
         </div>
     )
 }

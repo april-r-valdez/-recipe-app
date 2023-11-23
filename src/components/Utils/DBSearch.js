@@ -2,16 +2,18 @@ import { collection, getDocs, limit, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../firebase';
-import RecipeCard from '../Common/RecipeCard';
+import DisplayRecipeCardList from './DisplayRecipeCardList'
 
-const DBSearch = () => {
-
+// Implement DBsearch to search by: Recipe name, Ingredient list
+// searchType: value depending on search by name or seach by ingredient lists
+const DBSearch = ({searchType}) => {
+  
   const [matchingRecipes, setMatchingRecipes] = useState([]);
   const location = useLocation();
+  let q = collection(db, 'Recipes');
   
   // function to dynamically construct the query base on URL parameters
-  const recipeQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {
-    let q = collection(db, 'Recipes');
+  const recipeQueryBuilder = (ingredientLists, glutenFree, dairyFree, vegan) => {    
     
     // match any recipes with the ingredients field (array type) contains one or more ingredients from the provided ingredient list
     if (ingredientLists != null && ingredientLists.length > 0) {
@@ -74,15 +76,7 @@ const DBSearch = () => {
       <h4>Search Results</h4>
       {
         matchingRecipes.length > 0 ? (
-          <div className="row row-cols-1 row-cols-md-3 mt-3 g-4">
-          {
-            matchingRecipes.map((recipe) => (
-              <div className="col">
-                <RecipeCard recipeRef={recipe}/>
-              </div>
-            ))
-          }
-          </div>
+          <DisplayRecipeCardList recipeList={matchingRecipes} displayCount={9}/>
         ) : (
           <p>Sorry, no recipes found :(</p>
         )
