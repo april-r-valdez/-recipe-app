@@ -17,15 +17,16 @@ import ProfileEdit from './widgets/ProfileEdit';
 import LoginPage from './widgets/LoginPage';
 import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
+import OurTeam from './OurTeam';
 
 function App() {
   return (
 
     <div className="App" data-bs-theme="light">
-      <div className="container-xl">
+      <div className="row container-xl">
         <Navbar />
-        <br></br>
       </div>
+      <br></br><br></br><br></br>
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
@@ -41,6 +42,7 @@ function App() {
         <Route path='/test-recipe-scorer' element={<RecipeScorerTester/>}/>
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
         <Route path='/support' element={<Support/>}/>
+        <Route path='/our-team' element={<OurTeam/>}/>
       </Routes>
       <br></br><br></br><br></br>
       <Footer />

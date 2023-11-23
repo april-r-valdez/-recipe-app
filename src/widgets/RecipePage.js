@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RatingStars from '../components/Utils/RatingStars.js';
+import { Modal } from 'react-bootstrap'
+import DynamicRating from './DynamicRating.js';
+import { useAuth } from '../firebase.js';
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
+
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, onSubmitRating} ) => {
+
+  const [showRatingModal, setShowRatingModal] = useState(false);
+  const [currentRating, setCurrentRating] = useState(0);
+
+  const curUser = useAuth();
+
+  const handleRatingChange = (newRating) => {
+    setCurrentRating(newRating);
+  }
+  
+  const handleModalClose = () => {
+    setShowRatingModal(false);
+  }
+
+  const handleRateButtonClick = () => {
+    setShowRatingModal(true);
+  }
+
+  const handleSubmitRating = async () => {
+    onSubmitRating(currentRating);
+    setShowRatingModal(false);
+  }
+
   return (
     <div className='container-md mt-3 mb-3' style={{maxWidth:"1000px", textAlign: "left"}}>
       {/* Recipe Title */}
@@ -10,9 +37,21 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
       </div>
 
       {/* Rating */}
-      <div className='row mb-3'>
-        <RatingStars rating={5} />
+      <div className='row'>
+        <div className='col-auto'>
+          <RatingStars rating={rating} />
+        </div>
+        <div className='col-auto'>
+          <span>({ratingCount})</span>
+        </div>
       </div>
+      {
+        curUser ? (
+          <div className='row'>
+            <button type='button' className='btn btn-link' style={{textAlign:"left", color:"black"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+          </div>
+        ) : (null)
+      }
 
       {/* Recipe Image & Ingredients */}
       <div className='row mt-1 mb-5 gx-5'>
@@ -46,6 +85,22 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition} ) => {
       </div>
 
       {/* Nutrition? */}
+
+      {/* Rating Modal */}  
+      <Modal show={showRatingModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Your Rating</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
+        </Modal.Body>
+        <Modal.Footer>
+            <button 
+              type='button' 
+              className='btn btn-success' 
+              onClick={handleSubmitRating}>Submit</button>
+        </Modal.Footer>
+      </Modal>
       
     </div>
   );
