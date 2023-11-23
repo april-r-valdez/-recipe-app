@@ -5,7 +5,7 @@ import ProfilePage from './widgets/ProfilePage';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const curUser = useAuth();
+  const currentUser = useAuth();
   const navigate = useNavigate();
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -60,16 +60,16 @@ const Login = () => {
                 <div className="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                   <div className="form px-4 pt-5">
                     <div>
-                      Successfully logged in as: {curUser?.email}
+                      Successfully logged in as: {currentUser?.email}
                     </div>
                     <input type="email" className="form-control" placeholder="Email or Phone" value={loginEmail} onChange={(e) => {setLoginEmail(e.target.value)}}/>
                     <input type="password" className="form-control" placeholder="Password" value={loginPassword} onChange={(e) => {setLoginPassword(e.target.value)}}/>
-                    {!curUser &&
+                    {!currentUser &&
                     <>
                     <button onClick={handleLogin} className="btn btn-primary">Login</button>
                     </>}
                     
-                    {curUser &&
+                    {currentUser &&
                     <>
                     <button onClick={handleLogout} className="btn btn-primary">Logout</button>
                     </>}
@@ -79,11 +79,11 @@ const Login = () => {
                 <div className="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
                   <div className="form px-4">
                   <div>
-                      Successfully created account! Welcome, {curUser?.email}
+                      Successfully created account! Welcome, {currentUser?.email}
                     </div>
                     <input type="email"className="form-control" placeholder="Email" value={signupEmail} onChange={(e) => {setSignupEmail(e.target.value)}}/>
                     <input type="password" className="form-control" placeholder="Password"value={signupPassword} onChange={(e) => {setSignupPassword(e.target.value)}} />
-                    {!curUser &&
+                    {!currentUser &&
                     <>
                     <button onClick={handleSignup} className="btn btn-primary">Signup</button>
                     </>}
@@ -92,7 +92,7 @@ const Login = () => {
                 </div>
                </div>
 
-               {<ProfilePage/>}
+               {/* {<ProfilePage/>} */}
       </div>
      );
 }
