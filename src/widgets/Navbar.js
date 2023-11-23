@@ -1,48 +1,79 @@
 import DisplayToggle from "../components/Utils/DisplayMode";
 import Sidebar from "../widgets/Sidebar";
-import Login from "../Login"
+import Login from "./Login";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
+import { FaCircleUser } from "react-icons/fa6";
+import ModalComponent from "../components/Utils/ModalComponent";
+import SearchByName from "../components/SearchByName";
 
 
 function Navbar() {
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState({});
+
+    const openModal = ({title, body, footer}) => {
+        setModalContent({title, body, footer});
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setModalContent({});
+    };
+
+
     return (
-        <nav className="navbar bg-body-tertiary" data-bs-theme="light">
+        <div className="navbar fixed-top bg-body-tertiary flex-nowrap " data-bs-theme="light">
             <div className="container-fluid">
-                <div className="d-flex align-items-center">
+                <div className="d-inline-flex">
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <Sidebar/>
                     <Link className="navbar-brand fw-bolder px-2" to="/home" >  RECIPE GENERATOR </Link>
-                </div>
-                <div className="d-flex align-items-center">
-                        <div className="col-12 d-flex justify-content-end align-items-center">
-                            <DisplayToggle className="me-3"/>
-                            <form className="d-flex me-3 col-10" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search for recipe (ex: lasagna,...)" aria-label="Search"/>
-                                <button className="btn btn-primary" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                    </svg>
-                                </button>
-                            </form>
-                            <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <img className="avatar avatar-24 bg-light rounded-circle text-white p-1"
-                                src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
-                                alt="avatar"></img>
-                            </button>
-                            <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                <div className="offcanvas-header">
-                                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div className="offcanvas-body">
-                                    <Login />
-                                </div>
-                            </div>
+                </div>                                      
+                <div class="d-inline-flex">
+                    <DisplayToggle className="p-1 me-3"/>                            
+                    
+                    {/*Search by name modal */}
+                    <IoIosSearch className="p-1 me-3" style={{ fontSize: '30px'}}
+                        onClick={() => openModal({
+                            title : <p class="fw-semibold">SEARCH RECIPE</p>,
+                            body: <SearchByName handleClose={closeModal}/>,
+                            footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
+                        )}/>                
+                    
+                    {/*Login and Signup page modal*/}
+                    <FaCircleUser className="p-1 me-3" style={{ fontSize: '30px'}} 
+                        onClick={() => openModal({
+                            title : <p class="fw-semibold">Welcome</p>,
+                            body: <Login />,
+                            footer : <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>}
+                        )}
+                    />
+                    
+                    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div className="offcanvas-header">
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
+                        <div className="offcanvas-body">
+                            
+                        </div>
+                    </div>
                 </div>
+                        
+               
             </div>
-        </nav>
+            <ModalComponent
+                showModal={showModal}
+                handleClose={closeModal}
+                modalTitle={modalContent.title}
+                modalBody={modalContent.body}
+                modalFooter={modalContent.footer}
+            />
+        </div>
     )
 }
 

@@ -23,10 +23,10 @@ function App() {
   return (
 
     <div className="App" data-bs-theme="light">
-      <div className="container-xl">
+      <div className="row container-xl">
         <Navbar />
-        <br></br>
       </div>
+      <br></br><br></br><br></br>
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
