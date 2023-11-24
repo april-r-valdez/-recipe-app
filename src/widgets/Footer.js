@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
     return (
     <div className="container-xl">
-        <footer className="bg-body-tertiary py-3" data-bs-theme="light">
+        <footer className="bg-body-tertiary py-3 fixed-bottom" data-bs-theme="light">
             <div className="row row-cols-1 row-cols-2 row-cols-3">
                 <div className="col-3">
                     <div className="row">

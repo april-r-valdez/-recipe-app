@@ -3,14 +3,22 @@ import Ingredient from '../components/Common/Ingredient';
 import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
+import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
+import { useAuth } from '../firebase';
+import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
+import { Modal } from 'react-bootstrap';
 
 const  UserInput = () => {
+
+    // get the current login user
+    const curUser = useAuth();
+    
     // useState hook updates variables that store ingredient inputs
     const [inputs, setIngredients] = useState({
         // default values set
-        ingredient:'',
         amount:'',
-        units:''
+        units:'',
+        ingredient:'',
     });
 
     // useState hook updates variable that stores direction  
@@ -37,6 +45,19 @@ const  UserInput = () => {
     // useState hook updates list of ingredients and directions
     const [ingredientsList, setIngredientsList] = useState([]);
     const [directionsList, setDirectionsList] = useState([]);
+
+    const [saveStatus, setSaveStatus] = useState(false);
+    
+    // Modal component
+    const [showModal, setShowModal] = useState(false);
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    }
+
+    const reloadPage = () => {
+        window.location.reload();
+    }
 
     // adds object containing ingredient inputs to ingredients list
     const addIngredientsToList = () => {
@@ -100,8 +121,43 @@ const  UserInput = () => {
         setRecipeImg(e.target.files[0]);
     }
 
+    // handle save recipe
+    const handleSaveRecipe = () => {
+       
+        if (recipeInfo && ingredientsList.length > 0 && directionsList.length > 0) {
+            // extract recipe information
+            const recipeName = recipeInfo.name;
+            const servings = parseInt(recipeInfo.servingSize, 10);
+            const cookTime = parseInt(recipeInfo.prepTime, 10) + parseInt(recipeInfo.cookTime, 10);
+            const ingredients = ingredientsList.map((input) => input.ingredient);
+            const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
+            const directions = directionsList.map(data => data.direction);
+            const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : 'RecipeImages/default_image.png';
+            const authorName = curUser ? curUser.email : "";
+            const isVegan = false;  // default to false
+            const isGlutenFree = false; // default to false
+            const isDairyFree = false;  // default to false
+            
+            // save recipe to firestore
+            saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
+            
+            // upload image to firebase storage if user provides one
+            if (recipeImg) {
+                uploadImageFileToFirebase(recipeImg, imageLocation);
+            }
+
+            // set saveStatus
+            setSaveStatus(true);
+        }
+
+        // open pop up modal
+        setShowModal(true);
+
+    }
+
     return (  
         <div className="container-xl">
+            <br></br>
             <h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
@@ -127,8 +183,10 @@ const  UserInput = () => {
                         </div>
                         <div className="col-4 mb-3 ms-auto">
                             <p className="h4">Save Recipe</p><br></br>
-                            <img src="./images/bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
-                            <button class="btn btn-primary" style={{ display: "none" }}></button>
+                            <label htmlFor='formButton' style={{ cursor: "pointer" }}>
+                                <img src="./images/bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
+                                <input type='button' id='formButton' style={{ display: "none" }} onClick={handleSaveRecipe}/>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -138,6 +196,22 @@ const  UserInput = () => {
                         directionsList={directionsList} handleDelete={handleDelete}/>
                 </div>
             </div>
+
+            {/* Successfully save modal */}
+            <Modal show={showModal} onHide={handleModalClose}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    {
+                        saveStatus === true ? (<p>Your recipe has been saved!</p>) : 
+                                             (<p>Error: missing recipe information!</p>)
+                    }
+                </Modal.Body>
+                <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <button 
+                    type='button' 
+                    className='btn btn-success' onClick={reloadPage}>Add another recipe</button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }

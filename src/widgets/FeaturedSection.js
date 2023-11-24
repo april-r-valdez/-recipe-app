@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import RecipeCard from "../components/Common/RecipeCard";
-import shuffleArray from "../components/Utils/shuffleArray";
+import DisplayRecipeCardList from "../components/Utils/DisplayRecipeCardList";
 import { db } from "../firebase"
 import { collection, getDoc, doc} from "firebase/firestore";
 
@@ -11,29 +10,31 @@ function FeaturedSection() {
 
     // Get the document named Feaured
     const featured = collection(db, "Featured")
+
+    const getRecipeList = async () => {
+                try{
+                    const docRef = doc(featured, "default");
+                    const currentDoc = await getDoc(docRef);
+                    const currentList = (currentDoc.data()).recipeList;
+                    setRecipeList(currentList);
+                } catch (error) {
+                    console.error("Error fetching Featured recipe list:", error);
+                }
+                
+            };
     
     useEffect(() => {
-        const getRecipeList = async () => {
-            const docRef = doc(featured, "default");
-            const currentDoc = await getDoc(docRef);
-            const currentList = (currentDoc.data()).recipeList;
-            setRecipeList(currentList);
-            
-        };
-        getRecipeList();
-    }, []);
+
+        if (recipeList.length === 0) {
+            console.log("Fetching data from the database...");
+            getRecipeList();
+        }
+    }, [recipeList, featured]);
     
     return (
         <div className="container-fluid">
-            <h4>Featured Recipes</h4>
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-            {shuffleArray(recipeList).slice(0, 9).map((recipe) => {
-
-                return (
-                    <div className="col"><RecipeCard recipeRef={recipe}/></div>
-                );
-            })}
-            </div>
+            <h4>Featured</h4>
+            <DisplayRecipeCardList recipeList={recipeList} displayCount={9}/>
         </div>
     )
 }

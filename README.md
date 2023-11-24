@@ -31,12 +31,12 @@
 
 ## Our Vision
 
-- We are building a recipe generating application so that food enthusiasts can conveniently browse recipes based on the ingredients they currently have in stock.
+- We are building a recipe generating application so food enthusiasts can conveniently browse recipes based on the ingredients they currently have in stock.
 
 ## Technologies Used
 
 - React.js
-- Python
+- HTML
 - Firebase
 - GitKraken
 
@@ -339,6 +339,56 @@
   - Create end-to-end tests for entire app
 <br />
 
+
+### Sprint 3
+
+#### Contributions
+
+**Brent**: "provided users with a dynamic Tips & Tutorials page that lets them watch cooking videos and helps them with their next recipe"
+
+  - `Jira Task: Add website footer that includes information and helpful links` 
+    - [Scrum-100](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-100), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-100-add-website-footer) 
+  - `Jira Task: Create and design an About Us page` 
+    - [Scrum-101](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-101), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-101-create-about-us-page) 
+  - `Jira Task: Create option for users to add photos to their created recipes` 
+    - [Scrum-103](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-103), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-103-create-option-for-users-to-add) 
+  - `Jira Task: Create and design Tips & Tutorials page` 
+    - [Scrum-102](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-102), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-102-create-and-design-tips-tutoria) 
+<br />
+
+#### Reports
+
+![Burnup Chart]
+
+#### Next Steps
+
+**Brent**:
+
+  - Add an openAI tool to the Tips & Tutorials page so users can receive additional help with their recipes
+  - Provide users with a search bar or filtering tool so they can specify the types of cooking videos they'd like to watch
+  - Add a save button to each cooking video so users can store them on their account
+<br />
+
+## Reflections on Successes and Opportunities for Growth
+
+### What Went Well:
+
+- We were consistent with our branching, pull requests, and keeping our GitKraken tree organized
+- We worked as a team when handling bugs, merge conflicts, and approving pull requests in a timely manner
+- We communicated well by listening to each others ideas and making sure that everyone had a voice in the conversation
+- We continued to offer constructive criticims and provide helpful feedback
+- We shared links to resources that were helpful to our tasks
+
+### Ways To Improve:
+
+- We could have organized more meetups discussing some of the shared obstacles and roadblocks we were encountering
+- We could have ensured better synchronization of our task executions to anticipate potential interdependencies
+- We could have provided more discussions about our individual implementations before coding. This would have fostered collaborative improvement
+
 <!-- If you have screenshots you'd like to share, include them here. -->
 ## Setup
 
@@ -355,33 +405,23 @@ Provide various use cases and code examples here.
 
 ## Project Status
 
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-## Room for Improvement
-
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-
-- Feature to be added 1
-- Feature to be added 2
+Project: _in progress_
 
 ## Acknowledgements
 
-Give credit here.
+### Helpful Tutorials:
 
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+- [Full React Tutorial](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d)
+- [React Tutorial for Beginners](https://www.youtube.com/watch?v=SqcY0GlETPk)
+- [React Testing Library](https://www.youtube.com/watch?v=7dTTFW7yACQ)
+- [Bootstrap Crash Course](https://www.youtube.com/watch?v=O_9u1P5YjVc&list=PL4cUxeGkcC9joIM91nLzd_qaH_AimmdAR)
+ - [Getting Started with Firebase](https://www.youtube.com/watch?v=9zdvmgGsww0&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=1)
+- [Firebase React Course For Beginners](https://www.youtube.com/watch?v=2hR-uWjBAgw)
+- [Authentication in ReactJS Using Firebase: A Step-by-Step Guide](https://www.youtube.com/watch?v=Vv_Oi7zPPTw)
 
 ## Contact
 
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by: [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
 <!-- Optional -->
 <!-- ## License -->

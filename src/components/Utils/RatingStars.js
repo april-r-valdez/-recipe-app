@@ -7,13 +7,13 @@ const ratingColors = {
 
 const RatingStars = ({ rating }) => {
       return (
-        <p className="card-text">
-            {[...Array(rating)].map((_, index) => (
-    <FaStar key={index} color={ratingColors.orange}/>
-))}
-{[...Array(5 - rating)].map((_, index) => (
-    <FaStar key={index} color={ratingColors.gery}/>
-))}    
+        <p className="card-text"> 
+                {[...Array(rating)].map((_, index) => (
+                    <FaStar key={index} color={ratingColors.orange}/>
+                ))}
+                {[...Array(5 - rating)].map((_, index) => (
+                    <FaStar key={index} color={ratingColors.gery}/>
+                ))}    
         </p>
       )
 };

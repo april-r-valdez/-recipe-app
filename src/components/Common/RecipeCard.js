@@ -78,9 +78,9 @@ function RecipeCard(props) {
                     </h5>
 
                     {loading ? (<p>Loading...</p>) :
-                        (<p className="card-text">
+                        (<div className="card-text">
                             <RatingStars rating={recipeRating} />
-                        </p>)
+                        </div>)
                     }
                 </div>
             </div>

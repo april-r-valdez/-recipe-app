@@ -25,6 +25,7 @@ const YouTubeTips = () => {
 
   return (
     <div className="container-xl">
+      <br></br>
       <h1 className="display-5">Tips & Tutorials</h1><br></br><br></br>
       {videos.length > 0 && (
         <div className="row d-flex justify-content-center">
