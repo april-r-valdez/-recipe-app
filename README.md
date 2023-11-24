@@ -31,12 +31,12 @@
 
 ## Our Vision
 
-- We are building a recipe generating application so that food enthusiasts can conveniently browse recipes based on the ingredients they currently have in stock.
+- We are building a recipe generating application so food enthusiasts can conveniently browse recipes based on the ingredients they currently have in stock.
 
 ## Technologies Used
 
 - React.js
-- Python
+- HTML
 - Firebase
 - GitKraken
 
@@ -344,7 +344,7 @@
 
 #### Contributions
 
-**Brent**: "provided users with a dynamic tips & tutorials page that lets them watch cooking videos and helps them with their next recipe."
+**Brent**: "provided users with a dynamic Tips & Tutorials page that lets them watch cooking videos and helps them with their next recipe"
 
   - `Jira Task: Add website footer that includes information and helpful links` 
     - [Scrum-100](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-100), 
@@ -368,10 +368,26 @@
 
 **Brent**:
 
-  - Add a submit button to the Create Recipe page so users can save their recipes to our database
-  - Create a tool for user's to add images to their newly created recipe
-  - Add an API tool to the Create Recipe page so user's can get help with creating their own recipes
+  - Add an openAI tool to the Tips & Tutorials page so users can receive additional help with their recipes
+  - Provide users with a search bar or filtering tool so they can specify the types of cooking videos they'd like to watch
+  - Add a save button to each cooking video so users can store them on their account
 <br />
+
+## Reflections on Successes and Opportunities for Growth
+
+### What Went Well:
+
+- We were consistent with our branching, pull requests, and keeping our GitKraken tree organized
+- We worked as a team when handling bugs, merge conflicts, and approving pull requests in a timely manner
+- We communicated well by listening to each others ideas and making sure that everyone had a voice in the conversation
+- We continued to offer constructive criticims and provide helpful feedback
+- We shared links to resources that were helpful to our tasks
+
+### Ways To Improve:
+
+- We could have organized more meetups discussing some of the shared obstacles and roadblocks we were encountering
+- We could have ensured better synchronization of our task executions to anticipate potential interdependencies
+- We could have provided more discussions about our individual implementations before coding. This would have fostered collaborative improvement
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 ## Setup
@@ -391,31 +407,16 @@ Provide various use cases and code examples here.
 
 Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
 
-## Room for Improvement
-
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-
-- Feature to be added 1
-- Feature to be added 2
-
 ## Acknowledgements
 
-Give credit here.
+### Helpful Tutorials:
 
-- This project was inspired by...
 - This project was based on [this tutorial](https://www.example.com).
 - Many thanks to...
 
 ## Contact
 
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by: [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
 <!-- Optional -->
 <!-- ## License -->
