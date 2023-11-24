@@ -7,7 +7,12 @@ import { useNavigate } from 'react-router-dom';
 const ProfilePage = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
-  const { userInfo } = useUserInfo(currentUser);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const { userInfo: userInformation, updateUserInfo } = useUserInfo(
+    currentUser,
+    setUserInfo
+  );
   console.log('userInfo:' ,userInfo?.firstName)
   const [editState, setEditState] = useState(false);
   const [photoURL] = useState(
@@ -66,7 +71,7 @@ const ProfilePage = () => {
            </svg>{' '}
            Edit Profile
          </button>
-          <ProfileEdit state={editState} setState={setEditState} />
+          <ProfileEdit state={editState} setState={setEditState} onUpdateUserInfo={setUserInfo} />
        </div>
        </>
        ) : (

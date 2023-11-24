@@ -94,6 +94,7 @@ const ProfileEdit = (props) => {
   
       if (Object.keys(updatedFields).length > 0 || photo) {
         await updateUserInfo(updatedFields);
+        props.onUpdateUserInfo(userInfo => ({ ...userInfo, ...updatedFields }));
       }
   
       if (photo) {

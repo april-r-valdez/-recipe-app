@@ -64,7 +64,7 @@ const firebaseConfig = {
   }
 
 // Custom hook for getting current user info
-export function useUserInfo(currentUser) {
+export function useUserInfo(currentUser, onUpdateUserInfo) {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -76,6 +76,7 @@ export function useUserInfo(currentUser) {
           const docSnap = await getDoc(userRef);
           if (docSnap.exists()) {
             setUserInfo(docSnap.data());
+            onUpdateUserInfo(docSnap.data()); // Call the callback function
           } else {
             console.log('No such document!');
           }
@@ -98,6 +99,7 @@ export function useUserInfo(currentUser) {
         await updateDoc(userRef, updatedInfo);
         // Update local state with the new information
         setUserInfo((prevInfo) => ({ ...prevInfo, ...updatedInfo }));
+        onUpdateUserInfo({ ...userInfo, ...updatedInfo }); // Call the callback function
       } else {
         console.error('User is undefined. Cannot update user info.');
       }
