@@ -5,7 +5,7 @@ import DynamicRating from './DynamicRating.js';
 import { useAuth } from '../firebase.js';
 
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, onSubmitRating} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
@@ -53,6 +53,15 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
         ) : (null)
       }
 
+      {/* Created by */}
+      {
+        author !== "" ? (
+          <div className='row mt-2 mb-2'>
+            <i>Recipe by {author}</i>
+          </div>
+        ) : (null)
+      }
+
       {/* Recipe Image & Ingredients */}
       <div className='row mt-1 mb-5 gx-5'>
         <div className='col'>
@@ -89,12 +98,14 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
       {/* Rating Modal */}  
       <Modal show={showRatingModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Your Rating</Modal.Title>
+            <Modal.Title>
+              Your Rating
+            </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
             <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
             <button 
               type='button' 
               className='btn btn-success' 

@@ -74,7 +74,8 @@ function InputIngredient () {
     };
     
     const handleExternalSearch = () => {
-        navigate(`/externalSearch/${ingredients}`);
+        const ingredientNames = ingredients.map((ingredient) => ingredient.name).join(',');
+        navigate(`/externalSearch/${ingredientNames}`);
     };
     
     
