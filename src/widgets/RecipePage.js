@@ -98,12 +98,14 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
       {/* Rating Modal */}  
       <Modal show={showRatingModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Your Rating</Modal.Title>
+            <Modal.Title>
+              Your Rating
+            </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
             <DynamicRating rating={currentRating} onRatingChange={handleRatingChange}/>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
             <button 
               type='button' 
               className='btn btn-success' 

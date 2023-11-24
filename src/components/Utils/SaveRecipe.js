@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, author) => {
+const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, author, isVegan, isDairyFree, isGlutenFree) => {
 
     // reference to recipe collection
     const recipeCollectionRef = collection(db, "Recipes");
@@ -16,9 +16,9 @@ const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients,
             ingredientDetails: ingredientDetails,
             directions: directions,
             servings: servings,
-            vegan: false,
-            glutenFree: false,
-            dairyFree: false,
+            vegan: isVegan,
+            glutenFree: isGlutenFree,
+            dairyFree: isDairyFree,
             sumRating: 5,
             ratingCount: 1,
             createdBy: author

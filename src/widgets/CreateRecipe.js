@@ -46,6 +46,8 @@ const  UserInput = () => {
     const [ingredientsList, setIngredientsList] = useState([]);
     const [directionsList, setDirectionsList] = useState([]);
 
+    const [saveStatus, setSaveStatus] = useState(false);
+    
     // Modal component
     const [showModal, setShowModal] = useState(false);
 
@@ -122,26 +124,30 @@ const  UserInput = () => {
     // handle save recipe
     const handleSaveRecipe = () => {
        
-        // extract recipe information
-        const recipeName = recipeInfo?.name;
-        const servings = parseInt(recipeInfo?.servingSize, 10);
-        const cookTime = parseInt(recipeInfo?.prepTime, 10) + parseInt(recipeInfo?.cookTime, 10);
-        const ingredients = ingredientsList.map((input) => input.ingredient);
-        const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
-        const directions = directionsList.map(data => data.direction);
-        const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : "";
-        
-        let authorName = "";
-        if(curUser) {
-            authorName = curUser.displayName ? curUser.displayName : curUser.email;
-        }
-        
-        // save recipe to firestore
-        saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName);
-        
-        // upload image to firebase storage
-        if (recipeImg) {
-            uploadImageFileToFirebase(recipeImg, imageLocation);
+        if (recipeInfo && ingredientsList.length > 0 && directionsList.length > 0) {
+            // extract recipe information
+            const recipeName = recipeInfo.name;
+            const servings = parseInt(recipeInfo.servingSize, 10);
+            const cookTime = parseInt(recipeInfo.prepTime, 10) + parseInt(recipeInfo.cookTime, 10);
+            const ingredients = ingredientsList.map((input) => input.ingredient);
+            const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
+            const directions = directionsList.map(data => data.direction);
+            const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : 'RecipeImages/default_image.png';
+            const authorName = curUser ? curUser.email : "";
+            const isVegan = false;  // default to false
+            const isGlutenFree = false; // default to false
+            const isDairyFree = false;  // default to false
+            
+            // save recipe to firestore
+            saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
+            
+            // upload image to firebase storage if user provides one
+            if (recipeImg) {
+                uploadImageFileToFirebase(recipeImg, imageLocation);
+            }
+
+            // set saveStatus
+            setSaveStatus(true);
         }
 
         // open pop up modal
@@ -194,7 +200,10 @@ const  UserInput = () => {
             <Modal show={showModal} onHide={handleModalClose}>
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
-                    <p>Your recipe has been added!</p>
+                    {
+                        saveStatus === true ? (<p>Your recipe has been saved!</p>) : 
+                                             (<p>Error: missing recipe information!</p>)
+                    }
                 </Modal.Body>
                 <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
                     <button 
