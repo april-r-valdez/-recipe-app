@@ -4,7 +4,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, serverTimestamp, setDoc, doc, getDoc, updateDoc} from "@firebase/firestore";
 import { getStorage, ref, uploadBytes , getDownloadURL } from "@firebase/storage";
 import{ getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,
-  onAuthStateChanged,signOut, updateProfile,  reauthenticateWithCredential} from "firebase/auth";
+  onAuthStateChanged,signOut, updateProfile,  reauthenticateWithCredential,
+  EmailAuthProvider } from "firebase/auth";
 
 
 
@@ -108,22 +109,12 @@ export function useUserInfo(currentUser) {
   return { userInfo, updateUserInfo };
   }
 
-  export function reauthUser(currentUser)
+  export function reauthUser(currentUser, password)
   {
-    // Prompt the user to re-enter their password
-    const password = prompt('Please enter your password for re-authentication:');
-
     // TODO(you): prompt the user to re-provide their sign-in credentials
-    const credential = promptForCredentials();
+    const credential = EmailAuthProvider.credential(currentUser.email, password);
 
-    reauthenticateWithCredential(currentUser, credential).then(() => {
-      // User re-authenticated.
-      console.log('User re-authenticated successfully');
-    }).catch((error) => {
-      // An error ocurred
-      console.log('Error re-authenticating user:', error);
-      
-    });
+    return reauthenticateWithCredential(currentUser, credential);
 
   }
 

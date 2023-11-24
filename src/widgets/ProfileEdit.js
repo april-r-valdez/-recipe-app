@@ -1,8 +1,7 @@
 import Image from 'react-bootstrap/Image'
-import { auth, db, useAuth, useUserInfo, uploadProfile, reauthUser } from '../firebase';
+import { useAuth, useUserInfo, uploadProfile, reauthUser } from '../firebase';
 import React, { useState, useEffect } from 'react';
 import Modal from "react-bootstrap/Modal";
-import {doc, updateDoc, getDoc} from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,7 +13,6 @@ const ProfileEdit = (props) => {
   
   const currentUser = useAuth();
   const { userInfo, updateUserInfo } = useUserInfo(currentUser);
-  const navigate = useNavigate();
   const [photoURL, setphotoURL] = useState("https://firebasestorage.googleapis.com/v0/b/recipegenerator-db0be.appspot.com/o/Users%2Fuser-profiles%2Fuser-default.jpeg?alt=media&token=eae46bc8-6744-431a-9469-617e2f7578aa");
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -24,76 +22,108 @@ const ProfileEdit = (props) => {
   const [newPhone, setNewPhone] = useState();
   const [newEmail, setNewEmail] = useState();
   const [changesMade, setChangesMade] = useState(false);
-     
+
+  const [reAuthModal, setReAuthModal] = useState(false);
+  const [password, setPassword] = useState();
+
   const handleClose= () => {setEditState(false); }
+
+  const handleReAuthClose = () => {setReAuthModal(false); }
   
   const handleUpload = (e) => {
     if(e.target.files[0]){
         setPhoto(e.target.files[0]);
       }
   }
-
-  const handleReauth = async () => {
-    if (currentUser) {
-      reauthUser(currentUser);
-    } else {
-      console.error('User is not logged in.');
-    }
-  }; 
  
   const handleSave = async () => {
-    // Check if at least one field has been entered
-  if (
-    newUsername === undefined &&
-    newFirstName === undefined &&
-    newLastName === undefined &&
-    newPhone === undefined &&
-    photo === null
-  ) {
-    alert('No changes made!');
-    return;
-  }
-
-  // If any field has been entered, prompt the user for re-authentication
-  if (newUsername !== undefined || newFirstName !== undefined || newLastName !== undefined || newPhone !== undefined || photo !== null) {
-    try {
-      await handleReauth();
-    } catch {
-      alert('Re-authentication failed. Please try again.');
+    // Check if the user is already authenticated
+    if (!currentUser) {
+      alert('User is not authenticated.');
       return;
     }
-  }
-
-  // Update user information only for the fields that have been entered
-  const updatedFields = {};
-  if (newUsername !== undefined) {
-    updatedFields.userName = newUsername;
-  }
-  if (newFirstName !== undefined) {
-    updatedFields.firstName = newFirstName;
-  }
-  if (newLastName !== undefined) {
-    updatedFields.lastName = newLastName;
-  }
-  if (newPhone !== undefined) {
-    updatedFields.phone = newPhone;
-  }
-  try{
-    // Update user information if there are any changes
-    if (Object.keys(updatedFields).length > 0 || photo) {
-      await updateUserInfo(updatedFields);
+    // Check if at least one field has been entered
+    if (
+      newUsername === undefined &&
+      newFirstName === undefined &&
+      newLastName === undefined &&
+      newPhone === undefined &&
+      photo === null
+    ) {
+      alert('No changes made!');
+      return;
     }
+    // Show reauthentication modal only if changes are made
+    if (
+      newUsername !== undefined ||
+      newFirstName !== undefined ||
+      newLastName !== undefined ||
+      newPhone !== undefined ||
+      photo !== null
+    ) {
+      // Check if the user is authenticated before showing the re-authentication modal
+      if (currentUser) {
+        setReAuthModal(true);
+      } else {
+        // Handle the case where currentUser is not defined (not authenticated)
+        alert('User is not authenticated.');
+      }
+    } else {
+      // No changes made, proceed directly with the save operation
+      await handleSaveChanges();
+    }
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      // Update user information if there are any changes
+      const updatedFields = {};
+  
+      if (newUsername !== undefined) {
+        updatedFields.userName = newUsername;
+      }
+      if (newFirstName !== undefined) {
+        updatedFields.firstName = newFirstName;
+      }
+      if (newLastName !== undefined) {
+        updatedFields.lastName = newLastName;
+      }
+      if (newPhone !== undefined) {
+        updatedFields.phone = newPhone;
+      }
+  
+      if (Object.keys(updatedFields).length > 0 || photo) {
+        await updateUserInfo(updatedFields);
+      }
+  
       if (photo) {
         // If a new photo is selected, upload it
         await uploadProfile(photo, currentUser, setLoading);
       }
-      alert('Changes saved successfully!');
-      handleClose();
+  
+      // Close the main modal after successful save
+      setEditState(false);
+    } catch (error) {
+      console.error('Error during save changes:', error.message);
+      // Handle the error or throw it again if necessary
     }
-    catch{
-      alert("Error!")
+  };
+
+ 
+  const handleReauthSuccess = async () => {
+    try {
+      // Reauthenticate the user
+      await reauthUser(currentUser, password);
+      // Apply changes after successful re-authentication
+      await handleSaveChanges();
+
+    } catch (error) {
+      alert('Error during re-authentication.');
     }
-  }
+    // Close the reauthentication modal only if re-authentication was successful
+    setReAuthModal(false);
+  };
+
     return (
       <div>
       {currentUser && userInfo ? (
@@ -103,6 +133,7 @@ const ProfileEdit = (props) => {
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
+          centered
         >
           <Modal.Header>
             <Modal.Title>Edit Account Information</Modal.Title>
@@ -219,6 +250,58 @@ const ProfileEdit = (props) => {
             >
               {" "}
               Save{" "}
+            </button>
+          </Modal.Footer>
+
+          {/* Modal for re-authentication */}
+        </Modal>
+        <Modal
+          size="sm"
+          show={reAuthModal}
+          onHide={handleReAuthClose}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
+          <Modal.Header>
+            <Modal.Title>Enter your password.</Modal.Title>
+            <button
+              type="button"
+              className="btn-close"
+              onClick={handleReAuthClose}
+              aria-label="Close"
+            ></button>
+          </Modal.Header>
+
+          <Modal.Body>
+            <div className="container">
+              <label>Password:</label>
+                <input
+                    type="password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    className="form-control"
+                />
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleReAuthClose}
+            >
+              {" "}
+              Cancel{" "}
+            </button>
+            <button
+              type="button"
+              disabled={!password}
+              onClick={handleReauthSuccess}
+              className="btn btn-primary"
+            >
+              {" "}
+              Confirm{" "}
             </button>
           </Modal.Footer>
         </Modal>

@@ -1,8 +1,7 @@
 import Image from 'react-bootstrap/Image';
-import { auth, db, useAuth, useUserInfo } from '../firebase';
+import { useAuth, useUserInfo } from '../firebase';
 import ProfileEdit from './ProfileEdit';
-import React, { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
