@@ -116,6 +116,7 @@ const ProfileEdit = (props) => {
       await reauthUser(currentUser, password);
       // Apply changes after successful re-authentication
       await handleSaveChanges();
+      alert('Success!')
 
     } catch (error) {
       alert('Error during re-authentication.');
