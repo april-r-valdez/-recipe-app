@@ -18,7 +18,6 @@ import Login from './widgets/Login';
 import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
 import OurTeam from './OurTeam';
-import Tutorials from './Tutorials';
 import TipsTutorials from './scenes/TipsTutorials/TipsTutorials';
 
 function App() {
@@ -46,7 +45,6 @@ function App() {
         <Route path='/support' element={<Support/>}/>
         <Route path='/our-team' element={<OurTeam/>}/>
         <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
-        <Route path='/tips' element={<Tutorials/>}/>
       </Routes>
       <br></br><br></br><br></br>
       <Footer />

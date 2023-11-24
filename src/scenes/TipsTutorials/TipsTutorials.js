@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchVideos } from './YouTubeAPI';
 import YouTube from 'react-youtube';
+import he from 'he';
 
 const YouTubeTips = () => {
   const [videos, setVideos] = useState([]);
@@ -30,14 +31,14 @@ const YouTubeTips = () => {
           <div className="col-6">
             <div key={videos[0].id.videoId}>
               <YouTube videoId={videos[0].id.videoId} />
-              <p>{videos[0].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[0].snippet.title)}</p>
+            </div><br></br>
           </div>
           <div className="col-6">
             <div key={videos[1].id.videoId}>
               <YouTube videoId={videos[1].id.videoId} />
-              <p>{videos[1].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[1].snippet.title)}</p>
+            </div><br></br>
           </div>
         </div>
       )}
@@ -46,14 +47,14 @@ const YouTubeTips = () => {
           <div className="col-6">
             <div key={videos[2].id.videoId}>
               <YouTube videoId={videos[2].id.videoId} />
-              <p>{videos[2].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[2].snippet.title)}</p>
+            </div><br></br>
           </div>
           <div className="col-6">
             <div key={videos[3].id.videoId}>
               <YouTube videoId={videos[3].id.videoId} />
-              <p>{videos[3].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[3].snippet.title)}</p>
+            </div><br></br>
           </div>
         </div>
       )}
@@ -62,14 +63,14 @@ const YouTubeTips = () => {
           <div className="col-6">
             <div key={videos[4].id.videoId}>
               <YouTube videoId={videos[4].id.videoId} />
-              <p>{videos[4].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[4].snippet.title)}</p>
+            </div><br></br>
           </div>
           <div className="col-6">
             <div key={videos[5].id.videoId}>
               <YouTube videoId={videos[5].id.videoId} />
-              <p>{videos[5].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[5].snippet.title)}</p>
+            </div><br></br>
           </div>
         </div>
       )}
@@ -78,14 +79,14 @@ const YouTubeTips = () => {
           <div className="col-6">
             <div key={videos[6].id.videoId}>
               <YouTube videoId={videos[6].id.videoId} />
-              <p>{videos[6].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[6].snippet.title)}</p>
+            </div><br></br>
           </div>
           <div className="col-6">
             <div key={videos[7].id.videoId}>
               <YouTube videoId={videos[7].id.videoId} />
-              <p>{videos[7].snippet.title}</p>
-            </div>
+              <p className="h4">{he.decode(videos[7].snippet.title)}</p>
+            </div><br></br>
           </div>
         </div>
       )}    
