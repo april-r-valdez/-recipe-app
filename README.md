@@ -405,14 +405,19 @@ Provide various use cases and code examples here.
 
 ## Project Status
 
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project: _in progress_
 
 ## Acknowledgements
 
 ### Helpful Tutorials:
 
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+- [Full React Tutorial](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d)
+- [React Tutorial for Beginners](https://www.youtube.com/watch?v=SqcY0GlETPk)
+- [React Testing Library](https://www.youtube.com/watch?v=7dTTFW7yACQ)
+- [Bootstrap Crash Course](https://www.youtube.com/watch?v=O_9u1P5YjVc&list=PL4cUxeGkcC9joIM91nLzd_qaH_AimmdAR)
+ - [Getting Started with Firebase](https://www.youtube.com/watch?v=9zdvmgGsww0&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=1)
+- [Firebase React Course For Beginners](https://www.youtube.com/watch?v=2hR-uWjBAgw)
+- [Authentication in ReactJS Using Firebase: A Step-by-Step Guide](https://www.youtube.com/watch?v=Vv_Oi7zPPTw)
 
 ## Contact
 
