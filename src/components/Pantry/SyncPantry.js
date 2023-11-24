@@ -68,14 +68,13 @@ const SyncPantry = ({ ingredients, setIngredients, userID }) => {
   }, [userID, setIngredients]);
 
   return (
-    <></>
-    // <div>
-    //   {ingredients.length !== 0 && (
-    //     <button className="btn btn-secondary" onClick={handleUpload}>
-    //       Update Pantry
-    //     </button>
-    //   )}
-    // </div>
+    <div>
+      {ingredients.length !== 0 && (
+        <button className="btn btn-secondary" onClick={handleUpload}>
+          Update Pantry
+        </button>
+      )}
+    </div>
   );
 };
 
