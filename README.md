@@ -339,6 +339,40 @@
   - Create end-to-end tests for entire app
 <br />
 
+
+### Sprint 3
+
+#### Contributions
+
+**Brent**: "provided users with a dynamic tips & tutorials page that lets them watch cooking videos and helps them with their next recipe."
+
+  - `Jira Task: Add website footer that includes information and helpful links` 
+    - [Scrum-100](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-100), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/SCRUM-100-add-website-footer) 
+  - `Jira Task: Create and design an About Us page` 
+    - [Scrum-101](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-101), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-101-create-about-us-page) 
+  - `Jira Task: Create option for users to add photos to their created recipes` 
+    - [Scrum-103](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-103), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-103-create-option-for-users-to-add) 
+  - `Jira Task: Create and design Tips & Tutorials page` 
+    - [Scrum-102](https://cs3398f23klingons.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-102), 
+    [Bitbucket](https://bitbucket.org/cs3398f23klingons/recipes-repo/commits/branch/feature%2FSCRUM-102-create-and-design-tips-tutoria) 
+<br />
+
+#### Reports
+
+![Burnup Chart]
+
+#### Next Steps
+
+**Brent**:
+
+  - Add a submit button to the Create Recipe page so users can save their recipes to our database
+  - Create a tool for user's to add images to their newly created recipe
+  - Add an API tool to the Create Recipe page so user's can get help with creating their own recipes
+<br />
+
 <!-- If you have screenshots you'd like to share, include them here. -->
 ## Setup
 
