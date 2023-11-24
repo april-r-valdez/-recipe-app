@@ -1,15 +1,19 @@
 import Image from 'react-bootstrap/Image';
-import { auth, db, useAuth, useUserInfo } from '../firebase';
+import { useAuth, useUserInfo } from '../firebase';
 import ProfileEdit from './ProfileEdit';
-import React, { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoIosSettings } from "react-icons/io";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
-  const { userInfo } = useUserInfo(currentUser);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const { userInfo: userInformation, updateUserInfo } = useUserInfo(
+    currentUser,
+    setUserInfo
+  );
   console.log('userInfo:' ,userInfo?.firstName)
   const [editState, setEditState] = useState(false);
   const [photoURL] = useState(
@@ -40,13 +44,14 @@ const ProfilePage = () => {
        
         <div>
          <ul className="list-group">
-           <li className="list-group-item">
+          <li className="list-group-item">Username: {userInfo.userName} </li>
+          <li className="list-group-item">
              Name: {userInfo.firstName + ' ' + userInfo.lastName}
            </li>
-           <li className="list-group-item">Email: {userInfo.email} </li>
-           <li className="list-group-item">Phone: {userInfo.phone} </li>
-           <li className="list-group-item">User since: {userInfo.userSince?.toDate().toDateString()}</li>
-         </ul>
+          <li className="list-group-item">Email: {userInfo.email} </li>
+          <li className="list-group-item">Phone: {userInfo.phone} </li>
+          <li className="list-group-item">User since: {userInfo.userSince?.toDate().toDateString()}</li>
+          </ul>
        </div>
 
        <div>
@@ -58,7 +63,7 @@ const ProfilePage = () => {
             <IoIosSettings style={{ fontSize: '20px'}}/>
            Edit Profile
          </button>
-          <ProfileEdit state={editState} setState={setEditState} />
+          <ProfileEdit state={editState} setState={setEditState} onUpdateUserInfo={setUserInfo} />
        </div>
        </>
        ) : (

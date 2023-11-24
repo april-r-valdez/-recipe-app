@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { initializeApp } from "firebase/app";
 import { getFirestore, serverTimestamp, setDoc, doc, getDoc, updateDoc} from "@firebase/firestore";
 import { getStorage, ref, uploadBytes , getDownloadURL } from "@firebase/storage";
-import{ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import{ getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,
+  onAuthStateChanged,signOut, updateProfile,  reauthenticateWithCredential,
+  EmailAuthProvider } from "firebase/auth";
 
 
 
@@ -62,7 +64,7 @@ const firebaseConfig = {
   }
 
 // Custom hook for getting current user info
-export function useUserInfo(currentUser) {
+export function useUserInfo(currentUser, onUpdateUserInfo) {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -74,6 +76,7 @@ export function useUserInfo(currentUser) {
           const docSnap = await getDoc(userRef);
           if (docSnap.exists()) {
             setUserInfo(docSnap.data());
+            onUpdateUserInfo(docSnap.data()); // Call the callback function
           } else {
             console.log('No such document!');
           }
@@ -96,6 +99,7 @@ export function useUserInfo(currentUser) {
         await updateDoc(userRef, updatedInfo);
         // Update local state with the new information
         setUserInfo((prevInfo) => ({ ...prevInfo, ...updatedInfo }));
+        onUpdateUserInfo({ ...userInfo, ...updatedInfo }); // Call the callback function
       } else {
         console.error('User is undefined. Cannot update user info.');
       }
@@ -106,5 +110,16 @@ export function useUserInfo(currentUser) {
 
   return { userInfo, updateUserInfo };
   }
+
+  export function reauthUser(currentUser, password)
+  {
+    // TODO(you): prompt the user to re-provide their sign-in credentials
+    const credential = EmailAuthProvider.credential(currentUser.email, password);
+
+    return reauthenticateWithCredential(currentUser, credential);
+
+  }
+
+  
 
 
