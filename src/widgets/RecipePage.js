@@ -3,12 +3,15 @@ import RatingStars from '../components/Utils/RatingStars.js';
 import { Modal } from 'react-bootstrap'
 import DynamicRating from './DynamicRating.js';
 import { useAuth } from '../firebase.js';
+import { IoMdBookmark } from 'react-icons/io';
+import { IoBookmarkOutline } from 'react-icons/io5';
 
 
 const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const curUser = useAuth();
 
@@ -22,6 +25,10 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
 
   const handleRateButtonClick = () => {
     setShowRatingModal(true);
+  }
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
   }
 
   const handleSubmitRating = async () => {
@@ -41,16 +48,21 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
         <div className='col-auto'>
           <RatingStars rating={rating} />
         </div>
-        <div className='col-auto'>
+        <div className='col-auto' style={{paddingLeft: "0"}}>
           <span>({ratingCount})</span>
         </div>
       </div>
       {
-        curUser ? (
-          <div className='row'>
-            <button type='button' className='btn btn-link' style={{textAlign:"left", color:"black"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+        curUser && (
+          <div className='row mt-2'>
+            <div className='col-auto'>
+              <button type='button' className='btn btn-link' style={{paddingLeft: "0", paddingRight: "0", color:"black", fontSize:"18px"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+            </div>
+            <div className='col-auto' onClick={handleFavoriteClick} style={{fontSize: "28px", cursor:"pointer"}}>
+              {isFavorite ? <IoMdBookmark color='#BD9371'/> : <IoBookmarkOutline />}
+            </div>
           </div>
-        ) : (null)
+        )
       }
 
       {/* Created by */}
