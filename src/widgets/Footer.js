@@ -2,36 +2,30 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <footer className="bg-body-tertiary py-3" data-bs-theme="light">
+        <footer className="bg-body-tertiary py-2 fixed-bottom" style={{ zIndex: 'auto' }} data-bs-theme="light">
             <div className="container-fluid">
-                <div className="row row-cols-1 row-cols-2 row-cols-3">
-                    <div className="col-3">
-                        <div className="row">
-                            <div className="col-1">
-                                <img className="icon-img ms-md-3" src="./images/restaurant.png" alt="" style={{ maxWidth: '30px', maxHeight: '30px' }}></img>
-                            </div>
-                            <div className="col-2">
-                                <Link className="navbar-brand text-md-start fw-bolder ms-md-4 nav-link active" to="/home">RECIPE GENERATOR</Link>
-                            </div>
-                        </div>
+                <div className="row ">
+                    <div className="d-flex col-md-2 col-sm-2 mb-0">
+                        <img className="icon-img" src="./images/restaurant.png" alt="" style={{ maxWidth: '30px', maxHeight: '30px' }}></img>
+                        <Link className="navbar-brand text-md-start fw-bolder ms-md-2 nav-link active" to="/home">RECIPE GENERATOR</Link>
                     </div>
-                    <div className="col-3">
-                        <p className="navbar-brand fw-bolder text-md-center ms-md-4">&copy; 2023 KLINGONS. All rights reserved.</p>
+                    <div className="d-flex col-md-5 col-sm-2 mb-0">
+                        <p className="navbar-brand fw-bolder">&copy; 2023 KLINGONS. All rights reserved.</p>
                     </div>
-                    <div className="col-6 d-flex justify-content-end">
-                        <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/">About</Link>
+                    <div className="col-md-5 d-flex justify-content-end mb-0">
+                        <Link className="navbar-brand fw-bolder mx-2 nav-link active" to="/">About</Link>
                         <span className="text-muted">|</span>
-                        <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/support">Contact Us</Link>
+                        <Link className="navbar-brand fw-bolder mx-2 nav-link active" to="/support">Contact Us</Link>
                         <span className="text-muted">|</span>
-                        <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/our-team">Our Team</Link>
+                        <Link className="navbar-brand fw-bolder mx-2 nav-link active" to="/our-team">Our Team</Link>
                         <span className="text-muted">|</span>
-                        <Link className="navbar-brand fw-bolder mx-4 nav-link active" to="/tips-tutorials">Tips & Tutorials</Link>
+                        <Link className="navbar-brand fw-bolder mx-2 nav-link active" to="/tips-tutorials">Tips & Tutorials</Link>
                     </div>
                 </div>
             </div>
         </footer>
     
     )
-}
+};
 
 export default Footer;

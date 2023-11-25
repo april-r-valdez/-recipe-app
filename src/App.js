@@ -47,7 +47,9 @@ function App() {
         <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
       </Routes>
       <br></br><br></br><br></br>
-      <Footer />
+      <div className="row container-xl">
+        <Footer />
+      </div>      
     </div>
     
   );
