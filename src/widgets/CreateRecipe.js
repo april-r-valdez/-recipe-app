@@ -157,6 +157,7 @@ const  UserInput = () => {
 
     return (  
         <div className="container-xl">
+            <br></br>
             <h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
@@ -176,14 +177,14 @@ const  UserInput = () => {
                         <div className="col-4 mb-3">
                             <p className="h4">Upload Image</p><br></br>
                             <label htmlFor="formFile" style={{ cursor: "pointer" }}>
-                                <img src="upload-img.png" alt="" style={{ width: "75%", height: "75%", objectFit: "cover", cursor: "pointer" }}/>
+                                <img src="./images/upload-img.png" alt="" style={{ width: "75%", height: "75%", objectFit: "cover", cursor: "pointer" }}/>
                                 <input class="form-control" type="file" id="formFile" style={{ display: "none" }} onChange={handleImageChange}/>
                             </label>
                         </div>
                         <div className="col-4 mb-3 ms-auto">
                             <p className="h4">Save Recipe</p><br></br>
                             <label htmlFor='formButton' style={{ cursor: "pointer" }}>
-                                <img src="bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
+                                <img src="./images/bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
                                 <input type='button' id='formButton' style={{ display: "none" }} onClick={handleSaveRecipe}/>
                             </label>
                         </div>

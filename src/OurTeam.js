@@ -4,6 +4,7 @@ function OurTeam() {
     
     return (
         <div className="container-xl">
+            <br></br>
             <h1 className="display-5">Our Team</h1><br></br><br></br>
             <div className="row">
                 <div className="col-4">
