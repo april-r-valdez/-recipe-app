@@ -5,6 +5,7 @@ import DynamicRating from './DynamicRating.js';
 import { useAuth } from '../firebase.js';
 import { IoMdBookmark } from 'react-icons/io';
 import { IoBookmarkOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 
 const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
@@ -12,6 +13,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   const curUser = useAuth();
 
@@ -24,11 +26,22 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
   }
 
   const handleRateButtonClick = () => {
-    setShowRatingModal(true);
+    if (!curUser) {
+      console.log("redirect to log in page");
+      navigate('/login-page');
+      
+    } else {
+      setShowRatingModal(true);
+    }
   }
 
   const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
+    if (!curUser) {
+      console.log("redirect to log in page");
+      navigate('/login-page');
+    } else {
+      setIsFavorite(!isFavorite);
+    }
   }
 
   const handleSubmitRating = async () => {
@@ -52,19 +65,17 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
           <span>({ratingCount})</span>
         </div>
       </div>
-      {
-        curUser && (
-          <div className='row mt-2'>
-            <div className='col-auto'>
-              <button type='button' className='btn btn-link' style={{paddingLeft: "0", paddingRight: "0", color:"black", fontSize:"18px"}} onClick={handleRateButtonClick}>Rate this recipe</button>
-            </div>
-            <div className='col-auto' onClick={handleFavoriteClick} style={{fontSize: "28px", cursor:"pointer"}}>
-              {isFavorite ? <IoMdBookmark color='#BD9371'/> : <IoBookmarkOutline />}
-            </div>
-          </div>
-        )
-      }
-
+      
+      {/* Rating and save buttons */}
+      <div className='row mt-2'>
+        <div className='col-auto'>
+          <button type='button' className='btn btn-link' style={{paddingLeft: "0", paddingRight: "0", color:"black", fontSize:"18px"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+        </div>
+        <div className='col-auto' onClick={handleFavoriteClick} style={{fontSize: "28px", cursor:"pointer"}}>
+          {isFavorite ? <IoMdBookmark color='#BD9371'/> : <IoBookmarkOutline />}
+        </div>
+      </div>
+        
       {/* Created by */}
       {
         author !== "" ? (
