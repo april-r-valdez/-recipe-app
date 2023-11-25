@@ -1,7 +1,7 @@
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { db, storage } from '../../firebase';
+import { db, storage, useAuth } from '../../firebase';
 import { ref, getDownloadURL } from 'firebase/storage';
 import RecipePage from '../../widgets/RecipePage';
 
@@ -20,6 +20,7 @@ const RecipeFromDB = () => {
 
   // get the recipe with recipeId from the Recipes collection
   const recipeRef = doc(db, 'Recipes', param.id)
+  const curUser = useAuth();
   
   const getRecipeById = async () => {
     try {        
