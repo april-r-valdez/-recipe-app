@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection} from "firebase/firestore";
 import { db } from "../../firebase";
 
 const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, author, isVegan, isDairyFree, isGlutenFree) => {
@@ -25,7 +25,7 @@ const saveRecipeToFirebase = async (recipeName, servings, cookTime, ingredients,
         });
 
         console.log("Recipe ID: ", recipeRef.id);
-
+        return recipeRef;
     } catch(error) {
         console.log("Error saving recipe: ", error)
     }

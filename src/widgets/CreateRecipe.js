@@ -4,10 +4,11 @@ import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
 import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
-import { useAuth, useUserInfo } from '../firebase';
+import { db, useAuth, useUserInfo } from '../firebase';
 import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
 import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 const  UserInput = () => {
 
@@ -126,7 +127,7 @@ const  UserInput = () => {
     }
 
     // handle save recipe
-    const handleSaveRecipe = () => {
+    const handleSaveRecipe = async () => {
 
         if (!curUser) {
             navigate('/login-page');
@@ -148,13 +149,21 @@ const  UserInput = () => {
             const isDairyFree = false;  // default to false
             
             // save recipe to firestore
-            saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
-            
+            const recipeRef = await saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
+            console.log(recipeRef);
             // // upload image to firebase storage if user provides one
             if (recipeImg) {
                 uploadImageFileToFirebase(recipeImg, imageLocation);
             }
 
+            // add the newly created recipe to user's favorite list
+            const userRef = doc(db, 'Users', curUser.uid);
+            await updateDoc(userRef, {
+                favoriteRecipes: arrayUnion(recipeRef ? recipeRef : null),
+            });
+
+            console.log("Add recipe successfully");
+            
             // set saveStatus
             setSaveStatus(true);
         }
