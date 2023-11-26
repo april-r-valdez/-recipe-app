@@ -19,6 +19,7 @@ import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
 import OurTeam from './OurTeam';
 import FavoriteRecipes from './widgets/FavoriteRecipes';
+import TipsTutorials from './scenes/TipsTutorials/TipsTutorials';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path='/support' element={<Support/>}/>
         <Route path='/our-team' element={<OurTeam/>}/>
         <Route path='/saved-recipes' element={<FavoriteRecipes/>}/>
+        <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
       </Routes>
       <br></br><br></br><br></br>
       <Footer />
