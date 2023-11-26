@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../firebase';
 import DisplayRecipeCardList from './DisplayRecipeCardList'
+import InputIngredient from '../../widgets/SearchByIngredient';
 
 // Implement DBsearch to search by: Recipe name, Ingredient list
 // searchType: value depending on search by name or seach by ingredient lists
@@ -102,14 +103,19 @@ const DBSearch = () => {
 
   return (
     <div className='container-fluid' style={{maxWidth: '1200px'}}>
-      <h4>Search Results</h4>
-      {
-        matchingRecipes.length > 0 ? (
-          <DisplayRecipeCardList recipeList={matchingRecipes} displayCount={9}/>
-        ) : (
-          <p>Sorry, no recipes found :(</p>
-        )
-      }
+      <div className='row'>
+        <InputIngredient />
+      </div>
+      <div className='row'>
+        <h4>Search Results</h4>
+        {
+          matchingRecipes.length > 0 ? (
+            <DisplayRecipeCardList recipeList={matchingRecipes} displayCount={9}/>
+          ) : (
+            <p>Sorry, no recipes found :(</p>
+          )
+        }
+      </div>
     </div>
   )
 }

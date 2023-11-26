@@ -4,14 +4,19 @@ import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
 import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
-import { useAuth } from '../firebase';
+import { db, useAuth, useUserInfo } from '../firebase';
 import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
 import { Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 const  UserInput = () => {
 
     // get the current login user
+    const navigate = useNavigate();
     const curUser = useAuth();
+    const [userInfo, setUserInfo] = useState(null);
+    useUserInfo(curUser, setUserInfo);
     
     // useState hook updates variables that store ingredient inputs
     const [inputs, setIngredients] = useState({
@@ -122,7 +127,12 @@ const  UserInput = () => {
     }
 
     // handle save recipe
-    const handleSaveRecipe = () => {
+    const handleSaveRecipe = async () => {
+
+        if (!curUser) {
+            navigate('/login-page');
+            return;
+        }
        
         if (recipeInfo && ingredientsList.length > 0 && directionsList.length > 0) {
             // extract recipe information
@@ -133,19 +143,27 @@ const  UserInput = () => {
             const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
             const directions = directionsList.map(data => data.direction);
             const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : 'RecipeImages/default_image.png';
-            const authorName = curUser ? curUser.email : "";
+            const authorName = userInfo ? (userInfo.userName ? userInfo.userName : userInfo.email) : "";
             const isVegan = false;  // default to false
             const isGlutenFree = false; // default to false
             const isDairyFree = false;  // default to false
             
             // save recipe to firestore
-            saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
-            
-            // upload image to firebase storage if user provides one
+            const recipeRef = await saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
+            console.log(recipeRef);
+            // // upload image to firebase storage if user provides one
             if (recipeImg) {
                 uploadImageFileToFirebase(recipeImg, imageLocation);
             }
 
+            // add the newly created recipe to user's favorite list
+            const userRef = doc(db, 'Users', curUser.uid);
+            await updateDoc(userRef, {
+                favoriteRecipes: arrayUnion(recipeRef ? recipeRef : null),
+            });
+
+            console.log("Add recipe successfully");
+            
             // set saveStatus
             setSaveStatus(true);
         }
@@ -157,6 +175,7 @@ const  UserInput = () => {
 
     return (  
         <div className="container-xl">
+            <br></br>
             <h1 className="display-5">Create Recipe</h1><br></br><br></br>
             <div className="row">
                 <div className="col-lg-4">
@@ -176,14 +195,14 @@ const  UserInput = () => {
                         <div className="col-4 mb-3">
                             <p className="h4">Upload Image</p><br></br>
                             <label htmlFor="formFile" style={{ cursor: "pointer" }}>
-                                <img src="upload-img.png" alt="" style={{ width: "75%", height: "75%", objectFit: "cover", cursor: "pointer" }}/>
+                                <img src="./images/upload-img.png" alt="" style={{ width: "75%", height: "75%", objectFit: "cover", cursor: "pointer" }}/>
                                 <input class="form-control" type="file" id="formFile" style={{ display: "none" }} onChange={handleImageChange}/>
                             </label>
                         </div>
                         <div className="col-4 mb-3 ms-auto">
                             <p className="h4">Save Recipe</p><br></br>
                             <label htmlFor='formButton' style={{ cursor: "pointer" }}>
-                                <img src="bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
+                                <img src="./images/bookmark.png" alt="" style={{ width: "60%", height: "40%", cursor: "pointer" }}/>
                                 <input type='button' id='formButton' style={{ display: "none" }} onClick={handleSaveRecipe}/>
                             </label>
                         </div>
