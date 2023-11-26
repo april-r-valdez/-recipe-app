@@ -120,7 +120,8 @@ const RecipeFromAPI = () => {
     <div>
       <RecipePage name={recipe.title} 
               image={recipe.image} 
-              ingredients={ingredientDetails} 
+              ingredients={ingredients}
+              ingredientDetails={ingredientDetails} 
               directions={directions} 
               nutrition={nutrition}
               rating={currentRating}
