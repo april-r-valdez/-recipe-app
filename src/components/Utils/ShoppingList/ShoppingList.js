@@ -36,8 +36,8 @@ const ShoppingList = ({ userID }) => {
   const renderShoppingListItem = (item, index) => {
     return (
       <tr key={index}>
-        <td>{item}</td>
         <td>{shoppingList[item]}</td>
+        <td>{item}</td>
       </tr>
     );
   };
@@ -47,6 +47,12 @@ const ShoppingList = ({ userID }) => {
       <p className="h3">Shopping List</p>
 
       <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Amount</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
         <tbody>
           {Object.keys(shoppingList).map((item, index) =>
             renderShoppingListItem(item, index)
