@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, increment, arrayUnion, arrayRemove } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { db, storage, useAuth } from '../../firebase';
@@ -6,6 +6,10 @@ import { ref, getDownloadURL } from 'firebase/storage';
 import RecipePage from '../../widgets/RecipePage';
 
 const RecipeFromDB = () => {
+
+  const curUser = useAuth();
+  // const [userInfo, setUserInfo] = useState(null);
+  // useUserInfo(curUser, setUserInfo);
 
   const [recipeName, setRecipeName] = useState();
   const [imageUrl, setImageUr] = useState("");
@@ -20,7 +24,7 @@ const RecipeFromDB = () => {
 
   // get the recipe with recipeId from the Recipes collection
   const recipeRef = doc(db, 'Recipes', param.id)
-  const curUser = useAuth();
+  
   
   const getRecipeById = async () => {
     try {        
@@ -76,7 +80,28 @@ const RecipeFromDB = () => {
     } catch(error) {
       console.log("Error updating document:", error);
     }
-  }
+  };
+
+  const handleAddToFavorite = async (isFavorite) => {
+    if (curUser) {
+      const userRef = doc(db, 'Users', curUser.uid);
+      try {
+        if (!isFavorite) {
+          await updateDoc(userRef, {
+            favoriteRecipes: arrayUnion(recipeRef),
+          });
+          console.log("Add recipe successfully");
+        } else {
+          await updateDoc(userRef, {
+            favoriteRecipes: arrayRemove(recipeRef),
+          })
+          console.log("Remove recipe successfully");
+        }
+      } catch(error) {
+        console.log("Error: ", error);
+      }
+    }
+  };
 
   useEffect(() => {
     getRecipeById();
@@ -93,6 +118,7 @@ const RecipeFromDB = () => {
                   ratingCount={ratingCount}
                   author={createdBy}
                   onSubmitRating={handleRatingChange}
+                  onAddToFavoriteList={handleAddToFavorite}
                   />
     </div>
   )

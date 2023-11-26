@@ -8,9 +8,10 @@ import { IoBookmarkOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 
-const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
+const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, ratingCount, author, onSubmitRating, onAddToFavoriteList} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
+  const [showSavedModal, setShowSavedModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
   
   const handleModalClose = () => {
     setShowRatingModal(false);
+    setShowSavedModal(false);
   }
 
   const handleRateButtonClick = () => {
@@ -40,7 +42,9 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
       console.log("redirect to log in page");
       navigate('/login-page');
     } else {
+      onAddToFavoriteList(isFavorite);
       setIsFavorite(!isFavorite);
+      setShowSavedModal(true);
     }
   }
 
@@ -135,7 +139,20 @@ const RecipePage = ( {name, image, ingredients, directions, nutrition, rating, r
               onClick={handleSubmitRating}>Submit</button>
         </Modal.Footer>
       </Modal>
-      
+
+      {/* Save Successfully Modal */}
+      <Modal show={showSavedModal} onHide={handleModalClose}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+            {isFavorite ? <p>Recipe has been added to your list</p> : <p>Recipe has been removed from your list</p>}
+        </Modal.Body>
+        <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+            <button 
+              type='button' 
+              className='btn btn-success' 
+              onClick={handleModalClose}>Close</button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
