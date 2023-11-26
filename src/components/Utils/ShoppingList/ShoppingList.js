@@ -22,8 +22,7 @@ const ShoppingList = ({ userID }) => {
         const snapshot = await getDoc(userDocRef);
 
         if (snapshot.exists()) {
-          console.log(snapshot.data());
-          setShoppingList(snapshot.data());
+          setShoppingList(snapshot.data().ingredients);
         }
       } catch (error) {
         console.error("Error fetching shopping list:", error);
