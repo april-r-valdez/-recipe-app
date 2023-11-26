@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.icon-bg-light:hover {
+  background-color: #e3d5ca;
+  border-radius: 50%;
+}

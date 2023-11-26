@@ -36,8 +36,8 @@ function RecipeCard(props) {
                     setTitle(capitalizedTitle);
                     
                     // Get rating as integer value
-                    setRating(parseInt(recipe.rating, 10));
-
+                    setRating(parseInt(Math.floor(recipe.sumRating / recipe.ratingCount), 10));
+                    
                     // Get image
                     const imageRef = ref(storage, recipe.imageLoc)
                     getDownloadURL(imageRef).then((url) => {
@@ -78,9 +78,9 @@ function RecipeCard(props) {
                     </h5>
 
                     {loading ? (<p>Loading...</p>) :
-                        (<p className="card-text">
+                        (<div className="card-text">
                             <RatingStars rating={recipeRating} />
-                        </p>)
+                        </div>)
                     }
                 </div>
             </div>

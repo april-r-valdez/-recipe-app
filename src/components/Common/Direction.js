@@ -12,7 +12,7 @@ const Directions = ({directions, handleChange}) => {
                 onChange={handleChange}
             ></textarea><br></br>
             <div class="d-grid gap-2 col-8 mx-auto">
-                <button type="submit" class="btn btn-primary">Add Direction</button>
+                <button type="submit" class="btn btn-secondary">Add Direction</button>
             </div>
         </div>
     );

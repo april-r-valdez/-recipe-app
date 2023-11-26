@@ -3,7 +3,7 @@
 function PlaceholderCard() {
     return (
         <div className="card" aria-hidden="true">
-            <img src="grayImg.png" className="card-img-top" alt="..." style={{ maxHeight: '100px', objectFit: 'cover' }}/>
+            <img src="./images/grayImg.png" className="card-img-top" alt="..." style={{ maxHeight: '100px', objectFit: 'cover' }}/>
             <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                 <span className="placeholder col-6"></span>  
