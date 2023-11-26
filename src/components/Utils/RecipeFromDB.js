@@ -13,6 +13,7 @@ const RecipeFromDB = () => {
 
   const [recipeName, setRecipeName] = useState();
   const [imageUrl, setImageUr] = useState("");
+  const [ingredients, setIngredients] = useState([]);
   const [ingredientDetails, setIngredientDetails] = useState([]);
   const [directions, setDirections] = useState([]);
   const [nutrition, setNutrition] = useState({});
@@ -46,6 +47,9 @@ const RecipeFromDB = () => {
             });
 
             // get ingredients list
+            setIngredients(recipe.ingredients);
+
+            // get ingredients list (detailed)
             setIngredientDetails(recipe.ingredientDetails);
 
             // get direction list
@@ -111,7 +115,8 @@ const RecipeFromDB = () => {
     <div>
       <RecipePage name={recipeName}
                   image={imageUrl}
-                  ingredients={ingredientDetails}
+                  ingredients={ingredients}
+                  ingredientDetails={ingredientDetails}
                   directions={directions}
                   nutrition={nutrition}
                   rating={rating} 
