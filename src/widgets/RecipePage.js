@@ -10,7 +10,7 @@ import parseIngredients from "../components/Utils/IngredientParser.js";
 import AddToShoppingListButton from "../components/ShoppingList/AddToShoppingListButton.js";
 import { auth } from "../firebase.js";
 
-const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
+const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, nutrition, rating, ratingCount, author, onSubmitRating, onAddToFavoriteList} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [showSavedModal, setShowSavedModal] = useState(false);
