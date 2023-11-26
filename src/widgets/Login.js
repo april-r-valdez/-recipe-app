@@ -51,7 +51,7 @@ const Login = () => {
 
     return ( 
         <div className="container-sm">
-            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <div className="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                 <button className="nav-link active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
                 <button className="nav-link " id="nav-signup-tab" data-bs-toggle="tab" data-bs-target="#nav-signup" type="button" role="tab" aria-controls="nav-signup" aria-selected="true">Signup</button>
             </div>

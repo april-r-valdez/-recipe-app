@@ -24,11 +24,9 @@ function App() {
   return (
 
     <div className="App" data-bs-theme="light">
-      <div className="row container-xl">
-        <Navbar />
-      </div>
+      <Navbar />
       <br></br><br></br><br></br>
-      <Routes>
+      <Routes >
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path='/create-recipe' element={<CreateRecipe/>}/>

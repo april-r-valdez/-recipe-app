@@ -7,40 +7,41 @@ const CameraModule = ({ isOpen, net}) => {
   const streamRef = useRef(null);
   const canvasRef = useRef(null)
 
-  const runModel = async () => {
-    // Loop and detect objects
-    setInterval(() => {
-      detect(net);
-    }, 16) ;     
-  };
-
-  const detect = async (net) => {
-    try {  
-    // When data is available
-      if (
-          typeof videoRef.current != "undefined" &&
-          videoRef.current != null &&
-          net != null
-        ) {
-        const obj = await net.detect(videoRef.current);
-        const videoWidth = videoRef.current.videoWidth;
-        const videoHeight = videoRef.current.videoHeight;
-        // Set canvas width and height
-        canvasRef.current.width = videoWidth;
-        canvasRef.current.height = videoHeight;
-        
-        const ctx = canvasRef.current.getContext("2d");
-        drawBox(obj, ctx); 
-        // Dispose off previous detection else will lead to memory outage
-        tf.dispose(obj);
-      }
-    } catch (error) {
-      console.log("Waiting to sync Prediction/ Model: Logged");
-    }
-  };
-
   useEffect(() => {
     let stream;
+
+    const runModel = async () => {
+      // Loop and detect objects
+      setInterval(() => {
+        detect(net);
+      }, 16) ;     
+    };
+  
+    const detect = async (net) => {
+      try {  
+      // When data is available
+        if (
+            typeof videoRef.current != "undefined" &&
+            videoRef.current != null &&
+            net != null
+          ) {
+          const obj = await net.detect(videoRef.current);
+          const videoWidth = videoRef.current.videoWidth;
+          const videoHeight = videoRef.current.videoHeight;
+          // Set canvas width and height
+          canvasRef.current.width = videoWidth;
+          canvasRef.current.height = videoHeight;
+          
+          const ctx = canvasRef.current.getContext("2d");
+          drawBox(obj, ctx); 
+          // Dispose off previous detection else will lead to memory outage
+          tf.dispose(obj);
+        }
+      } catch (error) {
+        console.log("Waiting to sync Prediction/ Model: Logged");
+      }
+    };
+
     const openCamera = async () => {
       try {
         stream = await navigator.mediaDevices.getUserMedia({ 
@@ -73,7 +74,7 @@ const CameraModule = ({ isOpen, net}) => {
     if (isOpen) { openCamera(); }
 
     return () => { closeCamera(); };
-  }, []);  
+  }, [isOpen, net]);  
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
