@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiAddthis } from "react-icons/si";
 import { IoCamera } from "react-icons/io5";
 import { FcCameraIdentification } from "react-icons/fc";
 import ModalComponent from "../components/Utils/ModalComponent";
 import CameraModule from "./CameraModule";
+import * as cocossd from "@tensorflow-models/coco-ssd";
 
 function InputIngredient () {
 
@@ -22,6 +23,8 @@ function InputIngredient () {
     const [isHovered, setIsHovered] = useState(false);
 
     const [showCameraModal, setShowCameraModal] = useState(false);
+
+    const [model, setModel] = useState(null);
 
     const navigate = useNavigate();
 
@@ -111,14 +114,23 @@ function InputIngredient () {
         <FcCameraIdentification />    
     );
     const modalBody = (
-        <CameraModule isOpen={showCameraModal} onClose={handleModalClose} />      
+        
+        <CameraModule isOpen={showCameraModal} net={model} onClose={handleModalClose} />      
     );
     const modalFooter = (
         <>
         <button type="button" className="btn btn-secondary" onClick={handleModalClose}>Close</button>
         </>
     );
+    
+    useEffect(() => {
+        const loadModel = async () => {
+            const loadedModel = await cocossd.load();
+            setModel(loadedModel);
+        };
 
+        loadModel();
+    }, [])
 
     return (
         <div 
