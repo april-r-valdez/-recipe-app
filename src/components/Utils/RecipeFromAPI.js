@@ -7,7 +7,7 @@ import saveRecipeToFirebase from './SaveRecipe';
 import { db, useAuth } from '../../firebase';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
-const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
+const API_KEY = '8218ef888f3545f08036a30afc6577d7';
 
 const RecipeFromAPI = () => {
 
@@ -68,7 +68,6 @@ const RecipeFromAPI = () => {
   //const recipeCollectionRef = collection(db, "Recipes");
   const handleSave = async () => {
     try {
-
       const author = "";
       const imageLocation = recipe.image ? ('RecipeImages/' + String(recipe.id) + '.jpg') : 'RecipeImages/default_image.png';
 
@@ -113,7 +112,7 @@ const RecipeFromAPI = () => {
         console.log("Error: ", error);
       }
     } else {
-      console.log("Either user is not logged in or recipe does not exist in firebase.")
+      console.log("Recipe does not exist in firebase.")
     }
   };
 

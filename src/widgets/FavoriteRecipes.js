@@ -34,7 +34,7 @@ const FavoriteRecipes = () => {
   
   return (
     <div className='container-fluid' style={{maxWidth: '1200px'}}>
-      <h4>My List</h4>
+      <h4>My Favorite Recipes</h4>
       { recipeList.length !== 0 ?
         (<DisplayRecipeCardList recipeList={recipeList} displayCount={9}/>) :
         (<p>empty</p>)
