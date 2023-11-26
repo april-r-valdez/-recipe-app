@@ -3,14 +3,20 @@ import RatingStars from '../components/Utils/RatingStars.js';
 import { Modal } from 'react-bootstrap'
 import DynamicRating from './DynamicRating.js';
 import { useAuth } from '../firebase.js';
+import { IoMdBookmark } from 'react-icons/io';
+import { IoBookmarkOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 import parseIngredients from "../components/Utils/IngredientParser.js";
 import AddToShoppingListButton from "../components/ShoppingList/AddToShoppingListButton.js";
 import { auth } from "../firebase.js";
 
-const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, nutrition, rating, ratingCount, author, onSubmitRating} ) => {
+const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, nutrition, rating, ratingCount, author, onSubmitRating, onAddToFavoriteList} ) => {
 
   const [showRatingModal, setShowRatingModal] = useState(false);
+  const [showSavedModal, setShowSavedModal] = useState(false);
   const [currentRating, setCurrentRating] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   const curUser = useAuth();
 
@@ -20,10 +26,28 @@ const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, n
   
   const handleModalClose = () => {
     setShowRatingModal(false);
+    setShowSavedModal(false);
   }
 
   const handleRateButtonClick = () => {
-    setShowRatingModal(true);
+    if (!curUser) {
+      console.log("redirect to log in page");
+      navigate('/login-page');
+      
+    } else {
+      setShowRatingModal(true);
+    }
+  }
+
+  const handleFavoriteClick = () => {
+    if (!curUser) {
+      console.log("redirect to log in page");
+      navigate('/login-page');
+    } else {
+      onAddToFavoriteList(isFavorite);
+      setIsFavorite(!isFavorite);
+      setShowSavedModal(true);
+    }
   }
 
   const handleSubmitRating = async () => {
@@ -61,18 +85,21 @@ const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, n
         <div className='col-auto'>
           <RatingStars rating={rating} />
         </div>
-        <div className='col-auto'>
+        <div className='col-auto' style={{paddingLeft: "0"}}>
           <span>({ratingCount})</span>
         </div>
       </div>
-      {
-        curUser ? (
-          <div className='row'>
-            <button type='button' className='btn btn-link' style={{textAlign:"left", color:"black"}} onClick={handleRateButtonClick}>Rate this recipe</button>
-          </div>
-        ) : (null)
-      }
-
+      
+      {/* Rating and save buttons */}
+      <div className='row mt-2'>
+        <div className='col-auto'>
+          <button type='button' className='btn btn-link' style={{paddingLeft: "0", paddingRight: "0", color:"black", fontSize:"18px"}} onClick={handleRateButtonClick}>Rate this recipe</button>
+        </div>
+        <div className='col-auto' onClick={handleFavoriteClick} style={{fontSize: "28px", cursor:"pointer"}}>
+          {isFavorite ? <IoMdBookmark color='#BD9371'/> : <IoBookmarkOutline />}
+        </div>
+      </div>
+        
       {/* Created by */}
       {
         author !== "" ? (
@@ -181,6 +208,20 @@ const RecipePage = ( {name, image, ingredients, ingredientDetails, directions, n
               type='button' 
               className='btn btn-success' 
               onClick={handleSubmitRating}>Submit</button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Save Successfully Modal */}
+      <Modal show={showSavedModal} onHide={handleModalClose}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+            {isFavorite ? <p>Recipe has been added to your list</p> : <p>Recipe has been removed from your list</p>}
+        </Modal.Body>
+        <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+            <button 
+              type='button' 
+              className='btn btn-success' 
+              onClick={handleModalClose}>Close</button>
         </Modal.Footer>
       </Modal>
     </div>

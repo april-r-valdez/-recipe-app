@@ -4,10 +4,14 @@ import RecipePage from '../../widgets/RecipePage';
 import extractNutritionData from './NutritionFactsParser';
 import { uploadImageToFirebase } from './UploadImage';
 import saveRecipeToFirebase from './SaveRecipe';
+import { db, useAuth } from '../../firebase';
+import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
 
 const RecipeFromAPI = () => {
+
+  const curUser = useAuth();
   
   const [recipe, setRecipe] = useState({});
   const [ingredientDetails, setIngredientDetails] = useState([]);
@@ -15,6 +19,8 @@ const RecipeFromAPI = () => {
   const [ingredients, setIngredients] = useState([]);
   const [nutrition, setNutrition] = useState({});
   const [currentRating, setCurrentRating] = useState(5);
+
+  const [recipeRef, setRecipeRef] = useState(null);
 
   // Signal save recipe successfully or not
   const[saveStatus, setSaveStatus] = useState(false);
@@ -60,24 +66,15 @@ const RecipeFromAPI = () => {
 
   // save this recipe to the database when user click save button
   //const recipeCollectionRef = collection(db, "Recipes");
-  const handleSave = () => {
+  const handleSave = async () => {
     try {
-
       const author = "";
       const imageLocation = recipe.image ? ('RecipeImages/' + String(recipe.id) + '.jpg') : 'RecipeImages/default_image.png';
 
       // save recipe to firebase
-      saveRecipeToFirebase(recipe.title, 
-                           recipe.servings, 
-                           recipe.readyInMinutes,
-                           ingredients,
-                           ingredientDetails,
-                           directions,
-                           imageLocation,
-                           author,
-                           recipe.vegan,
-                           recipe.dairyFree,
-                           recipe.glutenFree);
+      const recipeRef = await saveRecipeToFirebase(recipe.title, recipe.servings, recipe.readyInMinutes, ingredients, ingredientDetails, directions, imageLocation, author, recipe.vegan, recipe.dairyFree, recipe.glutenFree);
+      
+      setRecipeRef(recipeRef);
       
       // upload recipe image to Firebase Storage
       if (recipe.image) {  // need to check if there is a image url from the data
@@ -96,6 +93,29 @@ const RecipeFromAPI = () => {
     setCurrentRating(newRating);
   }
 
+  const handleAddToFavorite = async (isFavorite) => {
+    if (curUser && recipeRef) {
+      const userRef = doc(db, 'Users', curUser.uid);
+      try {
+        if (!isFavorite) {
+          await updateDoc(userRef, {
+            favoriteRecipes: arrayUnion(recipeRef),
+          });
+          console.log("Add recipe successfully");
+        } else {
+          await updateDoc(userRef, {
+            favoriteRecipes: arrayRemove(recipeRef),
+          })
+          console.log("Remove recipe successfully");
+        }
+      } catch(error) {
+        console.log("Error: ", error);
+      }
+    } else {
+      console.log("Recipe does not exist in firebase.")
+    }
+  };
+
   return (
     <div>
       <RecipePage name={recipe.title} 
@@ -106,7 +126,8 @@ const RecipeFromAPI = () => {
               rating={currentRating}
               ratingCount={1}
               author=""
-              onSubmitRating={handleSubmitRating} />
+              onSubmitRating={handleSubmitRating}
+              onAddToFavoriteList={handleAddToFavorite}/>
       
       {/* User can only click save recipe once, then the button will be disabled */}
       <button className='btn btn-success mb-3' onClick={handleSave} disabled={saveStatus}>

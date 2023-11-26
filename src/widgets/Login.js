@@ -26,6 +26,7 @@ const Login = () => {
           email: signupEmail,
           phone: "",
           userSince: serverTimestamp(),
+          favoriteRecipes: [],
         });
         navigate("/home");
       }

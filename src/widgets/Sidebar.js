@@ -41,6 +41,8 @@ function Sidebar() {
                                 <li><Link className="dropdown-item" to="/login-page">Log In</Link></li>
                                 <li><hr className="dropdown-divider/"/></li>
                                 <li><Link className="dropdown-item" to="/profile-page">Profile</Link></li>
+                                <li><hr className="dropdown-divider/"/></li>
+                                <li><Link className="dropdown-item" to="/saved-recipes">Saved Recipes</Link></li>
                             </div>
                         </ul>
                     </li>

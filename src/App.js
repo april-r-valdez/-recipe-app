@@ -18,6 +18,7 @@ import LoginPage from './widgets/LoginPage';
 import Support from './scenes/SupportScene/Support';
 import DBSearch from './components/Utils/DBSearch';
 import OurTeam from './OurTeam';
+import FavoriteRecipes from './widgets/FavoriteRecipes';
 import TipsTutorials from './scenes/TipsTutorials/TipsTutorials';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path='/edit-profile' element={<ProfileEdit/>}/>
         <Route path='/support' element={<Support/>}/>
         <Route path='/our-team' element={<OurTeam/>}/>
+        <Route path='/saved-recipes' element={<FavoriteRecipes/>}/>
         <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
       </Routes>
       <br></br><br></br><br></br>

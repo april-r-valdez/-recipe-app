@@ -4,14 +4,19 @@ import Direction from '../components/Common/Direction';
 import Pantry from '../components/Pantry/Pantry';
 import Metadata from '../components/Common/Metadata';
 import saveRecipeToFirebase from '../components/Utils/SaveRecipe';
-import { useAuth } from '../firebase';
+import { db, useAuth, useUserInfo } from '../firebase';
 import { uploadImageFileToFirebase } from '../components/Utils/UploadImage';
 import { Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 const  UserInput = () => {
 
     // get the current login user
+    const navigate = useNavigate();
     const curUser = useAuth();
+    const [userInfo, setUserInfo] = useState(null);
+    useUserInfo(curUser, setUserInfo);
     
     // useState hook updates variables that store ingredient inputs
     const [inputs, setIngredients] = useState({
@@ -122,7 +127,12 @@ const  UserInput = () => {
     }
 
     // handle save recipe
-    const handleSaveRecipe = () => {
+    const handleSaveRecipe = async () => {
+
+        if (!curUser) {
+            navigate('/login-page');
+            return;
+        }
        
         if (recipeInfo && ingredientsList.length > 0 && directionsList.length > 0) {
             // extract recipe information
@@ -133,19 +143,27 @@ const  UserInput = () => {
             const ingredientDetails = ingredientsList.map((input) => (input.amount + ' ' + input.units + ' ' + input.ingredient));
             const directions = directionsList.map(data => data.direction);
             const imageLocation = recipeImg ? ('RecipeImages/' + recipeImg?.name) : 'RecipeImages/default_image.png';
-            const authorName = curUser ? curUser.email : "";
+            const authorName = userInfo ? (userInfo.userName ? userInfo.userName : userInfo.email) : "";
             const isVegan = false;  // default to false
             const isGlutenFree = false; // default to false
             const isDairyFree = false;  // default to false
             
             // save recipe to firestore
-            saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
-            
-            // upload image to firebase storage if user provides one
+            const recipeRef = await saveRecipeToFirebase(recipeName, servings, cookTime, ingredients, ingredientDetails, directions, imageLocation, authorName, isVegan, isDairyFree, isGlutenFree);
+            console.log(recipeRef);
+            // // upload image to firebase storage if user provides one
             if (recipeImg) {
                 uploadImageFileToFirebase(recipeImg, imageLocation);
             }
 
+            // add the newly created recipe to user's favorite list
+            const userRef = doc(db, 'Users', curUser.uid);
+            await updateDoc(userRef, {
+                favoriteRecipes: arrayUnion(recipeRef ? recipeRef : null),
+            });
+
+            console.log("Add recipe successfully");
+            
             // set saveStatus
             setSaveStatus(true);
         }
