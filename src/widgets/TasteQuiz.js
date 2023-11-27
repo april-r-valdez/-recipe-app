@@ -89,7 +89,10 @@ const QuizBank = [
     id: 8,
     choices: [
       { id: 0, text: "Umami superhero, flavor power!", write: 75 },
-      // Add other choices as needed
+      { id: 1, text: "I appreciate savory flavors.", write: 50 },
+      { id: 2, text: "Okay with a little Umami.", write: 25 },
+      { id: 3, text: "I avoid savory flavors.", write: 10 },
+
     ],
     type: 'MCQs',
     idNextQuestionA: 9,
@@ -133,55 +136,75 @@ const QuizBank = [
 ]
 const TasteQuiz = () => {
 
-    const [currentQ, setCurrentQ] = useState(5)
+    const [currentQ, setCurrentQ] = useState(2)
     const {question, choices, options } = QuizBank[currentQ];
 
-    return ( 
-        <>
-        <div className='container'>
-        <div>
-         <h4>Taste Quiz</h4>
-       </div>
-       <br></br>
-       <div className='contanier'>
-        <div >Question {currentQ + 1}/{QuizBank.length}</div>
-        <h4>{question}</h4>
-       </div>
-       <ul className="list-group list-group-flush">
-        {
-            choices ? (
-                choices.map((choice) => (
-                <li className="list-group-item list-group-item-action list-group-flush">
-                {choice.text}
-                </li>
+    const handleMC = () => {
+        return ( null );
+    }
+    const handleMS = () => {
+        return ( null );
+    }
+    const handleNext = () => {
+        return ( 
+            setCurrentQ(currentQ + 1)
+         );
+    }
+    const handleBack = () => {
+        return ( setCurrentQ(currentQ - 1) );
+    }
+     
+    return (
+      <>
+        <div className="container-sm">
+          <div>
+            <h4>Taste Quiz</h4>
+          </div>
+          <br></br>
+          <div className="contanier">
+            <div></div>
+            <h4>{question}</h4>
+          </div>
+          <ul className="list-group list-group-flush">
+            {choices
+              ? choices.map((choice) => (
+                  <li
+                    className="list-group-item list-group-item-action list-group-flush"
+                    onClick={handleMC}
+                  >
+                    {choice.text}
+                  </li>
                 ))
-            ) :
-            (options.map((option) => (
-                <li className="list-group-item list-group-item-action list-group-flush">
+              : options.map((option) => (
+                  <li
+                    className="list-group-item list-group-item-action list-group-flush"
+                    onClick={handleMS}
+                  >
                     {option}
-                </li>
-               )))
-       }
-       </ul>
-       <div>
-
-       </div>
-
+                  </li>
+                ))}
+          </ul>
+          <div>
+            <div className="d-flex d-flex justify-content-between">
+            <div className="p-2">
+                <button type="button" class="btn btn-primary" disabled={currentQ === 0} onClick={handleBack}>
+                  Back
+                </button>
+              </div>
+              <div className="p-2">
+                Question
+                {currentQ + 1}/{QuizBank.length}
+              </div>
+              <div className="p-2">
+                <button type="button" class="btn btn-primary"disabled={currentQ + 1 === QuizBank.length} onClick={handleNext}>
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <p>  </p>
-
-        {/* <button className="quiz-button" onClick={handleClickA}> {currentQ.answerA} </button>
-
-        <button className="quiz-button" onClick={handleClickB}> {currentQ.answerB} </button>
-
-        {<br />}
-        {<br />}
-
-        <Link className="quiz-link" to="/home/quiz" onClick={() => window.location.reload()}> restart quiz </Link> */}
-
-        </>
-
-     );
+      </>
+    );
 }
  
 export default TasteQuiz;
