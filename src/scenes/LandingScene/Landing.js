@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 import { Link } from "react-router-dom";
 
 function Landing() {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const handleCardHover = (index) => {
+    setHoveredCard(index);
+  };
+
+  const resetHover = () => {
+    setHoveredCard(null);
+  };
+
+  const features = [
+    {
+      title: "RECIPE GENERATOR",
+      description:
+        "Generate recipes that are tailored to your available ingredients at home!",
+      secondaryText:
+        "No more stress about meal planning — just pure cooking satisfaction!",
+    },
+    {
+      title: "FOODIE COMMUNITY",
+      description: "Create, share, browse, and rate custom recipes!",
+    },
+    {
+      title: "CULINARY PROFILES",
+      description:
+        "Discover your taste profile and embark on a global gastronomic adventure.",
+      secondaryText: "Unravel the mysteries of your culinary preferences!",
+    },
+    {
+      title: "COOKING HOW TOs",
+      description:
+        "Get access to a customized feed of cooking tips and tutorials for your new dishes!",
+      style: "my-4",
+    },
+    {
+      title: "FOOD RECOGNITION",
+      description:
+        "Effortlessly identify groceries and unknown food with a snap!",
+      secondaryText:
+        "Break out of your culinary comfort zone — identify, buy, and try out new ingredients in amazingly new dishes!",
+    },
+    {
+      title: "YOUR PANTRY",
+      description:
+        "Organize your online pantry to easily take inventory and restock using shopping lists!",
+    },
+  ];
+
   return (
     <div>
       <Parallax
@@ -53,33 +101,57 @@ function Landing() {
         {/* Features Section */}
         <ParallaxLayer offset={0.8}>
           <div className="container-fluid py-5 m-0 landing-content">
-            <h1 className="display-6 landing-headers">FEATURES</h1>
-            <div className="row card-group py-3 m-5">
-              <div className="col-4">
-                <div className="card px-4 py-4">
-                  {/* FEATURE UNO */}
-                  <h4 className="py-4">RECIPE GENERATOR</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+            <h1 className="display-6 landing-headers py-4">FEATURES</h1>
+            <div className="row card-group mx-5">
+              {/* ROW 1 */}
+              {features.slice(0, 3).map((feature, index) => (
+                <div
+                  key={index}
+                  className={`col-12 col-sm-6 col-md-4 ${feature.style}`}
+                  onMouseEnter={() => handleCardHover(index)}
+                  onMouseLeave={resetHover}
+                >
+                  <div
+                    className={`card px-4 py-4 pt-2 ${
+                      hoveredCard === index ? "hovered-card" : ""
+                    }`}
+                  >
+                    <h4 className="pt-4 pb-2">{feature.title}</h4>
+                    <p>{feature.description}</p>
+                    {feature.secondaryText && (
+                      <p className={"text-secondary mt-2"}>
+                        {feature.secondaryText}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="col-4">
-                <div className="card px-4 py-4">
-                  {/* FEATURE DOS */}
-                  <h4 className="py-4">SHARE RECIPES</h4>
-                  <p>
-                    Quisque lacinia dictum leo, non accumsan justo tincidunt ut.
-                  </p>
+              ))}
+            </div>
+
+            <div className="row card-group mx-5">
+              {/* ROW 2 */}
+              {features.slice(3, 6).map((feature, index) => (
+                <div
+                  key={index + 3}
+                  className={`col-12 col-sm-6 col-md-4 ${feature.style}`}
+                  onMouseEnter={() => handleCardHover(index + 3)}
+                  onMouseLeave={resetHover}
+                >
+                  <div
+                    className={`card px-4 py-4 pt-2 ${
+                      hoveredCard === index + 3 ? "hovered-card" : ""
+                    }`}
+                  >
+                    <h4 className="pt-4 pb-2">{feature.title}</h4>
+                    <p>{feature.description}</p>
+                    {feature.secondaryText && (
+                      <p className={"text-secondary mt-2"}>
+                        {feature.secondaryText}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="col-4">
-                <div className="card px-4 py-4">
-                  {/* FEATURE TRES */}
-                  <h4 className="py-4">MAKE DR.LEHR PROUD</h4>
-                  <p>Nunc eu lorem sed massa vehicula mollis quis eu nisl.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
