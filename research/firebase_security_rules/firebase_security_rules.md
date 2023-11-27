@@ -64,7 +64,7 @@ allow read, write: if true;
 The rules will be changed in the next sprint (after we enable authentication for users) in that anyone could read data from our database, but only authenticated users can create or modify the data in it.
 
 ## Firebase Security Rules for Sprint 3 (deployment stage)
-There are 5 collections in our database that needed to be set: **Featured**, **Recipes**, **Pantry**, **Users**, and **ShoppingLists**
+There are 5 collections in our database that needed to be set: **Featured**, **Recipes**, **Pantry**, **Users**, and **ShoppingLists** (the rules are implemented in Firebase console)
 
 - Featured collection and Recipes collection: 
   - Allow everyone to read data from the collections 
@@ -104,7 +104,7 @@ There are 5 collections in our database that needed to be set: **Featured**, **R
 ``` 
 
 - Pantry collection
-  - Only allow read and write to the owner of the document. The different between this rule and the previous one is that we compare the request user id with the document field `userID` instead of comparing with the document id itself.
+  - Only allow read and write to the owner of the document. The requested user id must match the `userID` field in Pantry document
 ```
   /* Pantry collection */
   match /Pantry/{document=**} {

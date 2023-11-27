@@ -224,10 +224,13 @@ const  UserInput = () => {
                                              (<p>Error: missing recipe information!</p>)
                     }
                 </Modal.Body>
-                <Modal.Footer style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                <Modal.Footer>
                     <button 
                     type='button' 
-                    className='btn btn-success' onClick={reloadPage}>Add another recipe</button>
+                    className='btn btn-warning' onClick={reloadPage}>Add another</button>
+                    <button 
+                    type='button' 
+                    className='btn btn-success' onClick={() => {navigate('/saved-recipes')}}>My recipes</button>
                 </Modal.Footer>
             </Modal>
         </div>
