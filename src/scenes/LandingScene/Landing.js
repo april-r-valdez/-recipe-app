@@ -9,7 +9,6 @@ function Landing() {
   const handleCardHover = (index) => {
     setHoveredCard(index);
   };
-
   const resetHover = () => {
     setHoveredCard(null);
   };
@@ -21,22 +20,26 @@ function Landing() {
         "Generate recipes that are tailored to your available ingredients at home!",
       secondaryText:
         "No more stress about meal planning — just pure cooking satisfaction!",
+      link: "/home",
     },
     {
       title: "FOODIE COMMUNITY",
       description: "Create, share, browse, and rate custom recipes!",
+      link: "/home",
     },
     {
       title: "CULINARY PROFILES",
       description:
         "Discover your taste profile and embark on a global gastronomic adventure.",
       secondaryText: "Unravel the mysteries of your culinary preferences!",
+      link: "",
     },
     {
       title: "COOKING HOW TOs",
       description:
         "Get access to a customized feed of cooking tips and tutorials for your new dishes!",
       style: "my-4",
+      link: "/tips-tutorials",
     },
     {
       title: "FOOD RECOGNITION",
@@ -44,11 +47,13 @@ function Landing() {
         "Effortlessly identify groceries and unknown food with a snap!",
       secondaryText:
         "Break out of your culinary comfort zone — identify, buy, and try out new ingredients in amazingly new dishes!",
+      link: "/home",
     },
     {
       title: "YOUR PANTRY",
       description:
         "Organize your online pantry to easily take inventory and restock using shopping lists!",
+      link: "/in-stock",
     },
   ];
 
@@ -87,12 +92,12 @@ function Landing() {
               </h1>
               <p className="lead text-light">we help you make sandwiches</p>
               <div>
-                <button
-                  type="button"
+                <Link
+                  to="/home"
                   className="btn btn-outline-secondary btn-lg px-4 my-5"
                 >
                   START COOKING
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -105,7 +110,8 @@ function Landing() {
             <div className="row card-group mx-5">
               {/* ROW 1 */}
               {features.slice(0, 3).map((feature, index) => (
-                <div
+                <Link
+                  to={feature.link}
                   key={index}
                   className={`col-12 col-sm-6 col-md-4 ${feature.style}`}
                   onMouseEnter={() => handleCardHover(index)}
@@ -124,14 +130,15 @@ function Landing() {
                       </p>
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
             <div className="row card-group mx-5">
               {/* ROW 2 */}
               {features.slice(3, 6).map((feature, index) => (
-                <div
+                <Link
+                  to={feature.link}
                   key={index + 3}
                   className={`col-12 col-sm-6 col-md-4 ${feature.style}`}
                   onMouseEnter={() => handleCardHover(index + 3)}
@@ -150,7 +157,7 @@ function Landing() {
                       </p>
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -162,12 +169,8 @@ function Landing() {
               <h1 className="display-6 landing-headers">PRICING</h1>
               <p className="landing-headers">IT'S FREE</p>
               <p>
-                Quisque vulputate et nisi eu bibendum. Fusce auctor molestie
-                nulla sit amet dictum. Nunc est orci, euismod eget gravida nec,
-                lobortis nec ex. Donec non sollicitudin velit. Interdum et
-                malesuada fames ac ante ipsum primis in faucibus. Maecenas
-                elementum erat efficitur lacus imperdiet interdum. Sed sed
-                molestie felis.
+                Elevate your meals, discover new culinary experiences — all at
+                an unbeatable price.
               </p>
             </div>
           </div>
@@ -181,12 +184,12 @@ function Landing() {
                 Experience culinary creativity at your fingertips – generate,
                 savor, and delight with each recipe.
               </p>
-              <button
-                type="button"
+              <Link
+                to="/home"
                 className="btn btn-outline-secondary btn-lg px-4 my-5"
               >
                 LET'S GO
-              </button>
+              </Link>
             </div>
           </div>
 
