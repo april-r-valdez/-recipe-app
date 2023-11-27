@@ -2,18 +2,22 @@ const QuizBank = [
     {
         question: "How would you describe your cooking skill level?",
         id: 0,
-        answerA: "Beginner (Limited experience, basic recipes)",
-        answerB: "Intermediate (Comfortable with a variety of recipes)",
-        answerC: "Advanced (Confident in the kitchen, enjoy challenging recipes)",
+        choices: [
+            {id:0, text: "Beginner (Limited experience, basic recipes)", write:'Beginner' },
+            {id:1, text: "Intermediate (Comfortable with a variety of recipes)", write: "Intermediate"},
+            {id:2, text: "Advanced (Confident in the kitchen, enjoy challenging recipes)", write: "Advanced" }],
+        type: 'MCQs',
         idNextQuestionA: 1,
         
     },
     {
         question: "How much time do you typically prefer to spend on cooking a meal?",
-        id: 1,
-        answerA: "Quick and easy (Under 30 minutes)",
-        answerB: "Moderate (30 minutes to 1 hour)",
-        answerC: "Relaxed and thorough (Over 1 hour)",
+        id: 1, //maxReadyTime in spoonacular
+        choices: [
+            {id:0, text: "Quick and easy (Under 30 minutes)", write: 30 },
+            {id:1, text: "Moderate (30 minutes to 1 hour)", write: 60},
+            {id:2, text: "Relaxed and thorough (Over 1 hour)", write: 90 }],
+        type: 'MCQs',
         idNextQuestionA: 2
     },
     {
@@ -21,7 +25,7 @@ const QuizBank = [
         id: 2,
         options: ['African','Asian','American','British', 'Cajun',
             'Caribbean','Chinese','Eastern European','European'],
-        answerA: "Yes",
+        type: 'MSQs',
         idNextQuestionA: 3
         
     },
@@ -30,7 +34,7 @@ const QuizBank = [
         id: 3,
         options: ['French', 'German', 'Greek', 'Indian', 'Irish','Italian', 
             'Japanese', 'Jewish', 'Korean'],
-        answerA: "Yes",
+        type: 'MSQs',
         idNextQuestionA: 4
     },
     {
@@ -38,73 +42,92 @@ const QuizBank = [
         id: 4,
         options: ['Latin American','Mediterranean','Mexican','Middle Eastern',
             'Nordic','Southern','Spanish','Thai','Vietnamese'],
-        
+        type: 'MSQs',
         idNextQuestionA: 5
         
     },
     {
         question: "How do you feel about sweet foods?",
-        id: 5,
-        answerA: "Sweet tooth? More like a sweet fang!",
-        answerB: "I enjoy a bit of sweetness.",
-        answerC: "I like sweetness, but not dental-work levels.",
-        answerD: "I don't like sweet foods.",
-        idNextQuestionA: 6
-    },
-    {
-        question: "How do you feel about salty foods?",
-        id: 6,
-        answerA: "I love the taste of salt.",
-        answerB: "Cool with saltiness, not a human pickle.",
-        answerC: "I prefer less salt in my food.",
-        answerD: "I dislike salty foods.",
-        idNextQuestionA: 7
-    },
-    {
-        question: "How do you feel about sour foods?",
-        id: 7,
-        answerA: "Love sour foods, face acrobatics and all.",
-        answerB: "I enjoy some sourness.",
-        answerC: "Less sour, more sunshine vibes.",
-        answerD: "I'm not a fan of sour foods.",
-        idNextQuestionA: 8
-    },
-    {
-        question: "How do you feel about savory foods?",
-        id: 8,
-        answerA: "Umami superhero, flavor power!",
-        answerB: "",
-        answerC: "",
-        answerD: "Umami? Stick to simpler tastes.",
-        idNextQuestionA: 9
-    },
-    {
-        question: "How do you feel about fatty foods?",
-        id: 9,
-        answerA: "Love fatty foods, fat-free fun's overrated.",
-        answerB: "Enjoy some fattiness.",
-        answerC: "Less fat, more fun.",
-        answerD: "Fatty foods? Pass.",
-        idNextQuestionA: 10
-    },
-    {
-        question: "How do you feel about spicy foods?",
-        id: 10,
-        answerA: "Love spicy tango for taste buds.",
-        answerB: "Enjoy spice, no fire-breathing.",
-        answerC: "Less spice, more ice. No mouth ablaze.",
-        answerD: "Spicy foods? Pass, cool and collected buds.",
-        idNextQuestionA: 11
-    },
-    {
-        question: "How do you feel about bitter foods?",
-        id: 11,
-        answerA: "Into bitter like my humor.",
-        answerB: "Okay with bitterness.",
-        answerC: "Less bitter, more glitter, keep it light.",
-        answerD: "Bitter foods? Pass, life's too short.",
-        idNextQuestionA: 12
-    }
+    id: 5,
+    choices: [
+      { id: 0, text: "Sweet tooth? More like a sweet fang!", write: 75 },
+      { id: 1, text: "I enjoy a bit of sweetness.", write: 50 },
+      { id: 2, text: "I like sweetness, but not dental-work levels.", write: 25 },
+      { id: 3, text: "I don't like sweet foods.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 6,
+  },
+  {
+    question: "How do you feel about salty foods?",
+    id: 6,
+    choices: [
+      { id: 0, text: "I love the taste of salt.", write: 75 },
+      { id: 1, text: "Cool with saltiness, not a human pickle.", write: 50 },
+      { id: 2, text: "I prefer less salt in my food.", write: 25 },
+      { id: 3, text: "I dislike salty foods.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 7,
+  },
+  {
+    question: "How do you feel about sour foods?",
+    id: 7,
+    choices: [
+      { id: 0, text: "Love sour foods, face acrobatics and all.", write: 75 },
+      { id: 1, text: "I enjoy some sourness.", write: 50 },
+      { id: 2, text: "Less sour, more sunshine vibes.", write: 25 },
+      { id: 3, text: "I'm not a fan of sour foods.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 8,
+  },
+  {
+    question: "How do you feel about savory foods?",
+    id: 8,
+    choices: [
+      { id: 0, text: "Umami superhero, flavor power!", write: 75 },
+      // Add other choices as needed
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 9,
+  },
+  {
+    question: "How do you feel about fatty foods?",
+    id: 9,
+    choices: [
+      { id: 0, text: "Love fatty foods, fat-free fun's overrated.", write: 75 },
+      { id: 1, text: "Enjoy some fattiness.", write: 50 },
+      { id: 2, text: "Less fat, more fun.", write: 25 },
+      { id: 3, text: "Fatty foods? Pass.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 10,
+  },
+  {
+    question: "How do you feel about spicy foods?",
+    id: 10,
+    choices: [
+      { id: 0, text: "Love spicy tango for taste buds.", write: 75 },
+      { id: 1, text: "Enjoy spice, no fire-breathing.", write: 50 },
+      { id: 2, text: "Less spice, more ice. No mouth ablaze.", write: 25 },
+      { id: 3, text: "Spicy foods? Pass, cool and collected buds.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 11,
+  },
+  {
+    question: "How do you feel about bitter foods?",
+    id: 11,
+    choices: [
+      { id: 0, text: "Into bitter like my humor.", write: 75 },
+      { id: 1, text: "Okay with bitterness.", write: 50 },
+      { id: 2, text: "Less bitter, more glitter, keep it light.", write: 25},
+      { id: 3, text: "Bitter foods? Pass, life's too short.", write: 10 },
+    ],
+    type: 'MCQs',
+    idNextQuestionA: 12,
+  }
 ]
 
 export default QuizBank;
