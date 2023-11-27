@@ -362,7 +362,7 @@
 
 #### Reports
 
-![Burnup Chart]
+![Burnup Chart](images/sprint3-burnup-chart.png)
 
 #### Next Steps
 
