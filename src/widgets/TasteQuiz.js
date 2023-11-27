@@ -133,9 +133,7 @@ const QuizBank = [
 ]
 const TasteQuiz = () => {
 
-    const [currentQ, setCurrentQ] = useState(2)
-
-
+    const [currentQ, setCurrentQ] = useState(5)
     const {question, choices, options } = QuizBank[currentQ];
 
     return ( 
@@ -151,11 +149,18 @@ const TasteQuiz = () => {
        </div>
        <ul className="list-group list-group-flush">
         {
-           options.map((choice) => (
-            <li className="list-group-item list-group-item-action list-group-flush">
-                {choice}
-            </li>
-           ))
+            choices ? (
+                choices.map((choice) => (
+                <li className="list-group-item list-group-item-action list-group-flush">
+                {choice.text}
+                </li>
+                ))
+            ) :
+            (options.map((option) => (
+                <li className="list-group-item list-group-item-action list-group-flush">
+                    {option}
+                </li>
+               )))
        }
        </ul>
        <div>
