@@ -136,7 +136,7 @@ const QuizBank = [
 ]
 const TasteQuiz = () => {
 
-    const [currentQ, setCurrentQ] = useState(2)
+    const [currentQ, setCurrentQ] = useState(0)
     const {question, choices, options } = QuizBank[currentQ];
 
     const handleMC = () => {
