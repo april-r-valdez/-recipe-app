@@ -20,6 +20,7 @@ import DBSearch from './components/Utils/DBSearch';
 import OurTeam from './OurTeam';
 import FavoriteRecipes from './widgets/FavoriteRecipes';
 import TipsTutorials from './scenes/TipsTutorials/TipsTutorials';
+import TasteQuiz from './widgets/TasteQuiz';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path='/our-team' element={<OurTeam/>}/>
         <Route path='/saved-recipes' element={<FavoriteRecipes/>}/>
         <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
+        <Route path='/taste-quiz' element={<TasteQuiz/>}/>
       </Routes>
       <br></br><br></br><br></br>
       <div className="row container-xl">
