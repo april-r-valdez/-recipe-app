@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import UploadPantry from '../components/Pantry/UploadPantry';
+import ShoppingList from '../components/Utils/ShoppingList/ShoppingList';
 
 const MyStock = () => {
 
@@ -32,6 +33,12 @@ const MyStock = () => {
       setAllIngredients(updateIngredientsArr);
 
     }
+
+    const [showShoppingList, setShowShoppingList] = useState(false);
+    const handleShowShoppingList = () => {
+      if (userID) setShowShoppingList(true);
+    };
+
     return (
       <>
         <div className="container-sm">
@@ -103,6 +110,15 @@ const MyStock = () => {
           </table>
         </div>
         <UploadPantry ingredients={AllIngredients} setIngredients={setAllIngredients} userID={userID}/>
+
+        <button
+          className="btn btn-secondary mt-2"
+          type="button"
+          onClick={handleShowShoppingList}
+        >
+          Show Shopping List
+        </button>
+        {showShoppingList && <ShoppingList userID={userID} />}
       </>
     );
 }
