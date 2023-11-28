@@ -150,11 +150,11 @@ function InputIngredient() {
   const currentUser = useAuth();
   useEffect(() => {
     const handleDownload = async (e) => {
-      console.log(currentUser);
+      if (!currentUser) return;
       try {
         const pantriesRef = collection(db, "Pantry");
 
-        const q = query(pantriesRef, where("userID", "==", currentUser));
+        const q = query(pantriesRef, where("userID", "==", currentUser.uid));
         const snapshot = await getDocs(q);
 
         if (!snapshot.empty) {
