@@ -10,7 +10,7 @@ const APISearch = () => {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const getRecipesByIngredients = async (ingredients) => {
         try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=9`);
+            const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=8`);
             if (!response.ok) {
                 throw new Error("Error fetching the data");
             }
@@ -31,7 +31,7 @@ const APISearch = () => {
             </div>
             <div className='row'>
                 <h4>Search Results</h4>
-                <div className="row row-cols-1 row-cols-md-3 mt-3 mb-3 g-4">
+                <div className="row row-cols-1 row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4">
                     {searchedRecipes.map((recipe, index) => (
                         <Link to={'/externalRecipe/' + recipe.id} key={index}>
                             <div className='card h-100'>
