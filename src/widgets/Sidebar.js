@@ -31,6 +31,10 @@ function Sidebar() {
                             <Link className="nav-link active" to="/in-stock">In Stock</Link>
                         </li>
                         <li><hr className="dropdown-divider/"/></li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/taste-quiz">Taste Quiz</Link>
+                        </li>
+                        <li><hr className="dropdown-divider/"/></li>
                     </div>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
