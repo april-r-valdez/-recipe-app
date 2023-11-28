@@ -10,7 +10,7 @@ function OurTeam() {
                 <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4">
                         <br></br>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
+                        <img src="images/mandil-avatar.png" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
                         <div class="card-body">
                             <h5 class="card-title mb-3" style={{ color: 'white' }}><strong>Mandil Pradhan</strong></h5>
                             <h6 class="card-subtitle mb-4 text-body-secondary">Full-Stack Software Developer</h6>
@@ -43,7 +43,7 @@ function OurTeam() {
                 <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4">
                         <br></br>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
+                        <img src="images/viet-avatar.png" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
                         <div class="card-body">
                             <h5 class="card-title mb-3" style={{ color: 'white' }}><strong>Viet Vu</strong></h5>
                             <h6 class="card-subtitle mb-4 text-body-secondary">Full-Stack Software Developer</h6>
@@ -62,7 +62,7 @@ function OurTeam() {
                 <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4 text-center">
                         <br></br>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
+                        <img src="images/april-avatar.png" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
                         <div class="card-body">
                             <h5 class="card-title mb-3" style={{ color: 'white' }}><strong>April Valdez</strong></h5>
                             <h6 class="card-subtitle mb-4 text-body-secondary">Front-End Software Developer</h6>
@@ -78,7 +78,7 @@ function OurTeam() {
                 <div className="col-4">
                     <div class="card text-bg-secondary ms-md-4">
                         <br></br>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
+                        <img src="images/brent-avatar.png" class="rounded-circle mb-3 mx-auto" style={{width: '150px' }} alt="Avatar" />
                         <div class="card-body">
                             <h5 class="card-title mb-3" style={{ color: 'white' }}><strong>Brent Hoover</strong></h5>
                             <h6 class="card-subtitle mb-4 text-body-secondary">Front-End Software Developer</h6>
