@@ -32,7 +32,7 @@ function Navbar() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <Sidebar/>
-                    <Link className="navbar-brand fw-bolder px-1" to="/home" >  RECIPE GENERATOR </Link>
+                    <Link className="navbar-brand fw-bolder px-1 navbar-title" to="/home" >  RECIPE GENERATOR </Link>
                 </div>                                      
                 <div className="d-flex">
                     <DisplayToggle className="p-1 me-2"/>                           
