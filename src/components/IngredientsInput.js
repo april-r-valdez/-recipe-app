@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import IngredientsList from './IngredientsList';
 
+const units = ["",'teaspoons',"tablespoons","pounds",
+      'fluid oz',"cups","pints","quarts","gallons"]
+
 const IngredientsInput = () => {
 
     const [newName, setnewName] = useState("");
@@ -42,16 +45,15 @@ const IngredientsInput = () => {
                 Units
               </button>
               <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Imperial
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Metric
-                  </a>
-                </li>
+                {
+                  units.map((unit) => (
+                    <li>
+                      {unit}
+                      console.log(unit)
+                    </li>
+                    ))
+                }
+                  
               </ul>
 
               <input

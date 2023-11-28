@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from '../firebase';
+import { useAuth } from '../firebase';
 import UploadPantry from '../components/Pantry/UploadPantry';
 import ShoppingList from '../components/Utils/ShoppingList/ShoppingList';
+
+const units = ['','teaspoons',"tablespoons","pounds",
+      'fluid oz',"cups","pints","quarts","gallons"]
 
 const MyStock = () => {
 
@@ -10,12 +13,14 @@ const MyStock = () => {
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
 
-    const [userID, setUserID] = useState(null);
-    useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
+    // const [userID, setUserID] = useState(null);
+    const currentUser = useAuth();
+    // useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
 
     const renderIngredient = (ingredient, index) =>{
       return(
-        <tr key = {index}>
+        <tr key = {index} onClick={()=>handleRemove(ingredient.name)}>
+          <td>{ingredient.unit}</td>
           <td>{ingredient.amount}</td>
           <td>{ingredient.name}</td>
         </tr>
@@ -24,29 +29,35 @@ const MyStock = () => {
 
     const handleAdd = () => {
       let newIngredient = {
+        unit: Units,
         amount: newMeasurement,
         name: newName
       }
-
       let updateIngredientsArr =[...AllIngredients];
       updateIngredientsArr.push(newIngredient);
       setAllIngredients(updateIngredientsArr);
-
     }
+    const handleRemove = (nameToBeRemoved) => {
+      const updatedIngredientsArr = AllIngredients.filter(ingredient => ingredient.name != nameToBeRemoved);
+      setAllIngredients(updatedIngredientsArr);
+    }
+
 
     const [showShoppingList, setShowShoppingList] = useState(false);
     const handleShowShoppingList = () => {
-      if (userID) setShowShoppingList(true);
+      if (currentUser) setShowShoppingList(true);
     };
 
     return (
       <>
+      {currentUser ? (
+        <>
         <div className="container-sm">
           <div className="rounded-pill bg-primary-subtle mb-2">
-            <label className=" fw-bold display-6 ">MY PANTRY</label>     
+            <label className=" fw-bold display-6 ">MY PANTRY</label>
           </div>
           <div className="container-sm">
-          <p className="text-start h5">Add ingredients to your pantry.</p>
+            <p className="text-start h5">Add ingredients to your pantry.</p>
             <div className="input-group mb-3">
               <button
                 className="btn btn-outline-secondary dropdown-toggle"
@@ -56,17 +67,14 @@ const MyStock = () => {
               >
                 Units
               </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Imperial
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Metric
-                  </a>
-                </li>
+              <ul className="dropdown-menu" >
+                {units.map((unit) => (
+                  <li onClick={(e) => setUnits(unit)}>
+                    <a className="dropdown-item" >
+                      {unit}
+                    </a>
+                  </li>
+                ))}
               </ul>
 
               <input
@@ -99,9 +107,10 @@ const MyStock = () => {
         <div className="container-sm text-center">
           <p className="h3">In Stock</p>
 
-          <table className="table">
+          <table className="table table-hover">
             <thead>
               <tr>
+              <th scope="col">Unit</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Name</th>
               </tr>
@@ -109,7 +118,11 @@ const MyStock = () => {
             <tbody>{AllIngredients.map(renderIngredient)}</tbody>
           </table>
         </div>
-        <UploadPantry ingredients={AllIngredients} setIngredients={setAllIngredients} userID={userID}/>
+        <UploadPantry
+          ingredients={AllIngredients}
+          setIngredients={setAllIngredients}
+          userID={currentUser.uid}
+        />
 
         <button
           className="btn btn-secondary mt-2"
@@ -118,7 +131,10 @@ const MyStock = () => {
         >
           Show Shopping List
         </button>
-        {showShoppingList && <ShoppingList userID={userID} />}
+        {showShoppingList && <ShoppingList userID={currentUser.uid} />}
+        </>
+      ):(<div>Loading</div>)
+      }
       </>
     );
 }
