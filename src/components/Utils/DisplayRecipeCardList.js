@@ -6,7 +6,7 @@ import shuffleArray from "./shuffleArray";
 // displayCount: Number of cards to display
 const DisplayRecipeCardList = ({recipeList, displayCount}) => {     
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4">            
+        <div className="row row-cols-1 row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4">            
             {/** Shuffle the list and create recipe cards*/}
             {shuffleArray(recipeList).slice(0, displayCount).map((recipe, index) => (
                 <div key={index} className="col">
