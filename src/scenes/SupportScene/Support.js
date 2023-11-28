@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const EMAILJS_SERVICE_ID = "service_recipegen";
-const EMAILJS_SUPPORT_TEMPLATE_ID = "template_ypht4zc";
+const EMAILJS_SUPPORT_TEMPLATE_ID = "template_hclc8ey";
 const EMAILJS_PUBLIC_KEY = "1GFHTA5hlv6zGie4L";
 
 function Support() {
