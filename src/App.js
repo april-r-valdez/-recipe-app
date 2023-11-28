@@ -25,9 +25,10 @@ import TasteQuiz from './widgets/TasteQuiz';
 function App() {
   return (
 
-    <div className="App" data-bs-theme="light">
+    <div className="App container-fluid" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }} >
       <Navbar />
       <br></br><br></br><br></br>
+      <div style={{ minHeight: '800px' , flex : '1'}} >
       <Routes >
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
@@ -48,8 +49,9 @@ function App() {
         <Route path='/tips-tutorials' element={<TipsTutorials/>}/>
         <Route path='/taste-quiz' element={<TasteQuiz/>}/>
       </Routes>
+      </div>
       <br></br><br></br><br></br>
-      <div className="row container-xl">
+      <div className="row"  style={{ flexShrink: 0 }}>
         <Footer />
       </div>      
     </div>

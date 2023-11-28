@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <footer className="bg-body-tertiary py-1 fixed-bottom" style={{ zIndex: 'auto' }} data-bs-theme="light">
+        <footer className="bg-body-tertiary py-1" style={{ zIndex: 'auto' }} data-bs-theme="light">
             <div className="container-fluid">
                 <div className="row ">
                     <div className="d-flex col-md-2 col-sm-2 justify-content-start">
