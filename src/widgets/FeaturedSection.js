@@ -35,7 +35,7 @@ function FeaturedSection() {
     return (
         <div className="container-fluid">
             <h4>Featured</h4>
-            {recipeList && recipeList?.length === 0 ? <div className="row d-flex"><RotatingTriangles /></div>:<></>}
+            {recipeList && recipeList?.length === 0 ? <div className="row d-flex"><RotatingTriangles colors={['#86ada0', '#86ada0', '#BD9371']}/></div>:<></>}
             <DisplayRecipeCardList recipeList={recipeList} displayCount={12}/>
         </div>
     )
