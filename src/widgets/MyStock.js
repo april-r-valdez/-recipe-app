@@ -26,8 +26,8 @@ const MyStock = () => {
         onMouseEnter={() => setHoveredIngredient(ingredient)}
         onMouseLeave={() => setHoveredIngredient(null)}
         >
-          <td>{ingredient.unit}</td>
           <td>{ingredient.amount}</td>
+          <td>{ingredient.unit}</td>
           <td>{ingredient.name}</td>
           <td>
           {isHovered && (
@@ -127,8 +127,8 @@ const MyStock = () => {
           <table className="table table-hover">
             <thead>
               <tr>
-              <th scope="col">Unit</th>
-                <th scope="col">Amount</th>
+              <th scope="col">Amount</th>
+                <th scope="col">Unit</th>
                 <th scope="col">Name</th>
               </tr>
             </thead>
