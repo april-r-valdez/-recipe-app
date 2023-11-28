@@ -65,7 +65,7 @@ const MyStock = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Units
+                { Units ||"Units"}
               </button>
               <ul className="dropdown-menu" >
                 {units.map((unit) => (
