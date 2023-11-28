@@ -67,6 +67,11 @@ const RecipeFromAPI = () => {
   // save this recipe to the database when user click save button
   //const recipeCollectionRef = collection(db, "Recipes");
   const handleSave = async () => {
+    if (!curUser) {
+      alert("You are not logged in");
+      return;
+    }
+
     try {
       const author = "";
       const imageLocation = recipe.image ? ('RecipeImages/' + String(recipe.id) + '.jpg') : 'RecipeImages/default_image.png';
@@ -81,6 +86,12 @@ const RecipeFromAPI = () => {
         uploadImageToFirebase(recipe.image, imageLocation);
       }
 
+      // saved to favorite list
+      await updateDoc(doc(db, 'Users', curUser.uid), {
+        favoriteRecipes: arrayUnion(recipeRef),
+      })
+      console.log("Saved to favorite list");
+      
       // set saved successfully
       setSaveStatus(true);
 
