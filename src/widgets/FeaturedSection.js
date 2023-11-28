@@ -34,7 +34,7 @@ function FeaturedSection() {
     return (
         <div className="container-fluid">
             <h4>Featured</h4>
-            <DisplayRecipeCardList recipeList={recipeList} displayCount={12}/>
+            <DisplayRecipeCardList recipeList={recipeList} displayCount={24}/>
         </div>
     )
 }
