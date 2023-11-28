@@ -32,7 +32,7 @@ function Landing() {
       description:
         "Discover your taste profile and embark on a global gastronomic adventure.",
       secondaryText: "Unravel the mysteries of your culinary preferences!",
-      link: "",
+      link: "/taste-quiz",
     },
     {
       title: "COOKING HOW TOs",
