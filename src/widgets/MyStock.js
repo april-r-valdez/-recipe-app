@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../firebase';
 import UploadPantry from '../components/Pantry/UploadPantry';
 import ShoppingList from '../components/Utils/ShoppingList/ShoppingList';
+import { RotatingTriangles } from 'react-loader-spinner';
 
 const units = ['','teaspoons',"tablespoons","pounds",
       'fluid oz',"cups","pints","quarts","gallons"]
@@ -150,7 +151,7 @@ const MyStock = () => {
         </button>
         {showShoppingList && <ShoppingList userID={currentUser.uid} />}
         </>
-      ):(<div>Loading</div>)
+      ):(<div className="row d-flex"><RotatingTriangles colors={['#86ada0', '#86ada0', '#BD9371']}/></div>)
       }
       </>
     );

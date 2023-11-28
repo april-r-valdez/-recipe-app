@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DisplayRecipeCardList from "../components/Utils/DisplayRecipeCardList";
 import { db } from "../firebase"
 import { collection, getDoc, doc} from "firebase/firestore";
+import { RotatingTriangles } from 'react-loader-spinner';
 
 function FeaturedSection() {
 
@@ -34,6 +35,7 @@ function FeaturedSection() {
     return (
         <div className="container-fluid">
             <h4>Featured</h4>
+            {recipeList && recipeList?.length === 0 ? <div className="row d-flex"><RotatingTriangles colors={['#86ada0', '#86ada0', '#BD9371']}/></div>:<></>}
             <DisplayRecipeCardList recipeList={recipeList} displayCount={24}/>
         </div>
     )

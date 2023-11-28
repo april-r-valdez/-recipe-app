@@ -4,6 +4,7 @@ import ProfileEdit from './ProfileEdit';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoIosSettings } from "react-icons/io";
+import { RotatingTriangles } from 'react-loader-spinner';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const ProfilePage = () => {
        </div>
        </>
        ) : (
-        <div>Loading...</div>
+        <div className="row d-flex"><RotatingTriangles /></div>
       )}
     </div>
   );
