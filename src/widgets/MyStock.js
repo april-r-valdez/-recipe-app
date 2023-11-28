@@ -12,17 +12,34 @@ const MyStock = () => {
     const [newMeasurement, setnewMeasurement] = useState("");
     const [Units, setUnits] = useState();
     const [AllIngredients, setAllIngredients] = useState([]);
+    const [hoveredIngredient, setHoveredIngredient] = useState(null);
 
     // const [userID, setUserID] = useState(null);
     const currentUser = useAuth();
     // useState(()=>{ const unsubscribe = auth.onAuthStateChanged(user => { if (user) setUserID(user.uid) }); }, []);
 
     const renderIngredient = (ingredient, index) =>{
+      const isHovered = ingredient === hoveredIngredient;
       return(
-        <tr key = {index} onClick={()=>handleRemove(ingredient.name)}>
+        <tr key = {index} 
+        onClick={()=>handleRemove(ingredient.name)}
+        onMouseEnter={() => setHoveredIngredient(ingredient)}
+        onMouseLeave={() => setHoveredIngredient(null)}
+        >
           <td>{ingredient.unit}</td>
           <td>{ingredient.amount}</td>
           <td>{ingredient.name}</td>
+          <td>
+          {isHovered && (
+            <button
+              type="button"
+              className="btn btn-danger btn-sm"
+              onClick={() => handleRemove(ingredient.name)}
+            >
+              X
+            </button>
+          )}
+        </td>
         </tr>
       )
     }
