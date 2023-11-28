@@ -29,9 +29,9 @@ function InputIngredient() {
 
   const navigate = useNavigate();
 
-  const removeItem = (id) => {
+  const removeItem = (name) => {
     const updatedItems = ingredients.filter(
-      (ingredient) => ingredient.id !== id
+      (ingredient) => ingredient.name !== name
     );
     setIngredientList(updatedItems);
   };
@@ -306,7 +306,7 @@ function InputIngredient() {
                   {ingredients.map((ingredient) => (
                     <ul
                       className="list-group list-group-flush"
-                      key={ingredient.id}
+                      key={ingredient.name}
                     >
                       <li className="list-group-item border-bottom d-flex justify-content-between align-items-center">
                         {ingredient.name}
@@ -314,7 +314,7 @@ function InputIngredient() {
                           type="button"
                           className="close btn btn-sm"
                           aria-label="Close"
-                          onClick={() => removeItem(ingredient.id)}
+                          onClick={() => removeItem(ingredient.name)}
                         >
                           <span aria-hidden="true" className="text-dark">
                             &times;
